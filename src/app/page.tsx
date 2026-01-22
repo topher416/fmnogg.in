@@ -81,8 +81,7 @@ function Orbs() {
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [hoveredTrack, setHoveredTrack] = useState<number | null>(null);
-  const [expandedTrack, setExpandedTrack] = useState<number | null>(null);
-  const screenSize = useScreenSize();
+    const screenSize = useScreenSize();
 
   useEffect(() => {
     setMounted(true);
@@ -134,10 +133,9 @@ export default function Home() {
             {tracks.map((track, i) => (
               <li key={i}>
                 <div
-                  className="track group py-3 cursor-pointer"
+                  className="track group py-3"
                   onMouseEnter={() => setHoveredTrack(i)}
                   onMouseLeave={() => setHoveredTrack(null)}
-                  onClick={() => setExpandedTrack(expandedTrack === i ? null : i)}
                 >
                   <div className="flex items-baseline gap-4">
                     <span className="text-xs text-[#333] font-mono w-8 shrink-0">
@@ -145,32 +143,25 @@ export default function Home() {
                     </span>
                     <div className="flex-1">
                       <span className={`text-lg md:text-xl transition-colors duration-300 ${
-                        hoveredTrack === i || expandedTrack === i ? "text-[#e8e8e8]" : "text-[#888]"
+                        hoveredTrack === i ? "text-[#e8e8e8]" : "text-[#888]"
                       }`}>
                         {track.title}
                       </span>
                       <div className={`text-xs text-[#444] mt-1 transition-opacity duration-300 ${
-                        hoveredTrack === i || expandedTrack === i ? "opacity-100" : "opacity-0"
+                        hoveredTrack === i ? "opacity-100" : "opacity-0"
                       }`}>
                         {track.album} ({track.year})
                       </div>
                     </div>
-                    <span className={`text-xs text-[#00ff9f] transition-opacity duration-300 ${
-                      hoveredTrack === i || expandedTrack === i ? "opacity-100" : "opacity-0"
-                    }`}>
-                      {expandedTrack === i ? "▼" : "▶"} sheet
-                    </span>
                   </div>
                 </div>
-                {expandedTrack === i && (
-                  <div className="mt-4 mb-6 rounded-lg overflow-hidden border border-[#222] bg-[#111]">
-                    <iframe
-                      src={track.sheet}
-                      className="w-full h-[70vh] md:h-[80vh]"
-                      title={`${track.title} sheet music`}
-                    />
-                  </div>
-                )}
+                <div className="mt-4 mb-6 rounded-lg overflow-hidden border border-[#222] bg-[#111]">
+                  <iframe
+                    src={track.sheet}
+                    className="w-full h-[70vh] md:h-[80vh]"
+                    title={`${track.title} sheet music`}
+                  />
+                </div>
                 {i < tracks.length - 1 && (
                   <div className="h-8 w-full text-[#00ff9f]/30 hover:text-[#00ff9f]/60 transition-colors">
                     <ElasticLine strokeWidth={1} grabThreshold={10} releaseThreshold={50} />
