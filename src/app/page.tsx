@@ -155,13 +155,19 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 mb-6 rounded-lg overflow-hidden border border-[#222] bg-[#111]">
-                  <iframe
-                    src={track.sheet}
-                    className="w-full h-[70vh] md:h-[80vh]"
-                    title={`${track.title} sheet music`}
-                  />
-                </div>
+                <a
+                  href={track.sheet}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 mb-6 flex items-center gap-3 px-4 py-3 rounded-lg border border-[#222] bg-[#111] hover:border-[#00ff9f]/50 hover:bg-[#0a0a0a] transition-all group"
+                >
+                  <svg className="w-5 h-5 text-[#00ff9f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span className="text-sm text-[#666] group-hover:text-[#888] transition-colors">
+                    View Sheet Music (PDF)
+                  </span>
+                </a>
                 {i < tracks.length - 1 && (
                   <div className="h-8 w-full text-[#00ff9f]/30 hover:text-[#00ff9f]/60 transition-colors">
                     <ElasticLine strokeWidth={1} grabThreshold={10} releaseThreshold={50} />
