@@ -7,14 +7,14 @@ import PixelTrail from "@/components/fancy/background/pixel-trail";
 import BreathingText from "@/components/fancy/text/breathing-text";
 
 const tracks = [
-  { num: "I", title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Thief", album: "A Moon Shaped Pool", year: "2016", sheet: "/sheets/tinker-tailor.pdf" },
-  { num: "II", title: "Myxomatosis", album: "Hail to the Thief", year: "2003", sheet: "/sheets/myxomatosis.pdf" },
-  { num: "III", title: "All I Need", album: "In Rainbows", year: "2007", sheet: "/sheets/all-i-need.pdf" },
-  { num: "IV", title: "I Might Be Wrong", album: "Amnesiac", year: "2001", sheet: "/sheets/i-might-be-wrong.pdf" },
-  { num: "V", title: "The National Anthem", album: "Kid A", year: "2000", sheet: "/sheets/the-national-anthem.pdf" },
-  { num: "VI", title: "Where I End And You Begin", album: "Hail to the Thief", year: "2003", sheet: "/sheets/where-i-end-and-you-begin.pdf" },
-  { num: "VII", title: "Blow Out", album: "Pablo Honey", year: "1993", sheet: "/sheets/blow-out.pdf" },
-  { num: "VIII", title: "Nude", album: "In Rainbows", year: "2007", sheet: "/sheets/nude.pdf" },
+  { num: "I", title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Thief", album: "A Moon Shaped Pool", year: "2016", sheet: "/sheets/tinker-tailor.pdf", images: "tinker-tailor", pages: 17 },
+  { num: "II", title: "Myxomatosis", album: "Hail to the Thief", year: "2003", sheet: "/sheets/myxomatosis.pdf", images: "myxomatosis", pages: 7 },
+  { num: "III", title: "All I Need", album: "In Rainbows", year: "2007", sheet: "/sheets/all-i-need.pdf", images: "all-i-need", pages: 6 },
+  { num: "IV", title: "I Might Be Wrong", album: "Amnesiac", year: "2001", sheet: "/sheets/i-might-be-wrong.pdf", images: "i-might-be-wrong", pages: 8 },
+  { num: "V", title: "The National Anthem", album: "Kid A", year: "2000", sheet: "/sheets/the-national-anthem.pdf", images: "the-national-anthem", pages: 6 },
+  { num: "VI", title: "Where I End And You Begin", album: "Hail to the Thief", year: "2003", sheet: "/sheets/where-i-end-and-you-begin.pdf", images: "where-i-end-and-you-begin", pages: 9 },
+  { num: "VII", title: "Blow Out", album: "Pablo Honey", year: "1993", sheet: "/sheets/blow-out.pdf", images: "blow-out", pages: 11 },
+  { num: "VIII", title: "Nude", album: "In Rainbows", year: "2007", sheet: "/sheets/nude.pdf", images: "nude", pages: 8 },
 ];
 
 function GlitchText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -155,19 +155,17 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <a
-                  href={track.sheet}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 mb-6 flex items-center gap-3 px-4 py-3 rounded-lg border border-[#222] bg-[#111] hover:border-[#00ff9f]/50 hover:bg-[#0a0a0a] transition-all group"
-                >
-                  <svg className="w-5 h-5 text-[#00ff9f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <span className="text-sm text-[#666] group-hover:text-[#888] transition-colors">
-                    View Sheet Music (PDF)
-                  </span>
-                </a>
+                <div className="mt-4 mb-6 flex flex-col gap-1">
+                  {Array.from({ length: track.pages }, (_, p) => (
+                    <img
+                      key={p}
+                      src={`/sheets/images/${track.images}/page-${p + 1}.png`}
+                      alt={`${track.title} - page ${p + 1}`}
+                      className="w-full rounded border border-[#222]"
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
                 {i < tracks.length - 1 && (
                   <div className="h-8 w-full text-[#00ff9f]/30 hover:text-[#00ff9f]/60 transition-colors">
                     <ElasticLine strokeWidth={1} grabThreshold={10} releaseThreshold={50} />
