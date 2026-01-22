@@ -3,9 +3,10 @@
 :root {
   --background: #0a0a0a;
   --foreground: #e8e8e8;
-  --accent: #c41e3a;
+  --accent: #00ff9f;
+  --accent-secondary: #00d4ff;
   --muted: #3a3a3a;
-  --glow: rgba(196, 30, 58, 0.4);
+  --glow: rgba(0, 255, 159, 0.4);
 }
 
 @theme inline {
@@ -63,27 +64,27 @@ body::after {
 @keyframes glitch {
   0% {
     transform: translate(0);
-    text-shadow: -2px 0 var(--accent), 2px 0 cyan;
+    text-shadow: -2px 0 var(--accent), 2px 0 var(--accent-secondary);
   }
   20% {
     transform: translate(-2px, 2px);
-    text-shadow: 2px 0 var(--accent), -2px 0 cyan;
+    text-shadow: 2px 0 var(--accent), -2px 0 var(--accent-secondary);
   }
   40% {
     transform: translate(-2px, -2px);
-    text-shadow: 2px 0 cyan, -2px 0 var(--accent);
+    text-shadow: 2px 0 var(--accent-secondary), -2px 0 var(--accent);
   }
   60% {
     transform: translate(2px, 2px);
-    text-shadow: -2px 0 cyan, 2px 0 var(--accent);
+    text-shadow: -2px 0 var(--accent-secondary), 2px 0 var(--accent);
   }
   80% {
     transform: translate(2px, -2px);
-    text-shadow: 2px 0 var(--accent), -2px 0 cyan;
+    text-shadow: 2px 0 var(--accent), -2px 0 var(--accent-secondary);
   }
   100% {
     transform: translate(0);
-    text-shadow: -2px 0 var(--accent), 2px 0 cyan;
+    text-shadow: -2px 0 var(--accent), 2px 0 var(--accent-secondary);
   }
 }
 

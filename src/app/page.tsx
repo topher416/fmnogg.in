@@ -41,7 +41,7 @@ function Orbs() {
         style={{
           width: "400px",
           height: "400px",
-          background: "radial-gradient(circle, #c41e3a 0%, transparent 70%)",
+          background: "radial-gradient(circle, #00ff9f 0%, transparent 70%)",
           top: "10%",
           left: "-10%",
           animationDelay: "0s"
@@ -52,7 +52,7 @@ function Orbs() {
         style={{
           width: "300px",
           height: "300px",
-          background: "radial-gradient(circle, #1e3ac4 0%, transparent 70%)",
+          background: "radial-gradient(circle, #00d4ff 0%, transparent 70%)",
           bottom: "20%",
           right: "-5%",
           animationDelay: "2s"
@@ -63,10 +63,11 @@ function Orbs() {
         style={{
           width: "200px",
           height: "200px",
-          background: "radial-gradient(circle, #3ac41e 0%, transparent 70%)",
+          background: "radial-gradient(circle, #00ff9f 0%, transparent 70%)",
           top: "60%",
           left: "30%",
-          animationDelay: "4s"
+          animationDelay: "4s",
+          opacity: "0.1"
         }}
       />
     </>
@@ -100,14 +101,10 @@ export default function Home() {
             <GlitchText className="block text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter flicker">
               FM
             </GlitchText>
-            <GlitchText className="block text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#c41e3a] flicker">
+            <GlitchText className="block text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-[#00ff9f] flicker">
               NOGGIN
             </GlitchText>
           </div>
-          <p className="mt-8 text-sm md:text-base tracking-[0.3em] uppercase text-[#666] max-w-md">
-            Deep cuts. Moody atmospheres. <br />
-            No hits. No safety.
-          </p>
         </header>
 
         {/* Setlist */}
@@ -148,12 +145,9 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="mt-24 md:mt-32">
-          <div className="h-px w-16 bg-[#333] mb-8" />
-          <p className="text-xs text-[#444] tracking-wider">
-            Chicago, IL
-          </p>
-          <p className="text-xs text-[#333] tracking-wider mt-2">
-            Coming 2025
+          <div className="h-px w-16 bg-[#222] mb-8" />
+          <p className="text-xs text-[#333] tracking-wider font-mono">
+            41.8781° N, 87.6298° W
           </p>
         </footer>
       </main>
