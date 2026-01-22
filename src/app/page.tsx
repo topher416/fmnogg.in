@@ -1,10 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import ElasticLine from "@/components/fancy/physics/elastic-line";
 import useScreenSize from "@/hooks/use-screen-size";
 import PixelTrail from "@/components/fancy/background/pixel-trail";
 import BreathingText from "@/components/fancy/text/breathing-text";
+
+const PDFViewer = dynamic(() => import("@/components/PDFViewer"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-[50vh] bg-[#111] rounded-lg border border-[#222] text-[#444]">
+      Loading PDF viewer...
+    </div>
+  ),
+});
 
 const tracks = [
   { num: "I", title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Thief", album: "A Moon Shaped Pool", year: "2016", sheet: "/sheets/tinker-tailor.pdf" },
@@ -155,12 +165,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 mb-6 rounded-lg overflow-hidden border border-[#222] bg-[#111]">
-                  <iframe
-                    src={track.sheet}
-                    className="w-full h-[70vh] md:h-[80vh]"
-                    title={`${track.title} sheet music`}
-                  />
+                <div className="mt-4 mb-6">
+                  <PDFViewer src={track.sheet} />
                 </div>
                 {i < tracks.length - 1 && (
                   <div className="h-8 w-full text-[#00ff9f]/30 hover:text-[#00ff9f]/60 transition-colors">
