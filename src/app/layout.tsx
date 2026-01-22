@@ -15,7 +15,6 @@ const geistMono = Geist_Mono({
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
-  axes: ["wght"],
 });
 
 export const metadata: Metadata = {
