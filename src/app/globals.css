@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #e8e8e8;
+  --accent: #c41e3a;
+  --muted: #3a3a3a;
+  --glow: rgba(196, 30, 58, 0.4);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  cursor: crosshair;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Noise overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Scanlines */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+/* Glitch effect */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    text-shadow: -2px 0 var(--accent), 2px 0 cyan;
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    text-shadow: 2px 0 var(--accent), -2px 0 cyan;
+  }
+  40% {
+    transform: translate(-2px, -2px);
+    text-shadow: 2px 0 cyan, -2px 0 var(--accent);
+  }
+  60% {
+    transform: translate(2px, 2px);
+    text-shadow: -2px 0 cyan, 2px 0 var(--accent);
+  }
+  80% {
+    transform: translate(2px, -2px);
+    text-shadow: 2px 0 var(--accent), -2px 0 cyan;
+  }
+  100% {
+    transform: translate(0);
+    text-shadow: -2px 0 var(--accent), 2px 0 cyan;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  95% { opacity: 0.4; }
+  96% { opacity: 1; }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(0.5deg); }
+  50% { transform: translateY(-5px) rotate(-0.5deg); }
+  75% { transform: translateY(-15px) rotate(0.3deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% { letter-spacing: 0.3em; }
+  50% { letter-spacing: 0.35em; }
+}
+
+.glitch {
+  animation: glitch 0.3s infinite;
+}
+
+.glitch:hover {
+  animation: glitch 0.1s infinite;
+}
+
+.flicker {
+  animation: flicker 4s infinite;
+}
+
+.drift {
+  animation: drift 8s ease-in-out infinite;
+}
+
+.track {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.track::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.track:hover::before {
+  width: 15px;
+}
+
+.track:hover {
+  color: var(--foreground);
+  padding-left: 10px;
+  text-shadow: 0 0 20px var(--glow);
+}
+
+/* Distorted container */
+.warp {
+  transform: perspective(500px) rotateX(2deg);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Blob/orb effect */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+  animation: pulse 6s ease-in-out infinite;
+}
