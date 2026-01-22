@@ -111,7 +111,7 @@ export default function Home() {
 
         {/* Header */}
         <header className="mb-16 md:mb-24 text-center">
-          <div className="drift text-[5.6rem] md:text-[8.4rem] lg:text-[11.2rem] font-bold tracking-wide font-[family-name:var(--font-playfair)]">
+          <div className="drift text-[3rem] sm:text-[4.5rem] md:text-[8.4rem] lg:text-[11.2rem] font-bold tracking-wide font-[family-name:var(--font-playfair)]">
             <BreathingText
               staggerDuration={0.08}
               fromFontVariationSettings="'wght' 100, 'slnt' 0"
