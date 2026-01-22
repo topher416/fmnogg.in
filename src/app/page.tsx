@@ -155,16 +155,12 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 mb-6 flex flex-col gap-1">
-                  {Array.from({ length: track.pages }, (_, p) => (
-                    <img
-                      key={p}
-                      src={`/sheets/images/${track.images}/page-${p + 1}.png`}
-                      alt={`${track.title} - page ${p + 1}`}
-                      className="w-full rounded border border-[#222]"
-                      loading="lazy"
-                    />
-                  ))}
+                <div className="mt-4 mb-6 rounded-lg overflow-hidden border border-[#222]">
+                  <iframe
+                    src={`https://docs.google.com/viewer?url=https://fmnogg.in${track.sheet}&embedded=true`}
+                    className="w-full h-[80vh]"
+                    title={`${track.title} sheet music`}
+                  />
                 </div>
                 {i < tracks.length - 1 && (
                   <div className="h-8 w-full text-[#00ff9f]/30 hover:text-[#00ff9f]/60 transition-colors">
