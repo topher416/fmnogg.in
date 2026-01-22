@@ -7,14 +7,14 @@ import PixelTrail from "@/components/fancy/background/pixel-trail";
 import BreathingText from "@/components/fancy/text/breathing-text";
 
 const tracks = [
-  { num: "I", title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Thief", album: "A Moon Shaped Pool", year: "2016" },
-  { num: "II", title: "Myxomatosis", album: "Hail to the Thief", year: "2003" },
-  { num: "III", title: "All I Need", album: "In Rainbows", year: "2007" },
-  { num: "IV", title: "I Might Be Wrong", album: "Amnesiac", year: "2001" },
-  { num: "V", title: "The National Anthem", album: "Kid A", year: "2000" },
-  { num: "VI", title: "Where I End And You Begin", album: "Hail to the Thief", year: "2003" },
-  { num: "VII", title: "Blow Out", album: "Pablo Honey", year: "1993" },
-  { num: "VIII", title: "Nude", album: "In Rainbows", year: "2007" },
+  { num: "I", title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Thief", album: "A Moon Shaped Pool", year: "2016", sheet: "/sheets/tinker-tailor.pdf" },
+  { num: "II", title: "Myxomatosis", album: "Hail to the Thief", year: "2003", sheet: "/sheets/myxomatosis.pdf" },
+  { num: "III", title: "All I Need", album: "In Rainbows", year: "2007", sheet: "/sheets/all-i-need.pdf" },
+  { num: "IV", title: "I Might Be Wrong", album: "Amnesiac", year: "2001", sheet: "/sheets/i-might-be-wrong.pdf" },
+  { num: "V", title: "The National Anthem", album: "Kid A", year: "2000", sheet: "/sheets/the-national-anthem.pdf" },
+  { num: "VI", title: "Where I End And You Begin", album: "Hail to the Thief", year: "2003", sheet: "/sheets/where-i-end-and-you-begin.pdf" },
+  { num: "VII", title: "Blow Out", album: "Pablo Honey", year: "1993", sheet: "/sheets/blow-out.pdf" },
+  { num: "VIII", title: "Nude", album: "In Rainbows", year: "2007", sheet: "/sheets/nude.pdf" },
 ];
 
 function GlitchText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -81,6 +81,7 @@ function Orbs() {
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [hoveredTrack, setHoveredTrack] = useState<number | null>(null);
+  const [expandedTrack, setExpandedTrack] = useState<number | null>(null);
   const screenSize = useScreenSize();
 
   useEffect(() => {
@@ -133,9 +134,10 @@ export default function Home() {
             {tracks.map((track, i) => (
               <li key={i}>
                 <div
-                  className="track group py-3"
+                  className="track group py-3 cursor-pointer"
                   onMouseEnter={() => setHoveredTrack(i)}
                   onMouseLeave={() => setHoveredTrack(null)}
+                  onClick={() => setExpandedTrack(expandedTrack === i ? null : i)}
                 >
                   <div className="flex items-baseline gap-4">
                     <span className="text-xs text-[#333] font-mono w-8 shrink-0">
@@ -143,18 +145,32 @@ export default function Home() {
                     </span>
                     <div className="flex-1">
                       <span className={`text-lg md:text-xl transition-colors duration-300 ${
-                        hoveredTrack === i ? "text-[#e8e8e8]" : "text-[#888]"
+                        hoveredTrack === i || expandedTrack === i ? "text-[#e8e8e8]" : "text-[#888]"
                       }`}>
                         {track.title}
                       </span>
                       <div className={`text-xs text-[#444] mt-1 transition-opacity duration-300 ${
-                        hoveredTrack === i ? "opacity-100" : "opacity-0"
+                        hoveredTrack === i || expandedTrack === i ? "opacity-100" : "opacity-0"
                       }`}>
                         {track.album} ({track.year})
                       </div>
                     </div>
+                    <span className={`text-xs text-[#00ff9f] transition-opacity duration-300 ${
+                      hoveredTrack === i || expandedTrack === i ? "opacity-100" : "opacity-0"
+                    }`}>
+                      {expandedTrack === i ? "▼" : "▶"} sheet
+                    </span>
                   </div>
                 </div>
+                {expandedTrack === i && (
+                  <div className="mt-4 mb-6 rounded-lg overflow-hidden border border-[#222] bg-[#111]">
+                    <iframe
+                      src={track.sheet}
+                      className="w-full h-[70vh] md:h-[80vh]"
+                      title={`${track.title} sheet music`}
+                    />
+                  </div>
+                )}
                 {i < tracks.length - 1 && (
                   <div className="h-8 w-full text-[#00ff9f]/30 hover:text-[#00ff9f]/60 transition-colors">
                     <ElasticLine strokeWidth={1} grabThreshold={10} releaseThreshold={50} />
