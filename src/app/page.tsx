@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import ElasticLine from "@/components/fancy/physics/elastic-line";
 import useScreenSize from "@/hooks/use-screen-size";
-import PixelTrail from "@/components/fancy/background/pixel-trail";
 import BreathingText from "@/components/fancy/text/breathing-text";
 
 const tracks = [
@@ -95,15 +94,6 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] overflow-hidden">
-      {/* Pixel trail - on top but allows clicks through */}
-      <div className="fixed inset-0 z-50">
-        <PixelTrail
-          pixelSize={screenSize.lessThan("md") ? 16 : 24}
-          fadeDuration={500}
-          pixelClassName="bg-[#00ff9f]"
-        />
-      </div>
-
       <Orbs />
 
       {/* Main content */}
