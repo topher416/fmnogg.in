@@ -6,14 +6,14 @@ import useScreenSize from "@/hooks/use-screen-size";
 import BreathingText from "@/components/fancy/text/breathing-text";
 
 const tracks = [
-  { num: "I", title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Thief", album: "A Moon Shaped Pool", year: "2016", sheet: "/sheets/tinker-tailor.pdf", images: "tinker-tailor", pages: 17 },
-  { num: "II", title: "Myxomatosis", album: "Hail to the Thief", year: "2003", sheet: "/sheets/myxomatosis.pdf", images: "myxomatosis", pages: 7 },
-  { num: "III", title: "All I Need", album: "In Rainbows", year: "2007", sheet: "/sheets/all-i-need.pdf", images: "all-i-need", pages: 6 },
-  { num: "IV", title: "I Might Be Wrong", album: "Amnesiac", year: "2001", sheet: "/sheets/i-might-be-wrong.pdf", images: "i-might-be-wrong", pages: 8 },
-  { num: "V", title: "The National Anthem", album: "Kid A", year: "2000", sheet: "/sheets/the-national-anthem.pdf", images: "the-national-anthem", pages: 6 },
-  { num: "VI", title: "Where I End And You Begin", album: "Hail to the Thief", year: "2003", sheet: "/sheets/where-i-end-and-you-begin.pdf", images: "where-i-end-and-you-begin", pages: 9 },
-  { num: "VII", title: "Blow Out", album: "Pablo Honey", year: "1993", sheet: "/sheets/blow-out.pdf", images: "blow-out", pages: 11 },
-  { num: "VIII", title: "Nude", album: "In Rainbows", year: "2007", sheet: "/sheets/nude.pdf", images: "nude", pages: 8 },
+  { num: "I", title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Thief", album: "A Moon Shaped Pool", year: "2016", sheet: "/sheets/tinker-tailor.pdf", lyrics: "https://genius.com/Radiohead-tinker-tailor-soldier-sailor-rich-man-poor-man-beggar-thief-lyrics" },
+  { num: "II", title: "Myxomatosis", album: "Hail to the Thief", year: "2003", sheet: "/sheets/myxomatosis.pdf", lyrics: "https://genius.com/Radiohead-myxomatosis-lyrics" },
+  { num: "III", title: "All I Need", album: "In Rainbows", year: "2007", sheet: "/sheets/all-i-need.pdf", lyrics: "https://genius.com/Radiohead-all-i-need-lyrics" },
+  { num: "IV", title: "I Might Be Wrong", album: "Amnesiac", year: "2001", sheet: "/sheets/i-might-be-wrong.pdf", lyrics: "https://genius.com/Radiohead-i-might-be-wrong-lyrics" },
+  { num: "V", title: "The National Anthem", album: "Kid A", year: "2000", sheet: "/sheets/the-national-anthem.pdf", lyrics: "https://genius.com/Radiohead-the-national-anthem-lyrics" },
+  { num: "VI", title: "Where I End And You Begin", album: "Hail to the Thief", year: "2003", sheet: "/sheets/where-i-end-and-you-begin.pdf", lyrics: "https://genius.com/Radiohead-where-i-end-and-you-begin-the-sky-is-falling-in-lyrics" },
+  { num: "VII", title: "Blow Out", album: "Pablo Honey", year: "1993", sheet: "/sheets/blow-out.pdf", lyrics: "https://genius.com/Radiohead-blow-out-lyrics" },
+  { num: "VIII", title: "Nude", album: "In Rainbows", year: "2007", sheet: "/sheets/nude.pdf", lyrics: "https://genius.com/Radiohead-nude-lyrics" },
 ];
 
 function GlitchText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -145,16 +145,29 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <a
-                  href={track.sheet}
-                  download
-                  className="mt-3 mb-4 inline-flex items-center gap-2 px-4 py-2 rounded border border-[#333] bg-[#111] hover:border-[#00ff9f]/50 hover:bg-[#151515] transition-all text-sm text-[#666] hover:text-[#999]"
-                >
-                  <svg className="w-4 h-4 text-[#00ff9f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                  Download Sheet Music
-                </a>
+                <div className="mt-3 mb-4 flex flex-wrap gap-2">
+                  <a
+                    href={track.lyrics}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded border border-[#333] bg-[#111] hover:border-[#00ff9f]/50 hover:bg-[#151515] transition-all text-sm text-[#666] hover:text-[#999]"
+                  >
+                    <svg className="w-4 h-4 text-[#00ff9f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Lyrics
+                  </a>
+                  <a
+                    href={track.sheet}
+                    download
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded border border-[#333] bg-[#111] hover:border-[#00ff9f]/50 hover:bg-[#151515] transition-all text-sm text-[#666] hover:text-[#999]"
+                  >
+                    <svg className="w-4 h-4 text-[#00ff9f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Sheet Music
+                  </a>
+                </div>
                 {i < tracks.length - 1 && (
                   <div className="h-8 w-full text-[#00ff9f]/30 hover:text-[#00ff9f]/60 transition-colors">
                     <ElasticLine strokeWidth={1} grabThreshold={10} releaseThreshold={50} />
