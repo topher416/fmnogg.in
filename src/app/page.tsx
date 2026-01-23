@@ -14,7 +14,7 @@ const tracks = [
   { num: "IV", title: "I Might Be Wrong", album: "Amnesiac", year: "2001", sheet: "/sheets/i-might-be-wrong.pdf", lyrics: "https://genius.com/Radiohead-i-might-be-wrong-lyrics", audio: "i-might-be-wrong" },
   { num: "V", title: "The National Anthem", album: "Kid A", year: "2000", sheet: "/sheets/the-national-anthem.pdf", lyrics: "https://genius.com/Radiohead-the-national-anthem-lyrics", audio: "the-national-anthem" },
   { num: "VI", title: "Where I End And You Begin", album: "Hail to the Thief", year: "2003", sheet: "/sheets/where-i-end-and-you-begin.pdf", lyrics: "https://genius.com/Radiohead-where-i-end-and-you-begin-the-sky-is-falling-in-lyrics", audio: "where-i-end-and-you-begin" },
-  { num: "VII", title: "Blow Out", album: "Pablo Honey", year: "1993", sheet: "/sheets/blow-out.pdf", lyrics: "https://genius.com/Radiohead-blow-out-lyrics", audio: null },
+  { num: "VII", title: "Blow Out", album: "Pablo Honey", year: "1993", sheet: "/sheets/blow-out.pdf", lyrics: "https://genius.com/Radiohead-blow-out-lyrics", audio: "blow-out" },
   { num: "VIII", title: "Nude", album: "In Rainbows", year: "2007", sheet: "/sheets/nude.pdf", lyrics: "https://genius.com/Radiohead-nude-lyrics", audio: "nude" },
 ];
 
