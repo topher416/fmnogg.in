@@ -38,7 +38,7 @@ const tracks: Track[] = [
     album: "A Moon Shaped Pool",
     year: "2016",
     sheet: "/sheets/tinker-tailor.pdf",
-    lyrics: "https://genius.com/Radiohead-tinker-tailor-soldier-sailor-rich-man-poor-man-beggar-thief-lyrics",
+    lyrics: "https://genius.com/Radiohead-tinker-tailor-soldier-sailor-rich-man-poor-man-beggar-man-thief-lyrics",
     audio: "tinker-tailor",
     key: "Db Major",
     tempo: 89,
