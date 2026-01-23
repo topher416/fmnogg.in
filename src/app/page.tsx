@@ -6,6 +6,11 @@ import useScreenSize from "@/hooks/use-screen-size";
 import BreathingText from "@/components/fancy/text/breathing-text";
 
 const stems = ["bass", "drums", "other", "vocals"];
+const practiceSpeeds = [
+  { label: "90%", file: "90-percent", description: "Slightly slower" },
+  { label: "70%", file: "70-percent", description: "Medium practice speed" },
+  { label: "50%", file: "50-percent", description: "Half speed for learning" },
+];
 
 interface TrackNotes {
   guitar: string;
@@ -449,6 +454,33 @@ export default function Home() {
                         />
                       </div>
                     ))}
+                  </div>
+                )}
+                {track.audio && (
+                  <div className="mt-4 mb-3">
+                    <div className="text-xs tracking-[0.2em] uppercase text-[#666] mb-3 flex items-center gap-2">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Slowed Practice Tracks
+                    </div>
+                    <div className="grid grid-cols-3 gap-3">
+                      {practiceSpeeds.map((speed) => (
+                        <div key={speed.file} className="flex flex-col gap-1 p-3 bg-[#111] rounded-lg border border-[#222]">
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-lg font-mono text-[#00ff9f] font-semibold">{speed.label}</span>
+                            <span className="text-xs text-[#555]">speed</span>
+                          </div>
+                          <span className="text-xs text-[#666] mb-2">{speed.description}</span>
+                          <audio
+                            controls
+                            preload="none"
+                            className="w-full h-8 [&::-webkit-media-controls-panel]:bg-[#0a0a0a]"
+                            src={`/audio/${track.audio}/practice/${speed.file}.mp3`}
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
                 <div className="mt-4 mb-4 flex flex-wrap gap-3">
