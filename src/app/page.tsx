@@ -222,29 +222,29 @@ function TrackInfo({ track }: { track: Track }) {
   return (
     <div className="mt-2 mb-3">
       {/* Quick Stats Bar */}
-      <div className="font-mono text-xs text-[#666] flex flex-wrap gap-x-2 gap-y-1">
+      <div className="font-mono text-xs text-[#999] flex flex-wrap gap-x-2 gap-y-1">
         <span>{track.key}</span>
-        <span className="text-[#333]">•</span>
+        <span className="text-[#555]">•</span>
         <span>{track.tempo} BPM</span>
-        <span className="text-[#333]">•</span>
+        <span className="text-[#555]">•</span>
         <span>{track.timeSig}</span>
         {track.tuning && (
           <>
-            <span className="text-[#333]">•</span>
-            <span className="text-[#00ff9f]/70">{track.tuning}</span>
+            <span className="text-[#555]">•</span>
+            <span className="text-[#00ff9f]">{track.tuning}</span>
           </>
         )}
       </div>
 
       {/* Critical Element */}
-      <p className="mt-2 text-sm italic text-[#888] leading-relaxed">
+      <p className="mt-2 text-sm italic text-[#bbb] leading-relaxed">
         {track.critical}
       </p>
 
       {/* Role Notes Toggle */}
       <button
         onClick={() => setShowNotes(!showNotes)}
-        className="mt-2 text-xs text-[#555] hover:text-[#888] transition-colors flex items-center gap-1"
+        className="mt-2 text-xs text-[#777] hover:text-[#aaa] transition-colors flex items-center gap-1"
       >
         <svg
           className={`w-3 h-3 transition-transform ${showNotes ? "rotate-90" : ""}`}
@@ -260,21 +260,21 @@ function TrackInfo({ track }: { track: Track }) {
       {/* Role Notes Grid (collapsible) */}
       {showNotes && (
         <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
-          <div className="p-2 bg-[#111] rounded border border-[#222]">
-            <span className="text-[#00ff9f]/70 font-medium">Guitar</span>
-            <p className="mt-1 text-[#666] leading-relaxed">{track.notes.guitar}</p>
+          <div className="p-2 bg-[#151515] rounded border border-[#333]">
+            <span className="text-[#00ff9f] font-medium">Guitar</span>
+            <p className="mt-1 text-[#999] leading-relaxed">{track.notes.guitar}</p>
           </div>
-          <div className="p-2 bg-[#111] rounded border border-[#222]">
-            <span className="text-[#00ff9f]/70 font-medium">Bass</span>
-            <p className="mt-1 text-[#666] leading-relaxed">{track.notes.bass}</p>
+          <div className="p-2 bg-[#151515] rounded border border-[#333]">
+            <span className="text-[#00ff9f] font-medium">Bass</span>
+            <p className="mt-1 text-[#999] leading-relaxed">{track.notes.bass}</p>
           </div>
-          <div className="p-2 bg-[#111] rounded border border-[#222]">
-            <span className="text-[#00ff9f]/70 font-medium">Drums</span>
-            <p className="mt-1 text-[#666] leading-relaxed">{track.notes.drums}</p>
+          <div className="p-2 bg-[#151515] rounded border border-[#333]">
+            <span className="text-[#00ff9f] font-medium">Drums</span>
+            <p className="mt-1 text-[#999] leading-relaxed">{track.notes.drums}</p>
           </div>
-          <div className="p-2 bg-[#111] rounded border border-[#222]">
-            <span className="text-[#00ff9f]/70 font-medium">Keys</span>
-            <p className="mt-1 text-[#666] leading-relaxed">{track.notes.keys}</p>
+          <div className="p-2 bg-[#151515] rounded border border-[#333]">
+            <span className="text-[#00ff9f] font-medium">Keys</span>
+            <p className="mt-1 text-[#999] leading-relaxed">{track.notes.keys}</p>
           </div>
         </div>
       )}
@@ -285,7 +285,7 @@ function TrackInfo({ track }: { track: Track }) {
           href={track.reference.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-flex items-center gap-1 text-xs text-[#555] hover:text-[#00ff9f] transition-colors"
+          className="mt-2 inline-flex items-center gap-1 text-xs text-[#777] hover:text-[#00ff9f] transition-colors"
         >
           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
