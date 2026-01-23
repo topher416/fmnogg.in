@@ -234,7 +234,7 @@ function GlitchText({ children, className = "" }: { children: React.ReactNode; c
 }
 
 function TrackInfo({ track }: { track: Track }) {
-  const [showNotes, setShowNotes] = useState(false);
+  const [showNotes, setShowNotes] = useState(true);
 
   return (
     <div className="mt-3 mb-4 space-y-3">
@@ -404,6 +404,27 @@ export default function Home() {
           </div>
         </header>
 
+        {/* Overview */}
+        <section className="w-full max-w-3xl mb-16">
+          <div className="p-6 bg-[#111] rounded-lg border border-[#222]">
+            <p className="text-[#aaa] leading-relaxed mb-6">
+              Practice materials for an 8-track Radiohead set. Each song includes isolated stems, slowed practice tracks, sheet music, lyrics, and detailed notes for guitar, bass, drums, and keys.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {tracks.map((track, i) => (
+                <a
+                  key={i}
+                  href={`#track-${i}`}
+                  className="text-sm text-[#888] hover:text-[#00ff9f] transition-colors"
+                >
+                  <span className="text-[#555] font-mono mr-2">{track.num}</span>
+                  {track.title.length > 20 ? track.title.slice(0, 20) + '...' : track.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Setlist */}
         <section className="w-full max-w-3xl">
           <h2 className="text-sm tracking-[0.3em] uppercase text-[#888] mb-8">
@@ -412,7 +433,7 @@ export default function Home() {
 
           <ol>
             {tracks.map((track, i) => (
-              <li key={i}>
+              <li key={i} id={`track-${i}`}>
                 <div
                   className="track group py-4"
                   onMouseEnter={() => setHoveredTrack(i)}
