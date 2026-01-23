@@ -5,15 +5,17 @@ import ElasticLine from "@/components/fancy/physics/elastic-line";
 import useScreenSize from "@/hooks/use-screen-size";
 import BreathingText from "@/components/fancy/text/breathing-text";
 
+const stems = ["bass", "drums", "other", "vocals"];
+
 const tracks = [
-  { num: "I", title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Thief", album: "A Moon Shaped Pool", year: "2016", sheet: "/sheets/tinker-tailor.pdf", lyrics: "https://genius.com/Radiohead-tinker-tailor-soldier-sailor-rich-man-poor-man-beggar-thief-lyrics" },
-  { num: "II", title: "Myxomatosis", album: "Hail to the Thief", year: "2003", sheet: "/sheets/myxomatosis.pdf", lyrics: "https://genius.com/Radiohead-myxomatosis-lyrics" },
-  { num: "III", title: "All I Need", album: "In Rainbows", year: "2007", sheet: "/sheets/all-i-need.pdf", lyrics: "https://genius.com/Radiohead-all-i-need-lyrics" },
-  { num: "IV", title: "I Might Be Wrong", album: "Amnesiac", year: "2001", sheet: "/sheets/i-might-be-wrong.pdf", lyrics: "https://genius.com/Radiohead-i-might-be-wrong-lyrics" },
-  { num: "V", title: "The National Anthem", album: "Kid A", year: "2000", sheet: "/sheets/the-national-anthem.pdf", lyrics: "https://genius.com/Radiohead-the-national-anthem-lyrics" },
-  { num: "VI", title: "Where I End And You Begin", album: "Hail to the Thief", year: "2003", sheet: "/sheets/where-i-end-and-you-begin.pdf", lyrics: "https://genius.com/Radiohead-where-i-end-and-you-begin-the-sky-is-falling-in-lyrics" },
-  { num: "VII", title: "Blow Out", album: "Pablo Honey", year: "1993", sheet: "/sheets/blow-out.pdf", lyrics: "https://genius.com/Radiohead-blow-out-lyrics" },
-  { num: "VIII", title: "Nude", album: "In Rainbows", year: "2007", sheet: "/sheets/nude.pdf", lyrics: "https://genius.com/Radiohead-nude-lyrics" },
+  { num: "I", title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Thief", album: "A Moon Shaped Pool", year: "2016", sheet: "/sheets/tinker-tailor.pdf", lyrics: "https://genius.com/Radiohead-tinker-tailor-soldier-sailor-rich-man-poor-man-beggar-thief-lyrics", audio: "tinker-tailor" },
+  { num: "II", title: "Myxomatosis", album: "Hail to the Thief", year: "2003", sheet: "/sheets/myxomatosis.pdf", lyrics: "https://genius.com/Radiohead-myxomatosis-lyrics", audio: "myxomatosis" },
+  { num: "III", title: "All I Need", album: "In Rainbows", year: "2007", sheet: "/sheets/all-i-need.pdf", lyrics: "https://genius.com/Radiohead-all-i-need-lyrics", audio: "all-i-need" },
+  { num: "IV", title: "I Might Be Wrong", album: "Amnesiac", year: "2001", sheet: "/sheets/i-might-be-wrong.pdf", lyrics: "https://genius.com/Radiohead-i-might-be-wrong-lyrics", audio: "i-might-be-wrong" },
+  { num: "V", title: "The National Anthem", album: "Kid A", year: "2000", sheet: "/sheets/the-national-anthem.pdf", lyrics: "https://genius.com/Radiohead-the-national-anthem-lyrics", audio: "the-national-anthem" },
+  { num: "VI", title: "Where I End And You Begin", album: "Hail to the Thief", year: "2003", sheet: "/sheets/where-i-end-and-you-begin.pdf", lyrics: "https://genius.com/Radiohead-where-i-end-and-you-begin-the-sky-is-falling-in-lyrics", audio: "where-i-end-and-you-begin" },
+  { num: "VII", title: "Blow Out", album: "Pablo Honey", year: "1993", sheet: "/sheets/blow-out.pdf", lyrics: "https://genius.com/Radiohead-blow-out-lyrics", audio: null },
+  { num: "VIII", title: "Nude", album: "In Rainbows", year: "2007", sheet: "/sheets/nude.pdf", lyrics: "https://genius.com/Radiohead-nude-lyrics", audio: "nude" },
 ];
 
 function GlitchText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -145,6 +147,21 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+                {track.audio && (
+                  <div className="mt-3 mb-2 grid grid-cols-2 gap-2">
+                    {stems.map((stem) => (
+                      <div key={stem} className="flex flex-col gap-1">
+                        <span className="text-xs text-[#444] capitalize">{stem}</span>
+                        <audio
+                          controls
+                          preload="none"
+                          className="w-full h-8 [&::-webkit-media-controls-panel]:bg-[#111]"
+                          src={`/audio/${track.audio}/${stem}.mp3`}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <div className="mt-3 mb-4 flex flex-wrap gap-2">
                   <a
                     href={track.lyrics}
