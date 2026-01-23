@@ -238,91 +238,91 @@ function TrackInfo({ track }: { track: Track }) {
   const [showNotes, setShowNotes] = useState(false);
 
   return (
-    <div className="mt-2 mb-3">
+    <div className="mt-3 mb-4 space-y-3">
       {/* Quick Stats Bar */}
-      <div className="font-mono text-xs text-[#999] flex flex-wrap gap-x-2 gap-y-1">
+      <div className="font-mono text-sm text-[#ccc] flex flex-wrap gap-x-3 gap-y-1">
         <span>{track.key}</span>
-        <span className="text-[#555]">•</span>
+        <span className="text-[#666]">•</span>
         <span>{track.tempo} BPM</span>
-        <span className="text-[#555]">•</span>
+        <span className="text-[#666]">•</span>
         <span>{track.timeSig}</span>
         {track.tuning && (
           <>
-            <span className="text-[#555]">•</span>
+            <span className="text-[#666]">•</span>
             <span className="text-[#00ff9f]">{track.tuning}</span>
           </>
         )}
       </div>
 
       {/* Critical Element */}
-      <p className="mt-2 text-sm italic text-[#bbb] leading-relaxed">
+      <p className="text-base text-[#ddd] leading-relaxed">
         {track.critical}
       </p>
 
       {/* Structure */}
-      <div className="mt-3 text-xs">
-        <span className="text-[#00ff9f] font-medium">Structure: </span>
-        <span className="text-[#999]">{track.structure}</span>
+      <div className="text-sm">
+        <span className="text-[#00ff9f] font-semibold">Structure: </span>
+        <span className="text-[#bbb]">{track.structure}</span>
       </div>
 
       {/* Chords */}
-      <div className="mt-1 text-xs">
-        <span className="text-[#00ff9f] font-medium">Chords: </span>
-        <span className="text-[#999] font-mono">{track.chords}</span>
+      <div className="text-sm">
+        <span className="text-[#00ff9f] font-semibold">Chords: </span>
+        <span className="text-[#bbb] font-mono">{track.chords}</span>
       </div>
+
+      {/* Reference Link - prominent placement */}
+      {track.reference && (
+        <a
+          href={track.reference.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm text-[#00ff9f] hover:text-[#00ffbf] underline underline-offset-2 transition-colors"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Watch: {track.reference.label}
+        </a>
+      )}
 
       {/* Role Notes Toggle */}
       <button
         onClick={() => setShowNotes(!showNotes)}
-        className="mt-2 text-xs text-[#777] hover:text-[#aaa] transition-colors flex items-center gap-1"
+        className="text-sm text-[#888] hover:text-[#ccc] transition-colors flex items-center gap-2"
       >
         <svg
-          className={`w-3 h-3 transition-transform ${showNotes ? "rotate-90" : ""}`}
+          className={`w-4 h-4 transition-transform ${showNotes ? "rotate-90" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
-        Role Notes
+        {showNotes ? "Hide" : "Show"} Role Notes
       </button>
 
       {/* Role Notes Grid (collapsible) */}
       {showNotes && (
-        <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
-          <div className="p-2 bg-[#151515] rounded border border-[#333]">
-            <span className="text-[#00ff9f] font-medium">Guitar</span>
-            <p className="mt-1 text-[#999] leading-relaxed">{track.notes.guitar}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+          <div className="p-3 bg-[#161616] rounded-lg border border-[#333]">
+            <span className="text-[#00ff9f] font-semibold">Guitar</span>
+            <p className="mt-2 text-[#bbb] leading-relaxed">{track.notes.guitar}</p>
           </div>
-          <div className="p-2 bg-[#151515] rounded border border-[#333]">
-            <span className="text-[#00ff9f] font-medium">Bass</span>
-            <p className="mt-1 text-[#999] leading-relaxed">{track.notes.bass}</p>
+          <div className="p-3 bg-[#161616] rounded-lg border border-[#333]">
+            <span className="text-[#00ff9f] font-semibold">Bass</span>
+            <p className="mt-2 text-[#bbb] leading-relaxed">{track.notes.bass}</p>
           </div>
-          <div className="p-2 bg-[#151515] rounded border border-[#333]">
-            <span className="text-[#00ff9f] font-medium">Drums</span>
-            <p className="mt-1 text-[#999] leading-relaxed">{track.notes.drums}</p>
+          <div className="p-3 bg-[#161616] rounded-lg border border-[#333]">
+            <span className="text-[#00ff9f] font-semibold">Drums</span>
+            <p className="mt-2 text-[#bbb] leading-relaxed">{track.notes.drums}</p>
           </div>
-          <div className="p-2 bg-[#151515] rounded border border-[#333]">
-            <span className="text-[#00ff9f] font-medium">Keys</span>
-            <p className="mt-1 text-[#999] leading-relaxed">{track.notes.keys}</p>
+          <div className="p-3 bg-[#161616] rounded-lg border border-[#333]">
+            <span className="text-[#00ff9f] font-semibold">Keys</span>
+            <p className="mt-2 text-[#bbb] leading-relaxed">{track.notes.keys}</p>
           </div>
         </div>
-      )}
-
-      {/* Reference Link */}
-      {track.reference && (
-        <a
-          href={track.reference.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2 inline-flex items-center gap-1 text-xs text-[#777] hover:text-[#00ff9f] transition-colors"
-        >
-          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          {track.reference.label}
-        </a>
       )}
     </div>
   );
@@ -406,32 +406,30 @@ export default function Home() {
         </header>
 
         {/* Setlist */}
-        <section className="warp max-w-2xl">
-          <h2 className="text-xs tracking-[0.5em] uppercase text-[#444] mb-8">
-            Set I — {tracks.length} Transmissions
+        <section className="w-full max-w-3xl">
+          <h2 className="text-sm tracking-[0.3em] uppercase text-[#888] mb-8">
+            Set I — {tracks.length} Tracks
           </h2>
 
           <ol>
             {tracks.map((track, i) => (
               <li key={i}>
                 <div
-                  className="track group py-3"
+                  className="track group py-4"
                   onMouseEnter={() => setHoveredTrack(i)}
                   onMouseLeave={() => setHoveredTrack(null)}
                 >
                   <div className="flex items-baseline gap-4">
-                    <span className="text-xs text-[#333] font-mono w-8 shrink-0">
+                    <span className="text-sm text-[#666] font-mono w-10 shrink-0">
                       {track.num}
                     </span>
                     <div className="flex-1">
-                      <span className={`text-lg md:text-xl transition-colors duration-300 ${
-                        hoveredTrack === i ? "text-[#e8e8e8]" : "text-[#888]"
+                      <span className={`text-xl md:text-2xl font-medium transition-colors duration-300 ${
+                        hoveredTrack === i ? "text-[#fff]" : "text-[#ccc]"
                       }`}>
                         {track.title}
                       </span>
-                      <div className={`text-xs text-[#444] mt-1 transition-opacity duration-300 ${
-                        hoveredTrack === i ? "opacity-100" : "opacity-0"
-                      }`}>
+                      <div className="text-sm text-[#888] mt-1">
                         {track.album} ({track.year})
                       </div>
                     </div>
@@ -439,10 +437,10 @@ export default function Home() {
                 </div>
                 <TrackInfo track={track} />
                 {track.audio && (
-                  <div className="mt-3 mb-2 grid grid-cols-2 gap-2">
+                  <div className="mt-4 mb-3 grid grid-cols-2 gap-3">
                     {stems.map((stem) => (
                       <div key={stem} className="flex flex-col gap-1">
-                        <span className="text-xs text-[#444] capitalize">{stem}</span>
+                        <span className="text-sm text-[#888] capitalize">{stem}</span>
                         <audio
                           controls
                           preload="none"
@@ -453,12 +451,12 @@ export default function Home() {
                     ))}
                   </div>
                 )}
-                <div className="mt-3 mb-4 flex flex-wrap gap-2">
+                <div className="mt-4 mb-4 flex flex-wrap gap-3">
                   <a
                     href={track.lyrics}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded border border-[#333] bg-[#111] hover:border-[#00ff9f]/50 hover:bg-[#151515] transition-all text-sm text-[#666] hover:text-[#999]"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded border border-[#444] bg-[#161616] hover:border-[#00ff9f] hover:bg-[#1a1a1a] transition-all text-sm text-[#aaa] hover:text-[#fff]"
                   >
                     <svg className="w-4 h-4 text-[#00ff9f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -468,7 +466,7 @@ export default function Home() {
                   <a
                     href={track.sheet}
                     download
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded border border-[#333] bg-[#111] hover:border-[#00ff9f]/50 hover:bg-[#151515] transition-all text-sm text-[#666] hover:text-[#999]"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded border border-[#444] bg-[#161616] hover:border-[#00ff9f] hover:bg-[#1a1a1a] transition-all text-sm text-[#aaa] hover:text-[#fff]"
                   >
                     <svg className="w-4 h-4 text-[#00ff9f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
