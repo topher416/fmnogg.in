@@ -80,8 +80,7 @@ const tracks: Track[] = [
       bass: "You ARE this song. Fuzz pedal required (Electro-Harmonix Big Cheese, or any gated fuzz). The riff: E-E-G-E-E-B-A-G pattern, aggressive 8th notes. Never clean up your tone. Attack hard, let notes decay into fuzz. Don't vary the riff—the hypnotic repetition is the point.",
       drums: "Tight, almost mechanical. Hi-hat drives 8th notes throughout. Snare on 2 and 4, kick locks with bass riff. Think motorik/krautrock meets punk. In breakdown, strip to kick and snare only. Build back with tom fills into final chorus.",
       keys: "Subtle synth pad (Prophet or similar analog) holds low E drone underneath everything. Creates sub-bass foundation without competing with fuzz bass. Optional: add high, thin synth line in breakdown for tension. Stay out of the mid frequencies—that's bass territory."
-    },
-    reference: { label: "From The Basement 2008", url: "https://www.youtube.com/watch?v=DgeKRbmUBns" }
+    }
   },
   {
     num: "III",
@@ -102,8 +101,7 @@ const tracks: Track[] = [
       bass: "NO BASS GUITAR on this track. Synth bass handles all low end. If you must play, double the synth line an octave up with clean tone and volume pedal swells. Or: sit out verses, enter only in climax with sustained low E root. Seriously though—this song works because of the synth bass texture, not electric bass.",
       drums: "Extreme patience required. Brushes only for verses 1-2. Sticks enter verse 3, still sparse—ride cymbal and kick. Climax: crash cymbals, floor tom, full power. The glockenspiel hits need space, so leave room. Final section: cymbal swells that sustain into the outro.",
       keys: "Synth bass is CRITICAL—warm analog tone (Prophet, Moog, or soft synth equivalent). Slightly detuned, pulsing 8th notes on E. Filter opens slowly over the 5 minutes. Glockenspiel melody enters in climax: E-D#-E-F#-G-F#-E pattern (learn this, it's the hook). If no glockenspiel, use bell/celesta patch at high velocity."
-    },
-    reference: { label: "From The Basement In Rainbows", url: "https://www.youtube.com/watch?v=DV1hQSt2hSE" }
+    }
   },
   {
     num: "IV",
@@ -125,8 +123,7 @@ const tracks: Track[] = [
       bass: "Low D pedal tone is your home base. Follow the guitar riff's rhythm but simplify—mostly root notes. In verses, you can add the F and C movement. Breakdown: drop to whole notes, let it breathe. The bass grounds everything; don't get busy. Drop D tuning matches the guitar.",
       drums: "Driving straight 8ths on hi-hat, snare on 2 and 4. Keep it steady and slightly mechanical—think drum machine feel played by a human. DON'T fill too much; the hypnotic quality requires restraint. Breakdown: strip to kick and snare, half-time feel. Build back gradually. Floor tom accents in final section.",
       keys: "Stay minimal. Rhodes/electric piano stabs on off-beats, long sustained notes. Don't play through the whole riff—leave holes. Add texture, not melody. In breakdown, sustained pads that swell. Think: you're adding color to a black-and-white photo, not painting over it."
-    },
-    reference: { label: "I Might Be Wrong: Live Recordings", url: "https://www.youtube.com/watch?v=vOa--FIrVEA" }
+    }
   },
   {
     num: "V",
@@ -169,8 +166,7 @@ const tracks: Track[] = [
       bass: "Play HIGH on the neck—12th fret and above. This is a melodic lead part, Joy Division/Peter Hook style. The bass line is the main hook: C-Eb-G-Bb-C pattern played high. Use a pick for clarity and brightness. Slight overdrive helps cut through. You're NOT playing root notes—you're playing a counter-melody. Study the original carefully; the bass is the song's signature.",
       drums: "Driving 8th notes on hi-hat, urgent feel. Snare on 2 and 4 with some ghost notes. Kick pattern syncs with bass accents. Build intensity through the song but stay controlled—this isn't thrash, it's controlled urgency. Bridge: half-time feel, floor tom accents. Final chorus: open hi-hat, crash cymbals, full power.",
       keys: "Synth pads create sustained 'walls' of sound. Use sine wave or soft saw with long attack and release. Ondes Martenot-style pitch bending adds the haunting quality—expression pedal for dynamics. Hold chord tones (Cm, Ab) and let them sustain under everything. In choruses, add higher octave doublings. This texture is what makes the song feel massive."
-    },
-    reference: { label: "From The Basement 2008", url: "https://www.youtube.com/watch?v=fGvPwkPmIYs" }
+    }
   },
   {
     num: "VII",
@@ -191,8 +187,7 @@ const tracks: Track[] = [
       bass: "Verses: Walking bassline, jazz style. E-G-A-B patterns, chromatic passing tones. Keep it smooth and bouncy—you're in a jazz trio. Chorus: SWITCH to driving distorted 8th notes on roots. E-E-E-E-G-G-D-D-A-A. The transition should feel like a different song. Huge dynamic range—compressor will help but don't squash it.",
       drums: "Verses: Brushes on snare, bossa nova feel. Kick on 1 and 3, snare on 2 and 4 but SOFT. Hi-hat keeping time gently. Pre-chorus: switch to sticks, build with tom fills. Chorus: FULL ROCK—crash cymbals, driving 8ths, everything you've got. The brush-to-sticks moment should feel like a dam breaking. Final chorus: extended, let it get messy.",
       keys: "Minimal role—this is a guitar song. Verses: optional Rhodes chords doubling guitar voicings, very soft. Chorus: you can add a distorted organ pad for thickness, or sit out entirely. If playing, match the dynamic shift—whisper to scream. Don't compete with the guitar solo."
-    },
-    reference: { label: "Live at the Astoria 1994", url: "https://www.youtube.com/watch?v=HFoPvq_0Rdo" }
+    }
   },
   {
     num: "VIII",
@@ -214,8 +209,7 @@ const tracks: Track[] = [
       bass: "ALTERNATE TUNING: EAEGBE (3rd string tuned down to E). This is THE bass part of In Rainbows. Play HIGH—12th-15th fret range. The melodic line: E-F#-G#-A-B-C#-B-A pattern over the verse. You're playing a lead melody, not bass lines. Use fingers, play gently. Let notes ring and overlap slightly. Study this part thoroughly—it makes the song.",
       drums: "Brushes entire song, 6/8 waltz feel. Swaying, gentle, like rocking a boat. Snare on beat 4 of each 6/8 bar (the 'and' of 2 if counting in 2). Keep the hi-hat wash continuous. NO fills, no crashes, no sticks. The delicacy is non-negotiable. If you overplay, you ruin the song.",
       keys: "String pad sustaining chord tones—warm, soft, lots of reverb. Synth bass can double the low end if needed (bass guitar is playing high). Let chords sustain and overlap. In bridge, swell slightly with expression. Think orchestral strings, not synth leads. Stay below the bass melody in the mix."
-    },
-    reference: { label: "From The Basement In Rainbows", url: "https://www.youtube.com/watch?v=1ky1td3JQAI" }
+    }
   },
 ];
 
