@@ -27,6 +27,8 @@ interface Track {
   timeSig: string;
   tuning?: string;
   critical: string;
+  structure: string;
+  chords: string;
   notes: TrackNotes;
   reference?: { label: string; url: string };
 }
@@ -44,12 +46,14 @@ const tracks: Track[] = [
     tempo: 89,
     timeSig: "4/4",
     tuning: "Capo 4",
-    critical: "Electric piano motif drives the build; Ondes Martenot in outro.",
+    critical: "Orchestral build over 5 minutes from sparse piano to full crescendo. Patience is everything.",
+    structure: "Intro (piano alone, 8 bars) → Verse 1 → Verse 2 (strings enter) → Bridge (builds) → Climax (full orchestra) → Outro (decays with Ondes)",
+    chords: "Capo 4: Am → Em → F → C (verse). Bridge: Dm → Am → E → Am. All fingerpicked arpeggios.",
     notes: {
-      guitar: "Arpeggiate, don't strum. Jonny: Tele clean. Ed: Freeze pedal for drones.",
-      bass: "Supportive fingerstyle, leave space for orchestral elements.",
-      drums: "Opens with drum machine, Phil layers in gradually. Need backing track or programmed intro.",
-      keys: "Rhodes opens. Strings: Crumar/mellotron patches. Ondes in outro (sine wave + pitch bend)."
+      guitar: "Clean tone, arpeggiate every chord—never strum. First guitar enters at verse 2 with tremolo-picked high notes. Second guitar: use freeze/sustain pedal for pad-like drones under the climax. Both guitars swell in volume as orchestration builds.",
+      bass: "Enter at verse 2. Fingerstyle, whole notes following root motion. Leave massive space—you're supporting strings, not leading. In climax, shift to quarter notes on roots. Drop out for final outro.",
+      drums: "Programmed beat opens (need backing track or drum machine). Live drums layer in at bridge with mallets on toms. Build to full kit in climax with cymbal swells. Brushes would work for softer sections if no backing track.",
+      keys: "Rhodes/Wurlitzer carries the intro ALONE for 8 bars—this sets everything. Strings (mellotron or pad) enter verse 2, swell through bridge. Ondes Martenot (or sine wave synth with pitch bend) for the eerie outro melody. The keyboard arrangement IS the arrangement."
     }
   },
   {
@@ -63,12 +67,14 @@ const tracks: Track[] = [
     key: "E Minor",
     tempo: 99,
     timeSig: "4/4",
-    critical: "Fuzz bass (Big Cheese pedal) is non-negotiable—defines the entire track.",
+    critical: "Fuzz bass drives everything. Without the right distorted bass tone, the song doesn't exist.",
+    structure: "Intro (bass riff, 4 bars) → Verse 1 → Chorus → Verse 2 → Chorus → Bridge (breakdown) → Build → Final Chorus → Outro (collapses)",
+    chords: "Single-note riff based: E (verse/chorus riff centered on low E and G). Bridge moves to B → C → D → E. Guitars play stabs on the off-beats.",
     notes: {
-      guitar: "Jonny: dissonant stabs, slight detuning. Ed: rhythmic choppy delays.",
-      bass: "Colin's fuzz bass IS the song. Electro-Harmonix Big Cheese or similar. Aggressive attack.",
-      drums: "Tight, mechanical feel. Emphasis on hi-hat patterns. Think motorik + punk.",
-      keys: "Subtle Prophet pad underneath. Adds tension without competing with bass fuzz."
+      guitar: "Guitar 1: Dissonant two-note stabs (minor 2nds, tritones) on off-beats. Slight detuning helps the unsettling vibe. Guitar 2: Rhythmic choppy delays, slapback around 100ms, play percussive muted scratches. Both guitars back off in verses—let bass dominate. Full chord stabs only in choruses.",
+      bass: "You ARE this song. Fuzz pedal required (Electro-Harmonix Big Cheese, or any gated fuzz). The riff: E-E-G-E-E-B-A-G pattern, aggressive 8th notes. Never clean up your tone. Attack hard, let notes decay into fuzz. Don't vary the riff—the hypnotic repetition is the point.",
+      drums: "Tight, almost mechanical. Hi-hat drives 8th notes throughout. Snare on 2 and 4, kick locks with bass riff. Think motorik/krautrock meets punk. In breakdown, strip to kick and snare only. Build back with tom fills into final chorus.",
+      keys: "Subtle synth pad (Prophet or similar analog) holds low E drone underneath everything. Creates sub-bass foundation without competing with fuzz bass. Optional: add high, thin synth line in breakdown for tension. Stay out of the mid frequencies—that's bass territory."
     },
     reference: { label: "From The Basement 2008", url: "https://www.youtube.com/watch?v=DgeKRbmUBns" }
   },
@@ -83,12 +89,14 @@ const tracks: Track[] = [
     key: "E Minor",
     tempo: 88,
     timeSig: "4/4",
-    critical: "Prophet-5 synth bass (NOT electric bass)—the warm analog pulse IS the song.",
+    critical: "5-minute slow build from minimal to overwhelming. Synth bass (not electric) carries the low end. Glockenspiel melody in climax is iconic.",
+    structure: "Intro (synth bass pulse, 8 bars) → Verse 1 (sparse) → Verse 2 (guitar enters) → Verse 3 (drums build) → Climax (everything crashes in, glockenspiel) → Outro (sustain and decay)",
+    chords: "Em → Cmaj7 → Em → Cmaj7 (whole song). Synth bass plays roots as pulsing 8ths. Guitar arpeggios follow same progression.",
     notes: {
-      guitar: "Minimal until climax. Delay swells, volume pedal work. Let the synth breathe.",
-      bass: "NO BASS GUITAR. Prophet-5 handles all low end. Sit this one out or double synth higher.",
-      drums: "Patient build. Brushes → sticks. Glockenspiel accent in finale is crucial.",
-      keys: "Prophet-5 synth bass (critical). Warm, slightly detuned. Glockenspiel melody in climax."
+      guitar: "Don't play until verse 2. Clean tone with long delay (dotted 8th or quarter note). Volume swells—use a volume pedal to fade notes in. Arpeggiate Em and Cmaj7 high on neck. In climax, switch to full strummed chords with distortion and let it ring. The contrast between delicate verses and crushing climax is everything.",
+      bass: "NO BASS GUITAR on this track. Synth bass handles all low end. If you must play, double the synth line an octave up with clean tone and volume pedal swells. Or: sit out verses, enter only in climax with sustained low E root. Seriously though—this song works because of the synth bass texture, not electric bass.",
+      drums: "Extreme patience required. Brushes only for verses 1-2. Sticks enter verse 3, still sparse—ride cymbal and kick. Climax: crash cymbals, floor tom, full power. The glockenspiel hits need space, so leave room. Final section: cymbal swells that sustain into the outro.",
+      keys: "Synth bass is CRITICAL—warm analog tone (Prophet, Moog, or soft synth equivalent). Slightly detuned, pulsing 8th notes on E. Filter opens slowly over the 5 minutes. Glockenspiel melody enters in climax: E-D#-E-F#-G-F#-E pattern (learn this, it's the hook). If no glockenspiel, use bell/celesta patch at high velocity."
     },
     reference: { label: "From The Basement In Rainbows", url: "https://www.youtube.com/watch?v=DV1hQSt2hSE" }
   },
@@ -104,12 +112,14 @@ const tracks: Track[] = [
     tempo: 103,
     timeSig: "4/4",
     tuning: "Drop D",
-    critical: "Hypnotic Drop D guitar riff defines everything—lock in and never waver.",
+    critical: "The guitar riff loops hypnotically for 5 minutes. DROP D tuning required. Don't overcomplicate—the repetition IS the point.",
+    structure: "Intro (riff alone, 8 bars) → Verse 1 → Verse 2 → Breakdown (sparse) → Build → Verse 3 → Extended Outro (riff continues as everything else drops)",
+    chords: "Drop D: Main riff uses D5 → F5 → C5 → D5 pattern. The riff is melodic, not just power chords—learn the specific fingering. Breakdown uses Dm → Bb → F → A.",
     notes: {
-      guitar: "DROP D essential. Main riff is hypnotic, repetitive. Slight overdrive, mostly clean.",
-      bass: "Lock to the riff. Sparse but powerful. Low D pedal tone grounds everything.",
-      drums: "Driving but not busy. Leave room for the riff's hypnotic quality.",
-      keys: "Subtle textures. Rhodes stabs. Don't clutter the guitar's space."
+      guitar: "DROP D REQUIRED. Main riff: D string fretted at 0-3-5-3, with open low D pedaling underneath. Slight crunch, not heavy distortion. Second guitar adds sparse high harmonics and feedback swells in verses. In breakdown, both guitars go clean and airy. Riff must stay LOCKED—if you rush or drag, the whole thing falls apart. This is a groove song.",
+      bass: "Low D pedal tone is your home base. Follow the guitar riff's rhythm but simplify—mostly root notes. In verses, you can add the F and C movement. Breakdown: drop to whole notes, let it breathe. The bass grounds everything; don't get busy. Drop D tuning matches the guitar.",
+      drums: "Driving straight 8ths on hi-hat, snare on 2 and 4. Keep it steady and slightly mechanical—think drum machine feel played by a human. DON'T fill too much; the hypnotic quality requires restraint. Breakdown: strip to kick and snare, half-time feel. Build back gradually. Floor tom accents in final section.",
+      keys: "Stay minimal. Rhodes/electric piano stabs on off-beats, long sustained notes. Don't play through the whole riff—leave holes. Add texture, not melody. In breakdown, sustained pads that swell. Think: you're adding color to a black-and-white photo, not painting over it."
     },
     reference: { label: "I Might Be Wrong: Live Recordings", url: "https://www.youtube.com/watch?v=vOa--FIrVEA" }
   },
@@ -125,12 +135,14 @@ const tracks: Track[] = [
     tempo: 92,
     timeSig: "4/4",
     tuning: "Drop D",
-    critical: "Relentless bass riff anchors chaos—never wavers, even when horns go free jazz.",
+    critical: "Bass riff NEVER changes for 5+ minutes. Everything else builds into free-jazz chaos around it. Without horns, guitars/keys must create the chaos.",
+    structure: "Intro (bass riff, 8 bars) → Verse 1 (vocals enter) → Verse 2 → Instrumental Build (horns/chaos begins) → Peak Chaos → Outro (chaos subsides, bass remains)",
+    chords: "Bass riff: D-D-D-D-F#-G-A-A (8th notes, relentless). Guitar: D5 stabs. The 'chord progression' is really just D major implied by the bass riff. Chaos sections are atonal.",
     notes: {
-      guitar: "Ed: oscillating tremolo, feedback. Jonny: Ondes Martenot wails.",
-      bass: "THE riff. Never stop, never vary. You are the anchor in the storm. Drop D.",
-      drums: "Krautrock-inspired. Steady, driving, slightly mechanical. The heartbeat.",
-      keys: "Ondes Martenot for alien textures. Alternatively: theremin-style synth patches."
+      guitar: "Guitar 1: Tremolo-picked single notes oscillating between D and F#. Volume swells, feedback manipulation. Guitar 2: Ondes Martenot-style wailing—use an EBow or slide with heavy reverb and delay, pitch-bending wildly. In chaos section, both guitars make NOISE—scrape strings, feedback, atonal stabs. You're replacing a horn section, so get weird. Earplugs recommended.",
+      bass: "THE riff. D-D-D-D-F#-G-A-A in 8th notes. You play this identically for the ENTIRE song—never stop, never vary, never accent differently. You are the anchor while everything else goes insane. Drop D tuning. Tone: slight grit but mostly clean. Your consistency is what makes the chaos work.",
+      drums: "Krautrock motorik beat. Steady, driving, almost mechanical. Kick on every beat, snare on 2 and 4, hi-hat 8ths. DO NOT react to the chaos around you—your job is to stay locked with the bass. The tension comes from the drums/bass being utterly steady while everything else freaks out. Only slight builds in intensity through cymbal choice.",
+      keys: "Without a horn section, you're crucial for the chaos. Ondes Martenot (or pitch-bend synth with expression pedal) for eerie wailing. Alternatively: theremin app, or any synth set to sine wave with portamento. In chaos section, add dissonant clusters, random atonal stabs. Think free jazz—react to what others play. Noise is the point."
     }
   },
   {
@@ -144,12 +156,14 @@ const tracks: Track[] = [
     key: "C Minor",
     tempo: 121,
     timeSig: "4/4",
-    critical: "Peter Hook-style high bass melody + Ondes walls create the emotional weight.",
+    critical: "Bass plays a HIGH melodic lead (Joy Division influence). Synth creates haunting sustained walls. Urgent, driving, emotionally huge.",
+    structure: "Intro (bass melody + synth wall, 8 bars) → Verse 1 → Chorus ('I will eat you alive') → Verse 2 → Chorus → Bridge (intensity drops) → Final Chorus (biggest) → Outro",
+    chords: "Cm → Ab → Eb → Bb (verse). Chorus: Fm → Cm → G → Cm. Bass plays melodic line over these changes, not root notes.",
     notes: {
-      guitar: "Arpeggiated figures, clean with modulation. Ed: delay-heavy ambience.",
-      bass: "Peter Hook influence—play HIGH on the neck, melodic. The bass IS the lead.",
-      drums: "Driving 8th note pulse. Urgent but controlled. Build intensity gradually.",
-      keys: "Ondes Martenot creates haunting walls. Sine wave + expression pedal. Essential texture."
+      guitar: "Guitar 1: Clean arpeggiated figures, chorus or phaser modulation. Pick each note clearly. Guitar 2: Delay-heavy ambient swells (dotted 8th delay), volume pedal for fade-ins. In choruses, both guitars can hit full chords with some grit. Bridge: pull back to clean arpeggios only. Build back into final chorus with sustained power chords.",
+      bass: "Play HIGH on the neck—12th fret and above. This is a melodic lead part, Joy Division/Peter Hook style. The bass line is the main hook: C-Eb-G-Bb-C pattern played high. Use a pick for clarity and brightness. Slight overdrive helps cut through. You're NOT playing root notes—you're playing a counter-melody. Study the original carefully; the bass is the song's signature.",
+      drums: "Driving 8th notes on hi-hat, urgent feel. Snare on 2 and 4 with some ghost notes. Kick pattern syncs with bass accents. Build intensity through the song but stay controlled—this isn't thrash, it's controlled urgency. Bridge: half-time feel, floor tom accents. Final chorus: open hi-hat, crash cymbals, full power.",
+      keys: "Synth pads create sustained 'walls' of sound. Use sine wave or soft saw with long attack and release. Ondes Martenot-style pitch bending adds the haunting quality—expression pedal for dynamics. Hold chord tones (Cm, Ab) and let them sustain under everything. In choruses, add higher octave doublings. This texture is what makes the song feel massive."
     },
     reference: { label: "From The Basement 2008", url: "https://www.youtube.com/watch?v=fGvPwkPmIYs" }
   },
@@ -164,12 +178,14 @@ const tracks: Track[] = [
     key: "E Dorian",
     tempo: 125,
     timeSig: "4/4",
-    critical: "Bossa nova intro → apocalyptic crescendo. The contrast IS the song.",
+    critical: "Quiet bossa nova verses explode into apocalyptic rock climax. The dynamic contrast is extreme—don't blow your load early.",
+    structure: "Intro (bossa feel, 8 bars) → Verse 1 (quiet) → Verse 2 (building) → Pre-Chorus (tension) → Chorus (EXPLODES) → Verse 3 → Pre-Chorus → Final Chorus (extended, guitar solo) → Outro (crashes and burns)",
+    chords: "Em7 → A7 → Dmaj7 → Gmaj7 (verse, jazzy). Chorus: E5 → G5 → D5 → A5 (power chords, distorted). The shift from jazz voicings to power chords IS the arrangement.",
     notes: {
-      guitar: "Clean jazz chords in intro. Build to wall of distortion. Jonny's solo is climactic.",
-      bass: "Walking bassline in verse. Becomes driving 8ths in climax. Dynamic range is huge.",
-      drums: "Bossa brush work → explosive rock ending. The transition is everything.",
-      keys: "Minimal. Occasional pad for atmosphere. Stay out of the guitar's way."
+      guitar: "Verses: CLEAN jazz chords—Em7, A7, Dmaj7, Gmaj7 voiced like a jazz guitarist. Fingerpick or hybrid pick. Chorus: SLAM into distorted power chords, full strumming. The contrast must be dramatic. Lead guitar in final chorus: pentatonic-based solo over E, start melodic and build to chaotic whammy bar dives and feedback. The solo should feel like the song is tearing itself apart.",
+      bass: "Verses: Walking bassline, jazz style. E-G-A-B patterns, chromatic passing tones. Keep it smooth and bouncy—you're in a jazz trio. Chorus: SWITCH to driving distorted 8th notes on roots. E-E-E-E-G-G-D-D-A-A. The transition should feel like a different song. Huge dynamic range—compressor will help but don't squash it.",
+      drums: "Verses: Brushes on snare, bossa nova feel. Kick on 1 and 3, snare on 2 and 4 but SOFT. Hi-hat keeping time gently. Pre-chorus: switch to sticks, build with tom fills. Chorus: FULL ROCK—crash cymbals, driving 8ths, everything you've got. The brush-to-sticks moment should feel like a dam breaking. Final chorus: extended, let it get messy.",
+      keys: "Minimal role—this is a guitar song. Verses: optional Rhodes chords doubling guitar voicings, very soft. Chorus: you can add a distorted organ pad for thickness, or sit out entirely. If playing, match the dynamic shift—whisper to scream. Don't compete with the guitar solo."
     },
     reference: { label: "Live at the Astoria 1994", url: "https://www.youtube.com/watch?v=HFoPvq_0Rdo" }
   },
@@ -185,12 +201,14 @@ const tracks: Track[] = [
     tempo: 64,
     timeSig: "6/8",
     tuning: "EAEGBE",
-    critical: "High-register melodic bass transforms the song—Colin's finest moment.",
+    critical: "Bass plays an iconic high melodic line (requires alternate tuning). The song floats in 6/8—count in 2, feel the sway. Delicate throughout.",
+    structure: "Intro (bass melody alone, 4 bars) → Verse 1 → Chorus ('you'll go to hell') → Verse 2 → Chorus → Bridge (falsetto, builds slightly) → Final Chorus → Outro (bass melody fades)",
+    chords: "E → C#m → A → B (verse). Chorus: F#m → A → E → B. The 6/8 feel means each chord gets 2 beats of 3—count '1-2-3, 2-2-3'.",
     notes: {
-      guitar: "Sparse, clean arpeggios. Volume swells. Let the bass shine.",
-      bass: "EAEGBE tuning. Play HIGH melodic lines. This is the lead instrument. Study Colin's part.",
-      drums: "Brushes throughout. Gentle, swaying 6/8. Never overpower the delicacy.",
-      keys: "String pads, subtle. Prophet for warmth. Support, don't lead."
+      guitar: "Sparse clean arpeggios, high on the neck. Use volume swells—notes should bloom, not attack. Dotted 8th delay helps create atmosphere. Play the chord tones but leave SPACE. In choruses, you can sustain full chords. This is not a guitar-forward song—support the bass and vocals. Reverb and delay are your friends.",
+      bass: "ALTERNATE TUNING: EAEGBE (3rd string tuned down to E). This is THE bass part of In Rainbows. Play HIGH—12th-15th fret range. The melodic line: E-F#-G#-A-B-C#-B-A pattern over the verse. You're playing a lead melody, not bass lines. Use fingers, play gently. Let notes ring and overlap slightly. Study this part thoroughly—it makes the song.",
+      drums: "Brushes entire song, 6/8 waltz feel. Swaying, gentle, like rocking a boat. Snare on beat 4 of each 6/8 bar (the 'and' of 2 if counting in 2). Keep the hi-hat wash continuous. NO fills, no crashes, no sticks. The delicacy is non-negotiable. If you overplay, you ruin the song.",
+      keys: "String pad sustaining chord tones—warm, soft, lots of reverb. Synth bass can double the low end if needed (bass guitar is playing high). Let chords sustain and overlap. In bridge, swell slightly with expression. Think orchestral strings, not synth leads. Stay below the bass melody in the mix."
     },
     reference: { label: "From The Basement In Rainbows", url: "https://www.youtube.com/watch?v=1ky1td3JQAI" }
   },
@@ -240,6 +258,18 @@ function TrackInfo({ track }: { track: Track }) {
       <p className="mt-2 text-sm italic text-[#bbb] leading-relaxed">
         {track.critical}
       </p>
+
+      {/* Structure */}
+      <div className="mt-3 text-xs">
+        <span className="text-[#00ff9f] font-medium">Structure: </span>
+        <span className="text-[#999]">{track.structure}</span>
+      </div>
+
+      {/* Chords */}
+      <div className="mt-1 text-xs">
+        <span className="text-[#00ff9f] font-medium">Chords: </span>
+        <span className="text-[#999] font-mono">{track.chords}</span>
+      </div>
 
       {/* Role Notes Toggle */}
       <button
