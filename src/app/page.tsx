@@ -41,70 +41,27 @@ interface Track {
 const tracks: Track[] = [
   {
     num: "I",
-    title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Thief",
-    album: "A Moon Shaped Pool",
-    year: "2016",
-    sheet: "/sheets/tinker-tailor.pdf",
-    lyrics: "https://genius.com/Radiohead-tinker-tailor-soldier-sailor-rich-man-poor-man-beggar-man-thief-lyrics",
-    audio: "tinker-tailor",
-    key: "Db Major",
-    tempo: 89,
+    title: "A Punch Up at a Wedding",
+    album: "Hail to the Thief",
+    year: "2003",
+    sheet: "/sheets/a-punch-up-at-a-wedding.pdf",
+    lyrics: "https://genius.com/Radiohead-a-punchup-at-a-wedding-no-no-no-no-no-no-no-no-lyrics",
+    audio: "a-punch-up-at-a-wedding",
+    key: "E Dorian",
+    tempo: 79,
     timeSig: "4/4",
-    tuning: "Capo 4",
-    critical: "Orchestral build over 5 minutes from sparse piano to full crescendo. Patience is everything.",
-    structure: "Intro (piano alone, 8 bars) → Verse 1 → Verse 2 (strings enter) → Bridge (builds) → Climax (full orchestra) → Outro (decays with Ondes)",
-    chords: "Capo 4: Am → Em → F → C (verse). Bridge: Dm → Am → E → Am. All fingerpicked arpeggios.",
+    critical: "This song lives or dies on the GROOVE — the rhythm section must lock into a deep, hip-hop-influenced pocket at 79 BPM. If it feels stiff instead of heavy and hypnotic, the whole thing falls apart.",
+    structure: "Intro (drum machine + electric piano groove) → Verse 1 → Verse 2 → Chorus → Verse 3 → Chorus → Bridge/Breakdown → Verse 4 → Outro (long, gradual fade with layered textures)",
+    chords: "Em7 → Bm7 (verse/chorus vamp, Dorian flavor). Chorus adds Am7 → Em7 for the only real harmonic movement. Outro: Em7 vamp dissolving into texture.",
     notes: {
-      guitar: "Clean tone, arpeggiate every chord—never strum. First guitar enters at verse 2 with tremolo-picked high notes. Second guitar: use freeze/sustain pedal for pad-like drones under the climax. Both guitars swell in volume as orchestration builds.",
-      bass: "Enter at verse 2. Fingerstyle, whole notes following root motion. Leave massive space—you're supporting strings, not leading. In climax, shift to quarter notes on roots. Drop out for final outro.",
-      drums: "Programmed beat opens (need backing track or drum machine). Live drums layer in at bridge with mallets on toms. Build to full kit in climax with cymbal swells. Brushes would work for softer sections if no backing track.",
-      keys: "Rhodes/Wurlitzer carries the intro ALONE for 8 bars—this sets everything. Strings (mellotron or pad) enter verse 2, swell through bridge. Ondes Martenot (or sine wave synth with pitch bend) for the eerie outro melody. The keyboard arrangement IS the arrangement."
+      guitar: "NOT a guitar-forward song. Sparse, clean Em7 and Bm7 stabs high on the neck (7th-9th frets), muted and rhythmic. Touch of chorus or tremolo on a clean amp. Your role is textural — short, choppy chord stabs that sit inside the groove, not on top of it. Second guitar can add ambient swells or single-note delay lines, entering only in the second half.",
+      bass: "Syncopated, funky line rooted around E and B — the feel is closer to hip-hop or neo-soul than rock. Think D'Angelo's rhythm section. Warm, round tone (flatwounds or roll off the tone knob). Stay locked in the pocket with the drum pattern. The bass and drums ARE this song; every other instrument is decoration.",
+      drums: "The studio track uses a drum machine foundation with live drums layered on top. For live cover: internalize that mechanical, locked-in feel. Deep pocket half-time groove. Brushes or hot rods for the first half, sticks for the build. Add fills and ride cymbal work after the 3-minute mark. The groove must feel programmed even when played by a human.",
+      keys: "THIS IS THE LEAD INSTRUMENT. Fender Rhodes or Wurlitzer playing the Em7-Bm7 vamp with jazzy, soulful comping — broken voicings with rhythmic variation, not block chords. Think a Rhodes player on a D'Angelo record. Add tremolo effect for authenticity. Left hand can double bass root movement. This part carries the song from start to finish."
     }
   },
   {
     num: "II",
-    title: "Myxomatosis",
-    album: "Hail to the Thief",
-    year: "2003",
-    sheet: "/sheets/myxomatosis.pdf",
-    lyrics: "https://genius.com/Radiohead-myxomatosis-lyrics",
-    audio: "myxomatosis",
-    key: "E Minor",
-    tempo: 99,
-    timeSig: "4/4",
-    critical: "Fuzz bass drives everything. Without the right distorted bass tone, the song doesn't exist.",
-    structure: "Intro (bass riff, 4 bars) → Verse 1 → Chorus → Verse 2 → Chorus → Bridge (breakdown) → Build → Final Chorus → Outro (collapses)",
-    chords: "Single-note riff based: E (verse/chorus riff centered on low E and G). Bridge moves to B → C → D → E. Guitars play stabs on the off-beats.",
-    notes: {
-      guitar: "Guitar 1: Dissonant two-note stabs (minor 2nds, tritones) on off-beats. Slight detuning helps the unsettling vibe. Guitar 2: Rhythmic choppy delays, slapback around 100ms, play percussive muted scratches. Both guitars back off in verses—let bass dominate. Full chord stabs only in choruses.",
-      bass: "You ARE this song. Fuzz pedal required (Electro-Harmonix Big Cheese, or any gated fuzz). The riff: E-E-G-E-E-B-A-G pattern, aggressive 8th notes. Never clean up your tone. Attack hard, let notes decay into fuzz. Don't vary the riff—the hypnotic repetition is the point.",
-      drums: "Tight, almost mechanical. Hi-hat drives 8th notes throughout. Snare on 2 and 4, kick locks with bass riff. Think motorik/krautrock meets punk. In breakdown, strip to kick and snare only. Build back with tom fills into final chorus.",
-      keys: "Subtle synth pad (Prophet or similar analog) holds low E drone underneath everything. Creates sub-bass foundation without competing with fuzz bass. Optional: add high, thin synth line in breakdown for tension. Stay out of the mid frequencies—that's bass territory."
-    }
-  },
-  {
-    num: "III",
-    title: "All I Need",
-    album: "In Rainbows",
-    year: "2007",
-    sheet: "/sheets/all-i-need.pdf",
-    lyrics: "https://genius.com/Radiohead-all-i-need-lyrics",
-    audio: "all-i-need",
-    key: "E Minor",
-    tempo: 88,
-    timeSig: "4/4",
-    critical: "5-minute slow build from minimal to overwhelming. Synth bass (not electric) carries the low end. Glockenspiel melody in climax is iconic.",
-    structure: "Intro (synth bass pulse, 8 bars) → Verse 1 (sparse) → Verse 2 (guitar enters) → Verse 3 (drums build) → Climax (everything crashes in, glockenspiel) → Outro (sustain and decay)",
-    chords: "Em → Cmaj7 → Em → Cmaj7 (whole song). Synth bass plays roots as pulsing 8ths. Guitar arpeggios follow same progression.",
-    notes: {
-      guitar: "Don't play until verse 2. Clean tone with long delay (dotted 8th or quarter note). Volume swells—use a volume pedal to fade notes in. Arpeggiate Em and Cmaj7 high on neck. In climax, switch to full strummed chords with distortion and let it ring. The contrast between delicate verses and crushing climax is everything.",
-      bass: "NO BASS GUITAR on this track. Synth bass handles all low end. If you must play, double the synth line an octave up with clean tone and volume pedal swells. Or: sit out verses, enter only in climax with sustained low E root. Seriously though—this song works because of the synth bass texture, not electric bass.",
-      drums: "Extreme patience required. Brushes only for verses 1-2. Sticks enter verse 3, still sparse—ride cymbal and kick. Climax: crash cymbals, floor tom, full power. The glockenspiel hits need space, so leave room. Final section: cymbal swells that sustain into the outro.",
-      keys: "Synth bass is CRITICAL—warm analog tone (Prophet, Moog, or soft synth equivalent). Slightly detuned, pulsing 8th notes on E. Filter opens slowly over the 5 minutes. Glockenspiel melody enters in climax: E-D#-E-F#-G-F#-E pattern (learn this, it's the hook). If no glockenspiel, use bell/celesta patch at high velocity."
-    }
-  },
-  {
-    num: "IV",
     title: "I Might Be Wrong",
     album: "Amnesiac",
     year: "2001",
@@ -115,100 +72,183 @@ const tracks: Track[] = [
     tempo: 103,
     timeSig: "4/4",
     tuning: "Drop D",
-    critical: "The guitar riff loops hypnotically for 5 minutes. DROP D tuning required. Don't overcomplicate—the repetition IS the point.",
-    structure: "Intro (riff alone, 8 bars) → Verse 1 → Verse 2 → Breakdown (sparse) → Build → Verse 3 → Extended Outro (riff continues as everything else drops)",
-    chords: "Drop D: Main riff uses D5 → F5 → C5 → D5 pattern. The riff is melodic, not just power chords—learn the specific fingering. Breakdown uses Dm → Bb → F → A.",
+    critical: "The groove is everything — the riff must feel like a locked, hypnotic loop with a slightly behind-the-beat swagger, not a stiff mechanical repetition. DROP D tuning is non-negotiable.",
+    structure: "Intro riff (8 bars) → Verse 1 → Chorus → Verse 2 → Chorus → Bridge/Breakdown ('open your mouth') → Extended riff outro with gradual build → End",
+    chords: "Drop D: Main riff orbits Dm using D5 → F5 shapes. Riff pattern: D (open) — hammer to F (3rd fret) — slide to G — back to D. Chorus: Bb → C → Dm. Bridge stays on Dm, sparser.",
     notes: {
-      guitar: "DROP D REQUIRED. Main riff: D string fretted at 0-3-5-3, with open low D pedaling underneath. Slight crunch, not heavy distortion. Second guitar adds sparse high harmonics and feedback swells in verses. In breakdown, both guitars go clean and airy. Riff must stay LOCKED—if you rush or drag, the whole thing falls apart. This is a groove song.",
-      bass: "Low D pedal tone is your home base. Follow the guitar riff's rhythm but simplify—mostly root notes. In verses, you can add the F and C movement. Breakdown: drop to whole notes, let it breathe. The bass grounds everything; don't get busy. Drop D tuning matches the guitar.",
-      drums: "Driving straight 8ths on hi-hat, snare on 2 and 4. Keep it steady and slightly mechanical—think drum machine feel played by a human. DON'T fill too much; the hypnotic quality requires restraint. Breakdown: strip to kick and snare, half-time feel. Build back gradually. Floor tom accents in final section.",
-      keys: "Stay minimal. Rhodes/electric piano stabs on off-beats, long sustained notes. Don't play through the whole riff—leave holes. Add texture, not melody. In breakdown, sustained pads that swell. Think: you're adding color to a black-and-white photo, not painting over it."
+      guitar: "Drop D tuning, no exceptions. Clean-ish tone with subtle overdrive — slightly broken-up amp, not distortion pedal. Neck pickup Telecaster tone. Riff sits around 3rd-5th fret, hammering and pulling off against the open D string drone. Chorus: fuller chord stabs (Bb power chord at 8th fret in Drop D, C at 10th). Breakdown: strip to single notes, let delay trails breathe.",
+      bass: "Simple, deep foundation — mostly root notes following the riff on D. During chorus, walk up to Bb and C with smooth quarter notes. Warm, round tone, no brightness. Stay in the pocket and resist getting busy — the guitar riff is the star. Drop D tuning matches the guitar.",
+      drums: "Tight, almost hip-hop-influenced groove. Kick on 1 and the 'and' of 2, snare on 3, hi-hats in steady 8ths with occasional open hat accents. Dry and contained — no big fills, no cymbal washes. Think programmed beat played by a human. Breakdown: pull back to just hi-hat and ghost notes on snare.",
+      keys: "Minimal role. Sustained Dm and Bb/C pads very quietly underneath, adding body without competing with the riff. A tremolo effect on a Rhodes tone works well. Stay out of the way — the guitar riff owns this song."
     }
   },
   {
-    num: "V",
-    title: "The National Anthem",
-    album: "Kid A",
-    year: "2000",
-    sheet: "/sheets/the-national-anthem.pdf",
-    lyrics: "https://genius.com/Radiohead-the-national-anthem-lyrics",
-    audio: "the-national-anthem",
-    key: "D Major",
-    tempo: 92,
-    timeSig: "4/4",
-    tuning: "Drop D",
-    critical: "Bass riff NEVER changes for 5+ minutes. Everything else builds into free-jazz chaos around it. Without horns, guitars/keys must create the chaos.",
-    structure: "Intro (bass riff, 8 bars) → Verse 1 (vocals enter) → Verse 2 → Instrumental Build (horns/chaos begins) → Peak Chaos → Outro (chaos subsides, bass remains)",
-    chords: "Bass riff: D-D-D-D-F#-G-A-A (8th notes, relentless). Guitar: D5 stabs. The 'chord progression' is really just D major implied by the bass riff. Chaos sections are atonal.",
-    notes: {
-      guitar: "Guitar 1: Tremolo-picked single notes oscillating between D and F#. Volume swells, feedback manipulation. Guitar 2: Ondes Martenot-style wailing—use an EBow or slide with heavy reverb and delay, pitch-bending wildly. In chaos section, both guitars make NOISE—scrape strings, feedback, atonal stabs. You're replacing a horn section, so get weird. Earplugs recommended.",
-      bass: "THE riff. D-D-D-D-F#-G-A-A in 8th notes. You play this identically for the ENTIRE song—never stop, never vary, never accent differently. You are the anchor while everything else goes insane. Drop D tuning. Tone: slight grit but mostly clean. Your consistency is what makes the chaos work.",
-      drums: "Krautrock motorik beat. Steady, driving, almost mechanical. Kick on every beat, snare on 2 and 4, hi-hat 8ths. DO NOT react to the chaos around you—your job is to stay locked with the bass. The tension comes from the drums/bass being utterly steady while everything else freaks out. Only slight builds in intensity through cymbal choice.",
-      keys: "Without a horn section, you're crucial for the chaos. Ondes Martenot (or pitch-bend synth with expression pedal) for eerie wailing. Alternatively: theremin app, or any synth set to sine wave with portamento. In chaos section, add dissonant clusters, random atonal stabs. Think free jazz—react to what others play. Noise is the point."
-    }
-  },
-  {
-    num: "VI",
-    title: "Where I End And You Begin",
-    album: "Hail to the Thief",
-    year: "2003",
-    sheet: "/sheets/where-i-end-and-you-begin.pdf",
-    lyrics: "https://genius.com/Radiohead-where-i-end-and-you-begin-the-sky-is-falling-in-lyrics",
-    audio: "where-i-end-and-you-begin",
+    num: "III",
+    title: "Knives Out",
+    album: "Amnesiac",
+    year: "2001",
+    sheet: "/sheets/knives-out.pdf",
+    lyrics: "https://genius.com/Radiohead-knives-out-lyrics",
+    audio: "knives-out",
     key: "C Minor",
-    tempo: 121,
+    tempo: 137,
     timeSig: "4/4",
-    critical: "Bass plays a HIGH melodic lead (Joy Division influence). Synth creates haunting sustained walls. Urgent, driving, emotionally huge.",
-    structure: "Intro (bass melody + synth wall, 8 bars) → Verse 1 → Chorus ('I will eat you alive') → Verse 2 → Chorus → Bridge (intensity drops) → Final Chorus (biggest) → Outro",
-    chords: "Cm → Ab → Eb → Bb (verse). Chorus: Fm → Cm → G → Cm. Bass plays melodic line over these changes, not root notes.",
+    critical: "This song requires THREE independent, interlocking guitar parts working like clockwork — if any one is wrong or out of time, the whole Smiths-inspired tapestry unravels. Rehearse the guitar parts together extensively before adding vocals.",
+    structure: "Intro (interlocking guitars) → Verse 1 → Chorus 1 → Verse 2 → Chorus 2 → Instrumental Bridge → Verse 3 → Chorus 3 → Outro (extended, guitars build and layer)",
+    chords: "Verse: Cm → Bb → Ab → Gm (descending natural minor). Chorus: Cm → Gm → F → Em (the F and Em create harmonic surprise, pulling briefly outside the key). Outro: returns to verse progression with layered guitars building.",
     notes: {
-      guitar: "Guitar 1: Clean arpeggiated figures, chorus or phaser modulation. Pick each note clearly. Guitar 2: Delay-heavy ambient swells (dotted 8th delay), volume pedal for fade-ins. In choruses, both guitars can hit full chords with some grit. Bridge: pull back to clean arpeggios only. Build back into final chorus with sustained power chords.",
-      bass: "Play HIGH on the neck—12th fret and above. This is a melodic lead part, Joy Division/Peter Hook style. The bass line is the main hook: C-Eb-G-Bb-C pattern played high. Use a pick for clarity and brightness. Slight overdrive helps cut through. You're NOT playing root notes—you're playing a counter-melody. Study the original carefully; the bass is the song's signature.",
-      drums: "Driving 8th notes on hi-hat, urgent feel. Snare on 2 and 4 with some ghost notes. Kick pattern syncs with bass accents. Build intensity through the song but stay controlled—this isn't thrash, it's controlled urgency. Bridge: half-time feel, floor tom accents. Final chorus: open hi-hat, crash cymbals, full power.",
-      keys: "Synth pads create sustained 'walls' of sound. Use sine wave or soft saw with long attack and release. Ondes Martenot-style pitch bending adds the haunting quality—expression pedal for dynamics. Hold chord tones (Cm, Ab) and let them sustain under everything. In choruses, add higher octave doublings. This texture is what makes the song feel massive."
+      guitar: "Guitar 1 (Jonny — Lead): Signature descending arpeggiated riff on the B and high E strings. Clean tone with slight overdrive — Telecaster or Jazzmaster chime. This part weaves through the entire song and never stops. Think Johnny Marr on 'How Soon Is Now.' Guitar 2 (Ed — Rhythm): Strummed Cm barre (3rd fret), Bb (1st fret), Ab (4th fret) shapes. Clean-to-slightly-overdriven, compression and short delay. Guitar 3 (Thom — Foundation): Acoustic or clean electric, gentle quarter/eighth-note strumming of the basic progression. Steady and understated.",
+      bass: "Melodic, wandering line inspired by Bernard Edwards (Chic) — not just root notes. Move through Cm-Bb-Ab-Gm with passing tones and chromatic movement, giving the song a sense of drift. Pick for definition or fingerstyle for rounder sound. Warm but present tone. You're the glue between three guitar parts and the drums.",
+      drums: "Driving, steady 4/4 with ride cymbal and ghost notes on snare. Propulsive but not aggressive — you're the engine underneath the guitars. Medium-weight stick, relatively simple kick pattern. Hi-hat/ride work provides forward motion. Do NOT add flashy fills — this song is about hypnotic repetition.",
+      keys: "Minimal to none in the original. If covering with keys, double the chord progression with sustained pad sounds (string synth or organ) sitting very low in the mix, entering only in the second half for added weight. Do not compete with the guitar parts."
     }
   },
   {
-    num: "VII",
-    title: "Blow Out",
-    album: "Pablo Honey",
-    year: "1993",
-    sheet: "/sheets/blow-out.pdf",
-    lyrics: "https://genius.com/Radiohead-blow-out-lyrics",
-    audio: "blow-out",
-    key: "E Dorian",
-    tempo: 125,
-    timeSig: "4/4",
-    critical: "Quiet bossa nova verses explode into apocalyptic rock climax. The dynamic contrast is extreme—don't blow your load early.",
-    structure: "Intro (bossa feel, 8 bars) → Verse 1 (quiet) → Verse 2 (building) → Pre-Chorus (tension) → Chorus (EXPLODES) → Verse 3 → Pre-Chorus → Final Chorus (extended, guitar solo) → Outro (crashes and burns)",
-    chords: "Em7 → A7 → Dmaj7 → Gmaj7 (verse, jazzy). Chorus: E5 → G5 → D5 → A5 (power chords, distorted). The shift from jazz voicings to power chords IS the arrangement.",
-    notes: {
-      guitar: "Verses: CLEAN jazz chords—Em7, A7, Dmaj7, Gmaj7 voiced like a jazz guitarist. Fingerpick or hybrid pick. Chorus: SLAM into distorted power chords, full strumming. The contrast must be dramatic. Lead guitar in final chorus: pentatonic-based solo over E, start melodic and build to chaotic whammy bar dives and feedback. The solo should feel like the song is tearing itself apart.",
-      bass: "Verses: Walking bassline, jazz style. E-G-A-B patterns, chromatic passing tones. Keep it smooth and bouncy—you're in a jazz trio. Chorus: SWITCH to driving distorted 8th notes on roots. E-E-E-E-G-G-D-D-A-A. The transition should feel like a different song. Huge dynamic range—compressor will help but don't squash it.",
-      drums: "Verses: Brushes on snare, bossa nova feel. Kick on 1 and 3, snare on 2 and 4 but SOFT. Hi-hat keeping time gently. Pre-chorus: switch to sticks, build with tom fills. Chorus: FULL ROCK—crash cymbals, driving 8ths, everything you've got. The brush-to-sticks moment should feel like a dam breaking. Final chorus: extended, let it get messy.",
-      keys: "Minimal role—this is a guitar song. Verses: optional Rhodes chords doubling guitar voicings, very soft. Chorus: you can add a distorted organ pad for thickness, or sit out entirely. If playing, match the dynamic shift—whisper to scream. Don't compete with the guitar solo."
-    }
-  },
-  {
-    num: "VIII",
+    num: "IV",
     title: "Nude",
     album: "In Rainbows",
     year: "2007",
     sheet: "/sheets/nude.pdf",
     lyrics: "https://genius.com/Radiohead-nude-lyrics",
     audio: "nude",
-    key: "E Maj / C#m",
-    tempo: 64,
+    key: "E Major",
+    tempo: 63,
     timeSig: "6/8",
-    tuning: "EAEGBE",
-    critical: "Bass plays an iconic high melodic line (requires alternate tuning). The song floats in 6/8—count in 2, feel the sway. Delicate throughout.",
-    structure: "Intro (bass melody alone, 4 bars) → Verse 1 → Chorus ('you'll go to hell') → Verse 2 → Chorus → Bridge (falsetto, builds slightly) → Final Chorus → Outro (bass melody fades)",
-    chords: "E → C#m → A → B (verse). Chorus: F#m → A → E → B. The 6/8 feel means each chord gets 2 beats of 3—count '1-2-3, 2-2-3'.",
+    critical: "The descending chromatic bass line IS the song — if the bass player does not nail that smooth, singing, high-register melody, nothing else matters. Count in 6/8: ONE-two-three-FOUR-five-six.",
+    structure: "Intro (bass melody alone, 8 bars) → Verse 1 (voice + bass + light guitar) → Verse 2 (drums enter gently) → Chorus ('don't get any big ideas') → Instrumental build → Verse 3/Climax (full band, falsetto peak) → Outro/decay",
+    chords: "Verse: E → Emaj7/D# → G#m7 → A → Amaj7 → E/G# → F#m7 → B7sus4 (8-bar cycle with chromatic bass descent). Chorus: A → Amaj7 → E/G# → G#m → C#m → F#m → B7.",
     notes: {
-      guitar: "Sparse clean arpeggios, high on the neck. Use volume swells—notes should bloom, not attack. Dotted 8th delay helps create atmosphere. Play the chord tones but leave SPACE. In choruses, you can sustain full chords. This is not a guitar-forward song—support the bass and vocals. Reverb and delay are your friends.",
-      bass: "ALTERNATE TUNING: EAEGBE (3rd string tuned down to E). This is THE bass part of In Rainbows. Play HIGH—12th-15th fret range. The melodic line: E-F#-G#-A-B-C#-B-A pattern over the verse. You're playing a lead melody, not bass lines. Use fingers, play gently. Let notes ring and overlap slightly. Study this part thoroughly—it makes the song.",
-      drums: "Brushes entire song, 6/8 waltz feel. Swaying, gentle, like rocking a boat. Snare on beat 4 of each 6/8 bar (the 'and' of 2 if counting in 2). Keep the hi-hat wash continuous. NO fills, no crashes, no sticks. The delicacy is non-negotiable. If you overplay, you ruin the song.",
-      keys: "String pad sustaining chord tones—warm, soft, lots of reverb. Synth bass can double the low end if needed (bass guitar is playing high). Let chords sustain and overlap. In bridge, swell slightly with expression. Think orchestral strings, not synth leads. Stay below the bass melody in the mix."
+      guitar: "Clean tone, lots of reverb and delay. Sparse, chiming arpeggios — not full strumming. Voice chords high on the neck: Emaj7 as x-x-9-8-9-7, G#m7 as x-x-6-4-4-4. Fingerpick or hybrid pick exclusively. The guitar is atmospheric texture, not rhythm. During the climax, allow controlled feedback and volume swells to add intensity without playing more notes.",
+      bass: "LEAD bass part. Play HIGH on the neck — 7th to 12th fret range — with a smooth, almost vocal tone. The line descends chromatically: E (7th fret A string) → D# → D-natural → C#, creating a counter-melody against the chords. Neck pickup, roll off tone knob, fingers only (no pick). Every note should sing and sustain. This is the Peter Hook / melodic bass approach. Practice this more than anything else.",
+      drums: "Brushes for the first half, possibly sticks for the climax. 6/8 waltz feel — kick gently on 1 and 4 (dotted quarters), snare ghost notes on backbeats. Swaying, like rocking a boat. No fills until the climax, where you can open up with cymbal swells and more aggressive snare. Cross-stick works for early sections. Restraint is the entire job.",
+      keys: "Warm piano or Rhodes playing arpeggiated figures that outline chord extensions — the major 7th of E, the #11 of A. Keep sustain pedal down, let notes bleed into each other. During climax, play fuller voicings and octave doublings for intensity. A synth pad with portamento (slow pitch glide) approximates the Ondes Martenot textures on the record."
+    }
+  },
+  {
+    num: "V",
+    title: "Subterranean Homesick Alien",
+    album: "OK Computer",
+    year: "1997",
+    sheet: "/sheets/subterranean-homesick-alien.pdf",
+    lyrics: "https://genius.com/Radiohead-subterranean-homesick-alien-lyrics",
+    audio: "subterranean-homesick-alien",
+    key: "D Major",
+    tempo: 132,
+    timeSig: "4/4",
+    critical: "The Fender Rhodes electric piano defines this song's DNA — without that specific warm, wobbly, Miles Davis 'Bitches Brew'-era tone, you lose the entire atmosphere. A standard piano or generic synth patch will NOT work.",
+    structure: "Intro (Rhodes + guitar, chromatic descent) → Verse 1 → Chorus 1 → Verse 2 → Chorus 2 → Bridge/Guitar Solo (Jonny's Whammy solo) → Verse 3 → Outro (extended jam)",
+    chords: "Intro/Chorus: Dm → Ab → D/F# → Db/F → G7 → G6 → Cm/G → G (chromatic bass descent is the defining feature). Verse: G7 → G6 → Cm → G (cycling, with Cm creating bittersweet surprise against G major).",
+    notes: {
+      guitar: "Rhythm: CLEAN jazz-influenced chords — G7 (3x3400 or xx5767), G6 (3x2000 or xx5757). Extended voicings, not basic open chords. Fingerpick or hybrid pick, clean amp (Fender Twin-style) with chorus and warm analog delay. Gentle, behind-the-beat strumming. NO distortion anywhere. Lead (Jonny): Fender Starcaster through DigiTech Whammy (octave up), phaser, and Memory Man delay. Solo is loose and spacey, using D major/G Mixolydian, sliding and warbling pitch-shifted notes.",
+      bass: "Smooth, melodic line following the chromatic descents — walking from D through Db to C, resolving to G. Warm, round tone with no pick attack. Flatwounds or P-Bass tone. Play legato, connecting notes smoothly. Jazz walking bass adapted for rock. Do not dig in aggressively — this song floats.",
+      drums: "Subtle, brushed-feeling pattern with a lilting, swaying quality. Light touch — brushes or light sticks on ride cymbal. Ghost notes on snare are essential. Sparse, carefully placed kick. Think jazz drummer sitting in with a rock band. The tempo is relaxed; do not rush. Drums should feel slightly behind the beat at all times.",
+      keys: "THIS IS YOUR SONG. Fender Rhodes Mark I Suitcase (or best emulation). Extended jazz voicings: G7 with the 9th, G6, Cm with added tones. Use tremolo effect (built-in or external pedal) for the characteristic warble. Play broken chords, let notes ring and overlap. Inspired by Miles Davis 'Bitches Brew' sessions. Must sound warm, dreamy, and slightly out-of-focus."
+    }
+  },
+  {
+    num: "VI",
+    title: "The National Anthem",
+    album: "Kid A",
+    year: "2000",
+    sheet: "/sheets/the-national-anthem.pdf",
+    lyrics: "https://genius.com/Radiohead-the-national-anthem-lyrics",
+    audio: "the-national-anthem",
+    key: "D Minor",
+    tempo: 92,
+    timeSig: "4/4",
+    critical: "The bass riff must be absolutely metronomic and unyielding — the whole song depends on that one riff holding steady while everything else spirals into controlled anarchy around it.",
+    structure: "Intro (bass riff alone, 4 bars) → Bass + drums build → Verse 1 (vocal enters over riff) → Verse 2 → Transition (chaos creeps in) → Extended horn chaos section (builds in intensity and dissonance) → Climax → Abrupt end",
+    chords: "No chord changes in the traditional sense. Bass riff: D-D-F-D-A-G-F-D in driving 8th notes. Harmony is Dm throughout. Vocals imply occasional F major and C major movement above the static bass. Chaos sections are atonal.",
+    notes: {
+      guitar: "Fuzz pedal required — gated fuzz or aggressive overdrive (Shin-Ei FY-2 style, or EHX Big Muff). First half: textural noise — stabs, scrapes, atonal bursts over the bass riff. No conventional chords. Second half: Whammy pedal set to random intervals, controlled feedback, pitch-shifted chaos. Approximate the Ondes Martenot with heavy fuzz and whammy. Your job is to be unsettling, not melodic. With one guitarist, play sparse aggressive D5 stabs on 1 and 3 during verses, then go full noise in the breakdown.",
+      bass: "THIS is your song. The riff: D-D-F-D-A-G-F-D as driving 8th notes, all on D and A strings (5th-10th fret area). Pick attack, bridge pickup, slight overdrive. Do NOT vary the riff. Do NOT add fills. Play it identically 100+ times with machine-like precision and intensity. The relentless, almost punk simplicity is the entire point.",
+      drums: "Massive, heavy groove — kick and snare hitting hard on standard 4/4 backbeat (kick on 1 and 3, snare on 2 and 4), hi-hat driving 8ths. As chaos builds: open hi-hats, crash cymbals on every beat, floor tom accents. You are the anchor with the bass. If the noise goes haywire, drums and bass must remain locked and unshakeable. Hit hard. Keep time. Do not get pulled into the chaos.",
+      keys: "On the record, textures come from electronics and Ondes Martenot. In a cover: low droning synth pad on D (dark analog patch, sawtooth with filter mostly closed). During chaos section, add dissonant clusters and pitch-bent stabs to simulate horn mayhem. A Moog-style bass synth doubling the bass riff an octave lower adds devastating weight. If you have a second keyboard, play free-jazz horn lines in D minor — as aggressively and dissonantly as you dare."
+    }
+  },
+  {
+    num: "VII",
+    title: "Idioteque",
+    album: "Kid A",
+    year: "2000",
+    sheet: "/sheets/idioteque.pdf",
+    lyrics: "https://genius.com/Radiohead-idioteque-lyrics",
+    audio: "idioteque",
+    key: "Gm / Eb Major",
+    tempo: 138,
+    timeSig: "4/4",
+    critical: "The challenge is not the notes — it is recreating the FEELING of claustrophobic, machine-driven urgency with a live band. If you play this like a normal rock song with guitars and drums, it will sound like a bad cover. Commit to the electronic aesthetic.",
+    structure: "Intro (synth chord loop + modular drum pattern, ~30 sec build) → Verse 1 → Chorus ('ice age coming') → Verse 2 → Chorus 2 → Breakdown (frantic energy) → Chorus 3 (climax) → Outro (loop decays)",
+    chords: "The ENTIRE song is one repeating chord loop (5 bars): Gm → Eb → Eb → Ebmaj7 → Ebmaj7. All inversions of Ebmaj7 (Eb, G, Bb, D). Sampled from Paul Lansky's 1973 composition 'Mild und Leise.' The harmonic content never changes — drama comes from dynamics and vocal intensity.",
+    notes: {
+      guitar: "There is NO guitar in the original recording. If you must include guitar, use it ONLY for textural volume swells with heavy reverb and delay, sitting far back in the mix. Better option: switch to a synth or sampler for this song. Do NOT strum the chords on guitar — it destroys the vibe completely.",
+      bass: "No traditional bass guitar in the original. Low end comes from synth chord voicings and modular kick. If you must play, run through an octave-down synth effect (EHX Bass Micro Synthesizer or similar) or use a synth bass pedal. Play root notes G → Eb in pulsing 8th-note pattern. Keep it mechanical and repetitive. No fills, no melodic movement.",
+      drums: "Original pattern created on an Analog Systems modular synth — self-oscillating filters for kick, envelope-triggered noise for snare/hi-hat. For live: (1) trigger samples from electronic kit, tight and mechanical, or (2) acoustic drums VERY simply — locked-in robotic four-on-the-floor kick, clipped tight snare on 2 and 4, rigid 8th-note hi-hats. No swing, no fills, no humanity. Live Radiohead versions are ~146 BPM (faster than studio).",
+      keys: "This is the ENTIRE song — your responsibility almost completely. Recreate the Ebmaj7 inversion loop using an FM synth patch (Arturia DX7, Ableton Operator, or real DX7). Chords should sound cold, digital, slightly metallic — NOT warm analog pads. Trigger each chord from a sampler or keyboard. Also need the Ondes Martenot-style swooping lead in the chorus: synth with portamento, sine or triangle wave, slow attack. You carry everything."
+    }
+  },
+  {
+    num: "VIII",
+    title: "My Iron Lung",
+    album: "The Bends",
+    year: "1995",
+    sheet: "/sheets/my-iron-lung.pdf",
+    lyrics: "https://genius.com/Radiohead-my-iron-lung-lyrics",
+    audio: "my-iron-lung",
+    key: "G Major",
+    tempo: 97,
+    timeSig: "4/4",
+    critical: "The quiet-LOUD-quiet dynamic contrast is EVERYTHING — quiet sections must be genuinely delicate (falsetto barely above a whisper), loud sections must be genuinely savage and chaotic. If the contrast is not extreme, the song has no drama.",
+    structure: "Intro (clean arpeggiated guitar, falsetto) → Verse 1 (quiet) → LOUD Bridge/Chorus (wall of distortion) → Verse 2 (quiet again) → LOUD Bridge/Chorus 2 → Quiet Interlude → Final LOUD section → Outro (quiet, then final noise burst)",
+    chords: "Verse (quiet): G → Cm → G → Cm (Cm borrowed from G minor, bittersweet tension). Chorus/Bridge (LOUD): G5 → C5 → E5 → open dissonance (power chords with Whammy octave chaos). Outro returns to quiet G → Cm.",
+    notes: {
+      guitar: "Guitar 1 (Jonny — Lead): TWO different sounds. QUIET: clean arpeggiated G and Cm, possibly with EBow sustain. LOUD: DigiTech Whammy (octave up) into Marshall Shred Master distortion — glitchy, shrieking, lo-fi wall of pitch-shifted noise. Aggressive power chords meant to sound broken and furious. Guitar 2 (Ed — Texture): EBow generating sustained drone during quiet sections (bowed string tone). LOUD sections: heavy rhythm guitar with distorted barre chords. You need an EBow (~$100) or volume pedal swells as substitute.",
+      bass: "Melodic, foundational line in quiet sections following G → Cm with warm round tone (Music Man StingRay vibe). LOUD sections: lock in with kick drum on aggressive root-note power, dig in HARD. Use a pick for loud parts if you normally play fingerstyle — you need that attack. The contrast between gentle verse bass and punishing bridge bass is as important as the guitar contrast.",
+      drums: "Mirror the song's bipolar personality. QUIET: light, delicate — brushes or cross-stick, gentle ride, minimal kick, tempo relaxes to ~90 BPM. LOUD: absolute assault — crashing cymbals, heavy kick, tempo pushes to ~105-110 BPM. Transitions must be INSTANT — one bar whispering, next bar demolishing. Practice the transitions specifically; they're the hardest part.",
+      keys: "No prominent keyboard in the original. Sit out or add very subtle pad textures (organ or string synth) during quiet sections ONLY, dropping out completely during loud sections. Do not fill space — the quiet sections derive their power from emptiness."
+    }
+  },
+  {
+    num: "IX",
+    title: "Give Up the Ghost",
+    album: "The King of Limbs",
+    year: "2011",
+    sheet: "/sheets/give-up-the-ghost.pdf",
+    lyrics: "https://genius.com/Radiohead-give-up-the-ghost-lyrics",
+    audio: "give-up-the-ghost",
+    key: "A Minor",
+    tempo: 76,
+    timeSig: "4/4",
+    tuning: "Capo 2",
+    critical: "This song is built entirely on LOOPED acoustic guitar layers — if you cannot replicate the layering (via a loop pedal or two guitarists), it will sound empty and incomplete.",
+    structure: "Intro (single guitar loop, ~8 bars) → Loop layers build (second guitar pattern added) → Verse 1 (vocal enters, spare) → Chorus ('don't haunt me') → Verse 2 → Chorus → Extended outro with layered vocal loops ('don't hurt me' stacked) → Fade",
+    chords: "Am → C → Em → Am (played as arpeggiated fingerpicking, capo 2 shapes). Same progression throughout — dynamics and texture do all the work. Harmonic content never changes.",
+    notes: {
+      guitar: "You NEED a loop pedal (Boss RC, TC Ditto, or similar). Build from two looped parts: (1) fingerpicked arpeggios on Am → C → Em → Am on higher strings (1-3), and (2) a lower rhythmic pattern on same chords emphasizing strings 3-5. Layer loops, then play a third live part for accents. Steel-string acoustic, warm woody tone. Fingerpick exclusively — no pick. If two guitarists, divide the loops and skip the pedal.",
+      bass: "There is essentially NO bass on the studio recording. If you must play, use extremely sparse root notes — A and C as whole notes, felt more than heard, soft round tone. Less is more. Honestly consider sitting this one out or switching to supplementary percussion.",
+      drums: "No conventional drums on the studio recording. Rhythm comes from looped guitar patterns. If drumming live, use brushes on a single snare or cajon — very gentle pulse on beats 2 and 4. No hi-hat, no fills. Your job is the faintest skeleton of pulse without disrupting the intimate, ghostly atmosphere. Consider a shaker instead of any kit instrument.",
+      keys: "Not prominent on the record. Add a high, ethereal pad — slow-attack string synth or shimmer reverb pad sustaining the root note (A). Keep volume extremely low, just warmth underneath the acoustic guitars. A reverse-reverb pad triggered at chord changes adds beautiful ghostly quality. Mellotron strings or choir patch is ideal. No melodic lines — purely atmospheric."
+    }
+  },
+  {
+    num: "X",
+    title: "I Promise",
+    album: "OKNOTOK",
+    year: "2017",
+    sheet: "/sheets/i-promise.pdf",
+    lyrics: "https://genius.com/Radiohead-i-promise-lyrics",
+    audio: "i-promise",
+    key: "E Major",
+    tempo: 70,
+    timeSig: "4/4",
+    critical: "This is Radiohead at their most emotionally direct — the vocal delivery must be sincere and vulnerable, not detached or ironic, which is the opposite instinct most Radiohead cover bands have.",
+    structure: "Intro (guitar arpeggios, 4 bars) → Verse 1 → Pre-Chorus ('I won't run away') → Chorus ('I promise') → Verse 2 → Pre-Chorus → Chorus → Bridge (builds intensity) → Final Chorus (extended, vocal peak) → Outro (arpeggios fade)",
+    chords: "Verse: E → B/D# → C#m → A (classic descending bass). Pre-Chorus: F#m → A → E → B. Chorus: A → E → B → C#m, then A → E → B. Bridge: C#m → A → E → B → C#m → A → F#m → B.",
+    notes: {
+      guitar: "Clean tone with chorus and delay — late-90s Radiohead shimmer (CE-2 chorus, ~400ms delay with moderate repeats). Arpeggiate through chord shapes using open strings to let notes ring (open E and B strings are your friends). During chorus, switch to gentle full strumming for dynamic lift. Second guitar adds slide or volume-swelled sustained notes — EBow or volume pedal ambient washes for texture.",
+      bass: "Straightforward root-note playing with warm, round tone. Follow chord roots: E → D# → C# → A in verse (D# as chromatic passing tone, smooth and connected). Chorus: switch to driving 8th-note pattern on roots to push energy forward. Supportive, not flashy — warm foundation under a delicate vocal. Fingers, not pick, for softer attack.",
+      drums: "Patient mid-tempo ballad groove. Kick on 1 and 3, snare on 2 and 4, hi-hat in steady 8ths. During verse, keep light — ghost notes on snare, soft kick. Build into chorus with harder snare hits and open hi-hat on 'and' of 4. Ride cymbal during chorus adds shimmer. One or two simple fills (snare roll into crash) at transitions. Start gentle, peak at final chorus, pull back for outro.",
+      keys: "Warm piano or Wurlitzer/Rhodes playing sustained chord voicings in mid-register. Verse: whole-note or half-note pads — Emaj7, B/D#, C#m7, Amaj7 — with sustain pedal held, creating harmonic wash. Chorus: more rhythmic quarter-note chord stabs for propulsion. Subtle string pad layered underneath during bridge and final chorus adds the emotional weight this song needs. Stay in mid-to-low range, avoid competing with guitar arpeggios."
     }
   },
 ];
@@ -408,7 +448,7 @@ export default function Home() {
         <section className="w-full max-w-3xl mb-16">
           <div className="p-6 bg-[#111] rounded-lg border border-[#222]">
             <p className="text-[#aaa] leading-relaxed mb-6">
-              Practice materials for an 8-track Radiohead set. Each song includes isolated stems, slowed practice tracks, sheet music, lyrics, and detailed notes for guitar, bass, drums, and keys.
+              Practice materials for a 10-track Radiohead set. Each song includes isolated stems, slowed practice tracks, sheet music, lyrics, and detailed notes for guitar, bass, drums, and keys.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {tracks.map((track, i) => (
@@ -510,16 +550,7 @@ export default function Home() {
                     </svg>
                     Lyrics
                   </a>
-                  <a
-                    href={track.sheet}
-                    download
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded border border-[#444] bg-[#161616] hover:border-[#00ff9f] hover:bg-[#1a1a1a] transition-all text-sm text-[#aaa] hover:text-[#fff]"
-                  >
-                    <svg className="w-4 h-4 text-[#00ff9f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Sheet Music
-                  </a>
+                  {/* Sheet music button — hidden until PDFs are added */}
                 </div>
                 {i < tracks.length - 1 && (
                   <div className="h-8 w-full text-[#00ff9f]/30 hover:text-[#00ff9f]/60 transition-colors">
