@@ -42,6 +42,28 @@ interface Track {
 const tracks: Track[] = [
   {
     num: "I",
+    title: "Optimistic",
+    album: "Kid A",
+    year: "2000",
+    sheet: "/sheets/optimistic.pdf",
+    lyrics: "https://genius.com/Radiohead-optimistic-lyrics",
+    audio: "optimistic",
+    key: "E Minor",
+    tempo: 120,
+    timeSig: "4/4",
+    critical: "The riff is a driving, syncopated E minor pattern that must feel urgent and relentless — not a plodding rock groove. Keep it tight, percussive, and slightly aggressive, almost punk-adjacent in energy.",
+    structure: "Intro (driving guitar riff) → Verse 1 → Chorus → Verse 2 → Chorus → Bridge/breakdown (quieter, spacious) → Verse 3 → Extended guitar-driven outro (repetitive riff builds to noise)",
+    chords: "Verses: Em5 power chord riff, chromatic approach notes. Chorus: Em → C → G → D (i-VI-III-VII). Bridge: strips down to sparse Em with space between chords. Outro: Em riff repeats with increasing distortion and feedback.",
+    notes: {
+      vocals: "Mid-range (E4 to B4), urgent and biting with a sneering quality. Verses are clipped and rhythmic, almost barking. Chorus opens up into a fuller, more melodic delivery but still aggressive. 'Optimistic is a curse' is the hook — deliver it with bitter irony. No falsetto, no softness. Heavy compression, close-mic'd. The outro vocal becomes fragmented and repetitive, fading into the noise.",
+      guitar: "Drop D or standard — the riff is power-chord driven with chromatic movement. Heavily distorted, tight palm-muted chugging on the low strings. Telecaster bridge pickup or humbucker, Marshall-style overdrive (not fuzz). Intro riff is the signature — short, punchy, syncopated power chord stabs with rests between groups. Chorus: fuller Em/C/G/D strumming. Bridge: sparse single-note picking. Outro: repeat the riff, let feedback take over, volume swells, controlled chaos.",
+      bass: "Driving, locked with the guitar riff's syncopation. Root notes dominate — E and chromatic passing tones. Pick for attack, slightly overdriven amp. No fills, no melodic wandering — be the engine. Stay in the pocket with the kick drum. During the chorus, walk through C → G → D with solid quarter notes. This is Colin Greenwood at his most straightforward and effective.",
+      drums: "Heavy, driving 4/4 — kick on 1 and 3, snare on 2 and 4, tight closed hi-hats or ride during verses. Chorus opens up with crash cymbal and more aggressive snare hits. Bridge: pull back to just rim clicks or cross-stick with sparse kick. Outro: build to full assault — open hats, crash accents, heavy snare and floor tom hits. Think 'rock-solid groove' not 'prog complexity.' Phil Selway keeping it simple and devastating.",
+      keys: "No prominent keyboard on the original. If adding keys for a live cover, use a subtle distorted organ pad (like a Leslie-wound B3) doubling the guitar riff during the outro for extra weight. Otherwise, sit out — guitars and rhythm section carry this entirely."
+    }
+  },
+  {
+    num: "II",
     title: "A Punch Up at a Wedding",
     album: "Hail to the Thief",
     year: "2003",
@@ -63,7 +85,7 @@ const tracks: Track[] = [
     }
   },
   {
-    num: "II",
+    num: "III",
     title: "I Might Be Wrong",
     album: "Amnesiac",
     year: "2001",
@@ -86,7 +108,7 @@ const tracks: Track[] = [
     }
   },
   {
-    num: "III",
+    num: "IV",
     title: "Knives Out",
     album: "Amnesiac",
     year: "2001",
@@ -108,7 +130,7 @@ const tracks: Track[] = [
     }
   },
   {
-    num: "IV",
+    num: "V",
     title: "Nude",
     album: "In Rainbows",
     year: "2007",
@@ -130,7 +152,7 @@ const tracks: Track[] = [
     }
   },
   {
-    num: "V",
+    num: "VI",
     title: "Subterranean Homesick Alien",
     album: "OK Computer",
     year: "1997",
@@ -152,7 +174,7 @@ const tracks: Track[] = [
     }
   },
   {
-    num: "VI",
+    num: "VII",
     title: "The National Anthem",
     album: "Kid A",
     year: "2000",
@@ -174,7 +196,7 @@ const tracks: Track[] = [
     }
   },
   {
-    num: "VII",
+    num: "VIII",
     title: "Idioteque",
     album: "Kid A",
     year: "2000",
@@ -196,7 +218,7 @@ const tracks: Track[] = [
     }
   },
   {
-    num: "VIII",
+    num: "IX",
     title: "My Iron Lung",
     album: "The Bends",
     year: "1995",
@@ -218,7 +240,7 @@ const tracks: Track[] = [
     }
   },
   {
-    num: "IX",
+    num: "X",
     title: "Give Up the Ghost",
     album: "The King of Limbs",
     year: "2011",
@@ -241,7 +263,7 @@ const tracks: Track[] = [
     }
   },
   {
-    num: "X",
+    num: "XI",
     title: "I Promise",
     album: "OKNOTOK",
     year: "2017",
@@ -463,7 +485,7 @@ export default function Home() {
         <section className="w-full max-w-3xl mb-16">
           <div className="p-6 bg-[#111] rounded-lg border border-[#222]">
             <p className="text-[#aaa] leading-relaxed mb-6">
-              Practice materials for a 10-track Radiohead set. Each song includes isolated stems, slowed practice tracks, sheet music, lyrics, and detailed notes for guitar, bass, drums, and keys.
+              Practice materials for an 11-track Radiohead set. Each song includes isolated stems, slowed practice tracks, sheet music, lyrics, and detailed notes for guitar, bass, drums, and keys.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {tracks.map((track, i) => (
