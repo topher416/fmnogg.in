@@ -424,7 +424,7 @@ export default function Home() {
         <section className="w-full max-w-3xl mb-16">
           <div className="p-6 bg-[#111] rounded-lg border border-[#222]">
             <p className="text-[#aaa] leading-relaxed mb-6">
-              Practice materials for an 11-track Radiohead set. Each song includes isolated stems, slowed practice tracks, sheet music, lyrics, and detailed notes for guitar, bass, drums, and keys.
+              Practice materials for a 21-song Radiohead setlist. Each song includes isolated stems and slowed practice tracks at 90%, 70%, and 50% speed. Audio streamed from archive.org.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {tracks.map((track, i) => (
@@ -481,7 +481,7 @@ export default function Home() {
                           controls
                           preload="none"
                           className="w-full h-8 [&::-webkit-media-controls-panel]:bg-[#111]"
-                          src={`/audio/${track.audio}/${stem}.mp3`}
+                          src={`https://archive.org/download/fmnoggin-${track.audio}/${stem}.mp3`}
                         />
                       </div>
                     ))}
@@ -507,7 +507,7 @@ export default function Home() {
                             controls
                             preload="none"
                             className="w-full h-8 [&::-webkit-media-controls-panel]:bg-[#0a0a0a]"
-                            src={`/audio/${track.audio}/practice/${speed.file}.mp3`}
+                            src={`https://archive.org/download/fmnoggin-${track.audio}/${speed.file}.mp3`}
                           />
                         </div>
                       ))}
