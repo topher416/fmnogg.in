@@ -32,11 +32,12 @@ function slugify(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
-const PLAY_ICON = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="7,5 19,12 7,19"/></svg>`;
-const PAUSE_ICON = `<svg viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg>`;
-const SKIP_PREV = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>`;
-const SKIP_NEXT = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>`;
-const VIDEO_ICON = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="7,5 19,12 7,19"/></svg>`;
+const PLAY_ICON = `<svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="7,5 19,12 7,19"/></svg>`;
+const PAUSE_ICON = `<svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg>`;
+const SKIP_PREV = `<svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>`;
+const SKIP_NEXT = `<svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>`;
+const VIDEO_ICON = `<svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="7,5 19,12 7,19"/></svg>`;
+const CLOSE_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
 
 export default function RadioheadPage() {
   const [activeAlbum, setActiveAlbum] = useState<string>(slugify("OK Computer"));
@@ -54,15 +55,12 @@ export default function RadioheadPage() {
   const aCtxRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const freqDataRef = useRef<Uint8Array | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // Audio context setup
+  // Audio context setup — called on user gesture
   const setupAudio = useCallback(() => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio();
-      audioRef.current.preload = "metadata";
-    }
+    const el = document.getElementById("audioEl") as HTMLAudioElement | null;
+    if (!el) return;
     if (!aCtxRef.current) {
       const actx = new (window.AudioContext || (window as any).webkitAudioContext)();
       aCtxRef.current = actx;
@@ -71,11 +69,11 @@ export default function RadioheadPage() {
         analyser.fftSize = 256;
         analyser.smoothingTimeConstant = 0.8;
         freqDataRef.current = new Uint8Array(analyser.frequencyBinCount);
-        const source = actx.createMediaElementSource(audioRef.current!);
-        source.connect(analyser);
+        actx.createMediaElementSource(el).connect(analyser);
         analyser.connect(actx.destination);
         analyserRef.current = analyser;
       } catch (e) {
+        // If createMediaElementSource fails (CORS), still set up analyser for viz
         analyserRef.current = null;
       }
     }
@@ -95,32 +93,38 @@ export default function RadioheadPage() {
   const fmtTime = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
 
   const playTrack = useCallback((albumSlug: string, trackName: string) => {
-    setupAudio();
+    const audio = document.getElementById("audioEl") as HTMLAudioElement | null;
+    if (!audio) return;
     const album = ALBUMS.find(a => slugify(a.name) === albumSlug);
-    if (!album || !audioRef.current) return;
+    if (!album) return;
 
     const idx = album.tracks.indexOf(trackName);
     if (curTrack === trackName && isPlaying) {
-      audioRef.current.pause();
+      audio.pause();
       return;
     }
+
+    // Setup audio context on user gesture
+    setupAudio();
 
     setCurAlbumData(album);
     setCurTrack(trackName);
     setCurIdx(idx);
 
     const fileName = trackName === "Weird Fishes / Arpeggi" ? "Weird Fishes _ Arpeggi" : trackName;
-    audioRef.current.src = R2_AUDIO + encodeURIComponent(fileName + ".mp3");
-    audioRef.current.play();
+    audio.src = R2_AUDIO + encodeURIComponent(fileName + ".mp3");
+    audio.play();
     setIsPlaying(true);
     setShowProgress(true);
   }, [curTrack, isPlaying, setupAudio]);
 
   const playNext = useCallback(() => {
+    const audio = document.getElementById("audioEl") as HTMLAudioElement | null;
     if (!curAlbumData) return;
     if (curIdx + 1 < curAlbumData.tracks.length) {
       playTrack(activeAlbum, curAlbumData.tracks[curIdx + 1]);
     } else {
+      if (audio) { audio.pause(); audio.src = ""; }
       setIsPlaying(false);
       setProgress(0);
       setCurrentTime("0:00 / 0:00");
@@ -148,7 +152,7 @@ export default function RadioheadPage() {
 
   // Audio events
   useEffect(() => {
-    const a = audioRef.current;
+    const a = document.getElementById("audioEl") as HTMLAudioElement | null;
     if (!a) return;
 
     const onTime = () => {
@@ -310,7 +314,7 @@ export default function RadioheadPage() {
           </span>
           <div className="flex-1 h-1 bg-white/[0.06] rounded-sm cursor-pointer overflow-hidden relative"
                onClick={(e) => {
-                 const a = audioRef.current;
+                 const a = document.getElementById("audioEl") as HTMLAudioElement | null;
                  if (a?.duration && isFinite(a.duration)) {
                    const rect = e.currentTarget.getBoundingClientRect();
                    a.currentTime = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * a.duration;
@@ -332,17 +336,17 @@ export default function RadioheadPage() {
             <video ref={videoRef} src={videoUrl} controls autoPlay playsInline className="w-full max-h-[72vh] rounded-lg bg-black" />
             <p className="italic mt-3 text-white/50 text-center">{videoTitle}</p>
             <button onClick={closeVideo}
-                    className="absolute -top-12 right-0 flex items-center justify-center cursor-pointer text-xl rounded-full border border-white/[0.15] bg-white/[0.06] text-white hover:bg-white/[0.15] transition-all z-[200]"
-                    style={{ width: 40, height: 40 }}
-                    aria-label="Close video">
-              ×
-            </button>
+                    className="absolute -top-12 right-0 flex items-center justify-center cursor-pointer rounded-full border border-white/[0.15] bg-white/[0.06] hover:bg-white/[0.15] transition-all"
+                    style={{ width: 40, height: 40, color: "#fff" }}
+                    aria-label="Close video"
+                    dangerouslySetInnerHTML={{ __html: CLOSE_ICON }}
+            />
           </div>
         </div>
       )}
 
       {/* Hidden audio element */}
-      <audio ref={audioRef} preload="metadata" className="hidden" />
+      <audio id="audioEl" preload="metadata" style={{ display: "none" }} />
     </div>
   );
 }
