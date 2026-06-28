@@ -17,19 +17,28 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
+const BAND_NAME = "One Thousand Feet Per Second";
+const TAGLINE =
+  "A project covering the Radiohead discography — hidden gems and deep cuts. Live at Montrose Saloon, July 17.";
+
 export const metadata: Metadata = {
-  title: "FM NOGGIN",
-  description: "Deep cuts. Moody atmospheres. No hits. No safety.",
+  metadataBase: new URL("https://fmnogg.in"),
+  title: {
+    default: BAND_NAME,
+    template: `%s`,
+  },
+  description: TAGLINE,
   openGraph: {
-    title: "FM NOGGIN",
-    description: "Deep cuts. Moody atmospheres. No hits. No safety.",
-    siteName: "FM NOGGIN",
+    title: BAND_NAME,
+    description: TAGLINE,
+    siteName: BAND_NAME,
     type: "website",
+    url: "/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FM NOGGIN",
-    description: "Deep cuts. Moody atmospheres. No hits. No safety.",
+    title: BAND_NAME,
+    description: TAGLINE,
   },
 };
 
