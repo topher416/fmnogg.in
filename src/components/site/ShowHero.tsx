@@ -12,7 +12,7 @@ export default function ShowHero() {
         <img
           src="/images/hero-banner.png"
           alt="One Thousand Feet Per Second — live at Montrose Saloon, July 17"
-          className="block w-full h-[42vh] sm:h-[52vh] md:h-[60vh] object-cover"
+          className="block w-full h-[42vh] sm:h-[52vh] md:h-[60vh] object-contain"
         />
         {/* fade banner bottom into the page background */}
         <div
