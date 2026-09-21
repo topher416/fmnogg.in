@@ -11,7 +11,7 @@ export default function ShowHero() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/hero-banner.png"
-          alt="One Thousand Feet Per Second — live at Montrose Saloon, September 25"
+          alt="A Thousand Feet Per Second — live at Montrose Saloon, September 25"
           className="block w-full h-[42vh] sm:h-[52vh] md:h-[60vh] object-contain"
         />
         {/* fade banner bottom into the page background */}
@@ -48,7 +48,7 @@ export default function ShowHero() {
             className="font-[family-name:var(--font-playfair)] font-bold leading-[0.95] tracking-tight text-[#f0ece6]"
             style={{ fontSize: "clamp(2.6rem, 8vw, 5.5rem)", textShadow: "0 0 80px rgba(0,255,159,0.12)" }}
           >
-            One Thousand
+            A Thousand
             <br />
             Feet Per Second
           </h1>
