@@ -1,4 +1,4 @@
-// Single source of truth for the One Thousand Feet Per Second discography browser.
+// Single source of truth for the A Thousand Feet Per Second discography browser.
 // Plain module (no "use client") so it can be imported by server components,
 // generateStaticParams, generateMetadata, and opengraph-image at build time.
 
