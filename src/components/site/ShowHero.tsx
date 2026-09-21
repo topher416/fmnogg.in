@@ -79,6 +79,9 @@ export default function ShowHero() {
           <p className="mt-2 font-mono text-[0.66rem] uppercase tracking-[0.14em] text-[#00ff9f]/70">
             {SHOW.support}
           </p>
+          <p className="mt-2 font-mono text-[0.66rem] uppercase tracking-[0.14em] text-white/35">
+            Music starts {SHOW.start} · {SHOW.cover} · {SHOW.age} · Our set {SHOW.setTime}
+          </p>
         </div>
       </div>
     </section>
