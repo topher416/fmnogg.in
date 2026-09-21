@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-const BAND_NAME = "One Thousand Feet Per Second";
+const BAND_NAME = "A Thousand Feet Per Second";
 const TAGLINE =
   "A project covering the Radiohead discography — hidden gems and deep cuts. Live at Montrose Saloon, September 25.";
 
