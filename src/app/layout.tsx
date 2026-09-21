@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 
 const BAND_NAME = "One Thousand Feet Per Second";
 const TAGLINE =
-  "A project covering the Radiohead discography — hidden gems and deep cuts. Live at Montrose Saloon, September 25.";
+  "A project covering the Radiohead discography — hidden gems and deep cuts. Live at Montrose Saloon, Friday September 25: music at 7:30pm, $15 at the door, 21+. Our set at 10:30pm.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fmnogg.in"),
