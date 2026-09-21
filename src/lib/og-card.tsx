@@ -63,7 +63,7 @@ export function ogCard({ title, subtitle, color, rgb }: CardOptions): ImageRespo
             fontFamily: "monospace",
           }}
         >
-          One Thousand Feet Per Second
+          A Thousand Feet Per Second
         </div>
       </div>
     ),
