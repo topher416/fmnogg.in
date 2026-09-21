@@ -14,7 +14,7 @@ export default function VideoPlayer({ src, title, color }: VideoPlayerProps) {
       controls
       playsInline
       preload="metadata"
-      aria-label={`${title} — One Thousand Feet Per Second`}
+      aria-label={`${title} — A Thousand Feet Per Second`}
       className="w-full rounded-lg bg-black aspect-video"
       style={{ boxShadow: `0 0 80px -20px ${color}66` }}
     />
