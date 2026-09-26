@@ -1,6 +1,7 @@
 import SiteHeader from "@/components/site/SiteHeader";
 import ShowHero from "@/components/site/ShowHero";
 import AlbumBrowser from "@/components/site/AlbumBrowser";
+import LiveSet from "@/components/site/LiveSet";
 import SiteFooter from "@/components/site/SiteFooter";
 
 export default function Landing() {
@@ -9,6 +10,7 @@ export default function Landing() {
       <SiteHeader />
       <main>
         <ShowHero />
+        <LiveSet />
         <AlbumBrowser />
       </main>
       <SiteFooter />
