@@ -16,6 +16,12 @@ export interface Track {
    * 37 return HTTP 200.
    */
   video?: string;
+  /**
+   * Path to a live recording (public/ URL), e.g.
+   * "/audio/live/montrose-saloon-2026-09-25/02-optimistic.m4a".
+   * Set for tracks performed at the Montrose Saloon show.
+   */
+  liveAudio?: string;
 }
 
 export interface Album {
@@ -52,6 +58,16 @@ function t(title: string, covered: boolean, video?: string): Track {
   return { title, slug: slugify(title), covered, video };
 }
 
+/** Live audio base for the Montrose Saloon 2026-09-25 set. */
+const LIVE_BASE = "/audio/live/montrose-saloon-2026-09-25";
+
+/** Helper to declare a track with a live recording from Montrose Saloon. */
+function tl(title: string, covered: boolean, liveFile: string, video?: string): Track {
+  const tr = t(title, covered, video);
+  tr.liveAudio = `${LIVE_BASE}/${liveFile}`;
+  return tr;
+}
+
 export const ALBUMS: Album[] = [
   {
     name: "Pablo Honey",
@@ -85,7 +101,7 @@ export const ALBUMS: Album[] = [
     bg: "#0a0505",
     mode: "pulse",
     tracks: [
-      t("Planet Telex", true, "Planet Telex"),
+      tl("Planet Telex", true, "09-planet-telex.m4a", "Planet Telex"),
       t("The Bends", true, "The Bends"),
       t("High and Dry", true, "High and Dry"),
       t("Fake Plastic Trees", false),
@@ -116,10 +132,10 @@ export const ALBUMS: Album[] = [
       t("Karma Police", true, "Karma Police"),
       t("Fitter Happier", false),
       t("Electioneering", true, "Electioneering"),
-      t("Climbing Up the Walls", true, "Climbing Up the Walls"),
+      tl("Climbing Up the Walls", true, "03-climbing-up-the-walls.m4a", "Climbing Up the Walls"),
       t("No Surprises", false),
       t("Lucky", true, "Lucky"),
-      t("The Tourist", true, "The Tourist"),
+      tl("The Tourist", true, "05-the-tourist.m4a", "The Tourist"),
       t("I Promise", true, "I Promise"),
     ],
   },
@@ -137,7 +153,7 @@ export const ALBUMS: Album[] = [
       t("The National Anthem", true, "National Anthem"),
       t("How to Disappear Completely", false),
       t("Treefingers", false),
-      t("Optimistic", false),
+      tl("Optimistic", false, "02-optimistic.m4a"),
       t("In Limbo", false),
       t("Idioteque", true, "Idioteque"),
       t("Morning Bell", false),
@@ -179,11 +195,11 @@ export const ALBUMS: Album[] = [
       t("Sit Down. Stand Up.", false),
       t("Sail to the Moon", false),
       t("Backdrifts", false),
-      t("Go to Sleep", false),
+      tl("Go to Sleep", false, "04-go-to-sleep.m4a"),
       t("Where I End and You Begin", false),
       t("We Suck Young Blood", false),
       t("The Gloaming", false),
-      t("There There", true, "There There"),
+      tl("There There", true, "10-there-there.m4a", "There There"),
       t("I Will", false),
       t("A Punch Up at a Wedding", true, "A Punch Up at a Wedding"),
       t("Myxomatosis", true, "Myxomatosis"),
@@ -202,13 +218,13 @@ export const ALBUMS: Album[] = [
     tracks: [
       t("15 Step", false),
       t("Bodysnatchers", true, "Bodysnatchers"),
-      t("Nude", true, "Nude"),
+      tl("Nude", true, "08-nude.m4a", "Nude"),
       t("Weird Fishes / Arpeggi", true, "Weird Fishes _ Arpeggi"),
       t("All I Need", false),
       t("Faust Arp", false),
       t("Reckoner", true, "Reckoner"),
       t("House of Cards", true, "House of Cards"),
-      t("Jigsaw Falling Into Place", true, "Jigsaw Falling Into Place"),
+      tl("Jigsaw Falling Into Place", true, "01-jigsaw-falling-into-place.m4a", "Jigsaw Falling Into Place"),
       t("Videotape", false),
     ],
   },
@@ -240,13 +256,13 @@ export const ALBUMS: Album[] = [
     bg: "#05050a",
     mode: "moon",
     tracks: [
-      t("Burn the Witch", true, "Burn the Witch"),
+      tl("Burn the Witch", true, "07-burn-the-witch.m4a", "Burn the Witch"),
       t("Daydreaming", false),
       t("Decks Dark", true, "Decks Dark"),
       t("Desert Island Disk", false),
       t("Ful Stop", false),
       t("Glass Eyes", false),
-      t("Identikit", false),
+      tl("Identikit", false, "06-identikit.m4a"),
       t("The Numbers", false),
       t("Present Tense", false),
       t("Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Man Thief", false),
@@ -254,6 +270,49 @@ export const ALBUMS: Album[] = [
     ],
   },
 ];
+
+export interface LiveSet {
+  title: string;
+  date: string;
+  dateShort: string;
+  venue: string;
+  city: string;
+  /** Ordered track entries: album slug + track slug for lookup. */
+  tracks: { album: string; track: string }[];
+}
+
+export const LIVE_SETS: LiveSet[] = [
+  {
+    title: "Live at Montrose Saloon",
+    date: "September 25, 2026",
+    dateShort: "Sep 25, 2026",
+    venue: "Montrose Saloon",
+    city: "Chicago, IL",
+    tracks: [
+      { album: "in-rainbows", track: "jigsaw-falling-into-place" },
+      { album: "kid-a", track: "optimistic" },
+      { album: "ok-computer", track: "climbing-up-the-walls" },
+      { album: "hail-to-the-thief", track: "go-to-sleep" },
+      { album: "ok-computer", track: "the-tourist" },
+      { album: "a-moon-shaped-pool", track: "identikit" },
+      { album: "a-moon-shaped-pool", track: "burn-the-witch" },
+      { album: "in-rainbows", track: "nude" },
+      { album: "the-bends", track: "planet-telex" },
+      { album: "hail-to-the-thief", track: "there-there" },
+    ],
+  },
+];
+
+/** Resolve a LiveSet's track entries to full Track objects with album context. */
+export function liveSetTracks(set: LiveSet): { album: Album; track: Track }[] {
+  const out: { album: Album; track: Track }[] = [];
+  for (const e of set.tracks) {
+    const album = getAlbum(e.album);
+    const track = album?.tracks.find((tr) => tr.slug === e.track);
+    if (album && track) out.push({ album, track });
+  }
+  return out;
+}
 
 export function getAlbum(slug: string): Album | undefined {
   return ALBUMS.find((a) => a.slug === slug);
