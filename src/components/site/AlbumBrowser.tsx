@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ALBUMS, coveredTracks } from "@/lib/discography";
+import { ALBUMS, recordedTracks } from "@/lib/discography";
 
 /** Discography index: album, year, % of tracks covered. */
 export default function AlbumBrowser() {
@@ -10,7 +10,7 @@ export default function AlbumBrowser() {
       </p>
       <ol className="divide-y divide-white/[0.05]">
         {ALBUMS.map((album) => {
-          const covered = coveredTracks(album).length;
+          const covered = recordedTracks(album).length;
           const total = album.tracks.length;
           const pct = Math.round((covered / total) * 100);
           return (
