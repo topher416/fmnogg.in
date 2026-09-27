@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 
 const BAND_NAME = "A Thousand Feet Per Second";
 const TAGLINE =
-  "A project covering the Radiohead discography — hidden gems and deep cuts. Live at Montrose Saloon, September 25.";
+  "A Thousand Feet Per Second — a Radiohead cover project based in Chicago.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fmnogg.in"),
@@ -57,3 +57,4 @@ export default function RootLayout({
     </html>
   );
 }
+
