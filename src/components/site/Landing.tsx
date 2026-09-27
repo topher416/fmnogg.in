@@ -1,16 +1,16 @@
-import SiteHeader from "@/components/site/SiteHeader";
-import ShowHero from "@/components/site/ShowHero";
-import AlbumBrowser from "@/components/site/AlbumBrowser";
-import LiveSet from "@/components/site/LiveSet";
-import SiteFooter from "@/components/site/SiteFooter";
+import SiteHeader from "./SiteHeader";
+import SiteFooter from "./SiteFooter";
+import NextShow from "./NextShow";
+import LiveRelease from "./LiveRelease";
+import AlbumBrowser from "./AlbumBrowser";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-[#080808] text-[#c8c0b8]">
+    <div className="min-h-screen bg-[#0a0a0a] text-[#e8e2d9] flex flex-col">
       <SiteHeader />
-      <main>
-        <ShowHero />
-        <LiveSet />
+      <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
+        <NextShow />
+        <LiveRelease />
         <AlbumBrowser />
       </main>
       <SiteFooter />
