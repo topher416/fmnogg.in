@@ -2,16 +2,23 @@
 
 export const BAND = {
   name: "A Thousand Feet Per Second",
-  // Verbatim from the poster. The trailing ellipsis is intentional — it trails off.
-  blurb:
-    "a thousand feet per second is a project focused on the sounds and stylings of Radiohead, with a particular emphasis on hidden gems and deep cuts. Its members are indebted to the Old Town School of Folk Music, whence it was borne…",
   domain: "https://fmnogg.in",
 };
 
+export interface ShowSlot {
+  time: string;
+  act: string;
+}
+
 export const SHOW = {
   venue: "Montrose Saloon",
+  address: "2933 W Montrose Ave",
   city: "Chicago, IL",
-  date: "October 9, 2026",
+  date: "Friday, October 9, 2026",
   dateShort: "Oct 9",
-  support: "with Test Pattern and Three Men*",
+  lineup: [
+    { time: "8:00", act: "A Thousand Feet Per Second" },
+    { time: "9:15", act: "Test Pattern" },
+    { time: "10:30", act: "Three Men*" },
+  ] as ShowSlot[],
 };
