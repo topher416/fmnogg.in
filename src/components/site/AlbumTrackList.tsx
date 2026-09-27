@@ -7,9 +7,9 @@ import type { Album } from "@/lib/discography";
 /**
  * Full tracklist for one album.
  * - Covered tracks link to their video page.
- * - Tracks with a live recording (but no video) get an inline live player
- *   instead of the dimmed "not yet" — the Montrose set fills those gaps.
+ * - Tracks with a live recording (but no video) get an inline live player.
  * - Covered tracks that also have a live recording show a "live" dot.
+ * - Uncovered tracks render quietly, without a label.
  */
 export default function AlbumTrackList({ album }: { album: Album }) {
   const audioRefs = useRef<(HTMLAudioElement | null)[]>([]);
@@ -124,14 +124,13 @@ export default function AlbumTrackList({ album }: { album: Album }) {
         return (
           <li
             key={track.slug}
-            className="grid grid-cols-[28px_1fr_auto] items-center gap-3 px-3 py-3"
+            className="grid grid-cols-[28px_1fr] items-center gap-3 px-3 py-2.5"
           >
             <span className="font-mono text-sm text-right tabular-nums text-white/15">
               {num}
             </span>
-            <span className="text-base leading-tight text-white/25">{track.title}</span>
-            <span className="font-mono text-[0.58rem] uppercase tracking-[0.12em] text-white/15">
-              not yet
+            <span className="text-[0.95rem] leading-tight text-white/25">
+              {track.title}
             </span>
           </li>
         );
@@ -139,3 +138,4 @@ export default function AlbumTrackList({ album }: { album: Album }) {
     </ol>
   );
 }
+
