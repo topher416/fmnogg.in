@@ -5,7 +5,6 @@ import { ALBUMS, getAlbum, coveredTracks } from "@/lib/discography";
 import { BAND } from "@/lib/site";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
-import AmbientViz from "@/components/site/AmbientViz";
 import AlbumTrackList from "@/components/site/AlbumTrackList";
 
 export const dynamicParams = false;
@@ -45,50 +44,36 @@ export default async function AlbumPage({
 
   const covered = coveredTracks(album).length;
   const total = album.tracks.length;
+  const pct = Math.round((covered / total) * 100);
 
   return (
-    <div className="min-h-screen" style={{ background: album.bg, color: "#c8c0b8" }}>
+    <div
+      className="min-h-screen flex flex-col"
+      style={{ background: album.bg, color: "#c8c0b8" }}
+    >
       <SiteHeader crumbs={[{ label: album.name, color: album.color }]} />
 
-      {/* Album header with ambient backdrop */}
-      <section className="relative overflow-hidden border-b border-white/[0.06]">
-        <AmbientViz mode={album.mode} rgb={album.rgb} className="absolute inset-0 opacity-60" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `linear-gradient(to bottom, ${album.bg}66 0%, ${album.bg}40 40%, ${album.bg}f0 100%)`,
-          }}
-        />
-        <div className="relative max-w-[1000px] mx-auto px-5 pt-14 pb-10">
-          <h1
-            className="font-[family-name:var(--font-playfair)] font-bold leading-[0.95] tracking-tight"
-            style={{
-              fontSize: "clamp(2.2rem, 6vw, 4.2rem)",
-              color: album.color,
-              textShadow: `0 0 70px rgba(${album.rgb},0.18)`,
-            }}
-          >
-            {album.name}
-          </h1>
-          <p className="mt-2 font-mono text-[0.66rem] uppercase tracking-[0.16em] text-white/45">
-            {album.year} · {covered} of {total} covered
-          </p>
-        </div>
-      </section>
-
-      {/* Tracklist */}
-      <main className="max-w-[1000px] mx-auto px-5 py-8">
-        <AlbumTrackList album={album} />
-      </main>
-
-      <div className="max-w-[1000px] mx-auto px-5">
+      <main className="flex-1 w-full max-w-[1000px] mx-auto px-5 py-10">
         <Link
           href="/"
           className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-white/35 hover:text-white/70 transition-colors"
         >
           ← All albums
         </Link>
-      </div>
+        <h1
+          className="mt-4 text-[1.6rem] font-bold leading-tight tracking-tight"
+          style={{ color: album.color }}
+        >
+          {album.name}
+        </h1>
+        <p className="mt-1 font-mono text-[0.68rem] text-white/40">
+          {album.year} · {covered} of {total} covered ({pct}%)
+        </p>
+
+        <div className="mt-8">
+          <AlbumTrackList album={album} />
+        </div>
+      </main>
 
       <SiteFooter />
     </div>
