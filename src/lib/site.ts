@@ -11,7 +11,7 @@ export const BAND = {
 export const SHOW = {
   venue: "Montrose Saloon",
   city: "Chicago, IL",
-  date: "September 25, 2026",
-  dateShort: "Sep 25",
-  support: "with The Blue You Once Knew (Pink Floyd tribute)",
+  date: "October 9, 2026",
+  dateShort: "Oct 9",
+  support: "with Test Pattern and Three Men*",
 };
