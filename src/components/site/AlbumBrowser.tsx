@@ -1,59 +1,44 @@
 import Link from "next/link";
 import { ALBUMS, coveredTracks } from "@/lib/discography";
 
-/** Landing browser: a card per album, covered-count badge conveys the mission. */
+/** Discography index: album, year, % of tracks covered. */
 export default function AlbumBrowser() {
   return (
-    <section className="max-w-[1000px] mx-auto px-5 py-12">
-      <h2 className="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-white/35 mb-6">
-        The Discography
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+    <section aria-label="Discography" className="py-10">
+      <p className="mb-2 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-white/35">
+        Discography
+      </p>
+      <ol className="divide-y divide-white/[0.05]">
         {ALBUMS.map((album) => {
           const covered = coveredTracks(album).length;
           const total = album.tracks.length;
           const pct = Math.round((covered / total) * 100);
           return (
-            <Link
-              key={album.slug}
-              href={`/${album.slug}`}
-              className="group relative flex flex-col justify-between rounded-lg border border-white/[0.07] bg-white/[0.015] p-4 transition-all duration-300 hover:bg-white/[0.04] overflow-hidden"
-              style={{ minHeight: 124 }}
-            >
-              <span
-                className="absolute inset-x-0 top-0 h-[3px] opacity-60 transition-opacity duration-300 group-hover:opacity-100"
-                style={{ background: album.color }}
-                aria-hidden
-              />
-              <div>
-                <h3
-                  className="font-[family-name:var(--font-playfair)] text-xl font-semibold leading-tight transition-colors"
-                  style={{ color: album.color }}
-                >
+            <li key={album.slug}>
+              <Link
+                href={`/${album.slug}`}
+                className="group flex items-baseline gap-4 py-3.5"
+                aria-label={`${album.name} (${album.year}) — ${pct}% covered`}
+              >
+                <span
+                  className="h-2 w-2 shrink-0 self-center rounded-[2px]"
+                  style={{ backgroundColor: album.color }}
+                  aria-hidden
+                />
+                <span className="flex-1 text-[0.95rem] text-white/80 transition-colors group-hover:text-white">
                   {album.name}
-                </h3>
-                <p className="mt-0.5 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-white/35">
+                </span>
+                <span className="font-mono text-[0.7rem] tabular-nums text-white/30">
                   {album.year}
-                </p>
-              </div>
-              <div className="mt-4">
-                <div className="flex items-center justify-between font-mono text-[0.6rem] uppercase tracking-[0.12em] text-white/45 mb-1.5">
-                  <span>
-                    {covered} / {total} covered
-                  </span>
-                  <span className="text-white/25">{pct}%</span>
-                </div>
-                <div className="h-1 w-full rounded-full bg-white/[0.07] overflow-hidden">
-                  <span
-                    className="block h-full rounded-full"
-                    style={{ width: `${pct}%`, background: album.color }}
-                  />
-                </div>
-              </div>
-            </Link>
+                </span>
+                <span className="w-11 text-right font-mono text-[0.7rem] tabular-nums text-white/45">
+                  {pct}%
+                </span>
+              </Link>
+            </li>
           );
         })}
-      </div>
+      </ol>
     </section>
   );
 }
