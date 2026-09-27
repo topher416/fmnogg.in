@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ALBUMS, getAlbum, coveredTracks } from "@/lib/discography";
+import { ALBUMS, getAlbum, recordedTracks } from "@/lib/discography";
 import { BAND } from "@/lib/site";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
@@ -21,7 +21,7 @@ export async function generateMetadata({
   const { album: albumSlug } = await params;
   const album = getAlbum(albumSlug);
   if (!album) return {};
-  const covered = coveredTracks(album).length;
+  const covered = recordedTracks(album).length;
   const title = `${album.name} (${album.year}) — ${BAND.name}`;
   const description = `${covered} of ${album.tracks.length} tracks from ${album.name} covered by ${BAND.name}.`;
   return {
@@ -42,7 +42,7 @@ export default async function AlbumPage({
   const album = getAlbum(albumSlug);
   if (!album) notFound();
 
-  const covered = coveredTracks(album).length;
+  const covered = recordedTracks(album).length;
   const total = album.tracks.length;
   const pct = Math.round((covered / total) * 100);
 
