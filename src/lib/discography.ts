@@ -68,6 +68,16 @@ function tl(title: string, covered: boolean, liveFile: string, video?: string): 
   return tr;
 }
 
+/** Live audio base for the Montrose Saloon 2026-07-17 set. */
+const LIVE_BASE_0717 = "/audio/live/montrose-saloon-2026-07-17";
+
+/** Helper to declare a track with a live recording from July 17. */
+function tl17(title: string, covered: boolean, liveFile: string, video?: string): Track {
+  const tr = t(title, covered, video);
+  tr.liveAudio = `${LIVE_BASE_0717}/${liveFile}`;
+  return tr;
+}
+
 export const ALBUMS: Album[] = [
   {
     name: "Pablo Honey",
@@ -107,7 +117,7 @@ export const ALBUMS: Album[] = [
       t("Fake Plastic Trees", false),
       t("Bones", true, "Bones"),
       t("(Nice Dream)", false),
-      t("Just", true, "Just"),
+      tl17("Just", true, "07-just.m4a", "Just"),
       t("My Iron Lung", true, "My Iron Lung"),
       t("Bullet Proof ... I Wish I Was", false),
       t("Black Star", false),
@@ -125,7 +135,7 @@ export const ALBUMS: Album[] = [
     mode: "bars",
     tracks: [
       t("Airbag", true, "Airbag"),
-      t("Paranoid Android", true, "Paranoid Android"),
+      tl17("Paranoid Android", true, "09-paranoid-android.m4a", "Paranoid Android"),
       t("Subterranean Homesick Alien", true, "Subterranean Homesick Alien"),
       t("Exit Music (For a Film)", true, "Exit Music (For a Film)"),
       t("Let Down", true, "Let Down"),
@@ -172,7 +182,7 @@ export const ALBUMS: Album[] = [
       t("Packt Like Sardines in a Crushd Tin Box", false),
       t("Pyramid Song", false),
       t("Pulk / Pull Revolving Doors", false),
-      t("You and Whose Army?", false),
+      tl17("You and Whose Army?", false, "01-you-and-whose-army.m4a"),
       t("I Might Be Wrong", true, "I Might Be Wrong"),
       t("Knives Out", true, "Knives Out"),
       t("Morning Bell / Amnesiac", false),
@@ -191,7 +201,7 @@ export const ALBUMS: Album[] = [
     bg: "#05080a",
     mode: "crystals",
     tracks: [
-      t("2 + 2 = 5", false),
+      tl17("2 + 2 = 5", false, "03-2-plus-2-equals-5.m4a"),
       t("Sit Down. Stand Up.", false),
       t("Sail to the Moon", false),
       t("Backdrifts", false),
@@ -202,7 +212,7 @@ export const ALBUMS: Album[] = [
       tl("There There", true, "10-there-there.m4a", "There There"),
       t("I Will", false),
       t("A Punch Up at a Wedding", true, "A Punch Up at a Wedding"),
-      t("Myxomatosis", true, "Myxomatosis"),
+      tl17("Myxomatosis", true, "05-myxomatosis.m4a", "Myxomatosis"),
       t("Scatterbrain", false),
       t("A Wolf at the Door", false),
     ],
@@ -217,12 +227,12 @@ export const ALBUMS: Album[] = [
     mode: "drip",
     tracks: [
       t("15 Step", false),
-      t("Bodysnatchers", true, "Bodysnatchers"),
+      tl17("Bodysnatchers", true, "02-bodysnatchers.m4a", "Bodysnatchers"),
       tl("Nude", true, "08-nude.m4a", "Nude"),
-      t("Weird Fishes / Arpeggi", true, "Weird Fishes _ Arpeggi"),
+      tl17("Weird Fishes / Arpeggi", true, "04-weird-fishes.m4a", "Weird Fishes _ Arpeggi"),
       t("All I Need", false),
       t("Faust Arp", false),
-      t("Reckoner", true, "Reckoner"),
+      tl17("Reckoner", true, "06-reckoner.m4a", "Reckoner"),
       t("House of Cards", true, "House of Cards"),
       tl("Jigsaw Falling Into Place", true, "01-jigsaw-falling-into-place.m4a", "Jigsaw Falling Into Place"),
       t("Videotape", false),
@@ -301,6 +311,24 @@ export const LIVE_SETS: LiveSet[] = [
       { album: "hail-to-the-thief", track: "there-there" },
     ],
   },
+  {
+    title: "Live at Montrose Saloon",
+    date: "July 17, 2026",
+    dateShort: "Jul 17, 2026",
+    venue: "Montrose Saloon",
+    city: "Chicago, IL",
+    tracks: [
+      { album: "amnesiac", track: "you-and-whose-army" },
+      { album: "in-rainbows", track: "bodysnatchers" },
+      { album: "hail-to-the-thief", track: "2-2-5" },
+      { album: "in-rainbows", track: "weird-fishes-arpeggi" },
+      { album: "hail-to-the-thief", track: "myxomatosis" },
+      { album: "in-rainbows", track: "reckoner" },
+      { album: "the-bends", track: "just" },
+      { album: "in-rainbows", track: "nude" },
+      { album: "ok-computer", track: "paranoid-android" },
+    ],
+  },
 ];
 
 /** Resolve a LiveSet's track entries to full Track objects with album context. */
@@ -320,6 +348,11 @@ export function getAlbum(slug: string): Album | undefined {
 
 export function coveredTracks(album: Album): Track[] {
   return album.tracks.filter((tr) => tr.covered);
+}
+
+/** Tracks with a video or a live audio recording — used for "% covered". */
+export function recordedTracks(album: Album): Track[] {
+  return album.tracks.filter((tr) => tr.covered || tr.liveAudio);
 }
 
 export function getTrack(
