@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BAND } from "@/lib/site";
+import EasterEggName from "./EasterEggName";
 
 interface Crumb {
   label: string;
@@ -12,12 +12,7 @@ export default function SiteHeader({ crumbs = [] }: { crumbs?: Crumb[] }) {
   return (
     <header className="sticky top-0 z-20 bg-[#080808]/85 backdrop-blur-md border-b border-white/[0.06]">
       <div className="max-w-[1000px] mx-auto flex items-center gap-2 px-4 py-3 text-[0.62rem] font-mono uppercase tracking-[0.18em]">
-        <Link
-          href="/"
-          className="text-white/55 hover:text-white transition-colors whitespace-nowrap"
-        >
-          {BAND.name}
-        </Link>
+        <EasterEggName />
         {crumbs.map((c) => (
           <span key={c.label} className="flex items-center gap-2 min-w-0">
             <span className="text-white/20" aria-hidden>
