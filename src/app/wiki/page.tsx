@@ -7,14 +7,14 @@ export const metadata: Metadata = {
 };
 
 const MEMBERS = [
-  ["Peter Manis", "drums"],
-  ["Eric Gorscak", "bass"],
-  ["Jim Svajgl", "electric guitar"],
-  ["Jeff Mauricio", "electric guitar"],
-  ["Drew Kelly", "vocals, electric guitar"],
-  ["Topher Rasmussen", "acoustic, vocals"],
   ["Hannah Enenbach", "vocals"],
+  ["Eric Gorscak", "bass"],
+  ["Drew Kelly", "vocals, electric guitar"],
+  ["Peter Manis", "drums"],
+  ["Jeff Mauricio", "electric guitar"],
+  ["Topher Rasmussen", "acoustic, vocals"],
   ["Andrew Schneider", "keyboards"],
+  ["Jim Svajgl", "electric guitar"],
 ] as const;
 
 function Ref({ n }: { n: number }) {

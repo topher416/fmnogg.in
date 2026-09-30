@@ -19,10 +19,10 @@ const MEMBERS: {
   links?: MemberLink[];
 }[] = [
   {
-    name: "Peter Manis",
-    role: "drums",
+    name: "Hannah Enenbach",
+    role: "vocals",
     bio: null,
-    photo: "/images/members/peter-manis-portrait.png",
+    photo: "/images/members/hannah-enenbach-portrait.png",
   },
   {
     name: "Eric Gorsack",
@@ -31,22 +31,22 @@ const MEMBERS: {
     photo: "/images/members/eric-gorsack-portrait.png",
   },
   {
-    name: "Jim Svagl",
-    role: "electric guitar",
+    name: "Drew Kelly",
+    role: "vocals, electric guitar",
     bio: null,
-    photo: "/images/members/jim-svagl-portrait.png",
+    photo: "/images/members/drew-kelly-portrait.png",
+  },
+  {
+    name: "Peter Manis",
+    role: "drums",
+    bio: null,
+    photo: "/images/members/peter-manis-portrait.png",
   },
   {
     name: "Jeff Mauricio",
     role: "electric guitar",
     bio: null,
     photo: "/images/members/jeff-mauricio-portrait.png",
-  },
-  {
-    name: "Drew Kelly",
-    role: "vocals, electric guitar",
-    bio: null,
-    photo: "/images/members/drew-kelly-portrait.png",
   },
   {
     name: "Topher Rasmussen",
@@ -59,17 +59,17 @@ const MEMBERS: {
     ],
   },
   {
-    name: "Hannah Enenbach",
-    role: "vocals",
-    bio: null,
-    photo: "/images/members/hannah-enenbach-portrait.png",
-  },
-  {
     name: "Andrew Schneider",
     role: "keys",
     bio: null,
     photo: "/images/members/andrew-schneider-portrait.png",
     links: [{ label: "bandcamp", href: "https://ahschneider.bandcamp.com" }],
+  },
+  {
+    name: "Jim Svagl",
+    role: "electric guitar",
+    bio: null,
+    photo: "/images/members/jim-svagl-portrait.png",
   },
 ];
 
