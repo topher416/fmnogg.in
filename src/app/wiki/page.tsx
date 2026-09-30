@@ -204,7 +204,10 @@ export default function WikiPage() {
         <p>
           The group has performed at the{" "}
           <X href="http://www.montrosesaloon.com/">Montrose Saloon</X> in
-          Chicago, appearing on July 17, 2026 and again on September 25, 2026,
+          Chicago, appearing on{" "}
+          <X href="https://youtu.be/XJcWAbuCKhA?si=HG6SQLIY9RUi0uAW">July 17, 2026</X>{" "}
+          and again on{" "}
+          <X href="https://youtu.be/wnTnQ676_RU?si=DpDmDRcXeiF-qevm">September 25, 2026</X>,
           the latter on a bill with the{" "}
           <X href="https://en.wikipedia.org/wiki/Pink_Floyd">Pink Floyd</X>{" "}
           tribute act The Blue You Once Knew.<Ref n={3} /> Both performances
