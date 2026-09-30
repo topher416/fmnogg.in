@@ -9,22 +9,29 @@ export const metadata: Metadata = {
   alternates: { canonical: "/members" },
 };
 
-const MEMBERS: { name: string; role: string; bio: string | null }[] = [
-  {
-    name: "Peter Manis",
-    role: "drums",
-    bio: "Drummer for numerous Chicago bands over the last two decades — Mystery Train, Ember Days, Conspiracy Theories — and a regular in Great Moments in Vinyl tribute projects. The go-to drummer for Old Town School tribute shows: Elton John, Dylan, the Stones, Tom Petty.",
-  },
+type MemberLink = { label: string; href: string };
+
+const MEMBERS: { name: string; role: string; bio: string | null; links?: MemberLink[] }[] = [
+  { name: "Peter Manis", role: "drums", bio: null },
   { name: "Eric Gorsack", role: "bass", bio: null },
   { name: "Jim Svagl", role: "electric guitar", bio: null },
   { name: "Jeff Mauricio", role: "electric guitar", bio: null },
   { name: "Drew Kelly", role: "vocals, electric guitar", bio: null },
-  { name: "Topher Rasmussen", role: "acoustic, vocals", bio: null },
+  {
+    name: "Topher Rasmussen",
+    role: "acoustic, vocals",
+    bio: null,
+    links: [
+      { label: "website", href: "https://topherrasmussen.com" },
+      { label: "bandcamp", href: "https://topherrasmussen.bandcamp.com" },
+    ],
+  },
   { name: "Hannah Enenbach", role: "vocals", bio: null },
   {
     name: "Andrew Schneider",
     role: "keys",
-    bio: "Chicago multi-instrumentalist writing and producing art rock, post-punk, chamber pop, jazz, and psychedelia under his own name. Inspired by XTC, Talking Heads, Joe Jackson, and David Bowie — artists who refuse to commit to a single sound.",
+    bio: null,
+    links: [{ label: "bandcamp", href: "https://ahschneider.bandcamp.com" }],
   },
 ];
 
@@ -64,6 +71,21 @@ export default function MembersPage() {
                 <div className="mt-0.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-white/40">
                   {m.role}
                 </div>
+                {m.links && m.links.length > 0 && (
+                  <div className="mt-1.5 flex items-center gap-3 font-mono text-[0.65rem] text-white/40">
+                    {m.links.map((l) => (
+                      <a
+                        key={l.label}
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline underline-offset-2 decoration-white/20 hover:text-white/70 transition-colors"
+                      >
+                        {l.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
                 {m.bio ? (
                   <p className="mt-2 text-[0.82rem] leading-relaxed text-white/55 max-w-[42rem]">
                     {m.bio}
