@@ -64,7 +64,8 @@ function H3({ id, children }: { id: string; children: React.ReactNode }) {
 export default function WikiPage() {
   return (
     <div className="min-h-screen bg-white text-[#202122]">
-      <main className="max-w-[960px] mx-auto px-4 sm:px-6 py-6 sm:py-10 text-[0.92rem] leading-[1.65]">
+      <style>{`:where(.wiki-article) > p { margin: 0.5em 0 1em 0; }`}</style>
+      <main className="wiki-article max-w-[960px] mx-auto px-4 sm:px-6 py-6 sm:py-10 text-[0.92rem] leading-[1.65]">
         {/* hatnote */}
         <p className="italic text-[0.85rem] text-[#54595d] mb-4 pl-6">
           This article is about the Chicago tribute band. For the Radiohead
