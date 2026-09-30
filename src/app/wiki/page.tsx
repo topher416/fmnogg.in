@@ -51,16 +51,6 @@ export default function WikiPage() {
   return (
     <div className="min-h-screen bg-white text-[#202122]">
       <main className="max-w-[960px] mx-auto px-4 sm:px-6 py-6 sm:py-10 text-[0.92rem] leading-[1.65]">
-        {/* aspirational disclaimer */}
-        <div className="mb-6 border border-[#a2a9b1] bg-[#f8f9fa] px-4 py-3 text-[0.8rem] leading-relaxed flex gap-3">
-          <span className="text-lg leading-none mt-0.5">ⓘ</span>
-          <p>
-            <strong>Aspirational article.</strong> This page is written in the
-            style of an encyclopedia entry and lives on the band&rsquo;s own
-            website. It is not affiliated with Wikipedia — yet.
-          </p>
-        </div>
-
         {/* hatnote */}
         <p className="italic text-[0.85rem] text-[#54595d] mb-4 pl-6">
           This article is about the Chicago tribute band. For the Radiohead
@@ -80,9 +70,6 @@ export default function WikiPage() {
         <aside className="sm:float-right sm:ml-6 sm:mb-4 mb-6 w-full sm:w-[300px] border border-[#a2a9b1] bg-[#f8f9fa] text-[0.82rem] leading-relaxed">
           <div className="bg-[#eaecf0] px-3 py-2 text-center font-bold text-[0.95rem]">
             a thousand feet per second
-          </div>
-          <div className="px-3 py-3 border-b border-[#a2a9b1] flex items-center justify-center h-28 bg-[#e8e2d9] text-[#54595d] font-mono text-[0.7rem] text-center">
-            [ band photo pending ]
           </div>
           <dl className="px-3 py-2">
             {[
@@ -180,9 +167,7 @@ export default function WikiPage() {
           Unusually for a tribute act, the band publishes a running account of
           its repertoire as a percentage of each Radiohead studio album
           covered, treating the complete discography as a work in progress.
-          <Ref n={1} /> Live recordings are released with on-stage
-          introductions and audience ambience intact, a practice the band has
-          described as non-negotiable.<sup className="text-[#3366cc] text-[0.7em]"> [citation needed]</sup>
+          <Ref n={1} /><sup className="text-[#3366cc] text-[0.7em]"> [citation needed]</sup>
         </p>
 
         <H2 id="references">References</H2>
