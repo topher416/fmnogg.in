@@ -1,0 +1,72 @@
+import type { Metadata } from "next";
+import { BAND } from "@/lib/site";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
+
+export const metadata: Metadata = {
+  title: `Members — ${BAND.name}`,
+  description: `The members of ${BAND.name}, a Radiohead cover project based in Chicago.`,
+  alternates: { canonical: "/members" },
+};
+
+const MEMBERS = [
+  { name: "Peter Manis", role: "drums" },
+  { name: "Eric Gorsack", role: "bass" },
+  { name: "Jim Svagl", role: "electric guitar" },
+  { name: "Jeff Mauricio", role: "electric guitar" },
+  { name: "Drew", role: "vocals, electric guitar" },
+  { name: "Topher Rasmussen", role: "acoustic, vocals" },
+  { name: "Hannah Enenbach", role: "vocals" },
+  { name: "Andrew Schneider", role: "keys" },
+];
+
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
+export default function MembersPage() {
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-[#e8e2d9] flex flex-col">
+      <SiteHeader crumbs={[{ label: "members" }]} />
+
+      <main className="flex-1 w-full max-w-[1000px] mx-auto px-5 py-10">
+        <h1 className="text-[1.6rem] font-bold leading-tight tracking-tight">
+          Members
+        </h1>
+        <p className="mt-1 font-mono text-[0.68rem] text-white/40">
+          {MEMBERS.length} players · Chicago, IL
+        </p>
+
+        <ul className="mt-8 space-y-6">
+          {MEMBERS.map((m) => (
+            <li key={m.name} className="flex gap-4 sm:gap-5 items-start">
+              {/* photo goes here */}
+              <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 border border-white/10 bg-white/[0.02] flex items-center justify-center font-mono text-lg text-white/25 select-none">
+                {initials(m.name)}
+              </div>
+              <div className="min-w-0 pt-1">
+                <div className="text-[1.05rem] font-medium text-white/90">
+                  {m.name}
+                </div>
+                <div className="mt-0.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-white/40">
+                  {m.role}
+                </div>
+                {/* bio goes here */}
+                <p className="mt-2 font-mono text-[0.65rem] text-white/25">
+                  bio coming soon
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
