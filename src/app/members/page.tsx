@@ -25,10 +25,10 @@ const MEMBERS: {
     photo: "/images/members/hannah-enenbach-portrait.png",
   },
   {
-    name: "Eric Gorsack",
+    name: "Eric Gorscak",
     role: "bass",
     bio: null,
-    photo: "/images/members/eric-gorsack-portrait.png",
+    photo: "/images/members/eric-gorscak-portrait.png",
   },
   {
     name: "Drew Kelly",
@@ -66,10 +66,10 @@ const MEMBERS: {
     links: [{ label: "bandcamp", href: "https://ahschneider.bandcamp.com" }],
   },
   {
-    name: "Jim Svagl",
+    name: "Jim Svajgl",
     role: "electric guitar",
     bio: null,
-    photo: "/images/members/jim-svagl-portrait.png",
+    photo: "/images/members/jim-svajgl-portrait.png",
   },
 ];
 
