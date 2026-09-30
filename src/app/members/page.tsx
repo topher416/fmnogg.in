@@ -11,26 +11,64 @@ export const metadata: Metadata = {
 
 type MemberLink = { label: string; href: string };
 
-const MEMBERS: { name: string; role: string; bio: string | null; links?: MemberLink[] }[] = [
-  { name: "Peter Manis", role: "drums", bio: null },
-  { name: "Eric Gorsack", role: "bass", bio: null },
-  { name: "Jim Svagl", role: "electric guitar", bio: null },
-  { name: "Jeff Mauricio", role: "electric guitar", bio: null },
-  { name: "Drew Kelly", role: "vocals, electric guitar", bio: null },
+const MEMBERS: {
+  name: string;
+  role: string;
+  bio: string | null;
+  photo: string;
+  links?: MemberLink[];
+}[] = [
+  {
+    name: "Peter Manis",
+    role: "drums",
+    bio: null,
+    photo: "/images/members/peter-manis-portrait.png",
+  },
+  {
+    name: "Eric Gorsack",
+    role: "bass",
+    bio: null,
+    photo: "/images/members/eric-gorsack-portrait.png",
+  },
+  {
+    name: "Jim Svagl",
+    role: "electric guitar",
+    bio: null,
+    photo: "/images/members/jim-svagl-portrait.png",
+  },
+  {
+    name: "Jeff Mauricio",
+    role: "electric guitar",
+    bio: null,
+    photo: "/images/members/jeff-mauricio-portrait.png",
+  },
+  {
+    name: "Drew Kelly",
+    role: "vocals, electric guitar",
+    bio: null,
+    photo: "/images/members/drew-kelly-portrait.png",
+  },
   {
     name: "Topher Rasmussen",
     role: "acoustic, vocals",
     bio: null,
+    photo: "/images/members/topher-rasmussen-portrait.png",
     links: [
       { label: "website", href: "https://topherrasmussen.com" },
       { label: "bandcamp", href: "https://topherrasmussen.bandcamp.com" },
     ],
   },
-  { name: "Hannah Enenbach", role: "vocals", bio: null },
+  {
+    name: "Hannah Enenbach",
+    role: "vocals",
+    bio: null,
+    photo: "/images/members/hannah-enenbach-portrait.png",
+  },
   {
     name: "Andrew Schneider",
     role: "keys",
     bio: null,
+    photo: "/images/members/andrew-schneider-portrait.png",
     links: [{ label: "bandcamp", href: "https://ahschneider.bandcamp.com" }],
   },
 ];
@@ -60,10 +98,17 @@ export default function MembersPage() {
         <ul className="mt-8 space-y-6">
           {MEMBERS.map((m) => (
             <li key={m.name} className="flex gap-4 sm:gap-5 items-start">
-              {/* photo goes here */}
-              <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 border border-white/10 bg-white/[0.02] flex items-center justify-center font-mono text-lg text-white/25 select-none">
-                {initials(m.name)}
-              </div>
+              {m.photo ? (
+                <img
+                  src={m.photo}
+                  alt={m.name}
+                  className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 border border-white/10 object-cover"
+                />
+              ) : (
+                <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 border border-white/10 bg-white/[0.02] flex items-center justify-center font-mono text-lg text-white/25 select-none">
+                  {initials(m.name)}
+                </div>
+              )}
               <div className="min-w-0 pt-1">
                 <div className="text-[1.05rem] font-medium text-white/90">
                   {m.name}
