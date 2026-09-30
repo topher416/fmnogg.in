@@ -9,15 +9,23 @@ export const metadata: Metadata = {
   alternates: { canonical: "/members" },
 };
 
-const MEMBERS = [
-  { name: "Peter Manis", role: "drums" },
-  { name: "Eric Gorsack", role: "bass" },
-  { name: "Jim Svagl", role: "electric guitar" },
-  { name: "Jeff Mauricio", role: "electric guitar" },
-  { name: "Drew", role: "vocals, electric guitar" },
-  { name: "Topher Rasmussen", role: "acoustic, vocals" },
-  { name: "Hannah Enenbach", role: "vocals" },
-  { name: "Andrew Schneider", role: "keys" },
+const MEMBERS: { name: string; role: string; bio: string | null }[] = [
+  {
+    name: "Peter Manis",
+    role: "drums",
+    bio: "Drummer for numerous Chicago bands over the last two decades — Mystery Train, Ember Days, Conspiracy Theories — and a regular in Great Moments in Vinyl tribute projects. The go-to drummer for Old Town School tribute shows: Elton John, Dylan, the Stones, Tom Petty.",
+  },
+  { name: "Eric Gorsack", role: "bass", bio: null },
+  { name: "Jim Svagl", role: "electric guitar", bio: null },
+  { name: "Jeff Mauricio", role: "electric guitar", bio: null },
+  { name: "Drew Kelly", role: "vocals, electric guitar", bio: null },
+  { name: "Topher Rasmussen", role: "acoustic, vocals", bio: null },
+  { name: "Hannah Enenbach", role: "vocals", bio: null },
+  {
+    name: "Andrew Schneider",
+    role: "keys",
+    bio: "Chicago multi-instrumentalist writing and producing art rock, post-punk, chamber pop, jazz, and psychedelia under his own name. Inspired by XTC, Talking Heads, Joe Jackson, and David Bowie — artists who refuse to commit to a single sound.",
+  },
 ];
 
 function initials(name: string) {
@@ -56,10 +64,15 @@ export default function MembersPage() {
                 <div className="mt-0.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-white/40">
                   {m.role}
                 </div>
-                {/* bio goes here */}
-                <p className="mt-2 font-mono text-[0.65rem] text-white/25">
-                  bio coming soon
-                </p>
+                {m.bio ? (
+                  <p className="mt-2 text-[0.82rem] leading-relaxed text-white/55 max-w-[42rem]">
+                    {m.bio}
+                  </p>
+                ) : (
+                  <p className="mt-2 font-mono text-[0.65rem] text-white/25">
+                    bio coming soon
+                  </p>
+                )}
               </div>
             </li>
           ))}
