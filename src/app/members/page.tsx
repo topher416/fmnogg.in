@@ -23,6 +23,7 @@ const MEMBERS: {
     role: "vocals",
     bio: null,
     photo: "/images/members/hannah-enenbach-portrait.png",
+    links: [{ label: "bandcamp", href: "https://hannahbackward.bandcamp.com" }],
   },
   {
     name: "Eric Gorscak",
