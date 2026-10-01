@@ -14,10 +14,10 @@ export default function SiteFooter() {
             members
           </Link>
           <Link
-            href="/practice"
+            href="/wiki"
             className="text-white/25 hover:text-white/60 transition-colors"
           >
-            practice
+            about
           </Link>
         </div>
       </div>
