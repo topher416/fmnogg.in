@@ -162,7 +162,7 @@ export default function WikiPage() {
           class at the{" "}
           <X href="https://www.oldtownschool.org/">Old Town School of Folk Music</X>{" "}
           in Chicago&rsquo;s Lincoln Square, led by instructor{" "}
-          <X href="https://www.oldtownschool.org/teachers/John-Mead">John Mead</X>.
+          <X href="https://www.johnlmead.com/">John Mead</X>.
           <Ref n={5} /> The school&rsquo;s ensemble program places
           intermediate-level players in working bands under the motto
           &ldquo;There is no &lsquo;I&rsquo; in band,&rdquo; with most classes
