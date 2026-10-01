@@ -132,22 +132,68 @@ export default function MotionBackdrop() {
           animation, resolution stops being a question. Paint is bold and stained-glass;
           pencil is lighter, more ethereal.
         </p>
+        <p className="mt-4 max-w-2xl text-white/60 leading-relaxed">
+          And two from the opposite direction — no transformation, just an honest,
+          consistent grade with film grain: <em className="text-white/80 not-italic underline decoration-white/30 underline-offset-4">clean</em> keeps
+          the stage color; <em className="text-white/80 not-italic underline decoration-white/30 underline-offset-4">noir</em> drops
+          it, which unifies the red/purple light into something archival.
+        </p>
+        <style>{`
+          @keyframes rotoGrain {
+            0% { background-position: 0 0; }
+            25% { background-position: -42px 28px; }
+            50% { background-position: 30px -46px; }
+            75% { background-position: -24px -18px; }
+            100% { background-position: 0 0; }
+          }
+          .roto-grain {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.5'/></svg>");
+            background-size: 160px 160px;
+            animation: rotoGrain 0.9s steps(4) infinite;
+          }
+        `}</style>
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           <figure>
-            <video
-              className="aspect-square w-full object-cover"
-              src="/motion/candidates/roto-paint-test.mp4"
-              muted loop playsInline autoPlay preload="auto"
-            />
+            <div className="relative aspect-square w-full overflow-hidden">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src="/motion/candidates/roto-paint-test.mp4"
+                muted loop playsInline autoPlay preload="auto"
+              />
+            </div>
             <figcaption className="mt-2 text-xs uppercase tracking-[0.25em] text-white/40">paint</figcaption>
           </figure>
           <figure>
-            <video
-              className="aspect-square w-full object-cover"
-              src="/motion/candidates/roto-pencil-test.mp4"
-              muted loop playsInline autoPlay preload="auto"
-            />
+            <div className="relative aspect-square w-full overflow-hidden">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src="/motion/candidates/roto-pencil-test.mp4"
+                muted loop playsInline autoPlay preload="auto"
+              />
+            </div>
             <figcaption className="mt-2 text-xs uppercase tracking-[0.25em] text-white/40">pencil</figcaption>
+          </figure>
+          <figure>
+            <div className="relative aspect-square w-full overflow-hidden">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src="/motion/candidates/roto-clean-test.mp4"
+                muted loop playsInline autoPlay preload="auto"
+              />
+              <div className="roto-grain pointer-events-none absolute inset-0 opacity-[0.10] mix-blend-overlay" />
+            </div>
+            <figcaption className="mt-2 text-xs uppercase tracking-[0.25em] text-white/40">clean</figcaption>
+          </figure>
+          <figure>
+            <div className="relative aspect-square w-full overflow-hidden">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src="/motion/candidates/roto-noir-test.mp4"
+                muted loop playsInline autoPlay preload="auto"
+              />
+              <div className="roto-grain pointer-events-none absolute inset-0 opacity-[0.12] mix-blend-overlay" />
+            </div>
+            <figcaption className="mt-2 text-xs uppercase tracking-[0.25em] text-white/40">noir</figcaption>
           </figure>
         </div>
       </section>
