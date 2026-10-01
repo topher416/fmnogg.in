@@ -92,7 +92,7 @@ export default function WikiPage() {
               ["Genres", "Alternative rock · tribute act"],
               ["Years active", "2026–present"],
               ["Labels", "Independent"],
-              ["Website", "fmnogg.in"],
+              ["Website", "athousandfeetpersecond.com"],
             ].map(([k, v]) => (
               <div key={k} className="flex gap-2 py-1 border-b border-[#eaecf0] last:border-0">
                 <dt className="font-bold w-[92px] shrink-0">{k}</dt>
@@ -121,7 +121,7 @@ export default function WikiPage() {
           performs the music of the English rock band{" "}
           <X href="https://en.wikipedia.org/wiki/Radiohead">Radiohead</X>,
           and documents its repertoire and live performances on its website,{" "}
-          <X href="http://fmnogg.in">fmnogg.in</X>.<Ref n={1} />
+          <X href="https://athousandfeetpersecond.com">athousandfeetpersecond.com</X>.<Ref n={1} />
         </p>
         <p>
           The band&rsquo;s name is taken from a lyric in &ldquo;The
@@ -211,7 +211,7 @@ export default function WikiPage() {
           the latter on a bill with the{" "}
           <X href="https://en.wikipedia.org/wiki/Pink_Floyd">Pink Floyd</X>{" "}
           tribute act The Blue You Once Knew.<Ref n={3} /> Both performances
-          were recorded and released as free live recordings on fmnogg.in.
+          were recorded and released as free live recordings on athousandfeetpersecond.com.
           <Ref n={1} /> A third Montrose Saloon appearance was scheduled for
           October 9, 2026, alongside Test Pattern and Three Men*.
           <Ref n={4} />
@@ -272,13 +272,13 @@ export default function WikiPage() {
         <H2 id="references">References</H2>
         <ol className="list-decimal pl-6 space-y-1 text-[0.85rem]">
           <li id="ref-1">
-            fmnogg.in — official site and repertoire archive.
+            athousandfeetpersecond.com — official site and repertoire archive.
           </li>
           <li id="ref-2">
             Radiohead, <em>OK Computer</em> (1997), track 12, &ldquo;The Tourist&rdquo;.
           </li>
           <li id="ref-3">
-            fmnogg.in — live recordings, Montrose Saloon, July 17 and September 25, 2026.
+            athousandfeetpersecond.com — live recordings, Montrose Saloon, July 17 and September 25, 2026.
           </li>
           <li id="ref-4">
             Montrose Saloon listing, October 9, 2026.
@@ -305,8 +305,8 @@ export default function WikiPage() {
 
         <H2 id="external-links">External links</H2>
         <ul className="list-disc pl-6 space-y-1 text-[#3366cc]">
-          <li><a href="https://fmnogg.in" className="hover:underline">Official website</a></li>
-          <li><a href="https://fmnogg.in/members" className="hover:underline">Band members</a></li>
+          <li><a href="https://athousandfeetpersecond.com" className="hover:underline">Official website</a></li>
+          <li><a href="https://athousandfeetpersecond.com/members" className="hover:underline">Band members</a></li>
         </ul>
 
         {/* stub template */}
