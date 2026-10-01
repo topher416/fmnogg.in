@@ -67,10 +67,10 @@ const MEMBERS: {
     links: [{ label: "bandcamp", href: "https://ahschneider.bandcamp.com" }],
   },
   {
-    name: "Jim Svajgl",
+    name: "Jim",
     role: "electric guitar",
     bio: null,
-    photo: "/images/members/jim-svajgl-portrait.png",
+    photo: "/images/members/jim-portrait.png",
   },
 ];
 

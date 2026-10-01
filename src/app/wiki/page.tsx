@@ -14,7 +14,7 @@ const MEMBERS = [
   ["Jeff Mauricio", "electric guitar"],
   ["Topher Rasmussen", "acoustic, vocals"],
   ["Andrew Schneider", "keyboards"],
-  ["Jim Svajgl", "electric guitar"],
+  ["Jim", "electric guitar"],
 ] as const;
 
 function Ref({ n }: { n: number }) {
