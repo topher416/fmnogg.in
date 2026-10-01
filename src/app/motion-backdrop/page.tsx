@@ -121,6 +121,37 @@ export default function MotionBackdrop() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <p className="text-[11px] uppercase tracking-[0.3em] text-white/40">rotoscope tests</p>
+        <h2 className="mt-4 text-2xl md:text-4xl font-bold leading-tight">
+          What if it's not video at all?
+        </h2>
+        <p className="mt-4 max-w-2xl text-white/60 leading-relaxed">
+          Two 5-second animation tests, drawn from the singers clip — every frame
+          restyled, held on twos like limited animation. If the footage becomes
+          animation, resolution stops being a question. Paint is bold and stained-glass;
+          pencil is lighter, more ethereal.
+        </p>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <figure>
+            <video
+              className="aspect-square w-full object-cover"
+              src="/motion/candidates/roto-paint-test.mp4"
+              muted loop playsInline autoPlay preload="auto"
+            />
+            <figcaption className="mt-2 text-xs uppercase tracking-[0.25em] text-white/40">paint</figcaption>
+          </figure>
+          <figure>
+            <video
+              className="aspect-square w-full object-cover"
+              src="/motion/candidates/roto-pencil-test.mp4"
+              muted loop playsInline autoPlay preload="auto"
+            />
+            <figcaption className="mt-2 text-xs uppercase tracking-[0.25em] text-white/40">pencil</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <footer className="mx-auto max-w-3xl px-6 py-12">
         <p className="text-sm text-white/40 leading-relaxed">
           Pick a treatment — or mix them (dither on the drums, blur on the faces, etc.).
