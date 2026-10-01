@@ -1,165 +1,170 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "motion — backdrop studies",
-  description: "Internal preview: fullscreen backdrop arrangements of the motion collage.",
+  title: "motion backdrop — study",
   robots: { index: false, follow: false },
 };
 
-const SRC = (f: string) => `/motion/candidates/${f}`;
-
-function Tile({ src, label, className = "" }: { src: string; label: string; className?: string }) {
-  return (
-    <div className={`relative min-h-0 min-w-0 overflow-hidden bg-black ${className}`}>
-      <video
-        src={SRC(src)}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        tabIndex={-1}
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-      <span className="absolute left-2 top-2 bg-black/45 px-1.5 py-0.5 text-[10px] tracking-[0.18em] text-white/60">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-const TILES = [
-  { src: "y8-drums.mp4", label: "DRUMS", cls: "drums" },
-  { src: "y4-singer-face.mp4", label: "SINGERS", cls: "singers" },
-  { src: "y2-acoustic-strum.mp4", label: "STRUM", cls: "strum" },
-  { src: "y5-vocalist-face.mp4", label: "VOCALIST", cls: "vocalist" },
-  { src: "y1-bass-hand.mp4", label: "BASS", cls: "bass" },
-  { src: "y3-electric-hands.mp4", label: "ELECTRICS", cls: "electrics" },
-  { src: "y6-guitar-arm.mp4", label: "GUITAR", cls: "guitar" },
-  { src: "y7-bassist-head.mp4", label: "HEAD NOD", cls: "head" },
-  { src: "y9-keys.mp4", label: "KEYS", cls: "keys" },
+// (subject, chunky, dither, smooth, height svh, width fr)
+const SLICES: Array<[string, string, string, string, number, number]> = [
+  ["drums", "y8-drums.mp4", "d8-drums.mp4", "e8-drums.mp4", 92, 1.5],
+  ["singers", "y4-singer-face.mp4", "d4-singer-face.mp4", "e4-singer-face.mp4", 68, 1.0],
+  ["strum", "y2-acoustic-strum.mp4", "d2-acoustic-strum.mp4", "e2-acoustic-strum.mp4", 100, 0.85],
+  ["vocalist", "y5-vocalist-face.mp4", "d5-vocalist-face.mp4", "e5-vocalist-face.mp4", 76, 1.25],
+  ["bass", "y1-bass-hand.mp4", "d1-bass-hand.mp4", "e1-bass-hand.mp4", 88, 0.95],
+  ["electrics", "y3-electric-hands.mp4", "d3-electric-hands.mp4", "e3-electric-hands.mp4", 62, 1.35],
+  ["guitar", "y6-guitar-arm.mp4", "d6-guitar-arm.mp4", "e6-guitar-arm.mp4", 96, 0.8],
+  ["head", "y7-bassist-head.mp4", "d7-bassist-head.mp4", "e7-bassist-head.mp4", 72, 0.95],
+  ["keys", "y9-keys.mp4", "d9-keys.mp4", "e9-keys.mp4", 84, 1.15],
 ];
 
+const TREATMENTS = [
+  ["chunky", "chunky"],
+  ["dither", "dither"],
+  ["smooth", "smooth"],
+  ["blur", "blur"],
+] as const;
+
 export default function MotionBackdrop() {
+  const cols = SLICES.map((s) => `${s[5]}fr`).join(" ");
   return (
-    <main className="bg-[#0a0a0a] text-[#e8e4dc]">
-      <style>{`
-        .wall { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(6, minmax(0, 1fr)); height: 100svh; gap: 2px; background: #000; }
-        .wall .drums    { grid-area: 1 / 1 / 4 / 5; }
-        .wall .singers  { grid-area: 1 / 5 / 3 / 10; }
-        .wall .strum    { grid-area: 1 / 10 / 3 / 13; }
-        .wall .vocalist { grid-area: 3 / 5 / 5 / 9; }
-        .wall .bass     { grid-area: 3 / 9 / 5 / 13; }
-        .wall .electrics{ grid-area: 4 / 1 / 7 / 5; }
-        .wall .guitar   { grid-area: 5 / 5 / 7 / 8; }
-        .wall .head     { grid-area: 5 / 8 / 7 / 10; }
-        .wall .keys     { grid-area: 5 / 10 / 7 / 13; }
-        @media (max-width: 768px) {
-          .wall { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; grid-auto-rows: 44svw; height: auto; min-height: 100svh; }
-          .wall > div { grid-area: auto !important; }
-          .wall .drums { grid-column: span 2; grid-row: span 2; }
-        }
-        .cluster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-        .cluster > div { aspect-ratio: 1 / 1; }
-      `}</style>
-
+    <main className="min-h-screen bg-black text-white antialiased">
       {/* intro */}
-      <div className="mx-auto max-w-3xl px-5 pb-10 pt-12">
-        <h1 className="mb-3 font-serif text-2xl">backdrop studies</h1>
-        <p className="mb-2 max-w-2xl text-sm leading-relaxed text-[#a09a8e]">
-          Two ways the nine round-3 clips could live as a fullscreen site backdrop.
-          These studies use the survey clips, each cut from a different moment —
-          the real thing gets cut from a <em>single</em> window so every tile
-          breathes in sync.
+      <header className="mx-auto max-w-3xl px-6 pt-16 pb-10">
+        <p className="text-[11px] uppercase tracking-[0.3em] text-white/40">
+          <a href="/" className="underline underline-offset-4 hover:text-white/70">home</a>
+          {"  ·  "}motion backdrop — study 03
         </p>
-        <p className="max-w-2xl text-sm leading-relaxed text-[#a09a8e]">
-          Tiny labels are just so we can talk about tiles by name; they come off
-          in the real build.
+        <h1 className="mt-6 text-3xl md:text-5xl font-bold leading-tight">
+          negative space, rebuilt as irregular vertical slices.
+        </h1>
+        <p className="mt-5 text-white/60 leading-relaxed">
+          No labels. Nine slices of different widths and heights, bottom-aligned so the
+          tops stagger. Flip between the four treatments below — chunky is the raw
+          nearest-neighbor upscale, dither is 32-color ordered Bayer, smooth is a
+          lanczos upscale with sharpening, blur is a soft CSS pass. The pixelation
+          should read as a decision, not a limitation.
         </p>
-      </div>
+        <p className="mt-3 text-white/40 text-sm leading-relaxed">
+          Still survey clips from different moments — the final build gets cut from one
+          25-second window so all nine slices move in sync.
+        </p>
+      </header>
 
-      {/* 01 — the wall */}
-      <div className="px-5 pb-4">
-        <div className="mx-auto max-w-3xl">
-          <div className="text-[11px] tracking-[0.25em] text-[#8a8478]">01 — THE WALL</div>
-          <p className="mt-1 max-w-2xl text-sm text-[#a09a8e]">
-            Full-bleed mosaic, edge to edge. Drums anchor the left, singers burn
-            across the top. Type sits on top of the motion.
-          </p>
-        </div>
-      </div>
-      <section aria-label="study 1: full-bleed mosaic" className="relative">
-        <div className="wall">
-          {TILES.map((t) => (
-            <Tile key={t.src} src={t.src} label={t.label} className={t.cls} />
+      {/* treatment switcher */}
+      <div className="sticky top-0 z-20 border-y border-white/10 bg-black/80 backdrop-blur-md">
+        <div className="mx-auto flex max-w-3xl items-center gap-2 px-6 py-3">
+          <span className="mr-2 text-[11px] uppercase tracking-[0.25em] text-white/40">treatment</span>
+          {TREATMENTS.map(([key, label]) => (
+            <button
+              key={key}
+              data-treat-btn={key}
+              aria-pressed={key === "chunky" ? "true" : "false"}
+              className="treat-btn rounded-full border px-4 py-1.5 text-xs uppercase tracking-[0.2em] transition-colors border-white/25 text-white/60 hover:border-white/60 hover:text-white"
+            >
+              {label}
+            </button>
           ))}
         </div>
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/70 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-        <div className="pointer-events-none absolute left-0 right-0 top-0 flex items-center justify-between px-5 py-4 text-[11px] tracking-[0.25em] text-white/70 md:px-8">
-          <span>a thousand feet per second</span>
-          <span className="hidden sm:inline">music&ensp;·&ensp;shows&ensp;·&ensp;about</span>
-        </div>
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 px-5 pb-8 md:px-8 md:pb-10">
-          <h2 className="font-serif text-[11vw] leading-[0.95] text-[#f2ede3] md:text-[6.5vw]">
-            a thousand feet
-            <br />
-            per second
-          </h2>
-          <p className="mt-3 text-[11px] tracking-[0.25em] text-white/60">
-            OCTOBER 9&ensp;·&ensp;MONTROSE SALOON&ensp;·&ensp;CHICAGO
-          </p>
-        </div>
-      </section>
-
-      {/* 02 — negative space */}
-      <div className="px-5 pb-4 pt-16">
-        <div className="mx-auto max-w-3xl">
-          <div className="text-[11px] tracking-[0.25em] text-[#8a8478]">02 — NEGATIVE SPACE</div>
-          <p className="mt-1 max-w-2xl text-sm text-[#a09a8e]">
-            The collage holds the right side as one tight block; the left stays
-            empty for type. Quieter, more poster-like.
-          </p>
-        </div>
       </div>
-      <section
-        aria-label="study 2: collage with negative space"
-        className="flex min-h-[100svh] flex-col justify-center gap-10 px-5 py-16 md:flex-row md:items-center md:gap-16 md:px-12"
-      >
-        <div className="md:w-[42%]">
-          <p className="mb-4 text-[11px] tracking-[0.25em] text-white/60">
-            OCTOBER 9&ensp;·&ensp;MONTROSE SALOON&ensp;·&ensp;CHICAGO
+
+      {/* the study */}
+      <section id="study" className="flex min-h-[100svh] flex-col md:flex-row">
+        {/* left: type */}
+        <div className="relative z-10 flex w-full flex-col justify-end px-6 pb-10 pt-24 md:w-[38%] md:px-12 md:pb-16">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-white/50">
+            live at montrose saloon — july 17, 2026
           </p>
-          <h2 className="font-serif text-[13vw] leading-[0.95] text-[#f2ede3] md:text-[5.2vw]">
-            a thousand feet
+          <h2 className="mt-4 text-[13vw] font-black leading-[0.85] tracking-tight md:text-[6.5vw]">
+            a thousand
             <br />
-            per second
+            feet per
+            <br />
+            second
           </h2>
-          <p className="mt-6 max-w-md text-sm leading-relaxed text-[#a09a8e]">
-            Eight musicians playing Radiohead loud in a small room, cut into
-            nine pieces and set moving behind the words.
+          <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/60">
+            eight musicians. radiohead, deep cuts.
+            <br />
+            <span className="text-white/90">friday october 9 — montrose saloon, chicago.</span>
           </p>
         </div>
-        <div className="md:w-[52%]">
-          <div className="cluster">
-            {TILES.map((t) => (
-              <Tile key={t.src} src={t.src} label={t.label} />
+
+        {/* right: slices */}
+        <div className="relative w-full md:w-[62%]">
+          <div
+            id="slices"
+            className="flex h-[72svh] gap-1 overflow-x-auto px-2 pb-2 md:grid md:h-[100svh] md:gap-[3px] md:overflow-visible md:px-0 md:pb-0"
+            style={{ gridTemplateColumns: cols }}
+          >
+            {SLICES.map(([subject, chunky, dither, smooth, h]) => (
+              <div
+                key={subject}
+                className="slice snap-center relative w-[62vw] shrink-0 self-end overflow-hidden bg-neutral-950 md:w-auto"
+                style={{ height: `${h}svh` }}
+              >
+                <video
+                  className="slice-video h-full w-full object-cover"
+                  data-chunky={`/motion/candidates/${chunky}`}
+                  data-dither={`/motion/candidates/${dither}`}
+                  data-smooth={`/motion/candidates/${smooth}`}
+                  data-blur={`/motion/candidates/${chunky}`}
+                  src={`/motion/candidates/${chunky}`}
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                  preload="auto"
+                />
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="mx-auto max-w-3xl px-5 py-12">
-        <p className="text-sm leading-relaxed text-[#a09a8e]">
-          Tell me which direction — or what to steal from each. Next step after
-          that: one 25-second window, all nine tiles cut from it, playing in sync.
+      <footer className="mx-auto max-w-3xl px-6 py-12">
+        <p className="text-sm text-white/40 leading-relaxed">
+          Pick a treatment — or mix them (dither on the drums, blur on the faces, etc.).
+          Once the treatment and the slice rhythm feel right, the final cut comes from
+          one 25-second window, in sync.
         </p>
-      </div>
+      </footer>
+
+      <style>{`
+        .slice-video.blurred { filter: blur(3px) saturate(1.3); }
+        .treat-btn.active-treat { border-color: #fff !important; background: #fff; color: #000 !important; }
+      `}</style>
 
       <script
         dangerouslySetInnerHTML={{
-          __html: `if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('video').forEach(function(v){v.pause();});`,
+          __html: `
+            (function(){
+              var btns = Array.prototype.slice.call(document.querySelectorAll('[data-treat-btn]'));
+              var vids = Array.prototype.slice.call(document.querySelectorAll('#slices video'));
+              function setTreatment(name){
+                vids.forEach(function(v){
+                  var src = v.getAttribute('data-' + name);
+                  if (src && v.getAttribute('src') !== src) {
+                    v.src = src;
+                    try { v.load(); var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
+                  }
+                  v.classList.toggle('blurred', name === 'blur');
+                });
+                btns.forEach(function(b){
+                  var on = b.getAttribute('data-treat-btn') === name;
+                  b.classList.toggle('active-treat', on);
+                  b.setAttribute('aria-pressed', on ? 'true' : 'false');
+                });
+              }
+              btns.forEach(function(b){
+                b.addEventListener('click', function(){ setTreatment(b.getAttribute('data-treat-btn')); });
+              });
+              // reduced motion: pause everything
+              if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                vids.forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
+              }
+              setTreatment('chunky');
+            })();
+          `,
         }}
       />
     </main>
