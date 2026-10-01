@@ -22,7 +22,7 @@ const TAGLINE =
   "A Thousand Feet Per Second — a Radiohead cover project based in Chicago.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fmnogg.in"),
+  metadataBase: new URL("https://athousandfeetpersecond.com"),
   title: {
     default: BAND_NAME,
     template: `%s`,

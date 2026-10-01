@@ -2,7 +2,7 @@
 
 export const BAND = {
   name: "A Thousand Feet Per Second",
-  domain: "https://fmnogg.in",
+  domain: "https://athousandfeetpersecond.com",
 };
 
 export interface ShowSlot {
