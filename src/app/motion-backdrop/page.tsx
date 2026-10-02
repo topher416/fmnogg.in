@@ -5,17 +5,17 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// (file, col-span, aspect, tilt)
+// (file, col-span, aspect, tilt) — shuffled by JS on every load
 const COLLAGE: Array<[string, string, string, string]> = [
-  ["k-singers.mp4", "col-span-7 md:col-span-5", "aspect-[4/5]", ""],
-  ["k-vocalist.mp4", "col-span-5 md:col-span-4", "aspect-[4/5]", "md:translate-y-6"],
-  ["k-head.mp4", "col-span-12 md:col-span-3", "aspect-[16/10] md:aspect-square", ""],
+  ["k-singers.mp4", "col-span-12 md:col-span-5", "aspect-[16/10] md:aspect-[4/5]", ""],
+  ["k-belt.mp4", "col-span-6 md:col-span-4", "aspect-square md:aspect-[4/5]", ""],
+  ["k-vocalist.mp4", "col-span-6 md:col-span-3", "aspect-square", "md:translate-y-6"],
+  ["k-head.mp4", "col-span-6 md:col-span-3", "aspect-square", ""],
   ["k-bass.mp4", "col-span-6 md:col-span-3", "aspect-square", "md:-rotate-1"],
   ["k-strum.mp4", "col-span-6 md:col-span-4", "aspect-[4/3]", ""],
-  ["k-electrics.mp4", "col-span-6 md:col-span-3", "aspect-square", "md:translate-y-4"],
-  ["k-michand.mp4", "col-span-6 md:col-span-2", "aspect-square", "md:rotate-1"],
-  ["k-drums.mp4", "col-span-6 md:col-span-6", "aspect-[16/10]", ""],
-  ["k-keys.mp4", "col-span-12 md:col-span-6", "aspect-[16/10] md:aspect-[16/10]", "md:translate-y-6"],
+  ["k-electrics.mp4", "col-span-6 md:col-span-2", "aspect-square", "md:translate-y-4"],
+  ["k-drums.mp4", "col-span-12 md:col-span-6", "aspect-[16/10]", ""],
+  ["k-keys.mp4", "col-span-12 md:col-span-6", "aspect-[16/10]", "md:translate-y-6"],
 ];
 
 export default function MotionBackdrop() {
@@ -31,9 +31,10 @@ export default function MotionBackdrop() {
           a collage of motion.
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
-          Nine tight crops — faces, hands, sticks — cut from one 25-second window
-          (18:10–18:35), 1080p source, playing in sync. 32-color ordered Bayer dither
-          throughout, so the whole thing reads as one printed surface.
+          Nine tight crops — four singers caught mid-song, five pairs of hands —
+          cut from one 25-second window (18:10–18:35), 1080p source, playing in
+          sync. 24-color ordered Bayer dither throughout, so the whole thing reads
+          as one printed surface. The arrangement reshuffles on every visit.
         </p>
       </header>
 
@@ -50,7 +51,7 @@ export default function MotionBackdrop() {
             <span className="text-white/90">friday october 9 — montrose saloon, chicago.</span>
           </p>
         </div>
-        <div className="grid grid-cols-12 items-start gap-2 px-2 pb-16 md:gap-3 md:px-4">
+        <div id="collage-grid" className="grid grid-cols-12 items-start gap-2 px-2 pb-16 md:gap-3 md:px-4">
           {COLLAGE.map(([file, span, aspect, tilt]) => (
             <div key={file} className={`${span} ${tilt} overflow-hidden bg-neutral-950`}>
               <video
@@ -180,6 +181,16 @@ export default function MotionBackdrop() {
         dangerouslySetInnerHTML={{
           __html: `
             (function(){
+              // reshuffle the collage on every load
+              var grid = document.getElementById('collage-grid');
+              if (grid) {
+                var tiles = Array.prototype.slice.call(grid.children);
+                for (var i = tiles.length - 1; i > 0; i--) {
+                  var j = Math.floor(Math.random() * (i + 1));
+                  var tmp = tiles[i]; tiles[i] = tiles[j]; tiles[j] = tmp;
+                }
+                tiles.forEach(function(t){ grid.appendChild(t); });
+              }
               // reduced motion: pause everything
               if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 Array.prototype.slice.call(document.querySelectorAll('video')).forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
