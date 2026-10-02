@@ -5,20 +5,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Deck: 9 fixed positions (angular, overlapping), clips swap from the pool on ended.
-// (initial_file, left%, top%, width%, z, shape)
-const TILES: Array<[string, string, string, string, string, string]> = [
-  ["k-user-sing.mp4", "6%", "8%", "34%", "10", "shard"],
-  ["k-hannah.mp4", "38%", "4%", "26%", "20", "torn"],
-  ["k-drew.mp4", "62%", "10%", "30%", "10", "wedge"],
-  ["k-singers.mp4", "3%", "52%", "32%", "20", "slab"],
-  ["k-head.mp4", "33%", "60%", "18%", "30", "splinter"],
-  ["k-user-strum.mp4", "50%", "56%", "27%", "10", "shard"],
-  ["k-bass.mp4", "74%", "58%", "21%", "20", "torn"],
-  ["k-drums.mp4", "10%", "80%", "30%", "10", "wedge"],
-  ["k-keys.mp4", "56%", "82%", "34%", "20", "slab"],
-];
-
 // Pool: every clip the deck can draw from (batch 1: 7:20 peak, batch 2: 14:40 peak)
 const POOL = [
   "k-user-sing.mp4", "k-user-strum.mp4", "k-hannah.mp4", "k-drew.mp4", "k-singers.mp4",
@@ -40,11 +26,12 @@ export default function MotionBackdrop() {
           a blossoming deck.
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
-          A full-band wide shot as the base — no blank backdrop — with nine
-          angular shards cut from two peaks of the set (7:12–7:37, 14:30–14:55),
-          1080p source, floating on top. Each tile plays its 25-second clip once,
-          then draws the next random moment from the deck, so the collage never
-          repeats. 24-color ordered Bayer dither throughout.
+          A morphing gradient in the video's own palette — magenta, violet,
+          amber, oxblood — with forty-five angular shards floating on top, cut
+          from two peaks of the set (7:12–7:37, 14:30–14:55), 1080p source.
+          Each shard plays its 25-second clip once, then draws the next random
+          moment from the deck, so the collage never repeats. 24-color ordered
+          Bayer dither throughout.
         </p>
       </header>
 
@@ -63,43 +50,34 @@ export default function MotionBackdrop() {
         </div>
         <div id="deck" className="relative h-[130svh] md:h-[110svh] overflow-hidden bg-black">
           <style>{`
+            .shader-base {
+              position: absolute; inset: -10%;
+              background:
+                radial-gradient(ellipse 55% 45% at 22% 28%, #e02d6e 0%, transparent 70%),
+                radial-gradient(ellipse 50% 55% at 78% 22%, #7b2ff7 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 65% 78%, #ff6b35 0%, transparent 70%),
+                radial-gradient(ellipse 45% 50% at 30% 72%, #c41e3a 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 50% 50%, #3a1050 0%, transparent 75%),
+                #08060c;
+              filter: blur(70px) saturate(1.3);
+              animation: shader-morph 26s ease-in-out infinite alternate;
+            }
+            @keyframes shader-morph {
+              0% { transform: scale(1) rotate(0deg) translate(0, 0); }
+              50% { transform: scale(1.15) rotate(3deg) translate(2%, -2%); }
+              100% { transform: scale(1.25) rotate(-3deg) translate(-2%, 2%); }
+            }
             .shape-shard { clip-path: polygon(8% 0%, 92% 6%, 100% 78%, 88% 100%, 4% 94%, 0% 22%); }
             .shape-torn { clip-path: polygon(0% 14%, 7% 0%, 93% 3%, 100% 18%, 97% 86%, 89% 100%, 9% 97%, 0% 82%); }
             .shape-wedge { clip-path: polygon(0% 0%, 100% 10%, 90% 100%, 10% 90%); }
             .shape-slab { clip-path: polygon(5% 6%, 95% 0%, 100% 94%, 0% 100%); }
             .shape-splinter { clip-path: polygon(15% 0%, 85% 8%, 100% 60%, 75% 100%, 20% 92%, 0% 40%); }
-            .deck-base { position: absolute; inset: 0; }
-            .deck-base video { width: 100%; height: 100%; object-fit: cover; display: block; }
             .deck-tile { position: absolute; overflow: hidden; background: #000; }
             .deck-tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
           `}</style>
-          {/* base layer: whole band, no blank backdrop */}
-          <div className="deck-base">
-            <video
-              id="deck-base-video"
-              src="/motion/candidates/k-wide.mp4"
-              muted
-              playsInline
-              autoPlay
-              preload="auto"
-            />
-          </div>
-          {TILES.map(([file, left, top, width, z, shape]) => (
-            <div
-              key={file}
-              className={`deck-tile shape-${shape}`}
-              style={{ left, top, width, aspectRatio: "1/1", zIndex: z }}
-            >
-              <video
-                className="deck-video"
-                src={`/motion/candidates/${file}`}
-                muted
-                playsInline
-                autoPlay
-                preload="auto"
-              />
-            </div>
-          ))}
+          {/* morphing gradient base — sampled from the video's palette */}
+          <div className="shader-base" aria-hidden="true" />
+          <div id="deck-tiles" className="absolute inset-0" />
         </div>
       </section>
 
@@ -221,20 +199,39 @@ export default function MotionBackdrop() {
           __html: `
             (function(){
               var POOL = ${JSON.stringify(POOL.map(f => `/motion/candidates/${f}`))};
-              var WIDE = ["/motion/candidates/k-wide.mp4", "/motion/candidates/b-wide.mp4"];
-              // base layer: swap wide shots on ended
-              var base = document.getElementById('deck-base-video');
-              if (base) {
-                base.addEventListener('ended', function(){
-                  var next = WIDE[Math.floor(Math.random() * WIDE.length)];
-                  if (next === base.getAttribute('src') || next === base.src) {
-                    next = WIDE[(WIDE.indexOf(next) + 1) % WIDE.length];
-                  }
-                  base.src = next;
-                  try { var p = base.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
-                });
+              var SHAPES = ["shard", "torn", "wedge", "slab", "splinter"];
+              var COUNT = 45;
+              var holder = document.getElementById('deck-tiles');
+              var vids = [];
+              // loose 9x5 grid with jitter — structured but organic, tiles overlap
+              var cols = 9, rows = 5;
+              for (var i = 0; i < COUNT; i++) {
+                var col = i % cols, row = Math.floor(i / cols);
+                var tile = document.createElement('div');
+                var shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+                tile.className = 'deck-tile shape-' + shape;
+                // cell center + jitter, size larger than cell so they overlap
+                var left = (col / cols) * 100 + (Math.random() * 6 - 3);
+                var top = (row / rows) * 100 + (Math.random() * 8 - 4);
+                var size = 14 + Math.random() * 14; // 14-28% width, bigger than before
+                tile.style.left = left + '%';
+                tile.style.top = top + '%';
+                tile.style.width = size + '%';
+                tile.style.aspectRatio = '1/1';
+                tile.style.zIndex = 10 + Math.floor(Math.random() * 3) * 10; // 2ish layers
+                var rot = (Math.random() * 14 - 7).toFixed(1);
+                tile.style.transform = 'rotate(' + rot + 'deg)';
+                var v = document.createElement('video');
+                v.className = 'deck-video';
+                v.muted = true;
+                v.playsInline = true;
+                v.autoplay = true;
+                v.preload = 'auto';
+                v.src = POOL[Math.floor(Math.random() * POOL.length)];
+                tile.appendChild(v);
+                holder.appendChild(tile);
+                vids.push(v);
               }
-              var vids = Array.prototype.slice.call(document.querySelectorAll('.deck-video'));
               vids.forEach(function(v){
                 // stagger: start each tile at a random offset so they don't all wrap at once
                 var setOffset = function(){
@@ -258,10 +255,11 @@ export default function MotionBackdrop() {
                   try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
                 });
               });
-              // reduced motion: pause everything
+              // reduced motion: pause everything, freeze the gradient
               if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 vids.forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
-                if (base) { base.pause(); base.removeAttribute('autoplay'); }
+                var sb = document.querySelector('.shader-base');
+                if (sb) sb.style.animation = 'none';
               }
             })();
           `,
