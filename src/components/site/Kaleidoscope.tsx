@@ -19,11 +19,12 @@ const poster = (f: string) => `/motion/candidates/posters/${f}.jpg`;
 const POOL = CLIPS.map(vid);
 
 // For each of the 16 slices: which base index (0-3) it mirrors, and the CSS transform.
+// True kaleidoscope: TL 2x2 normal, TR = horizontal mirror, BL = vertical mirror, BR = both.
 const SLICES: Array<[number, string]> = [
-  [0, ""], [1, "scaleX(-1)"], [1, "scaleX(-1)"], [0, ""],
-  [2, "scaleY(-1)"], [3, "scaleX(-1) scaleY(-1)"], [3, "scaleX(-1) scaleY(-1)"], [2, "scaleY(-1)"],
-  [2, "scaleY(-1)"], [3, "scaleX(-1) scaleY(-1)"], [3, "scaleX(-1) scaleY(-1)"], [2, "scaleY(-1)"],
-  [0, ""], [1, "scaleX(-1)"], [1, "scaleX(-1)"], [0, ""],
+  [0, ""], [1, ""], [1, "scaleX(-1)"], [0, "scaleX(-1)"],
+  [2, ""], [3, ""], [3, "scaleX(-1)"], [2, "scaleX(-1)"],
+  [2, "scaleY(-1)"], [3, "scaleY(-1)"], [3, "scaleX(-1) scaleY(-1)"], [2, "scaleX(-1) scaleY(-1)"],
+  [0, "scaleY(-1)"], [1, "scaleY(-1)"], [1, "scaleX(-1) scaleY(-1)"], [0, "scaleX(-1) scaleY(-1)"],
 ];
 
 const INITIAL_BASE = ["k-user-sing", "k-hannah", "k-drew", "k-singers"];

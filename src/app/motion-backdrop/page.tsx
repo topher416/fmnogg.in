@@ -7,12 +7,12 @@ export const metadata: Metadata = {
 
 // Simplified kaleidoscope: 4x4 grid (16 slices), built from a 2x2 base
 // of 4 clips, mirrored horizontally and vertically for perfect symmetry.
-// [file, transform]
+// [file, transform] — base has no transforms; buildKaleido applies the mirrors.
 const KALEIDO_BASE: Array<[string, string]> = [
   ["k-user-sing.mp4", ""],
-  ["k-hannah.mp4", "scaleX(-1)"],
-  ["k-drew.mp4", "scaleY(-1)"],
-  ["k-singers.mp4", "scaleX(-1) scaleY(-1)"],
+  ["k-hannah.mp4", ""],
+  ["k-drew.mp4", ""],
+  ["k-singers.mp4", ""],
 ];
 // Mirror the 2x2 base into 4 quadrants: TL normal, TR flipX, BL flipY, BR flipXY
 function buildKaleido(): Array<[string, string]> {
