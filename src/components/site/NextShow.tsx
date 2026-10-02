@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SHOW, BAND } from "@/lib/site";
 
 /** Next show: date, venue, lineup. Nothing else. */
@@ -30,6 +31,14 @@ export default function NextShow() {
           </li>
         ))}
       </ol>
+      <p className="mt-5">
+        <Link
+          href="/alerts"
+          className="font-mono text-[0.68rem] text-white/40 underline underline-offset-4 decoration-white/20 hover:text-white/70 transition-colors"
+        >
+          Get show alerts
+        </Link>
+      </p>
     </section>
   );
 }

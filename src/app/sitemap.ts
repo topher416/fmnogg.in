@@ -8,6 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = BAND.domain;
   const routes: MetadataRoute.Sitemap = [
     { url: `${base}/`, priority: 1 },
+    { url: `${base}/shows`, priority: 0.7 },
+    { url: `${base}/press`, priority: 0.6 },
+    { url: `${base}/alerts`, priority: 0.4 },
     { url: `${base}/members`, priority: 0.5 },
     { url: `${base}/onethousandfeetpersecond`, priority: 0.5 },
   ];
