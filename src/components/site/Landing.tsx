@@ -11,11 +11,19 @@ export default function Landing() {
       <SiteHeader />
       <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
         <NextShow />
+        {/* Mobile: kaleidoscope right beneath the next show */}
+        <div className="md:hidden py-8 border-b border-white/[0.06]">
+          <Kaleidoscope seed={0} />
+        </div>
         <LiveRelease />
         <div className="md:grid md:grid-cols-[1fr_300px] md:gap-10 md:items-start">
           <AlbumBrowser />
-          <aside className="py-10 md:sticky md:top-8" aria-label="Motion">
-            <Kaleidoscope />
+          {/* Desktop: kaleidoscopes scattered down the sidebar */}
+          <aside className="hidden md:block py-10" aria-label="Motion">
+            <div className="sticky top-8 space-y-12">
+              <Kaleidoscope seed={1} />
+              <Kaleidoscope seed={2} />
+            </div>
           </aside>
         </div>
       </main>

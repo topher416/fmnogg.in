@@ -5,13 +5,18 @@ import { useEffect, useRef, useState } from "react";
 // Simplified kaleidoscope: 4x4 mirrored grid (16 slices) cut from the
 // July 17 Montrose set. Four base moments, mirrored into perfect symmetry.
 // Every 5 seconds one base position turns, rotating through all four.
+// Uses lightweight 360px encodes + poster frames so there's never a black square.
 
-const POOL = [
-  "k-user-sing.mp4", "k-user-strum.mp4", "k-hannah.mp4", "k-drew.mp4", "k-singers.mp4",
-  "k-head.mp4", "k-bass.mp4", "k-drums.mp4", "k-keys.mp4",
-  "b-user-sing.mp4", "b-user-strum.mp4", "b-hannah.mp4", "b-drew.mp4", "b-singers.mp4",
-  "b-head.mp4", "b-bass.mp4", "b-drums.mp4", "b-keys.mp4",
-].map((f) => `/motion/candidates/${f}`);
+const CLIPS = [
+  "k-user-sing", "k-user-strum", "k-hannah", "k-drew", "k-singers",
+  "k-head", "k-bass", "k-drums", "k-keys",
+  "b-user-sing", "b-user-strum", "b-hannah", "b-drew", "b-singers",
+  "b-head", "b-bass", "b-drums", "b-keys",
+];
+
+const vid = (f: string) => `/motion/candidates/k360/${f}-360.mp4`;
+const poster = (f: string) => `/motion/candidates/posters/${f}.jpg`;
+const POOL = CLIPS.map(vid);
 
 // For each of the 16 slices: which base index (0-3) it mirrors, and the CSS transform.
 const SLICES: Array<[number, string]> = [
@@ -21,15 +26,15 @@ const SLICES: Array<[number, string]> = [
   [0, ""], [1, "scaleX(-1)"], [1, "scaleX(-1)"], [0, ""],
 ];
 
-const INITIAL_BASE = [
-  "/motion/candidates/k-user-sing.mp4",
-  "/motion/candidates/k-hannah.mp4",
-  "/motion/candidates/k-drew.mp4",
-  "/motion/candidates/k-singers.mp4",
-];
+const INITIAL_BASE = ["k-user-sing", "k-hannah", "k-drew", "k-singers"];
 
-export default function Kaleidoscope() {
-  const [base, setBase] = useState<string[]>(INITIAL_BASE);
+export default function Kaleidoscope({ seed = 0 }: { seed?: number }) {
+  const [base, setBase] = useState<string[]>(() => {
+    // Offset the initial clips by seed so scattered instances don't mirror each other.
+    const names = [...INITIAL_BASE];
+    for (let i = 0; i < seed; i++) names.push(names.shift()!);
+    return names.map(vid);
+  });
   const videosRef = useRef<Array<HTMLVideoElement | null>>([]);
   const baseRef = useRef(base);
   baseRef.current = base;
@@ -52,7 +57,7 @@ export default function Kaleidoscope() {
 
   // Every 5s, rotate to the next base position and deal it a fresh clip.
   useEffect(() => {
-    let rotation = 0;
+    let rotation = seed;
     const id = setInterval(() => {
       const p = rotation % 4;
       rotation++;
@@ -69,20 +74,25 @@ export default function Kaleidoscope() {
       setBase(updated);
     }, 5000);
     return () => clearInterval(id);
-  }, []);
+  }, [seed]);
 
-  // When a base clip changes, play its mirrors from the top.
+  // When a base clip changes, swap its mirrors.
   useEffect(() => {
     videosRef.current.forEach((v, i) => {
       if (!v) return;
       const [b] = SLICES[i];
       const src = base[b];
       if (v.getAttribute("src") !== src) {
+        // Update poster to match so there's never a black frame.
+        const clip = src.split("/").pop()!.replace("-360.mp4", "");
+        v.setAttribute("poster", poster(clip));
         v.src = src;
         v.play().catch(() => {});
       }
     });
   }, [base]);
+
+  const clipName = (src: string) => src.split("/").pop()!.replace("-360.mp4", "");
 
   return (
     <figure aria-label="Motion kaleidoscope from the July 17 set" className="m-0">
@@ -96,6 +106,7 @@ export default function Kaleidoscope() {
               className="h-full w-full object-cover"
               style={{ transform }}
               src={base[b]}
+              poster={poster(clipName(base[b]))}
               muted
               playsInline
               autoPlay
