@@ -51,9 +51,10 @@ export default function MotionBackdrop() {
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
           Sixteen slices from the set (7:12–7:37, 14:30–14:55) — four
-          moments mirrored into perfect symmetry. Every 25 seconds the deck
-          draws four new moments and the mirror turns with them. 24-color
-          ordered Bayer dither throughout.
+          moments mirrored into perfect symmetry. Every five seconds the
+          deck turns one slice, rotating through all four, so the
+          kaleidoscope is always becoming. 24-color ordered Bayer dither
+          throughout.
         </p>
       </header>
 
@@ -220,21 +221,29 @@ export default function MotionBackdrop() {
                 if (v.readyState >= 1) { setOffset(); }
                 else { v.addEventListener('loadedmetadata', setOffset, { once: true }); }
               });
-              // when the first base clip wraps, draw 4 new clips and mirror them out
-              if (vids[0]) {
-                vids[0].addEventListener('ended', function(){
-                  var base = [];
-                  var used = {};
-                  while (base.length < 4) {
-                    var pick = POOL[Math.floor(Math.random() * POOL.length)];
-                    if (!used[pick]) { used[pick] = 1; base.push(pick); }
+              // track the 4 base clips; every 5s rotate to the next base position
+              // and deal it a fresh clip — its mirrors turn with it
+              var baseClips = BASE_IDX.map(function(i){
+                return vids[i] ? vids[i].getAttribute('src') : null;
+              });
+              var rotation = 0;
+              setInterval(function(){
+                var p = rotation % 4;
+                rotation++;
+                var next;
+                var guard = 0;
+                do {
+                  next = POOL[Math.floor(Math.random() * POOL.length)];
+                  guard++;
+                } while (baseClips.indexOf(next) !== -1 && guard < 30);
+                baseClips[p] = next;
+                vids.forEach(function(v, i){
+                  if (MIRROR_OF[i] === p) {
+                    v.src = next;
+                    try { var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); } catch(e) {}
                   }
-                  vids.forEach(function(v, i){
-                    v.src = base[MIRROR_OF[i]];
-                    try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
-                  });
                 });
-              }
+              }, 5000);
               if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 vids.forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
               }
