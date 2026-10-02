@@ -7,15 +7,15 @@ export const metadata: Metadata = {
 
 // (file, col-span, aspect, tilt) — shuffled by JS on every load
 const COLLAGE: Array<[string, string, string, string]> = [
-  ["k-singers.mp4", "col-span-12 md:col-span-5", "aspect-[16/10] md:aspect-[4/5]", ""],
-  ["k-belt.mp4", "col-span-6 md:col-span-4", "aspect-square md:aspect-[4/5]", ""],
-  ["k-vocalist.mp4", "col-span-6 md:col-span-3", "aspect-square", "md:translate-y-6"],
-  ["k-head.mp4", "col-span-6 md:col-span-3", "aspect-square", ""],
-  ["k-bass.mp4", "col-span-6 md:col-span-3", "aspect-square", "md:-rotate-1"],
-  ["k-strum.mp4", "col-span-6 md:col-span-4", "aspect-[4/3]", ""],
-  ["k-electrics.mp4", "col-span-6 md:col-span-2", "aspect-square", "md:translate-y-4"],
-  ["k-drums.mp4", "col-span-12 md:col-span-6", "aspect-[16/10]", ""],
-  ["k-keys.mp4", "col-span-12 md:col-span-6", "aspect-[16/10]", "md:translate-y-6"],
+  ["k-user-sing.mp4", "col-span-12 md:col-span-5", "aspect-[16/10] md:aspect-[4/5]", ""],
+  ["k-hannah.mp4", "col-span-6 md:col-span-3", "aspect-square", "md:translate-y-6"],
+  ["k-drew.mp4", "col-span-6 md:col-span-4", "aspect-square md:aspect-[4/5]", ""],
+  ["k-singers.mp4", "col-span-12 md:col-span-6", "aspect-[16/10]", ""],
+  ["k-head.mp4", "col-span-6 md:col-span-2", "aspect-square", "md:-rotate-1"],
+  ["k-user-strum.mp4", "col-span-6 md:col-span-4", "aspect-[4/3]", "md:translate-y-4"],
+  ["k-bass.mp4", "col-span-6 md:col-span-3", "aspect-square", ""],
+  ["k-drums.mp4", "col-span-6 md:col-span-4", "aspect-[4/3]", "md:rotate-1"],
+  ["k-keys.mp4", "col-span-12 md:col-span-5", "aspect-[16/10]", "md:translate-y-6"],
 ];
 
 export default function MotionBackdrop() {
@@ -31,10 +31,10 @@ export default function MotionBackdrop() {
           a collage of motion.
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
-          Nine tight crops — four singers caught mid-song, five pairs of hands —
-          cut from one 25-second window (18:10–18:35), 1080p source, playing in
-          sync. 24-color ordered Bayer dither throughout, so the whole thing reads
-          as one printed surface. The arrangement reshuffles on every visit.
+          Nine tight crops — the three singers caught mid-song, hands on
+          instruments — cut from one 25-second window (18:10–18:35), 1080p source,
+          playing in sync. 24-color ordered Bayer dither throughout, so the whole
+          thing reads as one printed surface. The arrangement reshuffles on every visit.
         </p>
       </header>
 
