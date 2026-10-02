@@ -5,18 +5,18 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Deck: 9 fixed positions (organic, overlapping), clips swap from the pool on ended.
+// Deck: 9 fixed positions (angular, overlapping), clips swap from the pool on ended.
 // (initial_file, left%, top%, width%, z, shape)
 const TILES: Array<[string, string, string, string, string, string]> = [
-  ["k-user-sing.mp4", "6%", "8%", "34%", "10", "blob"],
-  ["k-hannah.mp4", "38%", "4%", "26%", "20", "arch"],
-  ["k-drew.mp4", "62%", "10%", "30%", "10", "blob2"],
-  ["k-singers.mp4", "3%", "52%", "32%", "20", "ellipse"],
-  ["k-head.mp4", "33%", "60%", "18%", "30", "circle"],
-  ["k-user-strum.mp4", "50%", "56%", "27%", "10", "blob"],
-  ["k-bass.mp4", "74%", "58%", "21%", "20", "arch"],
-  ["k-drums.mp4", "10%", "80%", "30%", "10", "ellipse"],
-  ["k-keys.mp4", "56%", "82%", "34%", "20", "blob2"],
+  ["k-user-sing.mp4", "6%", "8%", "34%", "10", "shard"],
+  ["k-hannah.mp4", "38%", "4%", "26%", "20", "torn"],
+  ["k-drew.mp4", "62%", "10%", "30%", "10", "wedge"],
+  ["k-singers.mp4", "3%", "52%", "32%", "20", "slab"],
+  ["k-head.mp4", "33%", "60%", "18%", "30", "splinter"],
+  ["k-user-strum.mp4", "50%", "56%", "27%", "10", "shard"],
+  ["k-bass.mp4", "74%", "58%", "21%", "20", "torn"],
+  ["k-drums.mp4", "10%", "80%", "30%", "10", "wedge"],
+  ["k-keys.mp4", "56%", "82%", "34%", "20", "slab"],
 ];
 
 // Pool: every clip the deck can draw from (batch 1: 7:20 peak, batch 2: 14:40 peak)
@@ -40,11 +40,11 @@ export default function MotionBackdrop() {
           a blossoming deck.
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
-          Nine fixed positions, eighteen moments. Each tile plays a 25-second
-          clip — user, Hannah, and Drew caught mid-chorus, hands on instruments —
-          cut from two peaks of the set (7:12–7:37, 14:30–14:55), 1080p source.
-          When a clip wraps, it draws the next random one from the deck, so the
-          collage never repeats. 24-color ordered Bayer dither throughout.
+          A full-band wide shot as the base — no blank backdrop — with nine
+          angular shards cut from two peaks of the set (7:12–7:37, 14:30–14:55),
+          1080p source, floating on top. Each tile plays its 25-second clip once,
+          then draws the next random moment from the deck, so the collage never
+          repeats. 24-color ordered Bayer dither throughout.
         </p>
       </header>
 
@@ -63,14 +63,27 @@ export default function MotionBackdrop() {
         </div>
         <div id="deck" className="relative h-[130svh] md:h-[110svh] overflow-hidden bg-black">
           <style>{`
-            .shape-blob { border-radius: 42% 58% 61% 39% / 45% 42% 58% 55%; }
-            .shape-blob2 { border-radius: 58% 42% 39% 61% / 55% 58% 42% 45%; }
-            .shape-arch { border-radius: 999px 999px 0 0; }
-            .shape-ellipse { clip-path: ellipse(48% 44% at 50% 50%); }
-            .shape-circle { border-radius: 50%; }
+            .shape-shard { clip-path: polygon(8% 0%, 92% 6%, 100% 78%, 88% 100%, 4% 94%, 0% 22%); }
+            .shape-torn { clip-path: polygon(0% 14%, 7% 0%, 93% 3%, 100% 18%, 97% 86%, 89% 100%, 9% 97%, 0% 82%); }
+            .shape-wedge { clip-path: polygon(0% 0%, 100% 10%, 90% 100%, 10% 90%); }
+            .shape-slab { clip-path: polygon(5% 6%, 95% 0%, 100% 94%, 0% 100%); }
+            .shape-splinter { clip-path: polygon(15% 0%, 85% 8%, 100% 60%, 75% 100%, 20% 92%, 0% 40%); }
+            .deck-base { position: absolute; inset: 0; }
+            .deck-base video { width: 100%; height: 100%; object-fit: cover; display: block; }
             .deck-tile { position: absolute; overflow: hidden; background: #000; }
             .deck-tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
           `}</style>
+          {/* base layer: whole band, no blank backdrop */}
+          <div className="deck-base">
+            <video
+              id="deck-base-video"
+              src="/motion/candidates/k-wide.mp4"
+              muted
+              playsInline
+              autoPlay
+              preload="auto"
+            />
+          </div>
           {TILES.map(([file, left, top, width, z, shape]) => (
             <div
               key={file}
@@ -208,6 +221,19 @@ export default function MotionBackdrop() {
           __html: `
             (function(){
               var POOL = ${JSON.stringify(POOL.map(f => `/motion/candidates/${f}`))};
+              var WIDE = ["/motion/candidates/k-wide.mp4", "/motion/candidates/b-wide.mp4"];
+              // base layer: swap wide shots on ended
+              var base = document.getElementById('deck-base-video');
+              if (base) {
+                base.addEventListener('ended', function(){
+                  var next = WIDE[Math.floor(Math.random() * WIDE.length)];
+                  if (next === base.getAttribute('src') || next === base.src) {
+                    next = WIDE[(WIDE.indexOf(next) + 1) % WIDE.length];
+                  }
+                  base.src = next;
+                  try { var p = base.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
+                });
+              }
               var vids = Array.prototype.slice.call(document.querySelectorAll('.deck-video'));
               vids.forEach(function(v){
                 // stagger: start each tile at a random offset so they don't all wrap at once
@@ -235,6 +261,7 @@ export default function MotionBackdrop() {
               // reduced motion: pause everything
               if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 vids.forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
+                if (base) { base.pause(); base.removeAttribute('autoplay'); }
               }
             })();
           `,
