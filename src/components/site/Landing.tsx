@@ -11,9 +11,9 @@ export default function Landing() {
       <SiteHeader />
       <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
         <NextShow />
-        {/* Mobile: kaleidoscope right beneath the next show */}
+        {/* Mobile: kaleidoscope right beneath the next show (compact 2x2 for speed) */}
         <div className="md:hidden py-8 border-b border-white/[0.06]">
-          <Kaleidoscope seed={0} />
+          <Kaleidoscope seed={0} compact />
         </div>
         <LiveRelease />
         <div className="md:grid md:grid-cols-[1fr_300px] md:gap-10 md:items-start">

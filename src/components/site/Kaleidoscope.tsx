@@ -18,18 +18,26 @@ const vid = (f: string) => `/motion/candidates/k360/${f}-360.mp4`;
 const poster = (f: string) => `/motion/candidates/posters/${f}.jpg`;
 const POOL = CLIPS.map(vid);
 
-// For each of the 16 slices: which base index (0-3) it mirrors, and the CSS transform.
+// For each slice: which base index (0-3) it mirrors, and the CSS transform.
 // True kaleidoscope: TL 2x2 normal, TR = horizontal mirror, BL = vertical mirror, BR = both.
-const SLICES: Array<[number, string]> = [
+const SLICES_4X4: Array<[number, string]> = [
   [0, ""], [1, ""], [1, "scaleX(-1)"], [0, "scaleX(-1)"],
   [2, ""], [3, ""], [3, "scaleX(-1)"], [2, "scaleX(-1)"],
   [2, "scaleY(-1)"], [3, "scaleY(-1)"], [3, "scaleX(-1) scaleY(-1)"], [2, "scaleX(-1) scaleY(-1)"],
   [0, "scaleY(-1)"], [1, "scaleY(-1)"], [1, "scaleX(-1) scaleY(-1)"], [0, "scaleX(-1) scaleY(-1)"],
 ];
 
+// Simplified 2x2 for mobile: 4 slices, still mirrored.
+const SLICES_2X2: Array<[number, string]> = [
+  [0, ""], [1, "scaleX(-1)"],
+  [2, "scaleY(-1)"], [3, "scaleX(-1) scaleY(-1)"],
+];
+
 const INITIAL_BASE = ["k-user-sing", "k-hannah", "k-drew", "k-singers"];
 
-export default function Kaleidoscope({ seed = 0 }: { seed?: number }) {
+export default function Kaleidoscope({ seed = 0, compact = false }: { seed?: number; compact?: boolean }) {
+  const SLICES = compact ? SLICES_2X2 : SLICES_4X4;
+  const cols = compact ? "grid-cols-2" : "grid-cols-4";
   const [base, setBase] = useState<string[]>(() => {
     // Offset the initial clips by seed so scattered instances don't mirror each other.
     const names = [...INITIAL_BASE];
@@ -97,7 +105,7 @@ export default function Kaleidoscope({ seed = 0 }: { seed?: number }) {
 
   return (
     <figure aria-label="Motion kaleidoscope from the July 17 set" className="m-0">
-      <div className="grid grid-cols-4 gap-0 overflow-hidden bg-black">
+      <div className={`grid ${cols} gap-0 overflow-hidden bg-black`}>
         {SLICES.map(([b, transform], i) => (
           <div key={i} className="aspect-square overflow-hidden bg-black">
             <video
