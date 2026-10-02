@@ -6,16 +6,17 @@ export const metadata: Metadata = {
 };
 
 // (subject, chunky, dither, smooth, height svh, width fr)
+// HD rebuild: all nine cut from ONE 25-second window (18:10-18:35), 1080p source
 const SLICES: Array<[string, string, string, string, number, number]> = [
-  ["drums", "y8-drums.mp4", "d8-drums.mp4", "e8-drums.mp4", 92, 1.5],
-  ["singers", "y4-singer-face.mp4", "d4-singer-face.mp4", "e4-singer-face.mp4", 68, 1.0],
-  ["strum", "y2-acoustic-strum.mp4", "d2-acoustic-strum.mp4", "e2-acoustic-strum.mp4", 100, 0.85],
-  ["vocalist", "y5-vocalist-face.mp4", "d5-vocalist-face.mp4", "e5-vocalist-face.mp4", 76, 1.25],
-  ["bass", "y1-bass-hand.mp4", "d1-bass-hand.mp4", "e1-bass-hand.mp4", 88, 0.95],
-  ["electrics", "y3-electric-hands.mp4", "d3-electric-hands.mp4", "e3-electric-hands.mp4", 62, 1.35],
-  ["guitar", "y6-guitar-arm.mp4", "d6-guitar-arm.mp4", "e6-guitar-arm.mp4", 96, 0.8],
-  ["head", "y7-bassist-head.mp4", "d7-bassist-head.mp4", "e7-bassist-head.mp4", 72, 0.95],
-  ["keys", "y9-keys.mp4", "d9-keys.mp4", "e9-keys.mp4", 84, 1.15],
+  ["drums", "hc-8-drums.mp4", "hx-8-drums.mp4", "hs-8-drums.mp4", 92, 1.5],
+  ["singers", "hc-4-singer-face.mp4", "hx-4-singer-face.mp4", "hs-4-singer-face.mp4", 68, 1.0],
+  ["strum", "hc-3-acoustic-strum.mp4", "hx-3-acoustic-strum.mp4", "hs-3-acoustic-strum.mp4", 100, 0.85],
+  ["vocalist", "hc-5-vocalist-face.mp4", "hx-5-vocalist-face.mp4", "hs-5-vocalist-face.mp4", 76, 1.25],
+  ["bass", "hc-1-bass-hand.mp4", "hx-1-bass-hand.mp4", "hs-1-bass-hand.mp4", 88, 0.95],
+  ["electrics", "hc-6-electric-hands.mp4", "hx-6-electric-hands.mp4", "hs-6-electric-hands.mp4", 62, 1.35],
+  ["guitar", "hc-7-guitar-arm.mp4", "hx-7-guitar-arm.mp4", "hs-7-guitar-arm.mp4", 96, 0.8],
+  ["head", "hc-2-bassist-head.mp4", "hx-2-bassist-head.mp4", "hs-2-bassist-head.mp4", 72, 0.95],
+  ["keys", "hc-9-keys.mp4", "hx-9-keys.mp4", "hs-9-keys.mp4", 84, 1.15],
 ];
 
 const TREATMENTS = [
@@ -46,8 +47,8 @@ export default function MotionBackdrop() {
           should read as a decision, not a limitation.
         </p>
         <p className="mt-3 text-white/40 text-sm leading-relaxed">
-          Still survey clips from different moments — the final build gets cut from one
-          25-second window so all nine slices move in sync.
+          Rebuilt in HD: all nine slices are cut from one 25-second window
+          (18:10–18:35), 1080p source, playing in sync.
         </p>
       </header>
 
