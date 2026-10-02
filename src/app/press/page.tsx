@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BAND } from "@/lib/site";
 import { SHOWS } from "@/lib/shows";
+import { AUDIO_CDN } from "@/lib/discography";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import PressPlayer, { type PressTrack } from "@/components/site/PressPlayer";
@@ -26,17 +27,17 @@ const FEATURED: PressTrack[] = [
   {
     title: "The Tourist",
     note: "Live at Montrose Saloon · Sep 25, 2026",
-    src: "/audio/live/montrose-saloon-2026-09-25/05-the-tourist.m4a",
+    src: `${AUDIO_CDN}/live/montrose-saloon-2026-09-25/05-the-tourist.m4a`,
   },
   {
     title: "Paranoid Android",
     note: "Live at Montrose Saloon · Jul 17, 2026",
-    src: "/audio/live/montrose-saloon-2026-07-17/09-paranoid-android.m4a",
+    src: `${AUDIO_CDN}/live/montrose-saloon-2026-07-17/09-paranoid-android.m4a`,
   },
   {
     title: "Identikit",
     note: "Live at Montrose Saloon · Sep 25, 2026",
-    src: "/audio/live/montrose-saloon-2026-09-25/06-identikit.m4a",
+    src: `${AUDIO_CDN}/live/montrose-saloon-2026-09-25/06-identikit.m4a`,
   },
 ];
 

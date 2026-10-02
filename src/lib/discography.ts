@@ -17,8 +17,8 @@ export interface Track {
    */
   video?: string;
   /**
-   * Path to a live recording (public/ URL), e.g.
-   * "/audio/live/montrose-saloon-2026-09-25/02-optimistic.m4a".
+   * URL of a live recording (CDN), e.g.
+   * "https://cdn.jsdelivr.net/gh/topher416/fmnogg.in@audio-v1/public/audio/live/montrose-saloon-2026-09-25/02-optimistic.m4a".
    * Set for tracks performed at the Montrose Saloon show.
    */
   liveAudio?: string;
@@ -44,6 +44,15 @@ export const R2_BASE = "https://pub-2aed276eaa394a1bb824300549e693cb.r2.dev";
 export const R2_VIDEO = `${R2_BASE}/video/`;
 export const R2_AUDIO = `${R2_BASE}/audio/`;
 
+/**
+ * Live audio lives on a CDN pinned to the `audio-v1` tag, not in the
+ * deployment bundle — 600+ MB of audio in public/ was filling Vercel's
+ * deployment storage. When a new set is recorded: commit the files,
+ * move the tag, and update this constant.
+ */
+export const AUDIO_CDN =
+  "https://cdn.jsdelivr.net/gh/topher416/fmnogg.in@audio-v1/public/audio";
+
 /** lowercase, strip punctuation, collapse to kebab-case. */
 export function slugify(name: string): string {
   return name
@@ -59,7 +68,7 @@ function t(title: string, covered: boolean, video?: string): Track {
 }
 
 /** Live audio base for the Montrose Saloon 2026-09-25 set. */
-const LIVE_BASE = "/audio/live/montrose-saloon-2026-09-25";
+const LIVE_BASE = `${AUDIO_CDN}/live/montrose-saloon-2026-09-25`;
 
 /** Helper to declare a track with a live recording from Montrose Saloon. */
 function tl(title: string, covered: boolean, liveFile: string, video?: string): Track {
@@ -69,7 +78,7 @@ function tl(title: string, covered: boolean, liveFile: string, video?: string): 
 }
 
 /** Live audio base for the Montrose Saloon 2026-07-17 set. */
-const LIVE_BASE_0717 = "/audio/live/montrose-saloon-2026-07-17";
+const LIVE_BASE_0717 = `${AUDIO_CDN}/live/montrose-saloon-2026-07-17`;
 
 /** Helper to declare a track with a live recording from July 17. */
 function tl17(title: string, covered: boolean, liveFile: string, video?: string): Track {

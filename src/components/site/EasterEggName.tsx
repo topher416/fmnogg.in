@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
 import { BAND } from "@/lib/site";
+import { AUDIO_CDN } from "@/lib/discography";
 
 // Module-level audio survives header remounts during client-side navigation,
 // so the snippet keeps playing even as the page changes.
 let audio: HTMLAudioElement | null = null;
 function getAudio() {
   if (!audio) {
-    audio = new Audio("/audio/snippets/thousand-feet-per-second.m4a");
+    audio = new Audio(`${AUDIO_CDN}/snippets/thousand-feet-per-second.m4a`);
     audio.preload = "auto";
   }
   return audio;
