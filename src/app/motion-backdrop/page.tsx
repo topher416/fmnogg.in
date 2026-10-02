@@ -5,18 +5,18 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Nine shards, hand-placed, React-rendered (JS-generated tiles don't execute reliably).
-// (file, left, top, width, z, shape)
-const TILES: Array<[string, string, string, string, string, string]> = [
-  ["k-user-sing.mp4", "4%", "6%", "38%", "10", "shard"],
-  ["k-hannah.mp4", "36%", "2%", "30%", "20", "torn"],
-  ["k-drew.mp4", "60%", "8%", "34%", "10", "wedge"],
-  ["k-singers.mp4", "2%", "50%", "36%", "20", "slab"],
-  ["k-head.mp4", "32%", "58%", "22%", "30", "splinter"],
-  ["k-user-strum.mp4", "48%", "54%", "31%", "10", "shard"],
-  ["k-bass.mp4", "72%", "56%", "25%", "20", "torn"],
-  ["k-drums.mp4", "8%", "78%", "34%", "10", "wedge"],
-  ["k-keys.mp4", "54%", "80%", "38%", "20", "slab"],
+// Nine clips, simple grid — the version that worked (v5).
+// (file, col-span, aspect)
+const COLLAGE: Array<[string, string, string]> = [
+  ["k-user-sing.mp4", "col-span-12 md:col-span-5", "aspect-[16/10] md:aspect-[4/5]"],
+  ["k-hannah.mp4", "col-span-6 md:col-span-3", "aspect-square"],
+  ["k-drew.mp4", "col-span-6 md:col-span-4", "aspect-square md:aspect-[4/5]"],
+  ["k-singers.mp4", "col-span-12 md:col-span-6", "aspect-[16/10]"],
+  ["k-head.mp4", "col-span-6 md:col-span-2", "aspect-square"],
+  ["k-user-strum.mp4", "col-span-6 md:col-span-4", "aspect-[4/3]"],
+  ["k-bass.mp4", "col-span-6 md:col-span-3", "aspect-square"],
+  ["k-drums.mp4", "col-span-6 md:col-span-4", "aspect-[4/3]"],
+  ["k-keys.mp4", "col-span-12 md:col-span-5", "aspect-[16/10]"],
 ];
 
 // Pool: every clip the deck can draw from (batch 1: 7:20 peak, batch 2: 14:40 peak)
@@ -40,8 +40,8 @@ export default function MotionBackdrop() {
           a blossoming deck.
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
-          Nine big angular shards on black, cut from two peaks of the set
-          (7:12–7:37, 14:30–14:55), 1080p source. Each shard plays its
+          Nine clips from two peaks of the set (7:12–7:37, 14:30–14:55),
+          1080p source, in a tight grid with no gaps. Each tile plays its
           25-second clip once, then draws the next random moment from the
           deck, so the collage never repeats. 24-color ordered Bayer dither
           throughout.
@@ -61,34 +61,16 @@ export default function MotionBackdrop() {
             <span className="text-white/90">friday october 9 — montrose saloon, chicago.</span>
           </p>
         </div>
-        <div id="deck" className="relative h-[130svh] md:h-[110svh] overflow-hidden bg-black">
-          <style>{`
-            .shape-shard { clip-path: polygon(8% 0%, 92% 6%, 100% 78%, 88% 100%, 4% 94%, 0% 22%); }
-            .shape-torn { clip-path: polygon(0% 14%, 7% 0%, 93% 3%, 100% 18%, 97% 86%, 89% 100%, 9% 97%, 0% 82%); }
-            .shape-wedge { clip-path: polygon(0% 0%, 100% 10%, 90% 100%, 10% 90%); }
-            .shape-slab { clip-path: polygon(5% 6%, 95% 0%, 100% 94%, 0% 100%); }
-            .shape-splinter { clip-path: polygon(15% 0%, 85% 8%, 100% 60%, 75% 100%, 20% 92%, 0% 40%); }
-            .deck-tile { position: absolute; overflow: hidden; background: #000; }
-            .deck-tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
-          `}</style>
-          <div id="deck-tiles" className="absolute inset-0">
-            {TILES.map(([file, left, top, width, z, shape]) => (
-              <div
-                key={file}
-                className={`deck-tile shape-${shape}`}
-                style={{ left, top, width, aspectRatio: "1/1", zIndex: z }}
-              >
-                <video
-                  className="deck-video"
-                  src={`/motion/candidates/${file}`}
-                  muted
-                  playsInline
-                  autoPlay
-                  preload="auto"
-                />
-              </div>
-            ))}
-          </div>
+        <div id="collage-grid" className="grid grid-cols-12 items-start gap-0 bg-black">
+          {COLLAGE.map(([file, span, aspect]) => (
+            <div key={file} className={`${span} overflow-hidden bg-black`}>
+              <video
+                className={`deck-video ${aspect} h-auto w-full object-cover`}
+                src={`/motion/candidates/${file}`}
+                muted playsInline autoPlay preload="auto"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
