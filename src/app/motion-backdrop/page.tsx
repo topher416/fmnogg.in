@@ -31,8 +31,8 @@ export default function MotionBackdrop() {
           a collage of motion.
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
-          Nine tight crops — the three singers caught mid-song, hands on
-          instruments — cut from one 25-second window (18:10–18:35), 1080p source,
+          Nine tight crops — the three singers caught mid-chorus, hands on
+          instruments — cut from a 25-second peak (19:08–19:33), 1080p source,
           playing in sync. 24-color ordered Bayer dither throughout, so the whole
           thing reads as one printed surface. The arrangement reshuffles on every visit.
         </p>
