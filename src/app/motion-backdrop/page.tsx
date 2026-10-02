@@ -5,6 +5,20 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+// Nine shards, hand-placed, React-rendered (JS-generated tiles don't execute reliably).
+// (file, left, top, width, z, shape)
+const TILES: Array<[string, string, string, string, string, string]> = [
+  ["k-user-sing.mp4", "4%", "6%", "38%", "10", "shard"],
+  ["k-hannah.mp4", "36%", "2%", "30%", "20", "torn"],
+  ["k-drew.mp4", "60%", "8%", "34%", "10", "wedge"],
+  ["k-singers.mp4", "2%", "50%", "36%", "20", "slab"],
+  ["k-head.mp4", "32%", "58%", "22%", "30", "splinter"],
+  ["k-user-strum.mp4", "48%", "54%", "31%", "10", "shard"],
+  ["k-bass.mp4", "72%", "56%", "25%", "20", "torn"],
+  ["k-drums.mp4", "8%", "78%", "34%", "10", "wedge"],
+  ["k-keys.mp4", "54%", "80%", "38%", "20", "slab"],
+];
+
 // Pool: every clip the deck can draw from (batch 1: 7:20 peak, batch 2: 14:40 peak)
 const POOL = [
   "k-user-sing.mp4", "k-user-strum.mp4", "k-hannah.mp4", "k-drew.mp4", "k-singers.mp4",
@@ -57,7 +71,24 @@ export default function MotionBackdrop() {
             .deck-tile { position: absolute; overflow: hidden; background: #000; }
             .deck-tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
           `}</style>
-          <div id="deck-tiles" className="absolute inset-0" />
+          <div id="deck-tiles" className="absolute inset-0">
+            {TILES.map(([file, left, top, width, z, shape]) => (
+              <div
+                key={file}
+                className={`deck-tile shape-${shape}`}
+                style={{ left, top, width, aspectRatio: "1/1", zIndex: z }}
+              >
+                <video
+                  className="deck-video"
+                  src={`/motion/candidates/${file}`}
+                  muted
+                  playsInline
+                  autoPlay
+                  preload="auto"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -179,39 +210,7 @@ export default function MotionBackdrop() {
           __html: `
             (function(){
               var POOL = ${JSON.stringify(POOL.map(f => `/motion/candidates/${f}`))};
-              var SHAPES = ["shard", "torn", "wedge", "slab", "splinter"];
-              var COUNT = 9;
-              var holder = document.getElementById('deck-tiles');
-              var vids = [];
-              // 3x3 loose grid with jitter — bigger shards, overlapping
-              var cols = 3, rows = 3;
-              for (var i = 0; i < COUNT; i++) {
-                var col = i % cols, row = Math.floor(i / cols);
-                var tile = document.createElement('div');
-                var shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
-                tile.className = 'deck-tile shape-' + shape;
-                // cell center + jitter, size larger than cell so they overlap
-                var left = (col / cols) * 100 + (Math.random() * 8 - 4);
-                var top = (row / rows) * 100 + (Math.random() * 10 - 5);
-                var size = 30 + Math.random() * 15; // 30-45% width, big
-                tile.style.left = left + '%';
-                tile.style.top = top + '%';
-                tile.style.width = size + '%';
-                tile.style.aspectRatio = '1/1';
-                tile.style.zIndex = 10 + Math.floor(Math.random() * 2) * 10; // two layers
-                var rot = (Math.random() * 12 - 6).toFixed(1);
-                tile.style.transform = 'rotate(' + rot + 'deg)';
-                var v = document.createElement('video');
-                v.className = 'deck-video';
-                v.muted = true;
-                v.playsInline = true;
-                v.autoplay = true;
-                v.preload = 'auto';
-                v.src = POOL[Math.floor(Math.random() * POOL.length)];
-                tile.appendChild(v);
-                holder.appendChild(tile);
-                vids.push(v);
-              }
+              var vids = Array.prototype.slice.call(document.querySelectorAll('.deck-video'));
               vids.forEach(function(v){
                 // stagger: start each tile at a random offset so they don't all wrap at once
                 var setOffset = function(){
@@ -235,7 +234,7 @@ export default function MotionBackdrop() {
                   try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
                 });
               });
-              // reduced motion: pause videos only — the gradient keeps morphing
+              // reduced motion: pause videos only
               if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 vids.forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
               }
