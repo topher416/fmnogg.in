@@ -32,7 +32,7 @@ export default function MotionBackdrop() {
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
           Nine tight crops — the three singers caught mid-chorus, hands on
-          instruments — cut from a 25-second peak (19:08–19:33), 1080p source,
+          instruments — cut from the set's peak (7:12–7:37), 1080p source,
           playing in sync. 24-color ordered Bayer dither throughout, so the whole
           thing reads as one printed surface. The arrangement reshuffles on every visit.
         </p>
