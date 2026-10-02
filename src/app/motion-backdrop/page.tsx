@@ -5,14 +5,29 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Simplified kaleidoscope: 2x2 grid, one clip mirrored four ways.
-// (file, transform)
-const KALEIDO: Array<[string, string]> = [
+// Simplified kaleidoscope: 4x4 grid (16 slices), built from a 2x2 base
+// of 4 clips, mirrored horizontally and vertically for perfect symmetry.
+// [file, transform]
+const KALEIDO_BASE: Array<[string, string]> = [
   ["k-user-sing.mp4", ""],
-  ["k-user-sing.mp4", "scaleX(-1)"],
-  ["k-user-sing.mp4", "scaleY(-1)"],
-  ["k-user-sing.mp4", "scaleX(-1) scaleY(-1)"],
+  ["k-hannah.mp4", "scaleX(-1)"],
+  ["k-drew.mp4", "scaleY(-1)"],
+  ["k-singers.mp4", "scaleX(-1) scaleY(-1)"],
 ];
+// Mirror the 2x2 base into 4 quadrants: TL normal, TR flipX, BL flipY, BR flipXY
+function buildKaleido(): Array<[string, string]> {
+  const [a, b, c, d] = KALEIDO_BASE;
+  const flipX = (t: string) => (t ? t + " scaleX(-1)" : "scaleX(-1)");
+  const flipY = (t: string) => (t ? t + " scaleY(-1)" : "scaleY(-1)");
+  // TL: a b / c d | TR: b' a' / d' c' | BL: c'' d'' / a'' b'' | BR: d''' c''' / b''' a'''
+  return [
+    a, b, [b[0], flipX(b[1])], [a[0], flipX(a[1])],
+    c, d, [d[0], flipX(d[1])], [c[0], flipX(c[1])],
+    [c[0], flipY(c[1])], [d[0], flipY(d[1])], [d[0], flipX(flipY(d[1]))], [c[0], flipX(flipY(c[1]))],
+    [a[0], flipY(a[1])], [b[0], flipY(b[1])], [b[0], flipX(flipY(b[1]))], [a[0], flipX(flipY(a[1]))],
+  ];
+}
+const KALEIDO = buildKaleido();
 
 // Pool: every clip the deck can draw from (batch 1: 7:20 peak, batch 2: 14:40 peak)
 const POOL = [
@@ -35,9 +50,10 @@ export default function MotionBackdrop() {
           a quiet kaleidoscope.
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
-          One moment from the set (7:12–7:37, 14:30–14:55), mirrored four
-          ways. Every 25 seconds the deck draws a new moment and all four
-          quadrants turn together. 24-color ordered Bayer dither throughout.
+          Sixteen slices from the set (7:12–7:37, 14:30–14:55) — four
+          moments mirrored into perfect symmetry. Every 25 seconds the deck
+          draws four new moments and the mirror turns with them. 24-color
+          ordered Bayer dither throughout.
         </p>
       </header>
 
@@ -54,17 +70,19 @@ export default function MotionBackdrop() {
             <span className="text-white/90">friday october 9 — montrose saloon, chicago.</span>
           </p>
         </div>
-        <div id="kaleido" className="grid grid-cols-2 gap-0 bg-black">
-          {KALEIDO.map(([file, transform], i) => (
-            <div key={i} className="overflow-hidden bg-black aspect-square">
-              <video
-                className="deck-video h-full w-full object-cover"
-                style={{ transform }}
-                src={`/motion/candidates/${file}`}
-                muted playsInline autoPlay preload="auto"
-              />
-            </div>
-          ))}
+        <div className="mx-auto max-w-xl px-6">
+          <div id="kaleido" className="grid grid-cols-4 gap-0 bg-black">
+            {KALEIDO.map(([file, transform], i) => (
+              <div key={i} className="overflow-hidden bg-black aspect-square">
+                <video
+                  className="deck-video h-full w-full object-cover"
+                  style={{ transform }}
+                  src={`/motion/candidates/${file}`}
+                  muted playsInline autoPlay preload="auto"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -187,8 +205,10 @@ export default function MotionBackdrop() {
             (function(){
               var POOL = ${JSON.stringify(POOL.map(f => `/motion/candidates/${f}`))};
               var vids = Array.prototype.slice.call(document.querySelectorAll('.deck-video'));
-              // all four quadrants swap together — the mirror stays perfect
-              var current = vids[0] ? vids[0].getAttribute('src') : null;
+              // base indices in the 4x4: TL 2x2 = [0,1,4,5] (a,b,c,d)
+              var BASE_IDX = [0, 1, 4, 5];
+              // mirror map: for each of the 16, which base index it mirrors
+              var MIRROR_OF = [0,1,1,0, 2,3,3,2, 2,3,3,2, 0,1,1,0];
               vids.forEach(function(v){
                 var setOffset = function(){
                   try {
@@ -200,18 +220,17 @@ export default function MotionBackdrop() {
                 if (v.readyState >= 1) { setOffset(); }
                 else { v.addEventListener('loadedmetadata', setOffset, { once: true }); }
               });
-              // when the first quadrant wraps, swap all four to a new clip
+              // when the first base clip wraps, draw 4 new clips and mirror them out
               if (vids[0]) {
                 vids[0].addEventListener('ended', function(){
-                  var next;
-                  var guard = 0;
-                  do {
-                    next = POOL[Math.floor(Math.random() * POOL.length)];
-                    guard++;
-                  } while ((next === current) && guard < 20);
-                  current = next;
-                  vids.forEach(function(v){
-                    v.src = next;
+                  var base = [];
+                  var used = {};
+                  while (base.length < 4) {
+                    var pick = POOL[Math.floor(Math.random() * POOL.length)];
+                    if (!used[pick]) { used[pick] = 1; base.push(pick); }
+                  }
+                  vids.forEach(function(v, i){
+                    v.src = base[MIRROR_OF[i]];
                     try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
                   });
                 });
