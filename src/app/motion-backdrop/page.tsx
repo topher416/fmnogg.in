@@ -5,17 +5,26 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// (file, col-span, aspect, tilt) — shuffled by JS on every load
-const COLLAGE: Array<[string, string, string, string]> = [
-  ["k-user-sing.mp4", "col-span-12 md:col-span-5", "aspect-[16/10] md:aspect-[4/5]", ""],
-  ["k-hannah.mp4", "col-span-6 md:col-span-3", "aspect-square", "md:translate-y-6"],
-  ["k-drew.mp4", "col-span-6 md:col-span-4", "aspect-square md:aspect-[4/5]", ""],
-  ["k-singers.mp4", "col-span-12 md:col-span-6", "aspect-[16/10]", ""],
-  ["k-head.mp4", "col-span-6 md:col-span-2", "aspect-square", "md:-rotate-1"],
-  ["k-user-strum.mp4", "col-span-6 md:col-span-4", "aspect-[4/3]", "md:translate-y-4"],
-  ["k-bass.mp4", "col-span-6 md:col-span-3", "aspect-square", ""],
-  ["k-drums.mp4", "col-span-6 md:col-span-4", "aspect-[4/3]", "md:rotate-1"],
-  ["k-keys.mp4", "col-span-12 md:col-span-5", "aspect-[16/10]", "md:translate-y-6"],
+// Deck: 9 fixed positions (organic, overlapping), clips swap from the pool on ended.
+// (initial_file, left%, top%, width%, z, shape)
+const TILES: Array<[string, string, string, string, string, string]> = [
+  ["k-user-sing.mp4", "6%", "8%", "34%", "10", "blob"],
+  ["k-hannah.mp4", "38%", "4%", "26%", "20", "arch"],
+  ["k-drew.mp4", "62%", "10%", "30%", "10", "blob2"],
+  ["k-singers.mp4", "3%", "52%", "32%", "20", "ellipse"],
+  ["k-head.mp4", "33%", "60%", "18%", "30", "circle"],
+  ["k-user-strum.mp4", "50%", "56%", "27%", "10", "blob"],
+  ["k-bass.mp4", "74%", "58%", "21%", "20", "arch"],
+  ["k-drums.mp4", "10%", "80%", "30%", "10", "ellipse"],
+  ["k-keys.mp4", "56%", "82%", "34%", "20", "blob2"],
+];
+
+// Pool: every clip the deck can draw from (batch 1: 7:20 peak, batch 2: 14:40 peak)
+const POOL = [
+  "k-user-sing.mp4", "k-user-strum.mp4", "k-hannah.mp4", "k-drew.mp4", "k-singers.mp4",
+  "k-head.mp4", "k-bass.mp4", "k-drums.mp4", "k-keys.mp4",
+  "b-user-sing.mp4", "b-user-strum.mp4", "b-hannah.mp4", "b-drew.mp4", "b-singers.mp4",
+  "b-head.mp4", "b-bass.mp4", "b-drums.mp4", "b-keys.mp4",
 ];
 
 export default function MotionBackdrop() {
@@ -28,13 +37,14 @@ export default function MotionBackdrop() {
           {"  ·  "}motion backdrop — study 03
         </p>
         <h1 className="mt-6 text-3xl md:text-5xl font-bold leading-tight">
-          a collage of motion.
+          a blossoming deck.
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
-          Nine tight crops — the three singers caught mid-chorus, hands on
-          instruments — cut from the set's peak (7:12–7:37), 1080p source,
-          playing in sync. 24-color ordered Bayer dither throughout, so the whole
-          thing reads as one printed surface. The arrangement reshuffles on every visit.
+          Nine fixed positions, eighteen moments. Each tile plays a 25-second
+          clip — user, Hannah, and Drew caught mid-chorus, hands on instruments —
+          cut from two peaks of the set (7:12–7:37, 14:30–14:55), 1080p source.
+          When a clip wraps, it draws the next random one from the deck, so the
+          collage never repeats. 24-color ordered Bayer dither throughout.
         </p>
       </header>
 
@@ -51,13 +61,29 @@ export default function MotionBackdrop() {
             <span className="text-white/90">friday october 9 — montrose saloon, chicago.</span>
           </p>
         </div>
-        <div id="collage-grid" className="grid grid-cols-12 items-start gap-2 px-2 pb-16 md:gap-3 md:px-4">
-          {COLLAGE.map(([file, span, aspect, tilt]) => (
-            <div key={file} className={`${span} ${tilt} overflow-hidden bg-neutral-950`}>
+        <div id="deck" className="relative h-[130svh] md:h-[110svh] overflow-hidden bg-black">
+          <style>{`
+            .shape-blob { border-radius: 42% 58% 61% 39% / 45% 42% 58% 55%; }
+            .shape-blob2 { border-radius: 58% 42% 39% 61% / 55% 58% 42% 45%; }
+            .shape-arch { border-radius: 999px 999px 0 0; }
+            .shape-ellipse { clip-path: ellipse(48% 44% at 50% 50%); }
+            .shape-circle { border-radius: 50%; }
+            .deck-tile { position: absolute; overflow: hidden; background: #000; }
+            .deck-tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
+          `}</style>
+          {TILES.map(([file, left, top, width, z, shape]) => (
+            <div
+              key={file}
+              className={`deck-tile shape-${shape}`}
+              style={{ left, top, width, aspectRatio: "1/1", zIndex: z }}
+            >
               <video
-                className={`${aspect} h-auto w-full object-cover`}
+                className="deck-video"
                 src={`/motion/candidates/${file}`}
-                muted loop playsInline autoPlay preload="auto"
+                muted
+                playsInline
+                autoPlay
+                preload="auto"
               />
             </div>
           ))}
@@ -181,19 +207,34 @@ export default function MotionBackdrop() {
         dangerouslySetInnerHTML={{
           __html: `
             (function(){
-              // reshuffle the collage on every load
-              var grid = document.getElementById('collage-grid');
-              if (grid) {
-                var tiles = Array.prototype.slice.call(grid.children);
-                for (var i = tiles.length - 1; i > 0; i--) {
-                  var j = Math.floor(Math.random() * (i + 1));
-                  var tmp = tiles[i]; tiles[i] = tiles[j]; tiles[j] = tmp;
-                }
-                tiles.forEach(function(t){ grid.appendChild(t); });
-              }
+              var POOL = ${JSON.stringify(POOL.map(f => `/motion/candidates/${f}`))};
+              var vids = Array.prototype.slice.call(document.querySelectorAll('.deck-video'));
+              vids.forEach(function(v){
+                // stagger: start each tile at a random offset so they don't all wrap at once
+                var setOffset = function(){
+                  try {
+                    if (v.duration && isFinite(v.duration)) {
+                      v.currentTime = Math.random() * v.duration * 0.85;
+                    }
+                  } catch(e) {}
+                };
+                if (v.readyState >= 1) { setOffset(); }
+                else { v.addEventListener('loadedmetadata', setOffset, { once: true }); }
+                // when a clip wraps, bump to the next random one from the deck
+                v.addEventListener('ended', function(){
+                  var next;
+                  var guard = 0;
+                  do {
+                    next = POOL[Math.floor(Math.random() * POOL.length)];
+                    guard++;
+                  } while ((next === v.getAttribute('src') || next === v.src) && guard < 20);
+                  v.src = next;
+                  try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
+                });
+              });
               // reduced motion: pause everything
               if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                Array.prototype.slice.call(document.querySelectorAll('video')).forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
+                vids.forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
               }
             })();
           `,
