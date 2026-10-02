@@ -66,9 +66,6 @@ export default function Kaleidoscope({ seed = 0, compact = false }: { seed?: num
           </div>
         ))}
       </div>
-      <figcaption className="mt-3 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-white/35">
-        July 17, 2026 — Montrose Saloon
-      </figcaption>
     </figure>
   );
 }
