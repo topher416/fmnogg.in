@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { list } from "@vercel/blob";
 import { BAND } from "@/lib/site";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
@@ -12,16 +13,32 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 async function readSubscribers(): Promise<string[] | null> {
-  const url = process.env.KV_REST_API_URL;
-  const token = process.env.KV_REST_API_TOKEN;
-  if (!url || !token) return null;
-  const res = await fetch(
-    `${url.replace(/\/$/, "")}/smembers/${encodeURIComponent("alerts:subscribers")}`,
-    { headers: { Authorization: `Bearer ${token}` }, cache: "no-store" }
-  );
-  if (!res.ok) return null;
-  const data = (await res.json()) as { result?: string[] };
-  return Array.isArray(data.result) ? [...data.result].sort() : [];
+  const token = process.env.BLOB_READ_WRITE_TOKEN;
+  if (!token) return null;
+  try {
+    const emails: string[] = [];
+    let cursor: string | undefined;
+    do {
+      const page = await list({ prefix: "subscribers/", limit: 100, cursor });
+      for (const b of page.blobs) {
+        try {
+          const res = await fetch(b.url, {
+            headers: { Authorization: `Bearer ${token}` },
+            cache: "no-store",
+          });
+          if (!res.ok) continue;
+          const data = (await res.json()) as { email?: unknown };
+          if (typeof data.email === "string") emails.push(data.email);
+        } catch {
+          // Skip blobs that can't be read; keep the rest.
+        }
+      }
+      cursor = page.hasMore ? page.cursor : undefined;
+    } while (cursor);
+    return emails.sort();
+  } catch {
+    return null;
+  }
 }
 
 export default async function AlertsAdminPage({
