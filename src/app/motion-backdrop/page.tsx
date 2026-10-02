@@ -5,18 +5,13 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Nine clips, simple grid — the version that worked (v5).
-// (file, col-span, aspect)
-const COLLAGE: Array<[string, string, string]> = [
-  ["k-user-sing.mp4", "col-span-12 md:col-span-5", "aspect-[16/10] md:aspect-[4/5]"],
-  ["k-hannah.mp4", "col-span-6 md:col-span-3", "aspect-square"],
-  ["k-drew.mp4", "col-span-6 md:col-span-4", "aspect-square md:aspect-[4/5]"],
-  ["k-singers.mp4", "col-span-12 md:col-span-6", "aspect-[16/10]"],
-  ["k-head.mp4", "col-span-6 md:col-span-2", "aspect-square"],
-  ["k-user-strum.mp4", "col-span-6 md:col-span-4", "aspect-[4/3]"],
-  ["k-bass.mp4", "col-span-6 md:col-span-3", "aspect-square"],
-  ["k-drums.mp4", "col-span-6 md:col-span-4", "aspect-[4/3]"],
-  ["k-keys.mp4", "col-span-12 md:col-span-5", "aspect-[16/10]"],
+// Simplified kaleidoscope: 2x2 grid, one clip mirrored four ways.
+// (file, transform)
+const KALEIDO: Array<[string, string]> = [
+  ["k-user-sing.mp4", ""],
+  ["k-user-sing.mp4", "scaleX(-1)"],
+  ["k-user-sing.mp4", "scaleY(-1)"],
+  ["k-user-sing.mp4", "scaleX(-1) scaleY(-1)"],
 ];
 
 // Pool: every clip the deck can draw from (batch 1: 7:20 peak, batch 2: 14:40 peak)
@@ -37,14 +32,12 @@ export default function MotionBackdrop() {
           {"  ·  "}motion backdrop — study 03
         </p>
         <h1 className="mt-6 text-3xl md:text-5xl font-bold leading-tight">
-          a blossoming deck.
+          a quiet kaleidoscope.
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
-          Nine clips from two peaks of the set (7:12–7:37, 14:30–14:55),
-          1080p source, in a tight grid with no gaps. Each tile plays its
-          25-second clip once, then draws the next random moment from the
-          deck, so the collage never repeats. 24-color ordered Bayer dither
-          throughout.
+          One moment from the set (7:12–7:37, 14:30–14:55), mirrored four
+          ways. Every 25 seconds the deck draws a new moment and all four
+          quadrants turn together. 24-color ordered Bayer dither throughout.
         </p>
       </header>
 
@@ -61,11 +54,12 @@ export default function MotionBackdrop() {
             <span className="text-white/90">friday october 9 — montrose saloon, chicago.</span>
           </p>
         </div>
-        <div id="collage-grid" className="grid grid-cols-12 items-start gap-0 bg-black">
-          {COLLAGE.map(([file, span, aspect]) => (
-            <div key={file} className={`${span} overflow-hidden bg-black`}>
+        <div id="kaleido" className="grid grid-cols-2 gap-0 bg-black">
+          {KALEIDO.map(([file, transform], i) => (
+            <div key={i} className="overflow-hidden bg-black aspect-square">
               <video
-                className={`deck-video ${aspect} h-auto w-full object-cover`}
+                className="deck-video h-full w-full object-cover"
+                style={{ transform }}
                 src={`/motion/candidates/${file}`}
                 muted playsInline autoPlay preload="auto"
               />
@@ -193,8 +187,9 @@ export default function MotionBackdrop() {
             (function(){
               var POOL = ${JSON.stringify(POOL.map(f => `/motion/candidates/${f}`))};
               var vids = Array.prototype.slice.call(document.querySelectorAll('.deck-video'));
+              // all four quadrants swap together — the mirror stays perfect
+              var current = vids[0] ? vids[0].getAttribute('src') : null;
               vids.forEach(function(v){
-                // stagger: start each tile at a random offset so they don't all wrap at once
                 var setOffset = function(){
                   try {
                     if (v.duration && isFinite(v.duration)) {
@@ -204,19 +199,23 @@ export default function MotionBackdrop() {
                 };
                 if (v.readyState >= 1) { setOffset(); }
                 else { v.addEventListener('loadedmetadata', setOffset, { once: true }); }
-                // when a clip wraps, bump to the next random one from the deck
-                v.addEventListener('ended', function(){
+              });
+              // when the first quadrant wraps, swap all four to a new clip
+              if (vids[0]) {
+                vids[0].addEventListener('ended', function(){
                   var next;
                   var guard = 0;
                   do {
                     next = POOL[Math.floor(Math.random() * POOL.length)];
                     guard++;
-                  } while ((next === v.getAttribute('src') || next === v.src) && guard < 20);
-                  v.src = next;
-                  try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
+                  } while ((next === current) && guard < 20);
+                  current = next;
+                  vids.forEach(function(v){
+                    v.src = next;
+                    try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
+                  });
                 });
-              });
-              // reduced motion: pause videos only
+              }
               if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 vids.forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
               }
