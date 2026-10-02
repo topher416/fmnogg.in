@@ -27,7 +27,7 @@ export default function MotionBackdrop() {
         </h1>
         <p className="mt-5 text-white/60 leading-relaxed">
           A morphing gradient in the video's own palette — magenta, violet,
-          amber, oxblood — with forty-five angular shards floating on top, cut
+          amber, oxblood — with twenty-four angular shards floating on top, cut
           from two peaks of the set (7:12–7:37, 14:30–14:55), 1080p source.
           Each shard plays its 25-second clip once, then draws the next random
           moment from the deck, so the collage never repeats. 24-color ordered
@@ -200,7 +200,7 @@ export default function MotionBackdrop() {
             (function(){
               var POOL = ${JSON.stringify(POOL.map(f => `/motion/candidates/${f}`))};
               var SHAPES = ["shard", "torn", "wedge", "slab", "splinter"];
-              var COUNT = 45;
+              var COUNT = 24;
               var holder = document.getElementById('deck-tiles');
               var vids = [];
               // loose 9x5 grid with jitter — structured but organic, tiles overlap
@@ -255,11 +255,9 @@ export default function MotionBackdrop() {
                   try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e) {}
                 });
               });
-              // reduced motion: pause everything, freeze the gradient
+              // reduced motion: pause videos only — the gradient keeps morphing
               if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 vids.forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
-                var sb = document.querySelector('.shader-base');
-                if (sb) sb.style.animation = 'none';
               }
             })();
           `,
