@@ -196,6 +196,34 @@ export default function MotionBackdrop() {
             <figcaption className="mt-2 text-xs uppercase tracking-[0.25em] text-white/40">noir</figcaption>
           </figure>
         </div>
+        <p className="mt-10 max-w-2xl text-white/60 leading-relaxed">
+          Update: the resolution problem turned out to be solvable — the 1080p source
+          is real. Same two grades, real pixels this time:
+        </p>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <figure>
+            <div className="relative aspect-square w-full overflow-hidden">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src="/motion/candidates/hd-clean-test.mp4"
+                muted loop playsInline autoPlay preload="auto"
+              />
+              <div className="roto-grain pointer-events-none absolute inset-0 opacity-[0.10] mix-blend-overlay" />
+            </div>
+            <figcaption className="mt-2 text-xs uppercase tracking-[0.25em] text-white/40">hd clean</figcaption>
+          </figure>
+          <figure>
+            <div className="relative aspect-square w-full overflow-hidden">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src="/motion/candidates/hd-noir-test.mp4"
+                muted loop playsInline autoPlay preload="auto"
+              />
+              <div className="roto-grain pointer-events-none absolute inset-0 opacity-[0.12] mix-blend-overlay" />
+            </div>
+            <figcaption className="mt-2 text-xs uppercase tracking-[0.25em] text-white/40">hd noir</figcaption>
+          </figure>
+        </div>
       </section>
 
       <footer className="mx-auto max-w-3xl px-6 py-12">
