@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: "8:00 PM · $15 · 21+ · Montrose Saloon, Chicago",
     images: [
       {
-        url: "/og/invite-v2.jpg",
+        url: "/og/invite-v3.jpg",
         width: 1200,
         height: 630,
         alt: "a thousand feet per second — Friday, October 9, 2026 at Montrose Saloon",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "a thousand feet per second — Fri Oct 9, Montrose Saloon",
     description: "8:00 PM · $15 · 21+ · Montrose Saloon, Chicago",
-    images: ["/og/invite-v2.jpg"],
+    images: ["/og/invite-v3.jpg"],
   },
 };
 
