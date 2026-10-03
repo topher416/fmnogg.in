@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Friday, October 9, 2026. Montrose Saloon, Chicago. 8:00 PM, $15 at the door, 21+. A thousand feet per second with Test Pattern and Three Men*.",
   openGraph: {
     title: "a thousand feet per second — Fri Oct 9, Montrose Saloon",
-    description: "8:00 PM · $15 · 21+ · Montrose Saloon, Chicago",
+    description: "8:00 PM · 2933 W Montrose Ave, Chicago · $15 · 21+",
     images: [
       {
         url: "/og/invite-v3.jpg",
@@ -29,10 +29,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "a thousand feet per second — Fri Oct 9, Montrose Saloon",
-    description: "8:00 PM · $15 · 21+ · Montrose Saloon, Chicago",
+    description: "8:00 PM · 2933 W Montrose Ave, Chicago · $15 · 21+",
     images: ["/og/invite-v3.jpg"],
   },
 };
+
+const MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=2933+W+Montrose+Ave+Chicago+IL";
 
 export default function InvitePage() {
   return (
@@ -79,6 +82,15 @@ export default function InvitePage() {
                 <span className="text-white/50">
                   {SHOW.address}, {SHOW.city}
                 </span>
+                <br />
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-block border border-white/25 px-4 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-white/80 transition-colors hover:border-white/60 hover:text-white"
+                >
+                  Get directions
+                </a>
               </dd>
             </div>
             <div className="flex gap-4">
