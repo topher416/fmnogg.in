@@ -11,20 +11,31 @@ export default function Landing() {
       <SiteHeader />
       <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
         <NextShow />
-        {/* Mobile: kaleidoscope right beneath the next show (compact 2x2 for speed) */}
-        <div className="md:hidden py-8 border-b border-white/[0.06]">
-          <Kaleidoscope seed={0} compact />
+        <div className="border-b border-white/[0.06] py-6">
+          <div className="md:hidden">
+            <Kaleidoscope seed={0} strip compact />
+          </div>
+          <div className="hidden md:block">
+            <Kaleidoscope seed={0} strip />
+          </div>
         </div>
         <LiveRelease />
-        <div className="md:grid md:grid-cols-[1fr_300px] md:gap-10 md:items-start">
-          <AlbumBrowser />
-          {/* Desktop: kaleidoscopes scattered down the sidebar */}
-          <aside className="hidden md:block py-10" aria-label="Motion">
-            <div className="sticky top-8 space-y-12">
-              <Kaleidoscope seed={1} />
-              <Kaleidoscope seed={2} />
-            </div>
-          </aside>
+        <div className="border-b border-white/[0.06] py-6">
+          <div className="md:hidden">
+            <Kaleidoscope seed={1} strip compact />
+          </div>
+          <div className="hidden md:block">
+            <Kaleidoscope seed={1} strip />
+          </div>
+        </div>
+        <AlbumBrowser />
+        <div className="py-10">
+          <div className="md:hidden">
+            <Kaleidoscope seed={2} strip compact />
+          </div>
+          <div className="hidden md:block">
+            <Kaleidoscope seed={2} strip />
+          </div>
         </div>
       </main>
       <SiteFooter />

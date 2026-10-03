@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-// Kaleidoscope: 4x4 mirrored grid of animated WebP slices from the July 17 set.
-// Four base moments, mirrored into symmetry. Every 5s one position turns.
-// WebP (not video): no decoders, instant first frame, just img tags.
+// Kaleidoscope: one moment mirrored. Two layouts:
+// - square: 4x4 (desktop) / 2x2 (mobile) — the sidebar piece
+// - strip: 8x2 (desktop) / 4x2 (mobile) — horizontal section dividers
+// Every 5s the whole thing turns to a new moment. Animated WebP, just img tags.
 
 const CLIPS = [
   "k-user-sing", "k-user-strum", "k-hannah", "k-drew", "k-singers",
@@ -14,10 +15,8 @@ const CLIPS = [
 ];
 
 const webp = (f: string) => `/motion/candidates/webp/${f}.webp`;
-const POOL = CLIPS.map(webp);
 
-// One image, mirrored. The kaleidoscope effect needs a single moment
-// reflected — not four different clips.
+// One image mirrored.
 const MIRRORS_4X4 = [
   "", "scaleX(-1)", "scaleX(-1)", "",
   "scaleY(-1)", "scaleX(-1) scaleY(-1)", "scaleX(-1) scaleY(-1)", "scaleY(-1)",
@@ -30,11 +29,39 @@ const MIRRORS_2X2 = [
   "scaleY(-1)", "scaleX(-1) scaleY(-1)",
 ];
 
-const INITIAL = "k-user-sing";
+// Strip: 2x2 block repeated horizontally — a mirrored ribbon.
+const MIRRORS_STRIP_8X2 = [
+  "", "scaleX(-1)", "", "scaleX(-1)", "", "scaleX(-1)", "", "scaleX(-1)",
+  "scaleY(-1)", "scaleX(-1) scaleY(-1)", "scaleY(-1)", "scaleX(-1) scaleY(-1)",
+  "scaleY(-1)", "scaleX(-1) scaleY(-1)", "scaleY(-1)", "scaleX(-1) scaleY(-1)",
+];
 
-export default function Kaleidoscope({ seed = 0, compact = false }: { seed?: number; compact?: boolean }) {
-  const MIRRORS = compact ? MIRRORS_2X2 : MIRRORS_4X4;
-  const [clip, setClip] = useState(INITIAL);
+const MIRRORS_STRIP_4X2 = [
+  "", "scaleX(-1)", "", "scaleX(-1)",
+  "scaleY(-1)", "scaleX(-1) scaleY(-1)", "scaleY(-1)", "scaleX(-1) scaleY(-1)",
+];
+
+const INITIALS = ["k-user-sing", "k-hannah", "k-drew", "k-singers", "k-bass", "k-drums"];
+
+export default function Kaleidoscope({
+  seed = 0,
+  compact = false,
+  strip = false,
+}: {
+  seed?: number;
+  compact?: boolean;
+  strip?: boolean;
+}) {
+  const MIRRORS = strip
+    ? compact
+      ? MIRRORS_STRIP_4X2
+      : MIRRORS_STRIP_8X2
+    : compact
+      ? MIRRORS_2X2
+      : MIRRORS_4X4;
+  const cols = strip ? (compact ? "grid-cols-4" : "grid-cols-8") : compact ? "grid-cols-2" : "grid-cols-4";
+
+  const [clip, setClip] = useState(INITIALS[seed % INITIALS.length]);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -52,20 +79,18 @@ export default function Kaleidoscope({ seed = 0, compact = false }: { seed?: num
   }, []);
 
   return (
-    <figure aria-label="Motion kaleidoscope from the July 17 set" className="m-0">
-      <div className={`grid ${compact ? "grid-cols-2" : "grid-cols-4"} gap-0 overflow-hidden bg-black`}>
-        {MIRRORS.map((transform, i) => (
-          <div key={i} className="aspect-square overflow-hidden bg-black">
-            <img
-              src={webp(clip)}
-              alt=""
-              draggable={false}
-              className="h-full w-full object-cover"
-              style={{ transform }}
-            />
-          </div>
-        ))}
-      </div>
-    </figure>
+    <div aria-label="Motion kaleidoscope from the July 17 set" className={`grid ${cols} gap-0 overflow-hidden bg-black`}>
+      {MIRRORS.map((transform, i) => (
+        <div key={i} className="aspect-square overflow-hidden bg-black">
+          <img
+            src={webp(clip)}
+            alt=""
+            draggable={false}
+            className="h-full w-full object-cover"
+            style={{ transform }}
+          />
+        </div>
+      ))}
+    </div>
   );
 }
