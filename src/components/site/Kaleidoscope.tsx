@@ -81,7 +81,7 @@ export default function Kaleidoscope({
   return (
     <div aria-label="Motion kaleidoscope from the July 17 set" className={`grid ${cols} gap-0 overflow-hidden bg-black`}>
       {MIRRORS.map((transform, i) => (
-        <div key={i} className="aspect-square overflow-hidden bg-black">
+        <div key={i} className={`${strip ? "aspect-[2/1]" : "aspect-square"} overflow-hidden bg-black`}>
           <img
             src={webp(clip)}
             alt=""
