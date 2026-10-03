@@ -12,6 +12,7 @@ const CLIPS = [
   "k-head", "k-bass", "k-drums", "k-keys",
   "b-user-sing", "b-user-strum", "b-hannah", "b-drew", "b-singers",
   "b-head", "b-bass", "b-drums", "b-keys",
+  "c-hannah2", "c-drew2", "c-backgtr",
 ];
 
 const webp = (f: string) => `/motion/candidates/webp/${f}.webp`;
