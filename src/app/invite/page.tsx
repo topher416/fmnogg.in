@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Friday, October 9, 2026. Montrose Saloon, Chicago. 8:00 PM, $15 at the door, 21+. A thousand feet per second with Test Pattern and Three Men*.",
   openGraph: {
-    title: "a thousand feet per second — Fri Oct 9, Montrose Saloon",
+    title: "a thousand feet per second — Fri Oct 9, 8PM",
     description: "8:00 PM · 2933 W Montrose Ave, Chicago · $15 · 21+",
     images: [
       {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "a thousand feet per second — Fri Oct 9, Montrose Saloon",
+    title: "a thousand feet per second — Fri Oct 9, 8PM",
     description: "8:00 PM · 2933 W Montrose Ave, Chicago · $15 · 21+",
     images: ["https://www.athousandfeetpersecond.com/og/invite-card.jpg"],
   },
