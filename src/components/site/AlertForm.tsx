@@ -96,7 +96,7 @@ export default function AlertForm() {
         <p className="mt-3 text-[0.85rem] text-[#ff7a7a]/90">{message}</p>
       ) : null}
       <p className="mt-3 font-mono text-[0.62rem] leading-relaxed text-white/30">
-        One email when a show is announced. Unsubscribe anytime.
+        Unsubscribe anytime.
       </p>
     </form>
   );

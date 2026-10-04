@@ -139,7 +139,7 @@ export default function InvitePage() {
             Show alerts
           </h2>
           <p className="mt-2 max-w-[60ch] text-[0.95rem] leading-relaxed text-white/55">
-            One email when a show is announced. Nothing else.
+            One email when a show is announced.
           </p>
           <AlertForm />
         </section>
