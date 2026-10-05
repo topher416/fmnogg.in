@@ -5,16 +5,7 @@ export default function SiteFooter() {
   return (
     <footer className="border-t border-white/[0.06] mt-8">
       <div className="max-w-[1000px] mx-auto px-5 py-8 flex items-center justify-between font-mono text-[0.6rem] uppercase tracking-[0.14em] text-white/30">
-        <span className="flex items-center gap-2 text-white/45">
-          <img
-            src="/mascot.png"
-            alt=""
-            aria-hidden
-            className="h-4 w-4 opacity-50 select-none"
-            draggable={false}
-          />
-          {BAND.name}
-        </span>
+        <span className="text-white/45">{BAND.name}</span>
         <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2">
           <Link
             href="/shows"

@@ -52,9 +52,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-[#0a0a0a]`}
       >
-        {children}
+        <img
+          src="/mascot.png"
+          alt=""
+          aria-hidden
+          draggable={false}
+          className="pointer-events-none fixed -right-[12vmin] top-1/2 z-0 w-[52vmin] -translate-y-1/2 opacity-[0.055] select-none"
+        />
+        <div className="relative z-10">{children}</div>
       </body>
     </html>
   );
 }
-
