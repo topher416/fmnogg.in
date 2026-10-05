@@ -4,6 +4,13 @@ import { BAND } from "@/lib/site";
 export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-5 bg-[#080808] px-6 text-center">
+      <img
+        src="/mascot.png"
+        alt=""
+        aria-hidden
+        className="w-28 opacity-80 select-none"
+        draggable={false}
+      />
       <p className="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[#00ff9f]">404</p>
       <h1 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl font-bold text-[#f0ece6]">
         Lost in the static
