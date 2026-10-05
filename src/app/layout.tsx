@@ -57,7 +57,7 @@ export default function RootLayout({
           alt=""
           aria-hidden
           draggable={false}
-          className="pointer-events-none fixed -right-[4vmin] top-1/2 z-0 w-[46vmin] -translate-y-1/2 opacity-20 select-none"
+          className="pointer-events-none fixed -bottom-[10vmin] -right-[10vmin] z-0 w-[80vmin] opacity-[0.14] select-none sm:bottom-auto sm:-right-[4vmin] sm:top-1/2 sm:w-[46vmin] sm:-translate-y-1/2 sm:opacity-20"
         />
         <div className="relative z-10">{children}</div>
       </body>
