@@ -3,7 +3,7 @@ import { BAND } from "@/lib/site";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-5 bg-[#080808] px-6 text-center">
+    <div className="min-h-screen flex flex-col items-center justify-center gap-5 px-6 text-center">
       <img
         src="/mascot.png"
         alt=""

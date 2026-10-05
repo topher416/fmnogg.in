@@ -93,7 +93,7 @@ function initials(name: string) {
 
 export default function MembersPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#e8e2d9] flex flex-col">
+    <div className="min-h-screen text-[#e8e2d9] flex flex-col">
       <SiteHeader crumbs={[{ label: "members" }]} />
 
       <main className="flex-1 w-full max-w-[1000px] mx-auto px-5 py-10">

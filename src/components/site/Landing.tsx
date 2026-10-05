@@ -7,7 +7,7 @@ import Kaleidoscope from "./Kaleidoscope";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#e8e2d9] flex flex-col">
+    <div className="min-h-screen text-[#e8e2d9] flex flex-col">
       <SiteHeader />
       <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
         <NextShow />
