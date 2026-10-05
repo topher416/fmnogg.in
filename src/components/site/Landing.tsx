@@ -19,7 +19,7 @@ export default function Landing() {
             <Kaleidoscope seed={0} strip />
           </div>
         </div>
-        <LiveRelease />
+        <AlbumBrowser />
         <div className="border-b border-white/[0.06] py-6">
           <div className="md:hidden">
             <Kaleidoscope seed={1} strip compact />
@@ -28,7 +28,7 @@ export default function Landing() {
             <Kaleidoscope seed={1} strip />
           </div>
         </div>
-        <AlbumBrowser />
+        <LiveRelease />
         <div className="py-10">
           <div className="md:hidden">
             <Kaleidoscope seed={2} strip compact />
