@@ -28,8 +28,16 @@ const MEMBERS: {
   {
     name: "Eric Gorscak",
     role: "bass",
-    bio: null,
+    bio: "Eric plays bass in 1,000 Feet Per Second (Radiohead covers) and The Blue You Once Knew (Pink Floyd covers), both formed through Old Town School of Folk Music ensemble classes, where he also plays bass in the aptly-named Eclectic Electric Ensemble. He provides bass and occasional vocals for The Bliss Machine, a studio project of original music once described as \"Talking Heads and Rage Against the Machine at a Primus concert.\"",
     photo: "/images/members/eric-gorscak-portrait.png",
+    links: [
+      { label: "instagram", href: "https://instagram.com/blissmachine92" },
+      { label: "the bliss machine", href: "https://www.theblissmachine.com/" },
+      {
+        label: "spotify",
+        href: "https://open.spotify.com/artist/61ah4S257JAMWo56rMHd0T",
+      },
+    ],
   },
   {
     name: "Drew Kelly",
