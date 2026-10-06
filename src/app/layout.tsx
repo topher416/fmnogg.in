@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -52,15 +53,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-[#0a0a0a]`}
       >
-        <img
-          src="/mascot.png"
-          alt=""
-          aria-hidden
-          draggable={false}
-          className="pointer-events-none fixed -bottom-[10vmin] -right-[10vmin] z-0 w-[80vmin] opacity-[0.05] select-none sm:bottom-auto sm:-right-[4vmin] sm:top-1/2 sm:w-[46vmin] sm:-translate-y-1/2 sm:opacity-[0.05]"
-        />
-        <div className="relative z-10">{children}</div>
+        {children}
+        <Analytics />
       </body>
     </html>
   );
 }
+
