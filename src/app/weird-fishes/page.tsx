@@ -15,9 +15,9 @@ const body = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Let Down, Carried Up",
+  title: "Where Have All the Weird Fishes Gone?",
   description:
-    "From the Arts & Leisure section, Saturday, February 13, 1965: a review of a young octet's new single.",
+    "From the Arts & Leisure section, Saturday, February 13, 1965: a review of a young trio's new single.",
   alternates: { canonical: "/weird-fishes" },
 };
 
@@ -145,16 +145,16 @@ export default function WeirdFishesPage() {
                 className="mt-5 text-center font-[family-name:var(--font-playfair)] font-extrabold leading-[1.04]"
                 style={{ fontSize: "clamp(1.9rem, 4.6vw, 3.3rem)", color: INK }}
               >
-                Let Down,
+                Where Have All the
                 <br />
-                Carried Up
+                Weird Fishes Gone?
               </h1>
 
               <p
                 className="mx-auto mt-3 max-w-[50ch] text-center font-[family-name:var(--font-body-serif)] italic"
                 style={{ fontSize: "1.05rem", lineHeight: 1.5, color: "#3d362b" }}
               >
-                A young octet with three guitars takes one strange new song to
+                A young trio with two guitars takes one strange new song to
                 the Montrose Saloon — and finds an old river running
                 underneath it.
               </p>
@@ -204,7 +204,7 @@ export default function WeirdFishesPage() {
                     color: "#3d362b",
                   }}
                 >
-                  Three guitars, three voices: the group at the Montrose Saloon
+                  Two guitars, three voices: the trio at the Montrose Saloon
                   last Tuesday. (Chronicle staff photo)
                 </figcaption>
               </figure>
@@ -220,13 +220,13 @@ export default function WeirdFishesPage() {
                   >
                     Old Town, Feb. 12 —
                   </span>{" "}
-                  <span className="dropcap">T</span>here are eight of them,
-                  which is the first remarkable thing. They crowd onto the
-                  little stage at the Montrose Saloon with three flat-top guitars, a
-                  bass fiddle, a piano, drums, and more musicians than the room
-                  was built to hold, under a name — A Thousand Feet Per Second
-                  — that sounds like something out of a science textbook. The
-                  second remarkable thing is the song.
+                  <span className="dropcap">T</span>here are three of them.
+                  Two guitars, three voices, and nothing else on the little
+                  stage at the Montrose Saloon, under a name — A Thousand Feet
+                  Per Second — that sounds like something out of a science
+                  textbook. It is the Peter, Paul and Mary formation, down to
+                  the last string, and the three of them wear it without
+                  apology. The remarkable thing is the song.
                 </p>
                 <p className="article-p">
                   Their new single is <em>“Let Down.”</em> It opens with two
@@ -264,7 +264,7 @@ export default function WeirdFishesPage() {
               >
                 <Subhead>The current underneath</Subhead>
                 <p className="article-p">
-                  What this group understands — what all eight of them seem to
+                  What this group understands — what all three of them seem to
                   have understood at once — is that the old songs were always
                   about the water. <em>“The Water Is Wide.” “Shenandoah.”</em>{" "}
                   Every river song ever sung in this town was about going down
