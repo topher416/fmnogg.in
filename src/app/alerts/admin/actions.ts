@@ -1,15 +1,22 @@
 "use server";
 
 import { list } from "@vercel/blob";
+import {
+  readSongProgress,
+  writeSongProgress,
+} from "@/lib/song-quest";
+import { getQuestCandidates } from "@/lib/quest-candidates";
 
 export interface Subscriber {
   email: string;
   venue?: string;
+  src?: string;
 }
 
 interface SubscriberBlob {
   email?: unknown;
   venue?: unknown;
+  src?: unknown;
 }
 
 async function readSubscribers(): Promise<Subscriber[] | null> {
@@ -37,6 +44,7 @@ async function readSubscribers(): Promise<Subscriber[] | null> {
             out.push({
               email: data.email,
               venue: typeof venue === "string" ? venue : undefined,
+              src: typeof data.src === "string" ? data.src : undefined,
             });
           }
         } catch {
@@ -61,4 +69,33 @@ export async function unlockAdmin(
   }
   const subscribers = await readSubscribers();
   return { ok: true, subscribers };
+}
+
+function adminAuthed(password: string): boolean {
+  const adminPassword = process.env.ALERTS_ADMIN_TOKEN;
+  return !!adminPassword && password === adminPassword;
+}
+
+/** Song-quest learning progress, for the admin editor. */
+export async function getQuestProgressAdmin(
+  password: string
+): Promise<{ ok: true; progress: Record<string, number> | null } | { ok: false }> {
+  if (!adminAuthed(password)) return { ok: false };
+  return { ok: true, progress: await readSongProgress() };
+}
+
+/** Save song-quest learning progress from the admin editor form. */
+export async function saveQuestProgressAdmin(
+  password: string,
+  formData: FormData
+): Promise<{ ok: boolean }> {
+  if (!adminAuthed(password)) return { ok: false };
+  const entries: Record<string, number> = {};
+  for (const c of getQuestCandidates()) {
+    const raw = formData.get(`p-${c.slug}`);
+    if (typeof raw !== "string" || raw.trim() === "") continue;
+    const n = Math.round(Number(raw));
+    if (Number.isFinite(n)) entries[c.slug] = n;
+  }
+  return { ok: await writeSongProgress(entries) };
 }

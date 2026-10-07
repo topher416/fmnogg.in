@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/shows`, priority: 0.7 },
     { url: `${base}/press`, priority: 0.6 },
     { url: `${base}/alerts`, priority: 0.4 },
+    { url: `${base}/quest`, priority: 0.5 },
     { url: `${base}/members`, priority: 0.5 },
     { url: `${base}/onethousandfeetpersecond`, priority: 0.5 },
   ];

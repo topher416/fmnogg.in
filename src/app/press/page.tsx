@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { BAND } from "@/lib/site";
 import { SHOWS } from "@/lib/shows";
 import { AUDIO_CDN } from "@/lib/discography";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import PressPlayer, { type PressTrack } from "@/components/site/PressPlayer";
+import BookerFacts from "@/components/site/BookerFacts";
 
 export const metadata: Metadata = {
   title: `Press kit — ${BAND.name}`,
   description: `Press kit for ${BAND.name}: bio, photos, live recordings, shows, and contact.`,
   alternates: { canonical: "/press" },
 };
+
+export const revalidate = 3600;
 
 const PHOTOS = [
   { name: "Hannah Enenbach", src: "/images/members/hannah-enenbach-portrait.png" },
@@ -68,6 +72,23 @@ export default function PressPage() {
         <p className="mt-3 max-w-[60ch] text-[1.05rem] leading-relaxed text-white/80">
           It&rsquo;s just eight good musicians doing good Radiohead covers.
         </p>
+
+        <section
+          aria-label="For bookers"
+          className="mt-10 border border-white/10 bg-white/[0.02] p-6"
+        >
+          <SectionLabel>For bookers</SectionLabel>
+          <SectionTitle>The whole pitch, one screen</SectionTitle>
+          <Suspense
+            fallback={
+              <p className="mt-6 font-mono text-[0.72rem] text-white/30">
+                Loading…
+              </p>
+            }
+          >
+            <BookerFacts />
+          </Suspense>
+        </section>
 
         <section aria-label="Bio" className="mt-10 border-t border-white/[0.06] pt-8">
           <SectionLabel>Bio</SectionLabel>

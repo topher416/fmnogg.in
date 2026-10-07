@@ -46,6 +46,16 @@ interface SubscriberBlob {
   email: string;
   ts: number;
   venue?: VenueVote;
+  /** Channel the signup came from (?src= on the page URL). */
+  src?: string;
+}
+
+/** Attribution channel from ?src=; null when absent/unusable. Never throws. */
+function normalizeSrc(raw: unknown): string | null {
+  if (typeof raw !== "string") return null;
+  const cleaned = raw.trim().toLowerCase().replace(/[^a-z0-9-_]/g, "");
+  if (cleaned.length === 0 || cleaned.length > 40) return null;
+  return cleaned;
 }
 
 export async function POST(req: NextRequest) {
@@ -53,7 +63,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "not_configured" }, { status: 503 });
   }
 
-  let body: { email?: unknown; website?: unknown; venue?: unknown };
+  let body: { email?: unknown; website?: unknown; venue?: unknown; src?: unknown };
   try {
     body = (await req.json()) as typeof body;
   } catch {
@@ -73,6 +83,8 @@ export async function POST(req: NextRequest) {
 
   // Optional venue vote; a bad value never blocks the signup.
   const venue = normalizeVenue(body.venue);
+  // Optional attribution channel (?src=flyer, ?src=instagram, ...).
+  const src = normalizeSrc(body.src);
 
   // Best-effort rate limit: 10 signups per hour per IP.
   const ip =
@@ -107,6 +119,7 @@ export async function POST(req: NextRequest) {
     const path = `subscribers/${sha(email)}.json`;
     const record: SubscriberBlob = { email, ts: Date.now() };
     if (venue) record.venue = venue;
+    if (src) record.src = src;
 
     if (await findBlob(path)) {
       if (!venue) {
@@ -133,17 +146,17 @@ export async function POST(req: NextRequest) {
 }
 
 async function allSubscribers(): Promise<
-  { email: string; venue?: string }[] | null
+  { email: string; venue?: string; src?: string }[] | null
 > {
   try {
-    const out: { email: string; venue?: string }[] = [];
+    const out: { email: string; venue?: string; src?: string }[] = [];
     let cursor: string | undefined;
     do {
       const page = await list({ prefix: "subscribers/", limit: 100, cursor });
       for (const b of page.blobs) {
         const data = await readJson<SubscriberBlob>(b.url);
         if (data && typeof data.email === "string") {
-          out.push({ email: data.email, venue: data.venue?.display });
+          out.push({ email: data.email, venue: data.venue?.display, src: data.src });
         }
       }
       cursor = page.hasMore ? page.cursor : undefined;

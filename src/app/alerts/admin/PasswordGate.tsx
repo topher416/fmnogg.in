@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { unlockAdmin, type Subscriber } from "./actions";
 import AdminActions from "./AdminActions";
+import QuestProgressEditor from "@/components/site/QuestProgressEditor";
 
 /** Password gate: visitor enters a password, list unlocks only on match. */
 export default function PasswordGate() {
@@ -49,9 +50,11 @@ export default function PasswordGate() {
                   className="flex items-baseline justify-between gap-4 py-2 font-mono text-[0.8rem] text-white/70 select-all"
                 >
                   <span>{s.email}</span>
-                  {s.venue ? (
-                    <span className="shrink-0 text-white/35">{s.venue}</span>
-                  ) : null}
+                  <span className="shrink-0 text-white/35">
+                    {[s.venue, s.src ? `via ${s.src}` : null]
+                      .filter(Boolean)
+                      .join(" · ") || ""}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -68,6 +71,8 @@ export default function PasswordGate() {
             .
           </p>
         )}
+
+        <QuestProgressEditor password={password} />
       </div>
     );
   }

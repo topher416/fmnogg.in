@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 
 type Status = "idle" | "sending" | "done" | "error";
 
@@ -24,14 +25,23 @@ export default function AlertForm() {
     setStatus("sending");
     setMessage("");
     const website = String(new FormData(e.currentTarget).get("website") ?? "");
+    // Attribution channel, e.g. /alerts?src=flyer — tells us which channel
+    // actually grows the list.
+    const src =
+      new URLSearchParams(window.location.search).get("src") ?? undefined;
     try {
       const res = await fetch("/api/alerts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, website, venue }),
+        body: JSON.stringify({ email, website, venue, src }),
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok && data.ok) {
+        track("alert_signup", {
+          src: typeof src === "string" && src ? src : "direct",
+          venue: typeof data.venue === "string" ? data.venue : "",
+          updated: data.updated === true ? "1" : "0",
+        });
         setStatus("done");
         setMessage(
           typeof data.venue === "string" && data.venue

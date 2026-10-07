@@ -26,9 +26,9 @@ export default function AdminActions({
   const downloadCsv = () => {
     const esc = (v: string) => `"${v.replace(/"/g, '""')}"`;
     const csv =
-      "email,venue\n" +
+      "email,venue,src\n" +
       subscribers
-        .map((s) => `${esc(s.email)},${esc(s.venue ?? "")}`)
+        .map((s) => `${esc(s.email)},${esc(s.venue ?? "")},${esc(s.src ?? "")}`)
         .join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
