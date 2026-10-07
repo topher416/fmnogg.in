@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getQuestProgressAdmin, saveQuestProgressAdmin } from "./actions";
+import { getQuestProgressAdmin, saveQuestProgressAdmin } from "@/app/alerts/admin/actions";
 import {
   getQuestCandidates,
   type QuestCandidate,
