@@ -74,6 +74,17 @@ export default async function TrackPage({
 
         <VideoPlayer src={r2Video(track)} title={track.title} color={album.color} />
 
+        {track.slug === "weird-fishes-arpeggi" ? (
+          <p className="mt-4 text-right font-mono text-[0.6rem] uppercase tracking-[0.14em] text-white/25">
+            <Link
+              href="/weird-fishes"
+              className="underline decoration-white/15 underline-offset-4 transition-colors hover:text-white/60"
+            >
+              Reviewed in the Chronicle, Feb. 1965 →
+            </Link>
+          </p>
+        ) : null}
+
         {/* Prev / next */}
         <nav className="mt-6 flex items-center justify-between gap-3 font-mono text-[0.64rem] uppercase tracking-[0.12em]">
           {prev ? (
