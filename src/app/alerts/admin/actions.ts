@@ -2,11 +2,21 @@
 
 import { list } from "@vercel/blob";
 
-async function readSubscribers(): Promise<string[] | null> {
+export interface Subscriber {
+  email: string;
+  venue?: string;
+}
+
+interface SubscriberBlob {
+  email?: unknown;
+  venue?: unknown;
+}
+
+async function readSubscribers(): Promise<Subscriber[] | null> {
   const token = process.env.BLOB_READ_WRITE_TOKEN;
   if (!token) return null;
   try {
-    const emails: string[] = [];
+    const out: Subscriber[] = [];
     let cursor: string | undefined;
     do {
       const page = await list({ prefix: "subscribers/", limit: 100, cursor });
@@ -17,15 +27,25 @@ async function readSubscribers(): Promise<string[] | null> {
             cache: "no-store",
           });
           if (!res.ok) continue;
-          const data = (await res.json()) as { email?: unknown };
-          if (typeof data.email === "string") emails.push(data.email);
+          const data = (await res.json()) as SubscriberBlob;
+          if (typeof data.email === "string") {
+            const v = data.venue;
+            const venue =
+              v && typeof v === "object"
+                ? (v as { display?: unknown }).display
+                : undefined;
+            out.push({
+              email: data.email,
+              venue: typeof venue === "string" ? venue : undefined,
+            });
+          }
         } catch {
           // Skip blobs that can't be read; keep the rest.
         }
       }
       cursor = page.hasMore ? page.cursor : undefined;
     } while (cursor);
-    return emails.sort();
+    return out.sort((a, b) => a.email.localeCompare(b.email));
   } catch {
     return null;
   }
@@ -34,7 +54,7 @@ async function readSubscribers(): Promise<string[] | null> {
 /** Returns the subscriber list only when the password matches. */
 export async function unlockAdmin(
   password: string
-): Promise<{ ok: true; subscribers: string[] | null } | { ok: false }> {
+): Promise<{ ok: true; subscribers: Subscriber[] | null } | { ok: false }> {
   const adminPassword = process.env.ALERTS_ADMIN_TOKEN;
   if (!adminPassword || password !== adminPassword) {
     return { ok: false };

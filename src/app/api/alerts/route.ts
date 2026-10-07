@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { put, list, del } from "@vercel/blob";
 import { createHash } from "crypto";
+import { normalizeVenue, type VenueVote } from "@/lib/venue-votes";
 
 // Show-alerts signup, backed by a private Vercel Blob store ("band-alerts").
 // One tiny JSON blob per subscriber: subscribers/<sha256(email)>.json.
 // The store's BLOB_READ_WRITE_TOKEN is injected by Vercel; the SDK picks it
 // up automatically. No KV needed.
+//
+// The signup form also carries an optional "which bar next?" venue vote,
+// stored on the subscriber blob and aggregated into the public "Wanted at"
+// leaderboard. Resubmitting with a venue updates an existing subscriber's vote.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const RL_MAX = 10;
@@ -37,12 +42,18 @@ async function readJson<T>(url: string): Promise<T | null> {
   }
 }
 
+interface SubscriberBlob {
+  email: string;
+  ts: number;
+  venue?: VenueVote;
+}
+
 export async function POST(req: NextRequest) {
   if (!authed()) {
     return NextResponse.json({ error: "not_configured" }, { status: 503 });
   }
 
-  let body: { email?: unknown; website?: unknown };
+  let body: { email?: unknown; website?: unknown; venue?: unknown };
   try {
     body = (await req.json()) as typeof body;
   } catch {
@@ -59,6 +70,9 @@ export async function POST(req: NextRequest) {
   if (!EMAIL_RE.test(email) || email.length > 254) {
     return NextResponse.json({ error: "invalid_email" }, { status: 400 });
   }
+
+  // Optional venue vote; a bad value never blocks the signup.
+  const venue = normalizeVenue(body.venue);
 
   // Best-effort rate limit: 10 signups per hour per IP.
   const ip =
@@ -91,33 +105,50 @@ export async function POST(req: NextRequest) {
 
   try {
     const path = `subscribers/${sha(email)}.json`;
+    const record: SubscriberBlob = { email, ts: Date.now() };
+    if (venue) record.venue = venue;
+
     if (await findBlob(path)) {
-      return NextResponse.json({ error: "already_subscribed" }, { status: 409 });
+      if (!venue) {
+        return NextResponse.json({ error: "already_subscribed" }, { status: 409 });
+      }
+      // Existing subscriber casting or changing their venue vote.
+      await put(path, JSON.stringify(record), {
+        access: "private",
+        allowOverwrite: true,
+        contentType: "application/json",
+      });
+      return NextResponse.json({ ok: true, updated: true, venue: venue.display });
     }
-    await put(path, JSON.stringify({ email, ts: Date.now() }), {
+
+    await put(path, JSON.stringify(record), {
       access: "private",
       allowOverwrite: true,
       contentType: "application/json",
     });
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, venue: venue?.display ?? null });
   } catch {
     return NextResponse.json({ error: "server_error" }, { status: 500 });
   }
 }
 
-async function allSubscribers(): Promise<string[] | null> {
+async function allSubscribers(): Promise<
+  { email: string; venue?: string }[] | null
+> {
   try {
-    const emails: string[] = [];
+    const out: { email: string; venue?: string }[] = [];
     let cursor: string | undefined;
     do {
       const page = await list({ prefix: "subscribers/", limit: 100, cursor });
       for (const b of page.blobs) {
-        const data = await readJson<{ email?: unknown }>(b.url);
-        if (data && typeof data.email === "string") emails.push(data.email);
+        const data = await readJson<SubscriberBlob>(b.url);
+        if (data && typeof data.email === "string") {
+          out.push({ email: data.email, venue: data.venue?.display });
+        }
       }
       cursor = page.hasMore ? page.cursor : undefined;
     } while (cursor);
-    return emails.sort();
+    return out.sort((a, b) => a.email.localeCompare(b.email));
   } catch {
     return null;
   }

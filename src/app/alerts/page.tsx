@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { BAND } from "@/lib/site";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import AlertForm from "@/components/site/AlertForm";
+import VenueLeaderboard from "@/components/site/VenueLeaderboard";
 
 export const metadata: Metadata = {
   title: `Show alerts — ${BAND.name}`,
   description: `Get one email when ${BAND.name} announces a show. Nothing else.`,
   alternates: { canonical: "/alerts" },
 };
+
+export const revalidate = 3600;
 
 export default function AlertsPage() {
   return (
@@ -28,6 +32,16 @@ export default function AlertsPage() {
         </p>
 
         <AlertForm />
+
+        <Suspense
+          fallback={
+            <p className="mt-14 font-mono text-[0.72rem] text-white/30">
+              Loading votes…
+            </p>
+          }
+        >
+          <VenueLeaderboard />
+        </Suspense>
       </main>
 
       <SiteFooter />

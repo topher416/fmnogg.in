@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { unlockAdmin } from "./actions";
+import { unlockAdmin, type Subscriber } from "./actions";
 import AdminActions from "./AdminActions";
 
 /** Password gate: visitor enters a password, list unlocks only on match. */
@@ -9,7 +9,7 @@ export default function PasswordGate() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [subscribers, setSubscribers] = useState<string[] | null | undefined>(
+  const [subscribers, setSubscribers] = useState<Subscriber[] | null | undefined>(
     undefined
   );
 
@@ -45,10 +45,13 @@ export default function PasswordGate() {
             <ul className="mt-6 divide-y divide-white/[0.05] border-t border-white/[0.06]">
               {subscribers.map((s) => (
                 <li
-                  key={s}
-                  className="py-2 font-mono text-[0.8rem] text-white/70 select-all"
+                  key={s.email}
+                  className="flex items-baseline justify-between gap-4 py-2 font-mono text-[0.8rem] text-white/70 select-all"
                 >
-                  {s}
+                  <span>{s.email}</span>
+                  {s.venue ? (
+                    <span className="shrink-0 text-white/35">{s.venue}</span>
+                  ) : null}
                 </li>
               ))}
             </ul>

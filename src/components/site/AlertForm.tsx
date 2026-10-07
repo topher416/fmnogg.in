@@ -14,6 +14,7 @@ const MESSAGES: Record<string, string> = {
 
 export default function AlertForm() {
   const [email, setEmail] = useState("");
+  const [venue, setVenue] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
 
@@ -27,12 +28,16 @@ export default function AlertForm() {
       const res = await fetch("/api/alerts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, website }),
+        body: JSON.stringify({ email, website, venue }),
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok && data.ok) {
         setStatus("done");
-        setMessage("You're on the list. One email per show, nothing else.");
+        setMessage(
+          typeof data.venue === "string" && data.venue
+            ? `You're on the list — vote counted for ${data.venue}.`
+            : "You're on the list. One email per show, nothing else."
+        );
       } else if (res.status === 409) {
         setStatus("done");
         setMessage(MESSAGES.already_subscribed);
@@ -82,6 +87,26 @@ export default function AlertForm() {
           {status === "sending" ? "…" : "Sign up"}
         </button>
       </div>
+      <label
+        htmlFor="alert-venue"
+        className="mt-5 block font-mono text-[0.62rem] uppercase tracking-[0.18em] text-white/35"
+      >
+        Which Chicago bar should we play next?{" "}
+        <span className="text-white/25 normal-case tracking-normal">
+          — optional
+        </span>
+      </label>
+      <input
+        id="alert-venue"
+        type="text"
+        autoComplete="off"
+        placeholder="e.g. The Empty Bottle"
+        maxLength={80}
+        value={venue}
+        onChange={(e) => setVenue(e.target.value)}
+        disabled={status === "sending"}
+        className="mt-2 w-full border border-white/15 bg-white/[0.03] px-3 py-2.5 text-[0.95rem] text-white/90 placeholder:text-white/25 outline-none focus:border-white/40 disabled:opacity-50"
+      />
       {/* honeypot: invisible to humans, irresistible to bots */}
       <input
         type="text"

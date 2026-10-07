@@ -1,14 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import type { Subscriber } from "./actions";
 
 /** Copy-all + CSV download buttons for the subscriber list. */
-export default function AdminActions({ subscribers }: { subscribers: string[] }) {
+export default function AdminActions({
+  subscribers,
+}: {
+  subscribers: Subscriber[];
+}) {
   const [copied, setCopied] = useState(false);
 
   const copyAll = async () => {
     try {
-      await navigator.clipboard.writeText(subscribers.join("\n"));
+      await navigator.clipboard.writeText(
+        subscribers.map((s) => s.email).join("\n")
+      );
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -17,7 +24,12 @@ export default function AdminActions({ subscribers }: { subscribers: string[] })
   };
 
   const downloadCsv = () => {
-    const csv = "email\n" + subscribers.map((s) => `"${s.replace(/"/g, '""')}"`).join("\n");
+    const esc = (v: string) => `"${v.replace(/"/g, '""')}"`;
+    const csv =
+      "email,venue\n" +
+      subscribers
+        .map((s) => `${esc(s.email)},${esc(s.venue ?? "")}`)
+        .join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
