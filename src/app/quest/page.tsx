@@ -68,12 +68,18 @@ export default async function QuestPage() {
               <em>OK Computer</em> turns 30 in May 2027. We&rsquo;re at{" "}
               {okc.pct}% — help us finish the album.
             </p>
-            <p className="mt-2">
+            <p className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
               <a
                 href="#album-ok-computer"
                 className="font-mono text-[0.68rem] text-white/60 underline underline-offset-4 decoration-white/25 hover:text-white/90 transition-colors"
               >
                 Vote for its remaining songs ↓
+              </a>
+              <a
+                href="/anniversaries"
+                className="font-mono text-[0.68rem] text-white/60 underline underline-offset-4 decoration-white/25 hover:text-white/90 transition-colors"
+              >
+                All upcoming Radiohead anniversaries →
               </a>
             </p>
           </div>
