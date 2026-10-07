@@ -74,7 +74,7 @@ export default async function TrackPage({
 
         <VideoPlayer src={r2Video(track)} title={track.title} color={album.color} />
 
-        {track.slug === "weird-fishes-arpeggi" ? (
+        {track.slug === "let-down" ? (
           <p className="mt-4 text-right font-mono text-[0.6rem] uppercase tracking-[0.14em] text-white/25">
             <Link
               href="/weird-fishes"
