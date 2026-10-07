@@ -6,7 +6,7 @@ import AnniversaryCalendar from "@/components/site/AnniversaryCalendar";
 
 export const metadata: Metadata = {
   title: `Anniversaries — ${BAND.name}`,
-  description: `Every Radiohead anniversary worth playing: album milestones, singles, and EPs on the calendar.`,
+  description: `Every Radiohead studio album anniversary, on the calendar.`,
   alternates: { canonical: "/anniversaries" },
 };
 
@@ -23,7 +23,7 @@ export default function AnniversariesPage() {
           Radiohead anniversaries
         </h1>
         <p className="mt-2 max-w-[60ch] text-[0.95rem] leading-relaxed text-white/55">
-          Every album milestone, single, and EP — each one a reason to play a
+          All nine studio albums — each anniversary a reason to play a
           themed night. ★ marks the 5-year milestones bookers love.
         </p>
 

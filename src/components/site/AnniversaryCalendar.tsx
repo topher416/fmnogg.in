@@ -227,7 +227,7 @@ export default function AnniversaryCalendar() {
         </>
       ) : (
         <ol className="mt-6 divide-y divide-white/[0.05] border-t border-white/[0.06]">
-          {upcoming.slice(0, 27).map((u) => (
+          {upcoming.map((u) => (
             <li
               key={`${u.title}-${u.year}`}
               className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-2.5"
@@ -252,10 +252,7 @@ export default function AnniversaryCalendar() {
       )}
 
       <p className="mt-6 font-mono text-[0.62rem] leading-relaxed text-white/30">
-        <span className="mr-1 inline-block h-1.5 w-1.5 rounded-full bg-[#00ff9f]" />
-        album
-        <span className="ml-3 mr-1 inline-block h-1.5 w-1.5 rounded-full border border-white/50" />
-        single / EP / other · ★ marks a 5-year milestone
+        ★ marks a 5-year milestone
       </p>
     </div>
   );
