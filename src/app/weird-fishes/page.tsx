@@ -15,7 +15,7 @@ const body = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Where Have All the Weird Fishes Gone?",
+  title: "Let Down, Carried Up",
   description:
     "From the Arts & Leisure section, Saturday, February 13, 1965: a review of a young octet's new single.",
   alternates: { canonical: "/weird-fishes" },
@@ -117,7 +117,7 @@ export default function WeirdFishesPage() {
               color: INK,
             }}
           >
-            The Washington Square Chronicle · Saturday, February 13, 1965 ·
+            The Old Town Chronicle · Saturday, February 13, 1965 ·
             Page 14
           </div>
 
@@ -145,18 +145,18 @@ export default function WeirdFishesPage() {
                 className="mt-5 text-center font-[family-name:var(--font-playfair)] font-extrabold leading-[1.04]"
                 style={{ fontSize: "clamp(1.9rem, 4.6vw, 3.3rem)", color: INK }}
               >
-                Where Have All the
+                Let Down,
                 <br />
-                Weird Fishes Gone?
+                Carried Up
               </h1>
 
               <p
                 className="mx-auto mt-3 max-w-[50ch] text-center font-[family-name:var(--font-body-serif)] italic"
                 style={{ fontSize: "1.05rem", lineHeight: 1.5, color: "#3d362b" }}
               >
-                A young octet with three guitars takes two strange new songs
-                down to the deep water — and finds the old river running
-                underneath them.
+                A young octet with three guitars takes one strange new song to
+                the Montrose Saloon — and finds an old river running
+                underneath it.
               </p>
 
               <p
@@ -204,8 +204,8 @@ export default function WeirdFishesPage() {
                     color: "#3d362b",
                   }}
                 >
-                  Three guitars, three voices, and one very deep ocean: the
-                  group at the Bitter End last Tuesday. (Chronicle staff photo)
+                  Three guitars, three voices: the group at the Montrose Saloon
+                  last Tuesday. (Chronicle staff photo)
                 </figcaption>
               </figure>
 
@@ -218,19 +218,19 @@ export default function WeirdFishesPage() {
                     className="font-[family-name:var(--font-franklin)] text-[0.7rem] font-semibold uppercase"
                     style={{ letterSpacing: "0.14em" }}
                   >
-                    Greenwich Village, Feb. 12 —
+                    Old Town, Feb. 12 —
                   </span>{" "}
                   <span className="dropcap">T</span>here are eight of them,
                   which is the first remarkable thing. They crowd onto the
-                  little stage at the Bitter End with three flat-top guitars, a
+                  little stage at the Montrose Saloon with three flat-top guitars, a
                   bass fiddle, a piano, drums, and more musicians than the room
                   was built to hold, under a name — A Thousand Feet Per Second
                   — that sounds like something out of a science textbook. The
-                  second remarkable thing is the songs.
+                  second remarkable thing is the song.
                 </p>
                 <p className="article-p">
-                  The new single gives you both of them at once.{" "}
-                  <em>“Let Down,”</em> the top side, opens with two guitars in
+                  Their new single is <em>“Let Down.”</em> It opens with two
+                  guitars in
                   a bright, circling figure that will not sit still, and a high
                   tenor singing about growing wings. <em>“One day,”</em> he
                   says, <em>“I am gonna grow wings — a chemical reaction,
@@ -242,21 +242,6 @@ export default function WeirdFishesPage() {
                   the way only people who sing together every night can braid
                   them. You do not so much listen to the finish as get carried
                   along by it.
-                </p>
-                <Subhead>The flip side</Subhead>
-                <p className="article-p">
-                  Turn the record over and the water gets deeper.{" "}
-                  <em>“Weird Fishes”</em> — a title that would have been
-                  laughed out of any publishing office on Tin Pan Alley — is
-                  built on three guitars playing a round, the way children sing{" "}
-                  <em>“Row, Row, Row Your Boat,”</em> except that the round
-                  never resolves and there are no children in sight. The singer
-                  is going down: <em>“in the deepest ocean, the bottom of the
-                  sea,”</em> down past where the light reaches, and he does
-                  not sound frightened. He sounds relieved. It is a baptism in
-                  reverse. When the voices come in at the close they sing
-                  softly, the way you sing when you are trying not to wake
-                  somebody.
                 </p>
               </div>
 
@@ -284,18 +269,15 @@ export default function WeirdFishesPage() {
                   about the water. <em>“The Water Is Wide.” “Shenandoah.”</em>{" "}
                   Every river song ever sung in this town was about going down
                   to something deeper than yourself and coming back changed, or
-                  not coming back. These eight have simply taken the river all
-                  the way out to the ocean. The instruments are new and the
+                  not coming back. The instruments are new and the
                   words are strange, but the current underneath is the oldest
                   one in the book. There is nothing here of the Kingston
                   Trio’s neatness, and none of Peter, Paul and Mary’s parlor
                   polish. This is something wilder, and all the better for it.
                 </p>
                 <p className="article-p">
-                  So where have all the weird fishes gone? Down past the light,
-                  to the bottom of the sea — and this octet, to its great
-                  credit, had the nerve to follow them. Buy the record. Play
-                  it loud enough to hear the fingers on the strings.
+                  Buy the record. Play it loud enough to hear the fingers on
+                  the strings.
                 </p>
                 <p
                   className="article-p font-[family-name:var(--font-franklin)] text-[0.68rem] uppercase"
