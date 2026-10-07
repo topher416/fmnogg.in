@@ -15,10 +15,10 @@ const body = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Three Voices Against the Cold",
+  title: "Where Have All the Weird Fishes Gone?",
   description:
-    "From the Arts & Leisure section, Saturday, February 13, 1965: on the rare quality of three part harmony, sung with vigor.",
-  alternates: { canonical: "/three-voices" },
+    "From the Arts & Leisure section, Saturday, February 13, 1965: a review of a young octet's new single.",
+  alternates: { canonical: "/weird-fishes" },
 };
 
 const INK = "#16130f";
@@ -56,7 +56,7 @@ function Subhead({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function ThreeVoicesPage() {
+export default function WeirdFishesPage() {
   return (
     <div
       className={`${franklin.variable} ${body.variable} flex min-h-screen items-center justify-center p-6 sm:p-12`}
@@ -117,7 +117,8 @@ export default function ThreeVoicesPage() {
               color: INK,
             }}
           >
-            The Old Town Chronicle · Saturday, February 13, 1965 · Page 14
+            The Washington Square Chronicle · Saturday, February 13, 1965 ·
+            Page 14
           </div>
 
           <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_208px]">
@@ -144,17 +145,18 @@ export default function ThreeVoicesPage() {
                 className="mt-5 text-center font-[family-name:var(--font-playfair)] font-extrabold leading-[1.04]"
                 style={{ fontSize: "clamp(1.9rem, 4.6vw, 3.3rem)", color: INK }}
               >
-                Three Voices
+                Where Have All the
                 <br />
-                Against the Cold
+                Weird Fishes Gone?
               </h1>
 
               <p
                 className="mx-auto mt-3 max-w-[50ch] text-center font-[family-name:var(--font-body-serif)] italic"
                 style={{ fontSize: "1.05rem", lineHeight: 1.5, color: "#3d362b" }}
               >
-                Eight players, three singers, one new single. The song is a
-                thin thing. The singing is not.
+                A young octet with three guitars takes two strange new songs
+                down to the deep water — and finds the old river running
+                underneath them.
               </p>
 
               <p
@@ -202,8 +204,8 @@ export default function ThreeVoicesPage() {
                     color: "#3d362b",
                   }}
                 >
-                  Three singers, three guitars: the group at Mother Blues last
-                  Tuesday. (Chronicle staff photo)
+                  Three guitars, three voices, and one very deep ocean: the
+                  group at the Bitter End last Tuesday. (Chronicle staff photo)
                 </figcaption>
               </figure>
 
@@ -216,39 +218,45 @@ export default function ThreeVoicesPage() {
                     className="font-[family-name:var(--font-franklin)] text-[0.7rem] font-semibold uppercase"
                     style={{ letterSpacing: "0.14em" }}
                   >
-                    Old Town, Feb. 12:
+                    Greenwich Village, Feb. 12 —
                   </span>{" "}
-                  <span className="dropcap">T</span>here are eight of them.
-                  They crowded onto the stage at Mother Blues last Tuesday
-                  with three guitars, a bass fiddle, a piano and drums, and a
-                  name, A Thousand Feet Per Second, that belongs in a physics
-                  textbook. The single is called “Let Down.” Forget the single.
-                  Listen to the singing.
+                  <span className="dropcap">T</span>here are eight of them,
+                  which is the first remarkable thing. They crowd onto the
+                  little stage at the Bitter End with three flat-top guitars, a
+                  bass fiddle, a piano, drums, and more musicians than the room
+                  was built to hold, under a name — A Thousand Feet Per Second
+                  — that sounds like something out of a science textbook. The
+                  second remarkable thing is the songs.
                 </p>
                 <p className="article-p">
-                  The song is a schoolboy’s complaint. A young tenor wants
-                  wings. “One day I am gonna grow wings,” he sings, “a chemical
-                  reaction, hysterical and useless.” The words are thin. The
-                  tune is thinner, two guitars running in a bright circle that
-                  never quite arrives. None of it would matter if the voices
-                  were not what they are.
+                  The new single gives you both of them at once.{" "}
+                  <em>“Let Down,”</em> the top side, opens with two guitars in
+                  a bright, circling figure that will not sit still, and a high
+                  tenor singing about growing wings. <em>“One day,”</em> he
+                  says, <em>“I am gonna grow wings — a chemical reaction,
+                  hysterical and useless.”</em> It is the oldest daydream in
+                  the world, set down without apology: the wish to rise
+                  straight up out of the room, and the rooms beyond the room.
+                  The tune keeps climbing and the voices keep joining it until,
+                  near the end, all three are in it together, braided tight
+                  the way only people who sing together every night can braid
+                  them. You do not so much listen to the finish as get carried
+                  along by it.
                 </p>
+                <Subhead>The flip side</Subhead>
                 <p className="article-p">
-                  There are three singers. A high tenor. A second voice under
-                  him. A girl with a low alto. On the verses they take turns,
-                  polite enough. Then the chorus comes, “let down and hanging
-                  around,” and all three open up at once.
-                </p>
-                <Subhead>The harmony</Subhead>
-                <p className="article-p">
-                  Here is what three voices can do that two cannot. The tenor
-                  takes the top and will not come down. The second voice finds
-                  the third below him and stays there, exact, no vibrato, no
-                  showing off. The girl sings the root under both of them and
-                  does not waver. The three notes lock into a chord so clean
-                  it sounds machined. Then they move, all three together, up
-                  a step, and the chord holds. It is the hardest thing in
-                  singing. They do it like it costs them nothing.
+                  Turn the record over and the water gets deeper.{" "}
+                  <em>“Weird Fishes”</em> — a title that would have been
+                  laughed out of any publishing office on Tin Pan Alley — is
+                  built on three guitars playing a round, the way children sing{" "}
+                  <em>“Row, Row, Row Your Boat,”</em> except that the round
+                  never resolves and there are no children in sight. The singer
+                  is going down: <em>“in the deepest ocean, the bottom of the
+                  sea,”</em> down past where the light reaches, and he does
+                  not sound frightened. He sounds relieved. It is a baptism in
+                  reverse. When the voices come in at the close they sing
+                  softly, the way you sing when you are trying not to wake
+                  somebody.
                 </p>
               </div>
 
@@ -260,8 +268,8 @@ export default function ThreeVoicesPage() {
                   className="font-[family-name:var(--font-playfair)] italic"
                   style={{ fontSize: "1.35rem", lineHeight: 1.35, color: INK }}
                 >
-                  “It is not pretty singing. It is three people refusing to be
-                  quiet.”
+                  “It is the rare record that makes the strange familiar and
+                  the familiar strange inside the same three minutes.”
                 </p>
               </blockquote>
 
@@ -269,64 +277,38 @@ export default function ThreeVoicesPage() {
                 className="gap-7 md:columns-2"
                 style={{ columnRule: `1px solid ${INK}55` }}
               >
+                <Subhead>The current underneath</Subhead>
                 <p className="article-p">
-                  Mother Blues is a cold room in February. The voices warm it.
-                  By the last chorus the three of them are singing at full
-                  strength, throats wide open, and the guitars are just trying
-                  to keep up. This is not pretty singing. It is better than
-                  that. It is three people refusing to be quiet.
+                  What this group understands — what all eight of them seem to
+                  have understood at once — is that the old songs were always
+                  about the water. <em>“The Water Is Wide.” “Shenandoah.”</em>{" "}
+                  Every river song ever sung in this town was about going down
+                  to something deeper than yourself and coming back changed, or
+                  not coming back. These eight have simply taken the river all
+                  the way out to the ocean. The instruments are new and the
+                  words are strange, but the current underneath is the oldest
+                  one in the book. There is nothing here of the Kingston
+                  Trio’s neatness, and none of Peter, Paul and Mary’s parlor
+                  polish. This is something wilder, and all the better for it.
                 </p>
-                <Subhead>The verdict</Subhead>
                 <p className="article-p">
-                  The song will not last. The words about wings and chemistry
-                  will date the way schoolboy physics dates. The singing is
-                  the real article. It is the rare kind of harmony that cannot
-                  be taught, only earned, by people who stand close together
-                  night after night and breathe at the same time. Buy it for
-                  the last ninety seconds. Play it loud.
+                  So where have all the weird fishes gone? Down past the light,
+                  to the bottom of the sea — and this octet, to its great
+                  credit, had the nerve to follow them. Buy the record. Play
+                  it loud enough to hear the fingers on the strings.
                 </p>
                 <p
                   className="article-p font-[family-name:var(--font-franklin)] text-[0.68rem] uppercase"
                   style={{ letterSpacing: "0.2em", opacity: 0.75 }}
                 >
-                  - H. M. R.
+                  — H. M. R.
                 </p>
                 <p
                   className="article-p text-center font-[family-name:var(--font-franklin)] text-[0.7rem] font-semibold"
                   style={{ letterSpacing: "0.34em", opacity: 0.8 }}
                 >
-                  - 30 -
+                  — 30 —
                 </p>
-              </div>
-
-              {/* the rest tore off with the clipping */}
-              <div className="mt-6 border-t pt-5" style={{ borderColor: INK }}>
-                <div
-                  style={{
-                    clipPath:
-                      "polygon(0 0, 100% 0, 100% 70%, 96% 79%, 92% 72%, 86% 81%, 80% 74%, 73% 83%, 66% 76%, 58% 85%, 51% 78%, 43% 87%, 36% 80%, 28% 89%, 21% 82%, 13% 90%, 6% 83%, 0 88%)",
-                  }}
-                >
-                  <p
-                    className="font-[family-name:var(--font-playfair)] font-extrabold leading-tight"
-                    style={{
-                      fontSize: "clamp(1.4rem, 3vw, 2rem)",
-                      color: INK,
-                    }}
-                  >
-                    Weird F
-                  </p>
-                  <p
-                    className="mt-2 font-[family-name:var(--font-body-serif)] italic"
-                    style={{ fontSize: "1rem", color: "#3d362b" }}
-                  >
-                    Turn the record over and the water gets deeper.
-                  </p>
-                  <p className="article-p mt-3">
-                    Three guitars playing a round, the way children sing,
-                    except that the round never resolves and the
-                  </p>
-                </div>
               </div>
             </article>
 
@@ -386,7 +368,7 @@ export default function ThreeVoicesPage() {
                   style={{ fontSize: "0.8rem", lineHeight: 1.5, color: INK }}
                 >
                   Please be careful with matches, cigarettes and camp fires.
-                  Remember: 9 out of 10 forest fires are caused by people.
+                  Remember — 9 out of 10 forest fires are caused by people.
                 </p>
                 <p
                   className="mt-3 font-[family-name:var(--font-franklin)] text-[0.58rem] uppercase"
