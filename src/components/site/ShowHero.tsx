@@ -20,9 +20,6 @@ export default function ShowHero() {
           <h1 className="mt-3 max-w-[12ch] text-[2.2rem] font-bold leading-[1.05] tracking-tight text-white sm:text-[3.2rem]">
             {BAND.name}
           </h1>
-          <p className="mt-3 max-w-[44ch] text-[1rem] leading-relaxed text-white/70">
-            It&rsquo;s just eight good musicians doing good Radiohead covers.
-          </p>
 
           <div className="mt-9 max-w-[520px]">
             <h2 className="text-[1.1rem] font-semibold text-white/90">

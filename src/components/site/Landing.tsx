@@ -7,7 +7,7 @@ import Kaleidoscope from "./Kaleidoscope";
 import HomeGate from "./HomeGate";
 import Countdown from "./Countdown";
 import ShowHero from "./ShowHero";
-import AboutBand from "./AboutBand";
+import WikiEmbed from "./WikiEmbed";
 
 function KaleidoStrip({ seed }: { seed: number }) {
   return (
@@ -48,7 +48,7 @@ export default function Landing() {
         live={
           <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
             <ShowHero />
-            <AboutBand />
+            <WikiEmbed />
             <AlbumBrowser />
             <KaleidoStrip seed={1} />
             <LiveRelease />
