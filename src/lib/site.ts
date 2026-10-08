@@ -15,6 +15,8 @@ export const SHOW = {
   address: "2933 W Montrose Ave",
   city: "Chicago, IL",
   date: "Friday, October 9, 2026",
+  /** Doors / first set, America/Chicago. Drives the homepage countdown + show-night flip. */
+  startsAt: "2026-10-09T20:00:00-05:00",
   dateShort: "Oct 9",
   lineup: [
     { time: "8:00", act: "A Thousand Feet Per Second" },
