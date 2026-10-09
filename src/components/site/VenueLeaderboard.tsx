@@ -1,8 +1,9 @@
 import { getVenueLeaderboard, PITCH_THRESHOLD } from "@/lib/venue-votes";
 
 /** Public "Wanted at" leaderboard: which bars fans voted for, ranked. */
-export default async function VenueLeaderboard() {
-  const board = await getVenueLeaderboard();
+export default async function VenueLeaderboard({ limit }: { limit?: number }) {
+  const full = await getVenueLeaderboard();
+  const board = full && limit ? full.slice(0, limit) : full;
   if (board === null) return null;
 
   return (
