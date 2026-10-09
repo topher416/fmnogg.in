@@ -37,6 +37,7 @@ const VENUE_ALIASES: Record<string, string> = {
   subterranean: "Subterranean",
   space: "SPACE",
   "space evanston": "SPACE",
+  "space in evanston": "SPACE",
   "evanston space": "SPACE",
   "cubby bear": "Cubby Bear",
   "cubby bear wrigleyville": "Cubby Bear",
@@ -69,10 +70,30 @@ function titleCase(s: string): string {
     .join(" ");
 }
 
+// Fans append the city to venue names ("SPACE in Evanston", "Empty Bottle,
+// Chicago", "Schubas (Chicago)"). Strip trailing location qualifiers so
+// those votes land on the venue itself. Loops so "Name, Chicago IL" and
+// similar stacked suffixes fully come off.
+function stripLocationSuffix(s: string): string {
+  let out = s;
+  for (;;) {
+    const next = out
+      .replace(/\s*\((chicago|evanston|il|illinois)[^)]*\)\s*$/i, "")
+      .replace(
+        /[\s,–—-]+(?:in\s+)?(chicago|evanston)(\s*,?\s*(il|illinois))?\s*$/i,
+        "",
+      )
+      .replace(/[\s,]+(il|illinois)\s*$/i, "")
+      .trim();
+    if (next === out || next.length < 2) return out;
+    out = next;
+  }
+}
+
 /** Normalize a raw venue string; null when unusable. Never throws. */
 export function normalizeVenue(raw: unknown): VenueVote | null {
   if (typeof raw !== "string") return null;
-  const cleaned = raw.trim().replace(/\s+/g, " ");
+  const cleaned = stripLocationSuffix(raw.trim().replace(/\s+/g, " "));
   if (cleaned.length < 2 || cleaned.length > 80) return null;
   const display = VENUE_ALIASES[cleaned.toLowerCase()] ?? titleCase(cleaned);
   // Key off the canonical display so "the empty bottle" and "empty bottle"
@@ -120,9 +141,15 @@ export async function getVenueLeaderboard(): Promise<LeaderboardEntry[] | null> 
         if (v && typeof v === "object") {
           const { key, display } = v as { key?: unknown; display?: unknown };
           if (typeof key === "string" && typeof display === "string" && key) {
-            const cur = byKey.get(key) ?? { display, count: 0 };
+            // Re-canonicalize at read time: votes stored before a venue
+            // gained an alias (or a suffix rule) still merge into the
+            // canonical row instead of splitting the count.
+            const re = normalizeVenue(display) ?? normalizeVenue(key);
+            const k = re?.key ?? key;
+            const d = re?.display ?? display;
+            const cur = byKey.get(k) ?? { display: d, count: 0 };
             cur.count += 1;
-            byKey.set(key, cur);
+            byKey.set(k, cur);
           }
         }
       }
