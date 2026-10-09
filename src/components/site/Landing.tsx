@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import NextShow from "./NextShow";
@@ -6,7 +7,8 @@ import AlbumBrowser from "./AlbumBrowser";
 import Kaleidoscope from "./Kaleidoscope";
 import HomeGate from "./HomeGate";
 import Countdown from "./Countdown";
-import ShowHero from "./ShowHero";
+import ShowAlerts from "./ShowAlerts";
+import VenueLeaderboard from "./VenueLeaderboard";
 import WikiEmbed from "./WikiEmbed";
 
 function KaleidoStrip({ seed }: { seed: number }) {
@@ -47,7 +49,18 @@ export default function Landing() {
         }
         live={
           <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
-            <ShowHero />
+            <ShowAlerts />
+            <div className="border-b border-white/[0.06] pb-10 [&>section]:mt-10">
+              <Suspense
+                fallback={
+                  <p className="mt-10 font-mono text-[0.72rem] text-white/30">
+                    Loading votes…
+                  </p>
+                }
+              >
+                <VenueLeaderboard limit={3} />
+              </Suspense>
+            </div>
             <WikiEmbed />
             <AlbumBrowser />
             <KaleidoStrip seed={1} />
