@@ -50,9 +50,10 @@ export default function Landing() {
         }
         live={
           <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
-            <h1 className="lowercase border-b border-white/[0.06] py-10 text-[1.9rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[2.5rem]">
+            <h1 className="lowercase py-10 text-[1.9rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[2.5rem]">
               {BAND.name}
             </h1>
+            <KaleidoStrip seed={1} />
             <ShowAlerts />
             <div className="border-b border-white/[0.06] pb-10 [&>section]:mt-10">
               <Suspense
@@ -67,7 +68,6 @@ export default function Landing() {
             </div>
             <WikiEmbed />
             <AlbumBrowser />
-            <KaleidoStrip seed={1} />
             <LiveRelease />
           </main>
         }
