@@ -15,7 +15,7 @@ export interface ArchiveShow {
   venue: string;
   address?: string;
   city: string;
-  status: "past" | "past";
+  status: "upcoming" | "past";
   bill: BillSlot[];
   admission?: string;
   note?: string;
@@ -31,7 +31,7 @@ export const SHOWS: ArchiveShow[] = [
     venue: "Montrose Saloon",
     address: "2933 W Montrose Ave",
     city: "Chicago, IL",
-    status: "upcoming",
+    status: "past",
     bill: [
       { time: "8:00", act: "a thousand feet per second" },
       { time: "9:15", act: "Test Pattern" },
