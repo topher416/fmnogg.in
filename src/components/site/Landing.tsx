@@ -41,6 +41,18 @@ export default function Landing() {
         <AlbumBrowser />
         <KaleidoStrip seed={0} />
         <LiveRelease />
+        <section aria-label="Video" className="py-10">
+          <div className="aspect-video w-full overflow-hidden bg-black">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/LmZ3yCyWoTI"
+              title="a thousand feet per second — video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="h-full w-full"
+            />
+          </div>
+        </section>
       </main>
       <SiteFooter />
     </div>
