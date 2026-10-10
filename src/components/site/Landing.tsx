@@ -38,13 +38,13 @@ export default function Landing() {
           />
         </div>
         <KaleidoStrip seed={1} />
-        <ShowAlerts />
-        <AlbumBrowser />
-        <KaleidoStrip seed={0} />
         <LiveRelease />
         <section aria-label="Video" className="py-10">
           <LiteVideo id="LmZ3yCyWoTI" />
         </section>
+        <AlbumBrowser />
+        <KaleidoStrip seed={0} />
+        <ShowAlerts />
       </main>
       <SiteFooter />
     </div>
