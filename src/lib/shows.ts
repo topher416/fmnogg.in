@@ -15,7 +15,7 @@ export interface ArchiveShow {
   venue: string;
   address?: string;
   city: string;
-  status: "upcoming" | "past";
+  status: "past" | "past";
   bill: BillSlot[];
   admission?: string;
   note?: string;

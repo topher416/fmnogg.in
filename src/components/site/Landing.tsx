@@ -1,16 +1,10 @@
-import { Suspense } from "react";
 import { BAND } from "@/lib/site";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
-import NextShow from "./NextShow";
 import LiveRelease from "./LiveRelease";
 import AlbumBrowser from "./AlbumBrowser";
 import Kaleidoscope from "./Kaleidoscope";
-import HomeGate from "./HomeGate";
-import Countdown from "./Countdown";
 import ShowAlerts from "./ShowAlerts";
-import VenueLeaderboard from "./VenueLeaderboard";
-import WikiEmbed from "./WikiEmbed";
 
 function KaleidoStrip({ seed }: { seed: number }) {
   return (
@@ -29,58 +23,16 @@ export default function Landing() {
   return (
     <div className="min-h-screen text-[#e8e2d9] flex flex-col">
       <SiteHeader />
-      <HomeGate
-        before={
-          <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
-            <NextShow />
-            <Countdown />
-            <KaleidoStrip seed={0} />
-            <AlbumBrowser />
-            <KaleidoStrip seed={1} />
-            <LiveRelease />
-            <div className="py-10">
-              <div className="md:hidden">
-                <Kaleidoscope seed={2} strip compact />
-              </div>
-              <div className="hidden md:block">
-                <Kaleidoscope seed={2} strip />
-              </div>
-            </div>
-          </main>
-        }
-        live={
-          <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
-            <div className="flex items-center justify-between gap-6 py-10">
-              <h1 className="lowercase text-[1.9rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[2.5rem]">
-                {BAND.name}
-              </h1>
-              <img
-                src="/mascot.png"
-                alt=""
-                aria-hidden
-                draggable={false}
-                className="w-24 shrink-0 select-none sm:w-36"
-              />
-            </div>
-            <KaleidoStrip seed={1} />
-            <ShowAlerts />
-            <div className="border-b border-white/[0.06] pb-10 [&>section]:mt-10">
-              <Suspense
-                fallback={
-                  <p className="mt-10 font-mono text-[0.72rem] text-white/30">
-                    Loading votes…
-                  </p>
-                }
-              >
-                <VenueLeaderboard limit={3} />
-              </Suspense>
-            </div>
-            <WikiEmbed />
-            <AlbumBrowser />
-            <LiveRelease />
-          </main>
-        }
-      />
+      <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
+        <h1 className="lowercase py-10 text-[1.9rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[2.5rem]">
+          {BAND.name}
+        </h1>
+        <KaleidoStrip seed={1} />
+        <ShowAlerts />
+        <AlbumBrowser />
+        <KaleidoStrip seed={0} />
+        <LiveRelease />
+      </main>
       <SiteFooter />
     </div>
   );
