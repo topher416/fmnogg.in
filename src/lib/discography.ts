@@ -87,6 +87,16 @@ function tl17(title: string, covered: boolean, liveFile: string, video?: string)
   return tr;
 }
 
+/** Live audio base for the Montrose Saloon 2026-10-09 set. */
+const LIVE_BASE_1009 = `${AUDIO_CDN}/live/montrose-saloon-2026-10-09`;
+
+/** Helper to declare a track with a live recording from October 9. */
+function tl1009(title: string, covered: boolean, liveFile: string, video?: string): Track {
+  const tr = t(title, covered, video);
+  tr.liveAudio = `${LIVE_BASE_1009}/${liveFile}`;
+  return tr;
+}
+
 export const ALBUMS: Album[] = [
   {
     name: "Pablo Honey",
@@ -121,7 +131,7 @@ export const ALBUMS: Album[] = [
     mode: "pulse",
     tracks: [
       tl("Planet Telex", true, "09-planet-telex.m4a", "Planet Telex"),
-      t("The Bends", true, "The Bends"),
+      tl1009("The Bends", true, "04-the-bends.m4a", "The Bends"),
       t("High and Dry", true, "High and Dry"),
       t("Fake Plastic Trees", false),
       t("Bones", true, "Bones"),
@@ -145,7 +155,7 @@ export const ALBUMS: Album[] = [
     tracks: [
       t("Airbag", true, "Airbag"),
       tl17("Paranoid Android", true, "09-paranoid-android.m4a", "Paranoid Android"),
-      t("Subterranean Homesick Alien", true, "Subterranean Homesick Alien"),
+      tl1009("Subterranean Homesick Alien", true, "03-subterranean-homesick-alien.m4a", "Subterranean Homesick Alien"),
       t("Exit Music (For a Film)", true, "Exit Music (For a Film)"),
       t("Let Down", true, "Let Down"),
       t("Karma Police", true, "Karma Police"),
@@ -210,7 +220,7 @@ export const ALBUMS: Album[] = [
     bg: "#05080a",
     mode: "crystals",
     tracks: [
-      tl17("2 + 2 = 5", false, "03-2-plus-2-equals-5.m4a"),
+      tl1009("2 + 2 = 5", false, "02-2-plus-2-equals-5.m4a"),
       t("Sit Down. Stand Up.", false),
       t("Sail to the Moon", false),
       t("Backdrifts", false),
@@ -238,7 +248,7 @@ export const ALBUMS: Album[] = [
       t("15 Step", false),
       tl17("Bodysnatchers", true, "02-bodysnatchers.m4a", "Bodysnatchers"),
       tl("Nude", true, "08-nude.m4a", "Nude"),
-      tl17("Weird Fishes / Arpeggi", true, "04-weird-fishes.m4a", "Weird Fishes _ Arpeggi"),
+      tl1009("Weird Fishes / Arpeggi", true, "01-weird-fishes.m4a", "Weird Fishes _ Arpeggi"),
       t("All I Need", false),
       t("Faust Arp", false),
       tl17("Reckoner", true, "06-reckoner.m4a", "Reckoner"),
@@ -301,6 +311,19 @@ export interface LiveSet {
 }
 
 export const LIVE_SETS: LiveSet[] = [
+  {
+    title: "Live at Montrose Saloon",
+    date: "October 9, 2026",
+    dateShort: "Oct 9, 2026",
+    venue: "Montrose Saloon",
+    city: "Chicago, IL",
+    tracks: [
+      { album: "in-rainbows", track: "weird-fishes-arpeggi" },
+      { album: "hail-to-the-thief", track: "2-2-5" },
+      { album: "ok-computer", track: "subterranean-homesick-alien" },
+      { album: "the-bends", track: "the-bends" },
+    ],
+  },
   {
     title: "Live at Montrose Saloon",
     date: "September 25, 2026",
