@@ -1,5 +1,20 @@
 import { getVenueLeaderboard, PITCH_THRESHOLD } from "@/lib/venue-votes";
 
+/** Official sites for known venues; anything else links to its Google Maps search. */
+const VENUE_SITES: Record<string, string> = {
+  space: "https://www.evanstonspace.com",
+  "martyrs'": "https://martyrslive.com",
+};
+
+function venueHref(entry: { key: string; display: string }): string {
+  return (
+    VENUE_SITES[entry.key] ??
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      `${entry.display} Chicago`
+    )}`
+  );
+}
+
 /** Public "Wanted at" leaderboard: which bars fans voted for, ranked. */
 export default async function VenueLeaderboard({ limit }: { limit?: number }) {
   const full = await getVenueLeaderboard();
@@ -34,7 +49,14 @@ export default async function VenueLeaderboard({ limit }: { limit?: number }) {
                 <span className="mr-3 font-mono text-[0.72rem] text-white/30">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                {entry.display}
+                <a
+                  href={venueHref(entry)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline underline-offset-4 decoration-white/25 transition-colors hover:text-white"
+                >
+                  {entry.display}
+                </a>
                 {entry.pitchReady ? (
                   <span className="ml-3 border border-[#00ff9f]/30 bg-[#00ff9f]/[0.06] px-2 py-0.5 font-mono text-[0.62rem] uppercase tracking-[0.12em] text-[#00ff9f]/90">
                     ★ pitch-ready

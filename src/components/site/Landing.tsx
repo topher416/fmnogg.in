@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { BAND } from "@/lib/site";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
@@ -6,6 +7,7 @@ import AlbumBrowser from "./AlbumBrowser";
 import Kaleidoscope from "./Kaleidoscope";
 import ShowAlerts from "./ShowAlerts";
 import LiteVideo from "./LiteVideo";
+import VenueLeaderboard from "./VenueLeaderboard";
 
 function KaleidoStrip({ seed }: { seed: number }) {
   return (
@@ -45,6 +47,17 @@ export default function Landing() {
         <AlbumBrowser />
         <KaleidoStrip seed={0} />
         <ShowAlerts />
+        <div className="pb-10 [&>section]:mt-10">
+          <Suspense
+            fallback={
+              <p className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/30">
+                Loading…
+              </p>
+            }
+          >
+            <VenueLeaderboard />
+          </Suspense>
+        </div>
       </main>
       <SiteFooter />
     </div>
