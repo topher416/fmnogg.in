@@ -149,9 +149,10 @@ export default function WikiPage() {
             </li>
             <li><a href="#members" className="hover:underline">3 Members</a></li>
             <li><a href="#repertoire" className="hover:underline">4 Repertoire and documentation</a></li>
-            <li><a href="#fm-noggin" className="hover:underline">5 FM Noggin</a></li>
-            <li><a href="#references" className="hover:underline">6 References</a></li>
-            <li><a href="#external-links" className="hover:underline">7 External links</a></li>
+            <li><a href="#minotaur" className="hover:underline">5 The Minotaur</a></li>
+            <li><a href="#fm-noggin" className="hover:underline">6 FM Noggin</a></li>
+            <li><a href="#references" className="hover:underline">7 References</a></li>
+            <li><a href="#external-links" className="hover:underline">8 External links</a></li>
           </ol>
         </nav>
 
@@ -260,6 +261,74 @@ export default function WikiPage() {
           <Ref n={1} /><Cn />
         </p>
 
+        <H2 id="minotaur">The Minotaur</H2>
+        <figure className="sm:float-right sm:ml-6 sm:mb-4 mb-6 w-full sm:w-[240px] border border-[#a2a9b1] bg-[#f8f9fa] p-2 text-[0.8rem] leading-snug">
+          <img
+            src="/mascot-black.png"
+            alt="Line drawing of a minotaur covering its face with both hands, teardrops falling to either side"
+            className="w-full h-auto bg-white"
+          />
+          <figcaption className="pt-2 text-[#54595d]">
+            The weeping minotaur, by Stanley Donwood. The band uses the bold
+            rendition from the <em>Amnesiac</em> booklet as its emblem.
+          </figcaption>
+        </figure>
+        <p>
+          The band&rsquo;s emblem is a weeping minotaur: a bull&rsquo;s head with
+          two horns, its face covered by both hands, teardrops falling away to
+          either side, a small body and a curling tail. It appears beside the
+          band&rsquo;s name on its website, as the site&rsquo;s favicon, and on the
+          table sign at its performances. The figure is by{" "}
+          <X href="https://en.wikipedia.org/wiki/Stanley_Donwood">Stanley Donwood</X>,
+          who with Thom Yorke has created Radiohead&rsquo;s artwork since{" "}
+          <em>The Bends</em> (1995).<Ref n={9} />
+        </p>
+        <p>
+          The minotaur is a recurring figure in the artwork for{" "}
+          <X href="https://en.wikipedia.org/wiki/Amnesiac_(album)"><em>Amnesiac</em></X>{" "}
+          (2001). The album&rsquo;s cover depicts a battered red library book
+          photographed against black, with a weeping minotaur drawn small in
+          fine black line at its center, head bowed into its hands.<Ref n={9} />{" "}
+          Donwood developed the figure while wandering London taking notes,
+          likening the city to the labyrinth of Greek myth; the minotaur
+          represented the maze Yorke felt he had become lost in during his
+          depression after <em>OK Computer</em>, and Donwood described it as a{" "}
+          &ldquo;tragic figure&rdquo; — a monster weeping because it does not
+          know how to be a monster.<Ref n={9} /><Ref n={10} /> The{" "}
+          <em>Amnesiac</em> special edition, packaged as a mislaid library
+          book, won the Grammy Award for Best Recording Package at the 44th
+          Grammy Awards.<Ref n={9} /> Donwood has returned to the figure
+          throughout his career, including the screen print{" "}
+          <em>The Lamentations of the Minotaur</em>, whose crying subject he
+          describes as representing humanity, caught between the animal and
+          the godlike, building its own mazes to wander in.<Ref n={11} />
+        </p>
+        <p>
+          The version the band uses is not the cover&rsquo;s. The small figure
+          on the <em>Amnesiac</em> sleeve is a fine, frail etching; the
+          band&rsquo;s is a bolder rendition of the same creature — face fully
+          hidden behind two oversized hands, the tears drawn as separate
+          falling drops — which appears inside the <em>Amnesiac</em> booklet,
+          superimposed over other images and phrases, and in the artwork for{" "}
+          <X href="https://en.wikipedia.org/wiki/I_Might_Be_Wrong:_Live_Recordings"><em>I Might Be Wrong: Live Recordings</em></X>{" "}
+          (2001), whose packaging is credited to Donwood and Yorke.<Ref n={12} /><Ref n={13} />{" "}
+          The figure also appears, animated, in the official video for{" "}
+          <X href="https://youtu.be/LOuLf8ThkoQ">&ldquo;I Might Be Wrong&rdquo;</X>,
+          directed by Chris Bran. In 2005 Donwood issued it in a signed screen
+          print: a red field, white paint drips, the minotaur repeated at
+          three descending sizes above parody health warnings about war.<Ref n={13} />{" "}
+          The drawing circulates widely among Radiohead fans, frequently as a
+          tattoo; a 2018 forum thread asking whether it was official art or
+          fan art identified it as Donwood&rsquo;s.<Ref n={13} />
+        </p>
+        <p>
+          The band uses the figure isolated on black, at sizes from the
+          homepage to a 32-pixel favicon. It has appeared in digital form
+          before: in 2001 it was recast in goofier form as{" "}
+          <X href="https://www.avclub.com/the-oral-history-of-radiohead-s-googlyminotaur-a-chatb-1798248780">GooglyMinotaur</X>,
+          an AOL Instant Messenger chatbot released alongside <em>Amnesiac</em>.<Ref n={14} />
+        </p>
+
         <H2 id="fm-noggin">FM Noggin</H2>
         <p className="italic text-[0.85rem] text-[#54595d] mb-2 pl-6">
           Main article: FM Noggin
@@ -300,6 +369,30 @@ export default function WikiPage() {
             John Mead, teacher biography, Old Town School of Folk Music,{" "}
             <X href="https://www.oldtownschool.org/teachers/John-Mead">oldtownschool.org</X>.
             Retrieved September 30, 2026.
+          </li>
+          <li id="ref-9">
+            &ldquo;Amnesiac (album),&rdquo; Wikipedia — &ldquo;Artwork and packaging&rdquo; section,{" "}
+            <X href="https://en.wikipedia.org/wiki/Amnesiac_(album)">en.wikipedia.org</X>.
+          </li>
+          <li id="ref-10">
+            &ldquo;The Top 5 Radiohead Album Covers Designed by Thom Yorke&rsquo;s
+            Go-to Artist, Stanley Donwood,&rdquo; <em>American Songwriter</em>.
+          </li>
+          <li id="ref-11">
+            Stanley Donwood, <em>The Lamentations of the Minotaur</em>, two-colour
+            screen print, Slowly Downward Manufactory (edition of 250).
+          </li>
+          <li id="ref-12">
+            Radiohead, <em>I Might Be Wrong: Live Recordings</em> (Parlophone, 2001)
+            — artwork credits, via Discogs.
+          </li>
+          <li id="ref-13">
+            &ldquo;Anyone know the origin of this version of the minotaur from
+            Amnesiac?&rdquo;, r/radiohead, January 2018.
+          </li>
+          <li id="ref-14">
+            &ldquo;The oral history of Radiohead&rsquo;s GooglyMinotaur, a chatbot
+            ahead of its time,&rdquo; <em>The A.V. Club</em>, 2016.
           </li>
         </ol>
 
