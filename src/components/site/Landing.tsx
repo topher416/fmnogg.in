@@ -7,6 +7,7 @@ import AlbumBrowser from "./AlbumBrowser";
 import Kaleidoscope from "./Kaleidoscope";
 import ShowAlerts from "./ShowAlerts";
 import LiteVideo from "./LiteVideo";
+import MinotaurCharm from "./MinotaurCharm";
 import VenueLeaderboard from "./VenueLeaderboard";
 
 function KaleidoStrip({ seed }: { seed: number }) {
@@ -31,13 +32,7 @@ export default function Landing() {
           <h1 className="lowercase text-[1.9rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[2.5rem]">
             {BAND.name}
           </h1>
-          <img
-            src="/mascot.png"
-            alt=""
-            aria-hidden
-            draggable={false}
-            className="w-24 shrink-0 select-none sm:w-36"
-          />
+          <MinotaurCharm className="w-24 shrink-0 sm:w-36" />
         </div>
         <KaleidoStrip seed={1} />
         <LiveRelease />
