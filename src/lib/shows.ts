@@ -38,6 +38,7 @@ export const SHOWS: ArchiveShow[] = [
       { time: "10:30", act: "Three Men*" },
     ],
     admission: "$15 at the door · 21+",
+    liveSetIndex: 0,
   },
   {
     date: "Friday, September 25, 2026",
@@ -51,7 +52,7 @@ export const SHOWS: ArchiveShow[] = [
     ],
     note: "On a bill with the Pink Floyd tribute The Blue You Once Knew. Recorded and released as a free live recording — intros, banter, and all.",
     youtubeUrl: "https://youtu.be/wnTnQ676_RU",
-    liveSetIndex: 0,
+    liveSetIndex: 1,
   },
   {
     date: "Friday, July 17, 2026",
@@ -62,7 +63,7 @@ export const SHOWS: ArchiveShow[] = [
     bill: [{ time: "", act: "a thousand feet per second" }],
     note: "Recorded and released as a free live recording.",
     youtubeUrl: "https://youtu.be/XJcWAbuCKhA",
-    liveSetIndex: 1,
+    liveSetIndex: 2,
   },
 ];
 
