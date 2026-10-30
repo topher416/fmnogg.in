@@ -109,7 +109,7 @@ const tracks: Track[] = [
 
   {
     num: "VII",
-    title: "Weird Fishes / Arpeggios",
+    title: "Weird Fishes / Arpeggi",
     album: "In Rainbows",
     year: "2007",
     sheet: "/sheets/weird-fishes-arpeggios.pdf",

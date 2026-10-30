@@ -86,18 +86,24 @@ export default function ShowsPage() {
                     <ol className="mt-2 grid gap-x-8 sm:grid-cols-2">
                       {setlist.map((s, i) => (
                         <li
-                          key={s.href}
+                          key={`${s.title}-${i}`}
                           className="flex items-baseline gap-3 border-b border-white/[0.04] py-1.5"
                         >
                           <span className="font-mono text-[0.7rem] tabular-nums text-white/25">
                             {String(i + 1).padStart(2, "0")}
                           </span>
-                          <a
-                            href={s.href}
-                            className="text-[0.9rem] text-white/75 hover:text-white transition-colors"
-                          >
-                            {s.title}
-                          </a>
+                          {s.href ? (
+                            <a
+                              href={s.href}
+                              className="text-[0.9rem] text-white/75 hover:text-white transition-colors"
+                            >
+                              {s.title}
+                            </a>
+                          ) : (
+                            <span className="text-[0.9rem] text-white/75">
+                              {s.title}
+                            </span>
+                          )}
                         </li>
                       ))}
                     </ol>

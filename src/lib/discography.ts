@@ -17,8 +17,8 @@ export interface Track {
    */
   video?: string;
   /**
-   * URL of a live recording (CDN), e.g.
-   * "https://cdn.jsdelivr.net/gh/topher416/fmnogg.in@audio-v1/public/audio/live/montrose-saloon-2026-09-25/02-optimistic.m4a".
+   * Path of a live recording (same-origin), e.g.
+   * "/audio/live/montrose-saloon-2026-09-25/02-optimistic.m4a".
    * Set for tracks performed at the Montrose Saloon show.
    */
   liveAudio?: string;
@@ -45,13 +45,13 @@ export const R2_VIDEO = `${R2_BASE}/video/`;
 export const R2_AUDIO = `${R2_BASE}/audio/`;
 
 /**
- * Live audio lives on a CDN pinned to the `audio-v1` tag, not in the
- * deployment bundle — 600+ MB of audio in public/ was filling Vercel's
- * deployment storage. When a new set is recorded: commit the files,
- * move the tag, and update this constant.
+ * Live audio is served same-origin from public/audio (Vercel).
+ * It used to be served via jsDelivr pinned to the `audio-v1` tag, but
+ * jsDelivr 404s files missing from the tagged commit and 403s once the
+ * repo package exceeds its 50 MB limit — most live tracks stopped
+ * playing (audit 2026-10-30). Keep live files in public/audio/live/.
  */
-export const AUDIO_CDN =
-  "https://cdn.jsdelivr.net/gh/topher416/fmnogg.in@audio-v1/public/audio";
+export const AUDIO_CDN = "/audio";
 
 /** lowercase, strip punctuation, collapse to kebab-case. */
 export function slugify(name: string): string {

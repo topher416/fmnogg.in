@@ -67,13 +67,19 @@ export const SHOWS: ArchiveShow[] = [
   },
 ];
 
-/** Setlist entries for a show, each linking back to its track page. */
-export function showSetlist(show: ArchiveShow): { title: string; href: string }[] {
+/**
+ * Setlist entries for a show. Songs with a track page link to it;
+ * live-only songs (no video page exists) get href: null and render
+ * as plain text — linking them 404s (audit 2026-10-30).
+ */
+export function showSetlist(
+  show: ArchiveShow
+): { title: string; href: string | null }[] {
   if (show.liveSetIndex === undefined) return [];
   const set = LIVE_SETS[show.liveSetIndex];
   if (!set) return [];
   return liveSetTracks(set).map(({ album, track }) => ({
     title: track.title,
-    href: `/${album.slug}/${track.slug}`,
+    href: track.covered ? `/${album.slug}/${track.slug}` : null,
   }));
 }
