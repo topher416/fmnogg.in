@@ -11,7 +11,7 @@ interface Crumb {
 export default function SiteHeader({ crumbs = [] }: { crumbs?: Crumb[] }) {
   return (
     <header className="sticky top-0 z-20 bg-[#080808]/85 backdrop-blur-md border-b border-white/[0.06]">
-      <div className="max-w-[1000px] mx-auto flex items-center gap-2 px-4 py-3 text-[0.62rem] font-mono uppercase tracking-[0.18em]">
+      <div className="max-w-[1000px] mx-auto flex items-center gap-2 px-4 py-3 text-[0.75rem] font-mono uppercase tracking-[0.18em]">
         <EasterEggName />
         {crumbs.map((c) => (
           <span key={c.label} className="flex items-center gap-2 min-w-0">
@@ -22,14 +22,14 @@ export default function SiteHeader({ crumbs = [] }: { crumbs?: Crumb[] }) {
               <Link
                 href={c.href}
                 className="transition-colors truncate hover:opacity-80"
-                style={{ color: c.color ?? "rgba(255,255,255,0.55)" }}
+                style={{ color: c.color ?? "rgba(255,255,255,0.72)" }}
               >
                 {c.label}
               </Link>
             ) : (
               <span
                 className="truncate"
-                style={{ color: c.color ?? "rgba(255,255,255,0.8)" }}
+                style={{ color: c.color ?? "rgba(255,255,255,0.92)" }}
               >
                 {c.label}
               </span>

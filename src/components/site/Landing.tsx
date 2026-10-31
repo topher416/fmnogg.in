@@ -29,9 +29,15 @@ export default function Landing() {
       <SiteHeader />
       <main className="flex-1 w-full max-w-[1000px] mx-auto px-5">
         <div className="flex items-center justify-between gap-6 py-10">
-          <h1 className="lowercase text-[1.9rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[2.5rem]">
-            {BAND.name}
-          </h1>
+          <div>
+            <h1 className="lowercase text-[1.9rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[2.5rem]">
+              {BAND.name}
+            </h1>
+            <p className="mt-3 max-w-[42ch] lowercase leading-snug text-white/70 text-[1.02rem] sm:text-[1.15rem]">
+              eight musicians exploring the catalog of a beloved and
+              transgressive band. chicago, illinois.
+            </p>
+          </div>
           <MinotaurCharm className="w-24 shrink-0 sm:w-36" />
         </div>
         <KaleidoStrip seed={1} />
@@ -45,7 +51,7 @@ export default function Landing() {
         <div className="pb-10 [&>section]:mt-10">
           <Suspense
             fallback={
-              <p className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/30">
+              <p className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/60">
                 Loading…
               </p>
             }

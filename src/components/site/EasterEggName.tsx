@@ -23,7 +23,7 @@ export default function EasterEggName() {
   return (
     <Link
       href="/"
-      className="text-white/55 hover:text-white transition-colors whitespace-nowrap"
+      className="text-white/80 hover:text-white transition-colors whitespace-nowrap"
       onClick={() => {
         const a = getAudio();
         a.currentTime = 0;
