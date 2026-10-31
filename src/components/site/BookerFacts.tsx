@@ -3,6 +3,22 @@ import socialStats from "@/data/social-stats.json";
 import { getVenueLeaderboard } from "@/lib/venue-votes";
 
 /** Live facts for the one-screen booker pitch on /press. */
+
+interface ReelStats {
+  plays: number;
+  likes: number;
+  saves: number;
+  shares: number;
+  comments: number;
+  url: string;
+}
+
+const REEL = (
+  socialStats as { engagement?: { tiktok_reel?: ReelStats } }
+).engagement?.tiktok_reel;
+
+const compact = (n: number) =>
+  n >= 1000 ? `${(n / 1000).toFixed(1).replace(/\.0$/, "")}k` : `${n}`;
 export default async function BookerFacts() {
   const [count, board] = await Promise.all([
     getSubscriberCount(),
@@ -97,8 +113,10 @@ export default async function BookerFacts() {
           <dd className="mt-1 text-[1.05rem] text-white/85">
             Every show, posted{" "}
             <span className="text-[0.88rem] text-white/60">
-              — full live sets free on this site; first YouTube video drew
-              250 views in a day
+              — full live sets free on this site
+              {REEL
+                ? `; intro reel at ${compact(REEL.plays)} plays · ${REEL.likes} likes · ${REEL.saves} saves on TikTok`
+                : ""}
             </span>
           </dd>
         </div>

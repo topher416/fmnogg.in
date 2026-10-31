@@ -7,5 +7,21 @@
     "instagram_views_28d": 2442,
     "facebook_views_28d": 1189,
     "youtube_views": 250
+  },
+  "engagement": {
+    "tiktok_reel": {
+      "description": "hi we're a thousand feet per second this is our first post please be nice",
+      "url": "https://www.tiktok.com/@athousandfeetpersecond/video/7702353308689730829",
+      "plays": 18700,
+      "likes": 475,
+      "saves": 25,
+      "shares": 0,
+      "comments": 1
+    },
+    "instagram_reel": {
+      "url": "https://www.instagram.com/reel/DfG8eEFMWPK/",
+      "likes": 6,
+      "comments": 2
+    }
   }
 }
