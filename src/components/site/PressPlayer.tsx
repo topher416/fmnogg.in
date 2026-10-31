@@ -35,18 +35,18 @@ export default function PressPlayer({ tracks }: { tracks: PressTrack[] }) {
             key={t.src}
             className="grid grid-cols-[28px_1fr_auto] items-center gap-3 py-2.5"
           >
-            <span className="text-right font-mono text-sm tabular-nums text-white/25">
+            <span className="text-right font-mono text-sm tabular-nums text-white/45">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span className="min-w-0">
               <span
                 className={`block truncate text-[0.95rem] leading-tight transition-colors ${
-                  isPlaying ? "text-white" : "text-white/75"
+                  isPlaying ? "text-white" : "text-white/85"
                 }`}
               >
                 {t.title}
               </span>
-              <span className="block truncate font-mono text-[0.65rem] text-white/35">
+              <span className="block truncate font-mono text-[0.72rem] text-white/55">
                 {t.note}
               </span>
             </span>
