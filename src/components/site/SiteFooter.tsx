@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { BAND } from "@/lib/site";
 
+const SOCIALS = [
+  { label: "instagram", href: "https://www.instagram.com/athousandfeetpersecond" },
+  { label: "facebook", href: "https://www.facebook.com/people/a-thousand-feet-per-second/61595030072742/" },
+  { label: "youtube", href: "https://www.youtube.com/@athousandfeetpersecond" },
+  { label: "tiktok", href: "https://www.tiktok.com/@athousandfeetpersecond" },
+  { label: "booking", href: "mailto:booking@athousandfeetpersecond.com" },
+];
+
 export default function SiteFooter() {
   return (
     <footer className="border-t border-white/[0.06] mt-8">
@@ -37,6 +45,21 @@ export default function SiteFooter() {
           >
             about
           </Link>
+          <span className="text-white/15" aria-hidden>
+            |
+          </span>
+          {SOCIALS.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              {...(s.href.startsWith("http")
+                ? { target: "_blank", rel: "noreferrer" }
+                : {})}
+              className="text-white/45 hover:text-white/80 transition-colors"
+            >
+              {s.label}
+            </a>
+          ))}
         </div>
       </div>
     </footer>
