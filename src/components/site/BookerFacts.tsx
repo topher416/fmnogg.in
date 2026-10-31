@@ -83,9 +83,9 @@ export default async function BookerFacts() {
             Reach
           </dt>
           <dd className="mt-1 text-[1.05rem] text-white/85">
-            3,600+ views{" "}
+            22,500+ views{" "}
             <span className="text-[0.88rem] text-white/60">
-              — last 28 days across Instagram + Facebook, and growing
+              — across TikTok, Instagram, Facebook + YouTube, and growing
             </span>
           </dd>
         </div>
