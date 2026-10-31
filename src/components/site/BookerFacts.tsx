@@ -19,7 +19,8 @@ export default async function BookerFacts() {
           <dd className="mt-1 text-[1.05rem] text-white/85">
             26–32 paid{" "}
             <span className="text-[0.88rem] text-white/60">
-              — last two Montrose Saloon shows
+              — last two Montrose Saloon shows; strongest draw on the bill
+              Sep 25
             </span>
           </dd>
         </div>
@@ -75,6 +76,29 @@ export default async function BookerFacts() {
             >
               leaderboard
             </a>
+          </dd>
+        </div>
+        <div>
+          <dt className="font-mono text-[0.75rem] uppercase tracking-[0.18em] text-white/55">
+            Reach
+          </dt>
+          <dd className="mt-1 text-[1.05rem] text-white/85">
+            3,600+ views{" "}
+            <span className="text-[0.88rem] text-white/60">
+              — last 28 days across Instagram + Facebook, and growing
+            </span>
+          </dd>
+        </div>
+        <div>
+          <dt className="font-mono text-[0.75rem] uppercase tracking-[0.18em] text-white/55">
+            On tape
+          </dt>
+          <dd className="mt-1 text-[1.05rem] text-white/85">
+            Every show, posted{" "}
+            <span className="text-[0.88rem] text-white/60">
+              — full live sets free on this site; first YouTube video drew
+              250 views in a day
+            </span>
           </dd>
         </div>
       </dl>
