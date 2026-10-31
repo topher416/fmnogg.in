@@ -102,7 +102,7 @@ export default async function BookerFacts() {
           <dd className="mt-1 text-[1.05rem] text-white/85">
             {socialStats.display_total.toLocaleString("en-US")}+ views{" "}
             <span className="text-[0.88rem] text-white/60">
-              — across TikTok, Instagram, Facebook + YouTube, and growing
+              — organic views across TikTok, Instagram, Facebook + YouTube, and growing
             </span>
           </dd>
         </div>
