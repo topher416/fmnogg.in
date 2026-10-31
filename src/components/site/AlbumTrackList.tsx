@@ -7,8 +7,9 @@ import type { Album } from "@/lib/discography";
 /**
  * Full tracklist for one album.
  * - Covered tracks link to their video page.
- * - Tracks with a live recording (but no video) get an inline live player.
- * - Covered tracks that also have a live recording show a "live" dot.
+ * - Tracks with a recording (but no video) get an inline player.
+ *   Live recordings are labelled "Live"; other recordings get no label.
+ * - Covered tracks that also have a recording show a dot.
  * - Uncovered tracks render quietly, without a label.
  */
 export default function AlbumTrackList({ album }: { album: Album }) {
@@ -35,8 +36,10 @@ export default function AlbumTrackList({ album }: { album: Album }) {
       {album.tracks.map((track, i) => {
         const num = String(i + 1).padStart(2, "0");
 
-        // Live-only track (no video): inline player replaces "not yet".
-        if (!track.covered && track.liveAudio) {
+        // Recording-only track (no video): inline player replaces "not yet".
+        // liveAudio tracks keep the "Live" label; recording tracks get none.
+        const audioSrc = track.liveAudio ?? track.recording;
+        if (!track.covered && audioSrc) {
           const isPlaying = playing === i;
           return (
             <li
@@ -55,12 +58,14 @@ export default function AlbumTrackList({ album }: { album: Album }) {
                 {track.title}
               </span>
               <span className="flex items-center gap-2">
-                <span className="font-mono text-[0.58rem] uppercase tracking-[0.12em] text-[#00ff9f]/80">
-                  Live
-                </span>
+                {track.liveAudio && (
+                  <span className="font-mono text-[0.58rem] uppercase tracking-[0.12em] text-[#00ff9f]/80">
+                    Live
+                  </span>
+                )}
                 <button
                   onClick={() => toggleLive(i)}
-                  aria-label={isPlaying ? `Pause ${track.title} (live)` : `Play ${track.title} (live)`}
+                  aria-label={isPlaying ? `Pause ${track.title}${track.liveAudio ? " (live)" : ""}` : `Play ${track.title}${track.liveAudio ? " (live)" : ""}`}
                   className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-white/70 transition-all hover:border-[#00ff9f]/50 hover:text-[#00ff9f]"
                 >
                   {isPlaying ? (
@@ -78,7 +83,7 @@ export default function AlbumTrackList({ album }: { album: Album }) {
                   ref={(el) => {
                     audioRefs.current[i] = el;
                   }}
-                  src={track.liveAudio}
+                  src={audioSrc}
                   preload="none"
                   onEnded={() => setPlaying(null)}
                   className="hidden"
@@ -103,10 +108,10 @@ export default function AlbumTrackList({ album }: { album: Album }) {
                 </span>
                 <span className="text-base leading-tight transition-colors text-white/85 group-hover:text-white">
                   {track.title}
-                  {track.liveAudio && (
+                  {(track.liveAudio || track.recording) && (
                     <span
                       className="ml-2 inline-block h-1.5 w-1.5 rounded-full bg-[#00ff9f]/70 align-middle"
-                      title="Live recording available"
+                      title={track.liveAudio ? "Live recording available" : "Recording available"}
                     />
                   )}
                 </span>

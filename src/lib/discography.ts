@@ -22,6 +22,13 @@ export interface Track {
    * Set for tracks performed at the Montrose Saloon show.
    */
   liveAudio?: string;
+  /**
+   * Path of a band recording that is not a video and not labelled live
+   * (e.g. a rehearsal recording), same-origin under public/audio.
+   * Counts toward "% covered" and gets an inline player, with no
+   * source label on the site.
+   */
+  recording?: string;
 }
 
 export interface Album {
@@ -97,6 +104,16 @@ function tl1009(title: string, covered: boolean, liveFile: string, video?: strin
   return tr;
 }
 
+/** Audio base for the October 26, 2026 rehearsal recordings (highest take per song). */
+const REHEARSAL_BASE = `${AUDIO_CDN}/rehearsal-2026-10-26`;
+
+/** Helper to declare a track with a rehearsal recording (not a video, not live-labelled). */
+function tre(title: string, file: string): Track {
+  const tr = t(title, false);
+  tr.recording = `${REHEARSAL_BASE}/${file}`;
+  return tr;
+}
+
 export const ALBUMS: Album[] = [
   {
     name: "Pablo Honey",
@@ -140,7 +157,7 @@ export const ALBUMS: Album[] = [
       t("My Iron Lung", true, "My Iron Lung"),
       t("Bullet Proof ... I Wish I Was", false),
       t("Black Star", false),
-      t("Sulk", false),
+      tre("Sulk", "sulk.m4a"),
       t("Street Spirit (Fade Out)", true, "Street Spirit (Fade Out)"),
     ],
   },
@@ -185,7 +202,7 @@ export const ALBUMS: Album[] = [
       tl("Optimistic", false, "02-optimistic.m4a"),
       t("In Limbo", false),
       t("Idioteque", true, "Idioteque"),
-      t("Morning Bell", false),
+      tre("Morning Bell", "morning-bell.m4a"),
       t("Motion Picture Soundtrack", false),
     ],
   },
@@ -225,7 +242,7 @@ export const ALBUMS: Album[] = [
       t("Sail to the Moon", false),
       t("Backdrifts", false),
       tl("Go to Sleep", false, "04-go-to-sleep.m4a"),
-      t("Where I End and You Begin", false),
+      tre("Where I End and You Begin", "where-i-end-and-you-begin.m4a"),
       t("We Suck Young Blood", false),
       t("The Gloaming", false),
       tl("There There", true, "10-there-there.m4a", "There There"),
@@ -245,11 +262,11 @@ export const ALBUMS: Album[] = [
     bg: "#0a0603",
     mode: "drip",
     tracks: [
-      t("15 Step", false),
+      tre("15 Step", "15-step.m4a"),
       tl17("Bodysnatchers", true, "02-bodysnatchers.m4a", "Bodysnatchers"),
       tl("Nude", true, "08-nude.m4a", "Nude"),
       tl1009("Weird Fishes / Arpeggi", true, "01-weird-fishes.m4a", "Weird Fishes _ Arpeggi"),
-      t("All I Need", false),
+      tre("All I Need", "all-i-need.m4a"),
       t("Faust Arp", false),
       tl17("Reckoner", true, "06-reckoner.m4a", "Reckoner"),
       t("House of Cards", true, "House of Cards"),
@@ -266,7 +283,7 @@ export const ALBUMS: Album[] = [
     bg: "#060a03",
     mode: "tree",
     tracks: [
-      t("Bloom", false),
+      tre("Bloom", "bloom.m4a"),
       t("Morning Mr Magpie", false),
       t("Little by Little", false),
       t("Feral", false),
@@ -384,7 +401,7 @@ export function coveredTracks(album: Album): Track[] {
 
 /** Tracks with a video or a live audio recording — used for "% covered". */
 export function recordedTracks(album: Album): Track[] {
-  return album.tracks.filter((tr) => tr.covered || tr.liveAudio);
+  return album.tracks.filter((tr) => tr.covered || tr.liveAudio || tr.recording);
 }
 
 export function getTrack(
