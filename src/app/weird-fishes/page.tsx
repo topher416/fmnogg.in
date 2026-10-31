@@ -1,18 +1,5 @@
 import type { Metadata } from "next";
-import { Libre_Franklin, Source_Serif_4 } from "next/font/google";
-
-const franklin = Libre_Franklin({
-  variable: "--font-franklin",
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "900"],
-});
-
-const body = Source_Serif_4({
-  variable: "--font-body-serif",
-  subsets: ["latin"],
-  weight: ["400", "600"],
-  style: ["normal", "italic"],
-});
+import { bodySerif, franklin } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Where Have All the Weird Fishes Gone?",
@@ -59,7 +46,7 @@ function Subhead({ children }: { children: React.ReactNode }) {
 export default function WeirdFishesPage() {
   return (
     <div
-      className={`${franklin.variable} ${body.variable} flex min-h-screen items-center justify-center p-6 sm:p-12`}
+      className={`${franklin.variable} ${bodySerif.variable} flex min-h-screen items-center justify-center p-6 sm:p-12`}
       style={{
         background:
           "radial-gradient(1200px 700px at 50% 0%, #3a3a3a, #232323 70%)",
