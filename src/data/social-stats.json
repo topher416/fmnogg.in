@@ -20,8 +20,14 @@
     },
     "instagram_reel": {
       "url": "https://www.instagram.com/reel/DfG8eEFMWPK/",
-      "likes": 7,
-      "comments": 2
+      "plays": 1586,
+      "plays_organic": 237,
+      "likes": 17,
+      "likes_organic": 7,
+      "saves": 0,
+      "shares": 1,
+      "comments": 6,
+      "comments_organic": 2
     }
   }
 }
