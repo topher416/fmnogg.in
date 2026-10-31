@@ -23,8 +23,7 @@ export default function ShowsPage() {
           Shows
         </h1>
         <p className="mt-2 max-w-[60ch] text-[0.95rem] leading-relaxed text-white/55">
-          Every date, bill, and setlist — with the live recordings where they
-          exist.
+          Every date, bill, and setlist.
         </p>
 
         <ol className="mt-10">

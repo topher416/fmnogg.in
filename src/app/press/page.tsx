@@ -97,7 +97,6 @@ export default function PressPage() {
           className="mt-10 border border-white/10 bg-white/[0.02] p-6"
         >
           <SectionLabel>For bookers</SectionLabel>
-          <SectionTitle>The whole pitch, one screen</SectionTitle>
           <Suspense
             fallback={
               <p className="mt-6 font-mono text-[0.75rem] text-white/60">
@@ -146,7 +145,6 @@ export default function PressPage() {
 
         <section aria-label="Bio" className="mt-12 border-t border-white/[0.06] pt-8">
           <SectionLabel>Bio</SectionLabel>
-          <SectionTitle>The short version</SectionTitle>
           <p className="mt-3 max-w-[62ch] text-[1rem] leading-relaxed text-white/75">
             a thousand feet per second is an eight-piece band from Chicago,
             formed in 2026 out of the Old Town School of Folk Music&rsquo;s
@@ -202,7 +200,6 @@ export default function PressPage() {
 
         <section aria-label="Shows" className="mt-12 border-t border-white/[0.06] pt-8">
           <SectionLabel>Shows</SectionLabel>
-          <SectionTitle>Past &amp; upcoming</SectionTitle>
           <ol className="mt-4 space-y-2.5">
             {SHOWS.map((s) => (
               <li key={s.dateShort} className="flex flex-wrap items-baseline gap-x-3">
@@ -232,7 +229,6 @@ export default function PressPage() {
 
         <section aria-label="Contact" className="mt-12 border-t border-white/[0.06] pt-8 pb-4">
           <SectionLabel>Contact</SectionLabel>
-          <SectionTitle>Booking &amp; press</SectionTitle>
           <p className="mt-3 max-w-[62ch] text-[1rem] leading-relaxed text-white/75">
             We would like to perform for you. Booking and press go through one
             front door:{" "}
