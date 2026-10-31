@@ -1,4 +1,5 @@
 import { getSubscriberCount } from "@/lib/list-stats";
+import socialStats from "@/data/social-stats.json";
 import { getVenueLeaderboard } from "@/lib/venue-votes";
 
 /** Live facts for the one-screen booker pitch on /press. */
@@ -83,7 +84,7 @@ export default async function BookerFacts() {
             Reach
           </dt>
           <dd className="mt-1 text-[1.05rem] text-white/85">
-            22,500+ views{" "}
+            {socialStats.display_total.toLocaleString("en-US")}+ views{" "}
             <span className="text-[0.88rem] text-white/60">
               — across TikTok, Instagram, Facebook + YouTube, and growing
             </span>
