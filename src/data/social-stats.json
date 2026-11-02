@@ -1,12 +1,12 @@
 {
-  "total_views": 21817,
-  "display_total": 21500,
+  "total_views": 22005,
+  "display_total": 22000,
   "updated_at": "2026-11-01",
   "parts": {
     "tiktok_plays": 18797,
-    "instagram_views_28d": 1438,
+    "instagram_views_28d": 1526,
     "facebook_views_28d": 1193,
-    "youtube_views": 389
+    "youtube_views": 489
   },
   "engagement": {
     "tiktok_reel": {
@@ -20,16 +20,16 @@
     },
     "instagram_reel": {
       "url": "https://www.instagram.com/reel/DfG8eEFMWPK/",
-      "plays": 3244,
-      "plays_organic": 262,
-      "likes": 33,
+      "plays": 4327,
+      "plays_organic": 271,
+      "likes": 39,
       "likes_organic": 10,
       "saves": 0,
-      "shares": 2,
+      "shares": 3,
       "comments": 6,
       "comments_organic": 2
     }
   },
   "organic_only": true,
-  "instagram_paid_views_excluded": 4954
+  "instagram_paid_views_excluded": 6261
 }
