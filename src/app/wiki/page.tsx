@@ -88,7 +88,7 @@ export default function WikiPage() {
           </div>
           <div className="px-2 pt-2">
             <img
-              src="/images/live/montrose-keys.jpg"
+              src="/images/live/montrose-live-seven.jpg"
               alt="a thousand feet per second live at Montrose Saloon"
               className="w-full"
             />
