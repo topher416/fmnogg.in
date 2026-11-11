@@ -26,6 +26,12 @@ export default function ShowsPage() {
           Every date, bill, and setlist.
         </p>
 
+        <img
+          src="/images/live/montrose-sign.jpg"
+          alt="Montrose Saloon"
+          className="mt-8 w-full border border-white/10"
+        />
+
         <ol className="mt-10">
           {SHOWS.map((show) => {
             const setlist = showSetlist(show);

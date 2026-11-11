@@ -19,14 +19,16 @@ export const revalidate = 3600;
 const BOOKING_EMAIL = "booking@athousandfeetpersecond.com";
 
 const PHOTOS = [
-  { name: "Hannah Enenbach", src: "/images/members/hannah-enenbach-portrait.png" },
-  { name: "Eric Gorscak", src: "/images/members/eric-gorscak-portrait.png" },
-  { name: "Drew Kelly", src: "/images/members/drew-kelly-portrait.png" },
-  { name: "Peter Manis", src: "/images/members/peter-manis-portrait.png" },
-  { name: "Jeff Mauricio", src: "/images/members/jeff-mauricio-portrait.png" },
-  { name: "Topher Rasmussen", src: "/images/members/topher-rasmussen-portrait.png" },
-  { name: "Andrew Schneider", src: "/images/members/andrew-schneider-portrait.png" },
-  { name: "Jim Svajgl", src: "/images/members/jim-portrait.png" },
+  { name: "Live at Montrose Saloon", src: "/images/live/montrose-live-wide.jpg" },
+  { name: "Hannah Enenbach", src: "/images/members/hannah-enenbach-montrose.jpg" },
+  { name: "Eric Gorscak", src: "/images/members/eric-gorscak-montrose.jpg" },
+  { name: "Drew Kelly", src: "/images/members/drew-kelly-montrose.jpg" },
+  { name: "Peter Manis", src: "/images/members/peter-manis-montrose.jpg" },
+  { name: "Jeff Mauricio", src: "/images/members/jeff-mauricio-montrose.jpg" },
+  { name: "Topher Rasmussen", src: "/images/members/topher-rasmussen-montrose.jpg" },
+  { name: "Andrew Schneider", src: "/images/members/andrew-schneider-montrose.jpg" },
+  { name: "Jim Svajgl", src: "/images/members/jim-montrose.jpg" },
+  { name: "Montrose Saloon, Chicago", src: "/images/live/montrose-sign.jpg" },
 ];
 
 const FEATURED: PressTrack[] = [

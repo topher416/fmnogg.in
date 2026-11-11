@@ -40,6 +40,13 @@ export default function Landing() {
           </div>
           <MinotaurCharm className="w-24 shrink-0 sm:w-36" />
         </div>
+        <div className="pb-10">
+          <img
+            src="/images/live/montrose-live-wide.jpg"
+            alt="a thousand feet per second live at Montrose Saloon"
+            className="w-full border border-white/10"
+          />
+        </div>
         <KaleidoStrip seed={1} />
         <LiveRelease />
         <section aria-label="Video" className="py-10">

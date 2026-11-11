@@ -22,14 +22,14 @@ const MEMBERS: {
     name: "Hannah Enenbach",
     role: "vocals",
     bio: null,
-    photo: "/images/members/hannah-enenbach-portrait.png",
+    photo: "/images/members/hannah-enenbach-montrose.jpg",
     links: [{ label: "bandcamp", href: "https://hannahbackward.bandcamp.com" }],
   },
   {
     name: "Eric Gorscak",
     role: "bass",
     bio: "Eric plays bass in 1,000 Feet Per Second (Radiohead covers) and The Blue You Once Knew (Pink Floyd covers), both formed through Old Town School of Folk Music ensemble classes, where he also plays bass in the aptly-named Eclectic Electric Ensemble. He provides bass and occasional vocals for The Bliss Machine, a studio project of original music once described as \"Talking Heads and Rage Against the Machine at a Primus concert.\"",
-    photo: "/images/members/eric-gorscak-live.jpg",
+    photo: "/images/members/eric-gorscak-montrose.jpg",
     links: [
       { label: "instagram", href: "https://instagram.com/blissmachine92" },
       { label: "the bliss machine", href: "https://www.theblissmachine.com/" },
@@ -43,25 +43,25 @@ const MEMBERS: {
     name: "Drew Kelly",
     role: "vocals, electric guitar",
     bio: null,
-    photo: "/images/members/drew-kelly-portrait.png",
+    photo: "/images/members/drew-kelly-montrose.jpg",
   },
   {
     name: "Peter Manis",
     role: "drums",
     bio: null,
-    photo: "/images/members/peter-manis-portrait.png",
+    photo: "/images/members/peter-manis-montrose.jpg",
   },
   {
     name: "Jeff Mauricio",
     role: "electric guitar",
     bio: null,
-    photo: "/images/members/jeff-mauricio-portrait.png",
+    photo: "/images/members/jeff-mauricio-montrose.jpg",
   },
   {
     name: "Topher Rasmussen",
     role: "acoustic, vocals",
     bio: null,
-    photo: "/images/members/topher-rasmussen-portrait.png",
+    photo: "/images/members/topher-rasmussen-montrose.jpg",
     links: [
       { label: "website", href: "https://topherrasmussen.com" },
       { label: "bandcamp", href: "https://topherrasmussen.bandcamp.com" },
@@ -71,14 +71,14 @@ const MEMBERS: {
     name: "Andrew Schneider",
     role: "keys",
     bio: null,
-    photo: "/images/members/andrew-schneider-portrait.png",
+    photo: "/images/members/andrew-schneider-montrose.jpg",
     links: [{ label: "bandcamp", href: "https://ahschneider.bandcamp.com" }],
   },
   {
     name: "Jim",
     role: "electric guitar",
     bio: null,
-    photo: "/images/members/jim-portrait.png",
+    photo: "/images/members/jim-montrose.jpg",
   },
 ];
 
