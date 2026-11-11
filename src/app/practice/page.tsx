@@ -400,7 +400,7 @@ export default function Home() {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#0a0a0a] overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden">
       <Orbs />
 
       {/* Main content */}
@@ -423,6 +423,11 @@ export default function Home() {
         {/* Overview */}
         <section className="w-full max-w-3xl mb-16">
           <div className="p-6 bg-[#111] rounded-lg border border-[#222]">
+            <img
+              src="/images/live/montrose-hands.jpg"
+              alt="Hands on a Telecaster, live at Montrose Saloon"
+              className="mb-6 w-full rounded border border-[#222] object-cover"
+            />
             <p className="text-[#aaa] leading-relaxed mb-6">
               Practice materials for a 21-song Radiohead setlist. Each song includes isolated stems and slowed practice tracks at 90%, 70%, and 50% speed. Audio streamed from archive.org.
             </p>

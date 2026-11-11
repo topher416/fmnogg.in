@@ -27,6 +27,12 @@ export default function AnniversariesPage() {
           themed night. ★ marks the 5-year milestones bookers love.
         </p>
 
+        <img
+          src="/images/live/montrose-posters.jpg"
+          alt="Posters on the wall at Montrose Saloon"
+          className="mt-8 h-52 w-full border border-white/10 object-cover"
+        />
+
         <AnniversaryCalendar />
       </main>
 

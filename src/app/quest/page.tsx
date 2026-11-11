@@ -59,6 +59,12 @@ export default async function QuestPage() {
           else.
         </p>
 
+        <img
+          src="/images/live/montrose-singers.jpg"
+          alt="a thousand feet per second live at Montrose Saloon"
+          className="mt-8 w-full border border-white/10"
+        />
+
         {okc ? (
           <div className="mt-8 border border-[#00ff9f]/25 bg-[#00ff9f]/[0.04] p-5">
             <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-[#00ff9f]/80">

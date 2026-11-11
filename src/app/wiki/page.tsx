@@ -86,6 +86,16 @@ export default function WikiPage() {
           <div className="bg-[#eaecf0] px-3 py-2 text-center font-bold text-[0.95rem]">
             a thousand feet per second
           </div>
+          <div className="px-2 pt-2">
+            <img
+              src="/images/live/montrose-keys.jpg"
+              alt="a thousand feet per second live at Montrose Saloon"
+              className="w-full"
+            />
+            <p className="py-1.5 text-center text-[0.75rem] text-[#54595d]">
+              Live at Montrose Saloon, Chicago
+            </p>
+          </div>
           <dl className="px-3 py-2">
             {[
               ["Origin", "Chicago, Illinois, U.S."],

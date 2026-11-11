@@ -31,6 +31,12 @@ export default function AlertsPage() {
           Nothing else. No newsletters, no spam, unsubscribe anytime.
         </p>
 
+        <img
+          src="/images/live/montrose-alerts.jpg"
+          alt="a thousand feet per second live at Montrose Saloon"
+          className="mt-8 w-full border border-white/10"
+        />
+
         <AlertForm />
 
         <Suspense

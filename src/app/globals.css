@@ -267,3 +267,33 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Site background: a kaleidoscope built from a Montrose Saloon detail
+   (curtain, wall frames, stage light), mirrored, blurred and darkened
+   until it reads as texture. Fixed behind everything; slow zoom. */
+.site-bg {
+  position: fixed;
+  inset: -8%;
+  z-index: -1;
+  background-image: url("/images/bg/kaleido-bg.jpg");
+  background-size: 850px;
+  background-repeat: repeat;
+  opacity: 0.55;
+  pointer-events: none;
+  animation: site-bg-drift 90s ease-in-out infinite alternate;
+}
+
+@keyframes site-bg-drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.14);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-bg {
+    animation: none;
+  }
+}

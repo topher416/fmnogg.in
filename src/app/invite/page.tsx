@@ -101,6 +101,12 @@ export default function InvitePage() {
             </div>
           </dl>
 
+          <img
+            src="/images/live/montrose-invite.jpg"
+            alt="a thousand feet per second live at Montrose Saloon"
+            className="mt-10 w-full border border-white/10"
+          />
+
           <ol className="mt-8 space-y-1.5 border-t border-white/[0.06] pt-6">
             {SHOW.lineup.map((slot) => (
               <li
