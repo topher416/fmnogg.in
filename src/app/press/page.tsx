@@ -19,7 +19,7 @@ export const revalidate = 3600;
 const BOOKING_EMAIL = "booking@athousandfeetpersecond.com";
 
 const PHOTOS = [
-  { name: "Live at Montrose Saloon", src: "/images/live/montrose-live-wide.jpg" },
+  { name: "Live at Montrose Saloon", src: "/images/live/montrose-live-seven.jpg" },
   { name: "Hannah Enenbach", src: "/images/members/hannah-enenbach-montrose.jpg" },
   { name: "Eric Gorscak", src: "/images/members/eric-gorscak-montrose.jpg" },
   { name: "Drew Kelly", src: "/images/members/drew-kelly-montrose.jpg" },

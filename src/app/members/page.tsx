@@ -97,32 +97,32 @@ export default function MembersPage() {
       <SiteHeader crumbs={[{ label: "members" }]} />
 
       <main className="flex-1 w-full max-w-[1000px] mx-auto px-5 py-10">
-        <h1 className="text-[1.6rem] font-bold leading-tight tracking-tight">
+        <h1 className="text-[1.9rem] font-bold leading-tight tracking-tight">
           Members
         </h1>
         <p className="mt-1 font-mono text-[0.68rem] text-white/40">
           {MEMBERS.length} players · Chicago, IL
         </p>
 
-        <ul className="mt-8 space-y-6">
+        <ul className="mt-10 space-y-10">
           {MEMBERS.map((m) => (
-            <li key={m.name} className="flex gap-4 sm:gap-5 items-start">
+            <li key={m.name} className="flex gap-5 sm:gap-7 items-start">
               {m.photo ? (
                 <img
                   src={m.photo}
                   alt={m.name}
-                  className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 border border-white/10 object-cover"
+                  className="shrink-0 w-28 h-28 sm:w-40 sm:h-40 border border-white/10 object-cover"
                 />
               ) : (
-                <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 border border-white/10 bg-white/[0.02] flex items-center justify-center font-mono text-lg text-white/25 select-none">
+                <div className="shrink-0 w-28 h-28 sm:w-40 sm:h-40 border border-white/10 bg-white/[0.02] flex items-center justify-center font-mono text-lg text-white/25 select-none">
                   {initials(m.name)}
                 </div>
               )}
               <div className="min-w-0 pt-1">
-                <div className="text-[1.05rem] font-medium text-white/90">
+                <div className="text-[1.3rem] font-medium text-white/90">
                   {m.name}
                 </div>
-                <div className="mt-0.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-white/40">
+                <div className="mt-0.5 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-white/40">
                   {m.role}
                 </div>
                 {m.links && m.links.length > 0 && (
@@ -141,7 +141,7 @@ export default function MembersPage() {
                   </div>
                 )}
                 {m.bio ? (
-                  <p className="mt-2 text-[0.82rem] leading-relaxed text-white/55 max-w-[42rem]">
+                  <p className="mt-2 text-[0.9rem] leading-relaxed text-white/55 max-w-[42rem]">
                     {m.bio}
                   </p>
                 ) : (
