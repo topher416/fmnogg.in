@@ -2,10 +2,14 @@ import Link from "next/link";
 import { ALBUMS, recordedTracks } from "@/lib/discography";
 
 /** Discography index: album, year, % of tracks covered.
- *  Each row's fill runs to the covered % in the album color;
- *  the text layer is duplicated in black and clipped to the fill
- *  (clip-path inset from the right), so letters invert — and split —
- *  exactly where the fill edge crosses them. */
+ *  Each row's fill runs to the covered % in the album color.
+ *  The album title is set in SVG with textLength + spacingAndGlyphs,
+ *  so its glyphs stretch to fill the full width of the title zone —
+ *  edge to edge at any screen size — stopping before the year / %
+ *  columns. The whole row (title + year + %) is duplicated in black
+ *  and clipped to the fill (clip-path inset from the right), so
+ *  letters and numbers invert — and split — exactly where the fill
+ *  edge crosses them. */
 export default function AlbumBrowser() {
   return (
     <section aria-label="Discography" className="py-10">
@@ -18,24 +22,41 @@ export default function AlbumBrowser() {
           const total = album.tracks.length;
           const pct = Math.round((covered / total) * 100);
           const row = (inverted: boolean) => (
-            <span className="flex items-baseline gap-4 py-3.5">
-              <span
-                className={`flex-1 text-[0.95rem] ${
-                  inverted ? "text-black" : "text-white/80 transition-colors group-hover:text-white"
-                }`}
-              >
-                {album.name}
+            <span className="flex h-16 items-center gap-5">
+              <span className="relative h-full flex-1">
+                <svg
+                  className={`absolute inset-0 block h-full w-full ${
+                    inverted
+                      ? "text-black"
+                      : "text-white/85 transition-colors group-hover:text-white"
+                  }`}
+                  viewBox="0 0 1000 64"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <text
+                    x="0"
+                    y="44"
+                    fill="currentColor"
+                    fontSize="42"
+                    fontWeight="700"
+                    textLength="998"
+                    lengthAdjust="spacingAndGlyphs"
+                  >
+                    {album.name.toUpperCase()}
+                  </text>
+                </svg>
               </span>
               <span
-                className={`font-mono text-[0.7rem] tabular-nums ${
-                  inverted ? "text-black/60" : "text-white/30"
+                className={`font-mono text-base font-semibold tabular-nums ${
+                  inverted ? "text-black/85" : "text-white/85"
                 }`}
               >
                 {album.year}
               </span>
               <span
-                className={`w-11 text-right font-mono text-[0.7rem] tabular-nums ${
-                  inverted ? "text-black/80" : "text-white/45"
+                className={`w-[3.25rem] text-right font-mono text-base font-semibold tabular-nums ${
+                  inverted ? "text-black/85" : "text-white/85"
                 }`}
               >
                 {pct}%
