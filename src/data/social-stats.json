@@ -1,7 +1,7 @@
 {
   "total_views": 28729,
   "display_total": 28500,
-  "updated_at": "2026-11-10",
+  "updated_at": "2026-11-12",
   "parts": {
     "tiktok_plays": 18805,
     "instagram_views_28d": 9088,
@@ -18,8 +18,18 @@
       "shares": 0,
       "comments": 1
     },
-    "instagram_reel": null
+    "instagram_reel": {
+      "url": "https://www.instagram.com/reel/DfG8eEFMWPK/",
+      "plays": 5083,
+      "plays_organic": 308,
+      "likes": 47,
+      "likes_organic": 12,
+      "saves": 0,
+      "shares": 4,
+      "comments": 6,
+      "comments_organic": 2
+    }
   },
   "organic_only": true,
-  "instagram_paid_views_excluded": 0
+  "instagram_paid_views_excluded": 7045
 }
