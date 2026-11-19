@@ -11,16 +11,15 @@ export interface ShowSlot {
 }
 
 export const SHOW = {
-  venue: "Montrose Saloon",
-  address: "2933 W Montrose Ave",
+  venue: "Reggies Music Joint",
+  address: "2105 S State St",
   city: "Chicago, IL",
-  date: "Friday, October 9, 2026",
+  date: "Thursday, April 29, 2027",
   /** Doors / first set, America/Chicago. Drives the homepage countdown + show-night flip. */
-  startsAt: "2026-10-09T20:00:00-05:00",
-  dateShort: "Oct 9",
+  startsAt: "2027-04-29T20:00:00-05:00",
+  dateShort: "Apr 29",
   lineup: [
     { time: "8:00", act: "A Thousand Feet Per Second" },
-    { time: "9:15", act: "Test Pattern" },
-    { time: "10:30", act: "Three Men*" },
+    { time: "", act: "The Stem Lords" },
   ] as ShowSlot[],
 };

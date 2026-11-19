@@ -26,6 +26,20 @@ export interface ArchiveShow {
 
 export const SHOWS: ArchiveShow[] = [
   {
+    date: "Thursday, April 29, 2027",
+    dateShort: "Apr 29, 2027",
+    venue: "Reggies Music Joint",
+    address: "2105 S State St",
+    city: "Chicago, IL",
+    status: "upcoming",
+    bill: [
+      { time: "8:00", act: "a thousand feet per second" },
+      { time: "", act: "The Stem Lords" },
+    ],
+    admission: "21+",
+    note: "Jim Ryan's Classic Albums Night. The band performs Radiohead's In Rainbows in full. The Stem Lords perform The Cult's Sonic Temple.",
+  },
+  {
     date: "Friday, October 9, 2026",
     dateShort: "Oct 9, 2026",
     venue: "Montrose Saloon",
