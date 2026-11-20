@@ -8,6 +8,7 @@ import Kaleidoscope from "./Kaleidoscope";
 import ShowAlerts from "./ShowAlerts";
 import LiteVideo from "./LiteVideo";
 import MinotaurCharm from "./MinotaurCharm";
+import NextShow from "./NextShow";
 import VenueLeaderboard from "./VenueLeaderboard";
 
 function KaleidoStrip({ seed }: { seed: number }) {
@@ -49,6 +50,7 @@ export default function Landing() {
             <MinotaurCharm className="w-24 shrink-0 sm:w-36" />
           </div>
         </div>
+        <NextShow />
         <KaleidoStrip seed={1} />
         <LiveRelease />
         <section aria-label="Video" className="py-10">
