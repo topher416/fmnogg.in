@@ -10,6 +10,11 @@ export default function NextShow() {
           <p className="mb-4 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-white/35">
             Next show
           </p>
+          <img
+            src="/images/reggies-logo.png"
+            alt="Reggies"
+            className="mb-5 h-8 w-auto rounded-[3px] bg-[#e8e2d9] px-2 py-1"
+          />
           <h2 className="text-[1.9rem] font-semibold leading-tight text-white/90 sm:text-[2.4rem]">
             {SHOW.date}
           </h2>
