@@ -18,8 +18,9 @@ export const SHOW = {
   /** Doors / first set, America/Chicago. Drives the homepage countdown + show-night flip. */
   startsAt: "2027-04-29T20:00:00-05:00",
   dateShort: "Apr 29",
-  detail: "Jim Ryan's Classic Albums Night — In Rainbows performed in full",
-  admission: "Doors 7pm · Show 8pm · 21+",
+  shortDate: "4/29/27",
+  detail: "in rainbows in full",
+  area: "south loop",
   lineup: [
     { time: "8:00", act: "A Thousand Feet Per Second" },
     { time: "", act: "The Stem Lords" },
